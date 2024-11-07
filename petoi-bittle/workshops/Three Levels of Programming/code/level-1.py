@@ -170,7 +170,7 @@ def serialWriteByte(port, var=None):
 
 def printSerialMessage(port, token, timeout=0):
     if token == 'k' or token == 'K':
-        threshold = 8
+        threshold = 4
     else:
         threshold = 3
     if 'X' in token:
