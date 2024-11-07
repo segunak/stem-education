@@ -4,7 +4,7 @@ import struct
 import sys
 import time
 import logging
-from SerialCommunication import *  # module SerialCommunication.py
+from SerialCommunication import *
 import platform
 import copy
 import threading
@@ -855,7 +855,8 @@ if __name__ == '__main__':
             #                sendTaskParallel([sys.argv[1][0], sys.argv[1:], 1])
             send(goodPorts, [sys.argv[1][0], sys.argv[1:], 1])
         printH('Model list', config.modelList)
-        print("You can type 'quit' or 'q' to exit.")
+        print("\nYou can type 'quit' or 'q' to exit.\n")
+        print("Type a command below directly into the terminal and hit 'Enter' to send them to the robot dog. You must send commands one at a time. For example, typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
 
         keepReadingInput(goodPorts)
 
