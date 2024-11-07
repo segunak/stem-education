@@ -868,3 +868,5 @@ if __name__ == '__main__':
         logger.info("Exception")
         closeAllSerial(goodPorts)
         raise e
+    finally:
+        os._exit(0)

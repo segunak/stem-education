@@ -183,4 +183,4 @@ except KeyboardInterrupt:
 finally:
     closePort()
     print("Program terminated.")
-    exit()
+    os._exit(0)
