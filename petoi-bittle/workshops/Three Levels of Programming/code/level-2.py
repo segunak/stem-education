@@ -1,5 +1,6 @@
 # Level 2: High Level Programming
 
+import sys
 from PetoiRobot import *
 
 autoConnect() # Do not remove this.
@@ -36,3 +37,5 @@ sendSkillStr('ksit', 3)
 ########## Student Code Area End #################
 
 closePort() # Do not remove this.
+
+sys.exit() # Do not remove this.
