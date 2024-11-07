@@ -96,6 +96,10 @@ Use the resources below to get ideas on using the Petoi Bittle and Tello Talent 
 
 ## Troubleshooting
 
+### COM Port Not Found or General COM Port Issues Over Bluetooth
+
+Open Device Manager, disable the COM port that's causing issues, enable it again, try again. Or remove the entire device from the Bluetooth menu and reinstall it. Last thing would be not using `autoConnect` and trying to specify a specific port.
+
 ### Petoi Bittle Not Responding To Commands
 
 * Completely remove the device from the Bluetooth on the PC and re-add it. Close the Mind+ application and re-run it.
