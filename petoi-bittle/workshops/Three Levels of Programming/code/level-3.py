@@ -111,7 +111,7 @@ def translate_to_robot_command(natural_language_command):
     
     Additionally, if a command involves repeating an action multiple times, such as 'jump 5 times', you should return the command using a for loop in Python. However, it should still be a syntactically correct Python list. For example, 'jump 5 times' should be translated to a list with a 1 string entry that is a for loop that repeats the 'kjmp' command 5 times with a delay of 1 second between each command since the user did not specify a custom delay time. However, if the user specifies a delay time, you should use that delay time instead of the default 1 second.
     
-    Always, no matter what, return a syntactically correct Python list. Never return code fenced markdown or code blocks.
+    Always, no matter what, return a syntactically correct Python list. Never return code fenced markdown or code blocks. The last command in the list, after taking into account user input (this is very important), should always be 'sendSkillStr('krest', 1)'. This ensures the robot dog does not continue with a command in perpetuity.
     """
 
     messages = [
@@ -146,13 +146,23 @@ For example, you can type:
 
 The available commands include actions like sitting, standing up, doing flips, and many more.
 
-Give it a try and see your robot dog come to life!\n\n
+Give it a try and see your robot dog come to life!\n
     """)
 
+    exit_commands = {'exit', 'quit', 'stop', 'leave', 'q'}
+    
     while True:
-        user_input = input("Enter command(s) in natural (conversational) language (or 'exit' to quit): ").strip().lower()
+        user_input = input(
+            "Enter command(s) in natural (conversational) language."
+            "\n\nTo exit, you may type any of the following commands:"
+            "\n  - 'exit'"
+            "\n  - 'quit'"
+            "\n  - 'stop'"
+            "\n  - 'leave'"
+            "\n  - 'q'\n\nYour command: "
+        ).strip().lower()
 
-        if user_input == 'exit':
+        if user_input in exit_commands:
             print("Exiting...")
             break
         
