@@ -20,6 +20,14 @@ To setup the Petoi Bittle make sure you can connect to and upload/update firmwar
 
 Read through the [Frequently Asked Questions](https://docs.petoi.com/technical-support/faq-frequently-asked-questions) page for a lot of answers.
 
+## Battery
+
+The Bittle X comes with a 1000mAh/7.4Wh battery that they claim can last for hours in stand by mode, which would mean you can turn it on an hour or so before a workshop and expect it'll still be connected when it's time to use it.
+
+Reference [this page](https://docs.petoi.com/technical-support/battery)
+
+![BatteryInfo](./images/BatteryInfo.png)
+
 ## Bluetooth
 
 The Bluetooth connection can get weird. Read [Configure the Bluetooth Module](https://docs.petoi.com/communication-modules/dual-mode-bluetooth#configure-the-bluetooth-module) for help. Some key points.
