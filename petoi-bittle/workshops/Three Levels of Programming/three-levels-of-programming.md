@@ -8,20 +8,26 @@ Each level introduces a progressively more abstracted form of controlling the ro
 
 ### Key Objectives
 
-- Understand the basics of Serial Protocol and how early computers were programmed.
-- Write Python code to control the robot dog and compare it to the Serial Protocol commands.
-- Learn about **Prompt Engineering** and how AI can be used to control computers.
-- Highlight the evolution of programming from low-level hardware control to high-level AI-driven commands.
-- Engage students in hands-on activities, making learning fun and interactive.
+By the end of this workshop, students will:
+
+1. **Explore Three Levels of Programming**: Understand programming from **low-level commands** (Serial Protocol) to **high-level languages** (Python), and finally, **AI-driven prompt engineering**.
+
+2. **Develop Hands-On Coding Skills**: Write code in Python to control the [Petoi Bittle X Robot Dog](https://www.petoi.com/pages/bittle-smart-robot-dog-model-overview), learning the essentials of **AI-assisted coding** and **natural language commands**.
+
+3. **Experience the Fusion of Hardware and Software**: See how **software programming** translates into physical actions, gaining insight into how **hardware** and **software** integrate in robotics.
+
+4. **Build an AI Perspective**: Understand the growing role of **Generative AI** in programming and explore how **AI prompt engineering** allows high-level commands to control machines.
+
+5. **Gain Practical Robotics Knowledge**: Learn foundational robotics concepts like **serial communication**, **sensor integration**, and **autonomous movement**, which are essential skills for future work in **hardware-software interaction**.
 
 ---
 
 ## Materials
 
-- 1 Petoi Bittle Robot Dog per 4-5 students.
+- 1 [Petoi Bittle X Robot Dog](https://www.petoi.com/pages/bittle-smart-robot-dog-model-overview) per 4-5 students.
 - Laptops/Desktops. 1 laptop per 4-5 students.
-- Printed Serial Protocol documentation from Petoi found at <https://docs.petoi.com/apis/serial-protocol>.
-- Mind+ and/or Visual Studio Code IDE installed on computers.
+- The Serial Protocol documentation for the robot dog from Petoi found at <https://docs.petoi.com/apis/serial-protocol>. These can be printed or provided via a slide/QR code. A nicely formatted version of the commands is can be found [here](../../documentation/serial-protocol.md)
+- The [Visual Studio Code](https://code.visualstudio.com/) IDE installed on the computers.
 - Python installed on computers.
 - Python packages `openai`, and `dotenv` installed via `pip`.
 - The `PetoiRobot`, `SerialCommunication`, and `ardSerial` modules from Petoi, found at <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries>.
