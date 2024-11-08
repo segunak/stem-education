@@ -20,6 +20,14 @@ To setup the Petoi Bittle make sure you can connect to and upload/update firmwar
 
 Read through the [Frequently Asked Questions](https://docs.petoi.com/technical-support/faq-frequently-asked-questions) page for a lot of answers.
 
+## Bluetooth
+
+The Bluetooth connection can get weird. Read [Configure the Bluetooth Module](https://docs.petoi.com/communication-modules/dual-mode-bluetooth#configure-the-bluetooth-module) for help. Some key points.
+
+* Every time you turn off the dog, you have to remove whatever Bluetooth COM Ports you connected and re-connect from scratch the next time you power on. It does not remain paired.
+* The Bluetooth signature ending in `_BLE` is the one to choose when connecting, not the `_SSP` one which asks for a pin.
+* You can change the name of the Bluetooth using serial commands. See [this](#firmware-updates-and-configuration) section.
+
 ## Firmware Updates and Configuration
 
 Use the resources below for advanced actions such as configuring the Bittle X and updating the firmware. When you update the firemware you well get prompts. Always refer to [this guide](https://docs.petoi.com/desktop-app/firmware-uploader#biboard-for-bittle-x) to know what to choose.
