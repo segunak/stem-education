@@ -305,8 +305,12 @@ def openPort(port):
 
 # auto connect serial ports
 def autoConnect():
-    connectPort(goodPorts)
-    logger.debug(f'goodPorts: {goodPorts}')
+    try:
+        connectPort(goodPorts)
+        logger.debug(f'goodPorts: {goodPorts}')
+    except ex as Exception:
+        print('We failed')
+
     printSkillFileName()
     deacGyro()
     

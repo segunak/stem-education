@@ -1,65 +1,81 @@
-# Ensure running with admin privileges
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host "This script requires administrator privileges. Please re-run as administrator."
-    exit
+# Function to run a command as administrator
+function Invoke-AsAdmin {
+    param (
+        [string]$Command,
+        [string]$Arguments
+    )
+    Start-Process -FilePath "powershell.exe" -ArgumentList "-Command $Command $Arguments" -Verb RunAs -Wait -PassThru
 }
 
-# Check for devcon.exe in the script's directory
-$devconPath = Join-Path -Path (Split-Path -Parent $MyInvocation.MyCommand.Path) -ChildPath "devcon.exe"
-if (-not (Test-Path $devconPath)) {
-    Write-Host "devcon.exe not found in the script directory. Please place devcon.exe in the same directory as this script."
-    exit
-}
+# Function to toggle Bluetooth COM ports
+function Set-BluetoothPorts {
+    param (
+        [string]$Action
+    )
+    try {
+        # Get the path to devcon.exe in the same directory as the script
+        $devconPath = Join-Path -Path $MyInvocation.PSScriptRoot -ChildPath "devcon.exe"
 
-# Retrieve a list of all COM ports
-Write-Output "Listing all detected COM ports..."
-$allPorts = & $devconPath find "Ports"
-if ($allPorts.Count -eq 0) {
-    Write-Output "No COM ports found."
-    exit
-}
+        # Check if devcon.exe exists
+        if (-not (Test-Path $devconPath)) {
+            Write-Output "devcon.exe not found in the script directory."
+            return $false
+        }
 
-# Display each port with its description
-foreach ($port in $allPorts) {
-    if ($port -match "(\S+)\s+\((COM\d+)\)") {
-        $deviceDescription = $matches[1]
-        $comName = $matches[2]
-        Write-Output "Found: $deviceDescription ($comName)"
+        # List all COM ports
+        $ports = Get-WmiObject Win32_SerialPort
+        $btPorts = $ports | Where-Object { $_.Description -like "*Bluetooth*" }
+
+        if ($btPorts.Count -eq 0) {
+            Write-Output "No Bluetooth COM ports found."
+            return $false
+        }
+
+        foreach ($port in $btPorts) {
+            if ($Action -eq 'disable') {
+                $result = Invoke-AsAdmin -Command $devconPath -Arguments "disable $($port.DeviceID)"
+                if ($result.ExitCode -eq 0) {
+                    Write-Output "Disabled $($port.DeviceID)"
+                } else {
+                    Write-Output "Failed to disable $($port.DeviceID): $($result.StandardError)"
+                }
+            } elseif ($Action -eq 'enable') {
+                $result = Invoke-AsAdmin -Command $devconPath -Arguments "enable $($port.DeviceID)"
+                if ($result.ExitCode -eq 0) {
+                    Write-Output "Enabled $($port.DeviceID)"
+                } else {
+                    Write-Output "Failed to enable $($port.DeviceID): $($result.StandardError)"
+                }
+            } else {
+                throw "Invalid action. Use 'disable' or 'enable'."
+            }
+        }
+
+        return $true
+    } catch {
+        Write-Output "An error occurred: $_"
+        return $false
     }
 }
 
-# Retrieve list of Bluetooth-linked COM ports
-Write-Output "`nGetting list of Bluetooth-linked COM ports..."
-$comPorts = $allPorts | Where-Object { $_ -match "Standard Serial over Bluetooth link \(COM\d+\)" }
-
-if ($comPorts.Count -eq 0) {
-    Write-Output "No Bluetooth-linked COM ports found."
-    exit
-}
-
-# Disable all Bluetooth-linked COM ports
-Write-Output "`nDisabling all Bluetooth-linked COM ports..."
-foreach ($port in $comPorts) {
-    if ($port -match "\\Device\\(\S+)\s+\(COM\d+\)") {
-        $deviceId = $matches[1]
-        Write-Output "Disabling $deviceId..."
-        & $devconPath disable $deviceId | Out-Null
-        Start-Sleep -Milliseconds 500
+# Main function to disable and then re-enable Bluetooth COM ports
+function Disable-AndEnableBluetoothPorts {
+    try {
+        Write-Output "Disabling Bluetooth COM ports..."
+        if (Set-BluetoothPorts -Action 'disable') {
+            Start-Sleep -Seconds 5  # Wait for 5 seconds before re-enabling
+            Write-Output "Re-enabling Bluetooth COM ports..."
+            if (Set-BluetoothPorts -Action 'enable') {
+                Write-Output "Bluetooth COM ports have been re-enabled."
+            } else {
+                Write-Output "Failed to re-enable Bluetooth COM ports."
+            }
+        } else {
+            Write-Output "No Bluetooth COM ports were disabled."
+        }
+    } catch {
+        Write-Output "An error occurred during the process: $_"
     }
 }
 
-# Pause briefly before re-enabling
-Start-Sleep -Seconds 2
-
-# Enable all Bluetooth-linked COM ports
-Write-Output "`nEnabling all Bluetooth-linked COM ports..."
-foreach ($port in $comPorts) {
-    if ($port -match "\\Device\\(\S+)\s+\(COM\d+\)") {
-        $deviceId = $matches[1]
-        Write-Output "Enabling $deviceId..."
-        & $devconPath enable $deviceId | Out-Null
-        Start-Sleep -Milliseconds 500
-    }
-}
-
-Write-Output "All Bluetooth-linked COM ports have been processed."
+Disable-AndEnableBluetoothPorts
