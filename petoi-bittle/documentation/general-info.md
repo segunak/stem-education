@@ -60,8 +60,10 @@ Things to do when setting up a Bittle X.
 1. Change the volume to be way lower. Serial command `b[0-20]`.
 2. Change the voice command type to English. It's not by default. That is changed in `OpenCatEsp32.ino` when configuring the board in Arduino. It's a definition in that file. After changing it, you upload to the board.
 3. Deactivate the Gyroscope function. This is what causes the dog to freak out when you pick it up as it's trying to self-balance. To do this, you need to upload the latest sketch from [OpenCatEsp32](https://github.com/PetoiCamp/OpenCatEsp32). When doing so, comment out the line `#define GYRO_PIN` in `OpenCat.h`. This should cause areas where `#ifdef GYRO_PIN` is being used in the code to be skipped.
-4. You can disable/enable the voice module by sending serial commands. The command `XAd` disables the voice module. `XAc` enables the voice module. Information is from this [page](https://docs.petoi.com/extensible-modules/voice-command-module).
-5. Rename the Bluetooth module to something that makes sense. Sending the serial command `nBluetoothNameHere` will do this. So `nBittle1` would rename the Bluetooth for that robot dog to `Bittle1` plus whatever built in suffixes the software has by default.
+4. You will need to install <https://github.com/Seeed-Studio/Seeed_Arduino_SSCMA> to upload sketches in Ardunio. Or you can install it inside of Arduino from their library.
+   1. ![SSCMAThing](../images/Seed_Arduino_SSCMA_Screenshot.png)
+5. You can disable/enable the voice module by sending serial commands. The command `XAd` disables the voice module. `XAc` enables the voice module. Information is from this [page](https://docs.petoi.com/extensible-modules/voice-command-module).
+6. Rename the Bluetooth module to something that makes sense. Sending the serial command `nBluetoothNameHere` will do this. So `nBittle1` would rename the Bluetooth for that robot dog to `Bittle1` plus whatever built in suffixes the software has by default.
 
 Shorter version of that information about what to do with a new Bittle from the serial monitor in Arduino.
 
