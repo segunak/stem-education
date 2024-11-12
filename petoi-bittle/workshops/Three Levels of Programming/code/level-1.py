@@ -892,14 +892,13 @@ if __name__ == '__main__':
                 token = cmd[0][0]
             else:
                 token = sys.argv[1][0]
-            #                sendTaskParallel([sys.argv[1][0], sys.argv[1:], 1])
             send(goodPorts, [sys.argv[1][0], sys.argv[1:], 1])
         printH('Model list', config.modelList)
         print("\nYou can type 'quit' or 'q' to exit.\n")
         print("Type a command below directly into the terminal and hit 'Enter' to send them to the robot dog. You must send commands one at a time. For example, typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
-
+        print("TYPE YOUR COMMAND HERE:")
+        
         keepReadingInput(goodPorts)
-
         closeAllSerial(goodPorts)
         logger.info("finish!")
         os._exit(0)
