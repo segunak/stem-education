@@ -172,6 +172,7 @@ Give it a try and see your robot dog come to life!\n
         api_response = translate_to_robot_command(user_input)
         
         try:
+            deacGyro()
             commands = eval(api_response)
             for command in commands:
                 print(f"Executing the command: {command}")

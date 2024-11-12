@@ -5,6 +5,8 @@ from PetoiRobot import *
 
 autoConnect() # Do not remove this.
 
+deacGyro() # Do not remove this.
+
 # The sendSkillStr function sends a command to the robot dog to perform a skill.
 # It takes two parameters:
 # - The first parameter is the skill string (e.g., 'ksit') which tells the robot what to do.
