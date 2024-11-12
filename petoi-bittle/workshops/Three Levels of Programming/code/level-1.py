@@ -898,7 +898,7 @@ if __name__ == '__main__':
         printH('Model list', config.modelList)
         print("\nYou can type 'quit' or 'q' to exit.\n")
         print("Type a command below directly into the terminal and hit 'Enter' to send them to the robot dog. You must send commands one at a time. For example, typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
-        print("TYPE YOUR COMMAND HERE:")
+        print("TYPE YOUR COMMAND BELOW...")
         
         keepReadingInput(goodPorts)
         closeAllSerial(goodPorts)
