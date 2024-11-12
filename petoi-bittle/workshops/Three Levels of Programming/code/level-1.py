@@ -884,6 +884,8 @@ timePassed = 0
 if __name__ == '__main__':
     try:
         connectPort(goodPorts)
+        # Send command 'G' to deactivate the gyroscopic sensor
+        send(goodPorts, ['G', 0], 1) 
         t = threading.Thread(target=keepCheckingPort, args=(goodPorts,))
         t.start()
         if len(sys.argv) >= 2:
