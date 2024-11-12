@@ -170,9 +170,7 @@ def serialWriteByte(port, var=None):
 
 def printSerialMessage(port, token, timeout=0):
     if token == 'k' or token == 'K':
-        threshold = 4
-    else:
-        threshold = 3
+        threshold = 2
     if 'X' in token:
         token = 'X'
     startTime = time.time()
@@ -195,8 +193,6 @@ def printSerialMessage(port, token, timeout=0):
                     allPrints += response
         now = time.time()
         if (now - startTime) > threshold:
-            # print('Elapsed time: ', end='')
-            # print(threshold, end=' seconds\n', flush=True)
             logger.debug(f"Elapsed time: {threshold} seconds")
             threshold += 2
             if threshold > 5:
@@ -312,6 +308,7 @@ def send(port, task, timeout=0):
 
 def keepReadingInput(ports):
     while True and len(ports):
+        print("\nTYPE YOUR COMMAND HERE: ", end='')
         time.sleep(0.001)
         x = input()  # blocked waiting for the user's input
         if x != "":
@@ -898,8 +895,7 @@ if __name__ == '__main__':
         printH('Model list', config.modelList)
         print("\nYou can type 'quit' or 'q' to exit.\n")
         print("Type a command below directly into the terminal and hit 'Enter' to send them to the robot dog. You must send commands one at a time. For example, typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
-        print("TYPE YOUR COMMAND BELOW...")
-        
+   
         keepReadingInput(goodPorts)
         closeAllSerial(goodPorts)
         logger.info("finish!")
