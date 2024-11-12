@@ -36,6 +36,10 @@ The Bluetooth connection can get weird. Read [Configure the Bluetooth Module](ht
 * The Bluetooth signature ending in `_BLE` is the one to choose when connecting, not the `_SSP` one which asks for a pin.
 * You can change the name of the Bluetooth using serial commands. See [this](#firmware-updates-and-configuration) section.
 
+Read the article below for information about inconsistent Bluetooth connection and a fix.
+
+<https://www.petoi.camp/forum/clinic/solved-in-search-of-reliable-bidirectional-bluetooth-serial-port-profile-spp-communication>
+
 ## Firmware Updates and Configuration
 
 Use the resources below for advanced actions such as configuring the Bittle X and updating the firmware. When you update the firemware you well get prompts. Always refer to [this guide](https://docs.petoi.com/desktop-app/firmware-uploader#biboard-for-bittle-x) to know what to choose.
