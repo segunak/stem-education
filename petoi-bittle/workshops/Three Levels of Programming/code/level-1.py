@@ -676,6 +676,39 @@ def showSerialPorts(allPorts):
                     print(p, end='\n\n')
 
 
+def connectToPetoi():
+    """
+    Connects to the Petoi device, replacing the original connectPort logic with the simpler autoConnect approach.
+    """
+    global initialized, goodPorts
+    try:
+        # Attempt to connect using autoConnect logic
+        checkPortList(goodPorts, Communication.Print_Used_Com(), needTesting=True)
+        if len(goodPorts) > 0:
+            logger.info("Connected to Petoi device.")
+            deacGyro()  # Deactivate gyro sensor
+            printSkillFileName()  # Display available skills
+            initialized = True
+        else:
+            logger.warning("No Petoi device found. Please check the connection and try again.")
+    except Exception as e:
+        logger.error("Failed to connect to Petoi device.", exc_info=True)
+    finally:
+        return goodPorts
+
+def displayConsoleInstructions():
+    """Display instructions for the user on how to use the console."""
+    print("\n--- Welcome to the Petoi Robot Dog Console ---")
+    print("You are now connected to your Petoi robot.")
+    print("You can type commands to control the robot directly from this console.")
+    print("\nAvailable commands:")
+    print("  - Type 'quit' or 'q' to exit the console.")
+    print("  - Type any command directly and hit 'Enter' to send it to the robot.")
+    print("  - Commands must be sent one at a time.")
+    print("\nExample:")
+    print("  - Typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
+    print("Type your commands below:")
+
 def connectPort(PortList, needTesting=True, needSendTask=True, needOpenPort=True):
     global initialized
     global goodPortCount
@@ -880,27 +913,15 @@ timePassed = 0
 
 if __name__ == '__main__':
     try:
-        connectPort(goodPorts)
-        # Send command 'G' to deactivate the gyroscopic sensor
-        send(goodPorts, ['G', 0], 1) 
-        t = threading.Thread(target=keepCheckingPort, args=(goodPorts,))
-        t.start()
-        if len(sys.argv) >= 2:
-            if len(sys.argv) == 2:
-                cmd = sys.argv[1]
-                token = cmd[0][0]
-            else:
-                token = sys.argv[1][0]
-            send(goodPorts, [sys.argv[1][0], sys.argv[1:], 1])
-        printH('Model list', config.modelList)
-        print("\nYou can type 'quit' or 'q' to exit.\n")
-        print("Type a command below directly into the terminal and hit 'Enter' to send them to the robot dog. You must send commands one at a time. For example, typing 'krest' and hitting 'Enter' will instruct the dog to take a resting pose.\n")
-   
-        keepReadingInput(goodPorts)
-        closeAllSerial(goodPorts)
-        logger.info("finish!")
+        connectToPetoi()
+        if initialized:
+            displayConsoleInstructions()  # Show user-friendly instructions
+            keepReadingInput(goodPorts)  # Start reading input commands for the Petoi
+            closeAllSerial(goodPorts)  # Close all connections on exit
+            logger.info("Disconnected from Petoi.")
+        else:
+            print("Failed to connect to the Petoi device.")
         os._exit(0)
-
     except Exception as e:
         logger.info("Exception")
         closeAllSerial(goodPorts)

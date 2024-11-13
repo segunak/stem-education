@@ -36,6 +36,10 @@ The Bluetooth connection can get weird. Read [Configure the Bluetooth Module](ht
 * The Bluetooth signature ending in `_BLE` is the one to choose when connecting, not the `_SSP` one which asks for a pin.
 * You can change the name of the Bluetooth using serial commands. See [this](#firmware-updates-and-configuration) section.
 
+Read the article below for information about inconsistent Bluetooth connection and a fix.
+
+<https://www.petoi.camp/forum/clinic/solved-in-search-of-reliable-bidirectional-bluetooth-serial-port-profile-spp-communication>
+
 ## Firmware Updates and Configuration
 
 Use the resources below for advanced actions such as configuring the Bittle X and updating the firmware. When you update the firemware you well get prompts. Always refer to [this guide](https://docs.petoi.com/desktop-app/firmware-uploader#biboard-for-bittle-x) to know what to choose.
@@ -71,6 +75,12 @@ Shorter version of that information about what to do with a new Bittle from the 
 2. Rename Bluetooth using `nBluetoothName`
 3. Deactivate Gyro using `G`. This is a boolean. If you send it again, you turn it back on. Sending this prevents the dog from freaking out when picked up.
 4. Deactivate voice using `XAd`
+
+## Uploading Sketches
+
+* You need version 2.012 of the Espressif Systems esp32 board in Arduino. See <https://github.com/PetoiCamp/OpenCatEsp32/issues/22>.
+* Only the 1.8.* version of Arduino works for uploading sketches per <https://docs.petoi.com/arduino-ide/upload-sketch-for-biboard>.
+* After uploading sketches rename the Bluetooth using the serial protocol `nBluetoothName` command.
 
 ## Serial Monitor Configuration
 
