@@ -913,14 +913,24 @@ timePassed = 0
 
 if __name__ == '__main__':
     try:
-        connectToPetoi()
-        if initialized:
-            displayConsoleInstructions()  # Show user-friendly instructions
-            keepReadingInput(goodPorts)  # Start reading input commands for the Petoi
-            closeAllSerial(goodPorts)  # Close all connections on exit
-            logger.info("Disconnected from Petoi.")
-        else:
-            print("Failed to connect to the Petoi device.")
+        connectPort(goodPorts)
+        # Send command 'G' to deactivate the gyroscopic sensor
+        send(goodPorts, ['G', 0], 1) 
+        t = threading.Thread(target=keepCheckingPort, args=(goodPorts,))
+        t.start()
+        if len(sys.argv) >= 2:
+            if len(sys.argv) == 2:
+                cmd = sys.argv[1]
+                token = cmd[0][0]
+            else:
+                token = sys.argv[1][0]
+            send(goodPorts, [sys.argv[1][0], sys.argv[1:], 1])
+        printH('Model list', config.modelList)
+        print("\nYou can type 'quit' or 'q' to exit.\n")
+        displayConsoleInstructions()
+        keepReadingInput(goodPorts)
+        closeAllSerial(goodPorts)
+        logger.info("finish!")
         os._exit(0)
     except Exception as e:
         logger.info("Exception")
