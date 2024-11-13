@@ -16,25 +16,47 @@ deacGyro() # Do not remove this.
 
 ########## Student Code Area Start #################
 
-# 1. Task: Make the dog sit down, then wait 3 seconds.
-sendSkillStr('ksit', 3)
+# 1. Task: Make the dog sit down, then wait 1 second. This code is done for you. USE IT AS AN EXAMPLE!
+sendSkillStr('ksit', 1)
 
-# 2. Task: Make the dog stand up, then wait 3 seconds. Put your code on the line below.
-
-
-# 3. Task: Make the dog perform a push-up, then wait 3 seconds. Put your code on the line below.
+# 2. Task: Make the dog stand up, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
 
 
-# 4. Task: Make the dog jump, then wait 3 seconds. Put your code on the line below.
+# 3. Task: Make the dog hug, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
 
 
-# 5. Task: Make the dog do a back flip, then wait 5 seconds. Put your code on the line below.
+# 4. Task: Make the dog hi-five, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
 
 
-# 6. Task: Make the dog do a front flip, then wait 5 seconds. Put your code on the line below.
+# 5. Task: Make the dog dig, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
 
 
-# 7. Task: Make the dog rest, then wait 1 second. Put your code on the line below.
+# 6. Task: Make the dog kick, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 7. Task: Make the dog perform a push-up, then wait 3 seconds. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 8. Task: Make the dog perform a push-up with 1 hand, then wait 3 seconds. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 9. Task: Make the dog cheer, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 10. Task: Make the dog jump, then wait 3 seconds. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 11. Task: Make the dog moon walk, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 12. Task: Make the dog box, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 13. Task: Make the dog perform a handstand, then wait 3 seconds. INSERT YOUR CODE BELOW THIS LINE.
+
+
+# 14. Task: Make the dog rest, then wait 1 second. INSERT YOUR CODE BELOW THIS LINE.
+
 
 ########## Student Code Area End #################
 

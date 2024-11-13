@@ -35,6 +35,7 @@ The Bluetooth connection can get weird. Read [Configure the Bluetooth Module](ht
 * Every time you turn off the dog, you have to remove whatever Bluetooth COM Ports you connected and re-connect from scratch the next time you power on. It does not remain paired.
 * The Bluetooth signature ending in `_BLE` is the one to choose when connecting, not the `_SSP` one which asks for a pin.
 * You can change the name of the Bluetooth using serial commands. See [this](#firmware-updates-and-configuration) section.
+* On Windows click on `More devices and printer settings` then right click the name of the dog's Bluetooth and click `Properties` then `Services` and check any unchecked boxes if the COM ports aren't showing up after connecting the Bluetooth for the dog.
 
 Read the article below for information about inconsistent Bluetooth connection and a fix.
 

@@ -63,13 +63,19 @@ For details on sending serial protocol commands to the Petoi Bittle using Arduin
 1. **Demo**: At the front of the room, demo sending a command via Serial Protocol to the robot dog, such as making it sit down or stand up.
 2. **Task**: Now, let the students explore. Provide each group with copies of the Serial Protocol documentation and ask them to control the robot dog themselves. A part of this exercise is getting them familiar with reading and understanding technical documentation, which is a fundamental part of programming. For an extra challenge, do not provide students with the command required for the action described, let them find it in the documentation. With the robot dog, they should perform the following actions:
    - Make the dog sit down. Command `ksit`.
-   - Make the dog  stand up. Command `kbalance`.
-   - Make the dog  perform a push-up. Command `kpu`.
-   - Make the dog  jump. Command `kjmp`.
-   - Make the dog  do a back flip. Command `kbf`.
-   - Make the dog  do a front flip. Command `kff`.
-   - Make the dog  rest. Command `krest`
-
+   - Make the dog stand up. Command `kbalance`.
+   - Make the dog hug. Command `khg`.
+   - Make the dog hi-five. Command `kfiv`.
+   - Make the dog dig. Command `kdg`.
+   - Make the dog kick. Command `kkc`.
+   - Make the dog do push ups. Command `kpu`.
+   - Make the dog do push ups with 1 hand. Command `kpu1`.
+   - Make the dog cheer. Command `kchr`.
+   - Make the dog jump. Command `kjmp`.
+   - Make the dog moon walk. Command `kmw`.
+   - Make the dog box. Command `kbx`.
+   - Make the dog handstand. Command `khds`.
+   - Make the dog rest. Command `krest`.
 Code you can run in VS Code to activate a terminal where Serial Protocol commands can be typed in can be found at the link below. It is suggested this file is placed on the machine the students are using and run from VS Code, allowing them to type in their commands in the terminal window.
 
 **Note: copy the entire `code` folder under which the file linked below sits to the computer where you'll be running the workshop. There are reference files within it that each level uses for robot dog control.**
@@ -122,13 +128,20 @@ This level demonstrates how Python, as a high-level language, abstracts the low-
 ### Hands-On Activity
 
 1. **Task**: Ask students to write Python code to make the robot dog:
-   - Sit down then wait 3 seconds.
-   - Stand up then wait 3 seconds.
-   - Perform a push-up then wait 3 seconds.
-   - Jump then wait 3 seconds.
-   - Do a back flip then wait 5 seconds.
-   - Do a front flip then wait 5 seconds.
-   - Rest then wait 1 second.
+   - `Make the dog sit down then wait 1 second.`
+   - `Make the dog stand up then wait 1 second.`
+   - `Make the dog hug then wait 1 second.`
+   - `Make the dog hi-five then wait 1 second.`
+   - `Make the dog dig then wait 1 second.`
+   - `Make the dog kick then wait 1 second.`
+   - `Make the dog do push ups then wait 3 seconds.`
+   - `Make the dog do push ups with 1 hand then wait 3 seconds.`
+   - `Make the dog cheer then wait 1 second.`
+   - `Make the dog jump then wait 3 seconds.`
+   - `Make the dog moon walk then wait 1 second.`
+   - `Make the dog box then wait 1 second.`
+   - `Make the dog handstand then wait 3 seconds.`
+   - `Make the dog rest then wait 1 second.`
 2. **Highlight the Power of High-Level Programming Languages**: Once the basic commands are done, encourage them to extend the task:
    - Make the commands **loop** a fixed number of times.
    - Add some **data structures** such as a list of commands over which `sendSkillStr` is called, as opposed to writing the function each time it needs to be invoked.
@@ -175,12 +188,22 @@ Introduce students to **Prompt Engineering**, where natural language commands ar
    - Ask them to prompt the robot dog to perform various actions like walking, jumping, or sitting. Prompts should be delivered in the format `Make the robot dog do...` or `Make it do..` or some variations of that.
    - Have them complete the same set of tasks they issued via serial protocol and Python programming, but now using natural language. Namely, the following.
      - `Make the dog sit down.`
-     - `Make it stand up.`
-     - `Make it perform a push-up.`
-     - `Make it jump.`
-     - `Make it do a back flip.`
-     - `Make it do a front flip.`
-     - `Make it rest`
+     - `Make the dog stand up.`
+     - `Make the dog hug.`
+     - `Make the dog hi-five.`
+     - `Make the dog dig.`
+     - `Make the dog kick.`
+     - `Make the dog do push ups.`
+     - `Make the dog do push ups with 1 hand.`
+     - `Make the dog cheer.`
+     - `Make the dog jump.`
+     - `Make the dog moon walk.`
+     - `Make the dog box.`
+     - `Make the dog handstand.`
+     - `Make the dog rest.`
+   - Additionally, have the students try out the flip features of the robot dog.
+     - `Make the dog do a front flip`.
+     - `Make the dog do a back flip`.
    - Encourage creativity: `Make it dance` or `Make it go crazy`.
    - If a prompt results in no action, explain that the code behind the system hasn't been programmed to understand that command. Emphasize that to make this cool thing work, understanding how to code is essential. Highlight AI-assisted programming, similar to Jarvis used by Tony Stark in Iron Man.
 3. **Explain the AI's Role**: After they try out prompts, explain that **AI acts as their assistant**. While it makes things easier, it's only because **we programmed it** to understand those commands.
