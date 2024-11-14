@@ -76,6 +76,7 @@ For details on sending serial protocol commands to the Petoi Bittle using Arduin
    - Make the dog box. Command `kbx`.
    - Make the dog handstand. Command `khds`.
    - Make the dog rest. Command `krest`.
+
 Code you can run in VS Code to activate a terminal where Serial Protocol commands can be typed in can be found at the link below. It is suggested this file is placed on the machine the students are using and run from VS Code, allowing them to type in their commands in the terminal window.
 
 **Note: copy the entire `code` folder under which the file linked below sits to the computer where you'll be running the workshop. There are reference files within it that each level uses for robot dog control.**
