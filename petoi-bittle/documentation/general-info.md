@@ -26,7 +26,7 @@ The Bittle X comes with a 1000mAh/7.4Wh battery that they claim can last for hou
 
 Reference [this page](https://docs.petoi.com/technical-support/battery)
 
-![BatteryInfo](./images/BatteryInfo.png)
+![BatteryInfo](../images/BatteryInfo.png)
 
 ## Bluetooth
 
