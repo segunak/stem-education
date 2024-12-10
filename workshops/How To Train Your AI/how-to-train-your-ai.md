@@ -1,90 +1,5 @@
 # How To Train Your AI: Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics
 
-How To Train Your AI Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics
-
-Random Notes below that need to be incorporated into the overall document. The goal of this document is to have the full workshop, what needs to be taught, and then two activites. one that happens via a PowerPoint where you try to train a neural network live with the class, chalelnging them to see how hard it is, and then one that involves using Visual Studio Code for Educaiton in some way where students visit the website and there's a project that relates to what's being taught here where they're writing code to solve some problem, to figure something out ,and it's giving them output. Ideally, their code would take them through some sort of coding exercise where when they solve hte problem or adjust the code they see how an AI system gets trained like neural neoworkis/ machine learning/ deep learning but in a very simple way that gets them the overall concetp. If there's a way to do this using the Open AI API or Hugging Face that doesn't get so complicated that studnets in high school with limited techincal backgronud would not be confused that'd be good.
-
----
-
-Fill In The Blank
-Let's play a quick game of fill in the blank:
-
-to be or not to _____
-Why did you immediately think of the word be to fill in that blank, instead of the word banana or fish? Because you've seen the phrase many times and your brain has learned the most likely next word is be.
-
-Let's do another one:
-
-rock and ____
-Did you think of the word roll? Why? Because that's the word you see most often following the words rock and.
-
-How about this one:
-
-I am very _____
-This is less clear - the next word depends on the context.
-
-I just ran a marathon. I am very _____
-Perhaps now you would say tired. Or happy, or proud.
-
-The above, This is an activity. To explain this kind of machine learning, you do this very thing on the slides. Show some phrases, maybe choose more relatable phrases to the students, and you have them guess the next word, and give this very explanation.
-
----
-
-Maybe after doing the activity with human langauge you do an actiivty trying to train on some made up foreigh language that you create .Some sort of gibberish langauge. Maybe that's what the coding activity is. You train a large langauge model, or a small language model, in an exteremly limited fashion, to be able to produce output in some sort of gibberish lanaguage. Or you start with a very small model and a goal, for it to be able to understand something or produce text in some specific way, and the code students have to write get it to that point.
-
----
-
-When you're explaining ChatGPT and how it works mention Markove chain. Distil it down so that students understand it. You don't need to dwell too much there, but you should be mentioning all the fancy complicated topics they need ot learn to undrestand things so they can look it up later if they want and make it simple for them. Defintio nbelow.
-
-In probability theory and statistics, a Markov chain or Markov process is a stochastic process describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. From https://en.wikipedia.org/wiki/Markov_chain
-
----
-
-Drive home the concept of AI training itself on text by looking at how frequently words appear after one another. It's given a piece of text, asked to uesss what word comes next, then compares it's guess to the right answer, the word that actually came next in the real text. it does this not just for one word but for phrases, for pieces of text, every possible permutaiton you can think of, building freuqency tables, doing this over many diverses types of text ,doing it insanely fast because of parallelization provided by GPUs and massive compute that really only big tech companies have .The result is it's able to produce text that seems like wow, did a real live thing write this? Nope, it's probability, math, frequency, with no real understanding or sentience, but it sure does seem real, and that my friend is why we call it artifical intelligence. Be sure that htis explanation is correct though. Double check this concept for accuracy.
-
---- 
-
-Could hte coding actiivty be a sort of makeshift small scale Markov machine that helps studnets train text and then see how it goes from nonsenical to making sense and includes some sort of output of the frequency table so that they realize this thing is not alive it's really just measuring probabilties? There's a website, http://www.almeopedia.com/markov3test.html, that allows you to do this. It's described as 
-
-  Mark's Markov3 Machine
-This is a Javascript program which allow you to generate Markov texts from some of my corpora.
-The program uses three-word sequences. So, given two words X Y, it will choose a word Z that has followed them, favoring those that most often occurred.
-
-See the main page for what these are and how you can modify it to make and use your own corpus. The C code for it is at https://www.zompist.com/markov3.c but I would want to use python for my VS Code for Education worshop. My version doesn't need to be that ocmplicated, I really just need students to be able to see "How to Train Your AI" and then essentially they end up creating a ChatGPT like system from what was just nothing when they showed up. The workshop can kind of hand hold htem through the answers.
-
----
-
-Important note taken from https://www.parand.com/a-non-technical-explanation-of-chatgpt.html?__readwiseLocation=
-
-Aside: You might run into the term "stochastic" as you look into language models - this just means randomly determined. For example, you might hear people argue whether these systems are Stochastic Parrots, implying the systems are simply parroting back the original text that they saw, with some randomness thrown in.
-
----
-
-You must transition the above information related to machine learning using Markov's method to how that doesn't scale in all cases and plug in Deep Leanring. By the time the powerpoint part of the presentation is over Machine Learning, Neural Networks, Deep Learning, and how it all relates to ChatGPT should be covered, in that order, including calling out the different types of learning and they difffer. The goal through it all is to keep it simple, basic, but accurate. Oversimplified, but not inaccurate or misleading.
-
----
-
-It's going ot be key to acknowledge that not all types of training are image based where there's the binary "is it a cat or not". Make sure hte workshop clearlycalls out that's not how ChatGPT text based stuff works and transtions to that. In fact, it may be benefecial to cover only how text based stuff wroks and not get into the image training stuff at all. I almost feel as if if you can explain how text based large language models work and get your group to understand it, then if they're interested in how images work, that can be a follow up, maybe  ashort slide at the end, or a different workshop. Jamming it all into one is going to get convoluted. However, if there's a smooth way to integrate it, then go for it. Maybe do the activity with the cat/image recongition, have them try and write a desription, explain what kind of learning that is, itnroduce all the big buzz words and define them, the nask "so do you think that's how ChatGPT works when it's text based? How doe sit know how to produce words that sound human?" and then you transition. You briefily touch on why that doesn't work for text based models, language based models, the nyou transition to the acitivty of freuqnecy tables, then one that ties in the deep leanring aspect ,and yo uend with the coding activit on VS Code for education.
-
-**The workshop is 1 hour in total**. You want to leave about 30 minutes for the coding portion, mayube 25 at the minumum.
-
----
-
-If you mention markarov and the freuuency table you must also mention that you don't build htat freuqncy table manually. Importantly, you use Deep learning, and you've got to amke it clear what deep learning is and how it relates.
-
----
-
-Going from trying to make your own prediction table to deep learning ivnovles feeding the computer, the function, the code, a piece of text but withholding information about the last piece. IT tries to guess what the lat word is, compares this to the actual answer, and adjusts its weights. So deep learning works for training models that produce text or models that need ot recognize images or voices or various other things. In this instance of text it's a predict-the-next-word game/task happening over the entire source text (which I think is called corpus? not sure).
-
----
-
- You've got to mention fine tuning. After you do all this training, you let humans use it, and they tell you if responses are good or bad, make sense or not, and you use that to impact the model. Now it's getting better and better becaues it's able to get even more feedback beyond predicte the next word or knowing if it' sa cat or not, as to wehter it's output as valuable to it' starget audience of humasn.This is fine tuning. it should come up in the workshop, but in a way that's basica nd easy to understand.
-
- It is 
-
- Human-in-the-Loop Training: After initial training, the model is refined based on human feedback to improve conversational and helpful responses.
-
- You've got to mention that after all this fancy computer science stuff it still can suck prett ybad without human feedback, which is also why sometimtes it doesn't answer your qestions well, doesn't understand what you're saying, halluciantes. It's not what you think it is. It does not understand anything you'er saying at all. it's math and probabilties so wel ltrained and finely tuned on real human producitons, our real books and text and images, that it seems like it can think like us, artifically intelligent.
-
 ## Workshop Overview
 
 * **Duration:** ~1 hour (approx. 30 min presentation, interactive activity, & discussion, 30 min coding activity)
@@ -167,96 +82,9 @@ Adjusting weights is like refining your guesses over time. Imagine if you guesse
 
 #### Pseudo Code Example
 
-Here's a simplified Python-based pseudo-code to connect the concept of Machine Learning with code. This example uses a basic "guess-and-check" loop for predicting whether an image is a cat.
+Visit the link below to view a simplified Python-based pseudo-code to connect the concept of Machine Learning with code. This example uses a basic "guess-and-check" loop for predicting whether an image is a cat.
 
-```python
-# Imagine that we have images represented as pixel brightness values (numbers).
-# Each number in the "image" list represents how bright a certain part of the image is.
-#
-# We're simplifying a lot: we say that "average brightness" might tell us something about whether it's a cat.
-# Real AI uses far more complex and numerous features, but this helps us see how learning works:
-# We guess, compare to reality, and adjust.
-
-training_data = [
-    {"image": [0.1, 0.5, 0.7], "label": 1},  # In our data, this image is a cat.
-    {"image": [0.3, 0.2, 0.1], "label": 0},  # In our data, this image is not a cat.
-]
-
-# Weight: A single number representing how much we rely on brightness.
-# Initially, we have no idea how brightness relates to being a cat, so we start with a guess of 0.5.
-#
-# The weight is crucial because it's the ONLY thing that changes as we learn.
-# By adjusting the weight, we change how the brightness (input) influences our guess.
-weight = 0.5
-
-# Learning rate: How quickly we adjust our belief about brightness after seeing each example.
-# A small learning rate means we make gentle adjustments, so we don't over correct.
-learning_rate = 0.1
-
-print("Beginning training...\n")
-
-for data in training_data:
-    image = data["image"]
-    label = data["label"]
-    
-    # Step 1: Make a guess based on brightness.
-    # We take the average brightness and multiply it by the weight.
-    #
-    # Why do we multiply by a weight?
-    # Think of the weight as a dial we can turn to adjust how strongly brightness influences our guess.
-    # By using weight * brightness, every time we change the weight, we change the output of the guess.
-    #
-    # Without this multiplication step, we'd have no way to adjust the guess in response to mistakes.
-    # The input (brightness) itself doesn't change, so the only way to improve is by tuning the weight.
-    # Each time we see how wrong we were and tweak the weight, we're effectively turning the dial so the same brightness leads to a closer-to-correct guess next time.
-
-    average_brightness = sum(image) / len(image)
-    guess = weight * average_brightness
-
-    print(f"Image Data: {image}")
-    print(f"True Label: {label} (1 = Cat, 0 = Not a Cat)")
-    print("Current Weight:", weight)
-    print(f"Average Brightness: {average_brightness:.3f}")
-
-    # Here is the core idea:
-    # We combine brightness (the input) with weight (our adjustable factor).
-    # The guess = (input) * (weight).
-    # If guess is close to 1, it means with this weight, brightness suggests 'cat'.
-    # If guess is close to 0, it suggests 'not cat'.
-    print(f"Initial Guess (Weight * Brightness): {guess:.3f}")
-    if guess > 0.5:
-        print("  - Guess > 0.5, leaning towards 'cat'.")
-    else:
-        print("  - Guess <= 0.5, leaning towards 'not cat'.")
-
-    # Step 2: Check how wrong we are.
-    # error = label - guess
-    # If error is positive, we were too low, so we should increase the weight.
-    # If error is negative, we were too high, so we should decrease the weight.
-    error = label - guess
-    print(f"Error (Label - Guess): {error:.3f}")
-    print("  - Positive error: we under-guessed 'cat-likeness'. We'll increase weight.")
-    print("  - Negative error: we over-guessed 'cat-likeness'. We'll decrease weight.")
-
-    # Step 3: Adjust the weight.
-    # This is where learning happens.
-    # By changing weight, next time we multiply the brightness by a slightly different number.
-    # Over multiple examples, this shifts our guesses closer to correct answers.
-    old_weight = weight
-    weight += learning_rate * error
-    print(f"Updated Weight: {weight:.3f} (Old: {old_weight:.3f} + (Learning Rate: {learning_rate} * Error: {error:.3f}))")
-    print("  - Notice: The input (brightness) didn't change, the label didn't change,")
-    print("    but the weight did. On the next guess, the same brightness will produce a different guess,")
-    print("    hopefully closer to the truth because we adjusted the weight.\n")
-
-    print("---\n")
-
-print("Training complete.\n")
-print(f"Final Weight after seeing all examples: {weight:.3f}\n")
-print("This final weight is our 'learned' understanding of how brightness relates to being a cat.")
-print("By adjusting the weight each time, we used the exact same input data but got closer to the correct answer.")
-print("No input was changed, we just tuned the weight to improve future guesses.\n")
-```
+[Pseudo Code | Machine Learning]()
 
 **Key Concept:** We used "brightness" as a stand-in for any feature the AI might consider. In reality, a model might look at many different features, not just brightness. Over time, by adjusting the weight, the model learns whether brightness is a good clue to determine if something is a cat. This is, of course, a simple example—real Machine Learning uses more complex algorithms and data structures.
 
@@ -314,78 +142,9 @@ What about recognizing text or generating words, like **ChatGPT**?
 
 #### Pseudo Code Example
 
-Here's a Python-based pseudo code example showing how a Neural Network processes data through layers. We'll keep this as simple as possible:
+Visit the link below to view a Python-based pseudo code example showing how a Neural Network processes data through layers. We'll keep this as simple as possible!
 
-* We'll imagine we have a tiny network with just two layers, each with a single neuron.
-* Our input will still be a simplified image represented by a few brightness values.
-* The first layer's job: turn raw pixel values into a simple pattern clue.
-* The second layer's job: use that clue to guess if it's a cat or not.
-* Then we'll adjust weights if we're wrong, just like before in the Machine Learning pseudo code example.
-
-```python
-# Let's assume you've read the Machine Learning example pseudo code.
-# There, we took the input (e.g., brightness), multiplied by a weight, made a guess, and adjusted the weight.
-
-# Now, a Neural Network does the same thing, but in layers:
-# 1. The input goes into a first layer of "neurons"
-# 2. That layer's output becomes the input to a second layer of neurons
-# 3. The final layer makes a guess and we adjust weights in BOTH layers if we're wrong
-
-image_data = [0.1, 0.5, 0.7]  # Example input
-label = 1  # Correct answer: this image should be recognized as a cat (1 = cat)
-
-# Two layers of weights:
-# Layer 1 converts raw input into a simpler pattern
-layer_1_weights = [0.2, 0.3, 0.1]  # One simple neuron
-
-# Layer 2 takes that pattern and decides if it's a cat or not
-layer_2_weights = [0.4]  # Another simple neuron
-
-learning_rate = 0.1
-
-def simple_neuron(inputs, weights):
-    return sum(input_value * weight for input_value, weight in zip(inputs, weights))
-
-# Step 1: Layer 1 processes the input
-layer_1_output = [simple_neuron(image_data, layer_1_weights)]
-
-# Step 2: Layer 2 processes Layer 1's output to produce a final guess
-final_guess = simple_neuron(layer_1_output, layer_2_weights)
-
-# Check how far off we are (error)
-error = label - final_guess
-
-print("Initial Conditions:")
-print("  Image Data:", image_data)
-print("  Desired Label (Correct Answer):", label)
-print("  Layer 1 Weights:", layer_1_weights)
-print("  Layer 2 Weights:", layer_2_weights)
-print("\nFrom Input to Output:")
-print("  Layer 1 Output (pattern from raw data):", layer_1_output)
-print("  Final Guess before adjusting weights:", final_guess)
-print("  Error (Label - Guess):", error)
-
-# Adjust weights in Layer 2 based on the error
-for i in range(len(layer_2_weights)):
-    layer_2_weights[i] += learning_rate * error * layer_1_output[i]
-
-# Adjust weights in Layer 1 based on the error and input
-for i in range(len(layer_1_weights)):
-    layer_1_weights[i] += learning_rate * error * image_data[i] * layer_2_weights[0]
-
-print("\nAfter Adjustments:")
-print("  Updated Layer 1 Weights:", layer_1_weights)
-print("  Updated Layer 2 Weights:", layer_2_weights)
-
-print("\nIf we passed the same input again now, our guess would likely be closer to the correct answer.")
-print("This is how the network 'learns': by tweaking the weights at each layer so that next time,")
-print("the same input leads to a guess closer to the correct label (cat in this case).")
-
-print("\nRemember: This is extremely simplified.")
-print("Real neural networks have many neurons per layer, more layers, and more complex calculations.")
-print("But the idea remains: multiple layers refine the data step-by-step, and adjusting weights")
-print("after seeing the error makes the model smarter over time.")
-```
+[Pseudo Code | Neural Networks]()
 
 That's it! It's the same guess-check-adjust process as before, but now we have layers:
 
@@ -411,55 +170,9 @@ Deep Learning takes the idea of Neural Networks a step further by adding many mo
 
 #### Pseudo Code Example
 
-We've seen how Machine Learning and Neural Networks work in simplified code. For Deep Learning, the idea is exactly the same—guess, check, adjust—but with more layers. Let's show a very high-level, extremely simplified pseudo code example:
+We've seen how Machine Learning and Neural Networks work in simplified code. For Deep Learning, the idea is exactly the same—guess, check, adjust—but with more layers. Let's show a very high-level, extremely simplified pseudo code example. Visit the link below to check it out.
 
-```python
-# In our Machine Learning example, we had one layer.
-# In our Neural Networks example, we had two layers.
-# In Deep Learning, we have many layers, each doing the same "multiply inputs by weights and add them up" step.
-
-# Example input (just pretend it's some data, like image pixels or text embeddings)
-input_data = [0.1, 0.5, 0.7]
-
-# Instead of 1 or 2 layers, let's say we have multiple layers.
-# Each layer has its own set of weights.
-# (In reality, you might have dozens or hundreds of layers, each with many neurons, but we'll keep it tiny.)
-
-layer_1_weights = [0.2, 0.3, 0.1]
-layer_2_weights = [0.4, 0.6]
-layer_3_weights = [0.5, 0.5]
-# Imagine more layers if needed, many, many, many more layers…
-
-def simple_neuron(inputs, weights):
-    return sum(i * w for i, w in zip(inputs, weights))
-
-# Process the data step-by-step through each layer:
-layer_1_output = [simple_neuron(input_data, layer_1_weights)]
-layer_2_output = [simple_neuron(layer_1_output, layer_2_weights)]
-layer_3_output = [simple_neuron(layer_2_output, layer_3_weights)]
-# …and so on, until a final layer gives us a final_guess.
-
-# final_guess is the model's prediction after passing through all these layers.
-final_guess = layer_3_output[0]
-
-label = 1  # Suppose the correct answer is still "cat"
-error = label - final_guess
-
-# Adjusting weights (just like before, but now we do it for every layer):
-learning_rate = 0.1
-
-# For simplicity, let's just show one adjustment:
-for i in range(len(layer_3_weights)):
-    layer_3_weights[i] += learning_rate * error * layer_2_output[i]
-
-# And similarly, we'd adjust layer_2_weights and layer_1_weights based on their inputs and the error feedback.
-
-print("Deep Learning:")
-print("  We passed data through multiple layers.")
-print("  Each layer transforms the data a bit more, allowing the model to learn very complex patterns.")
-print("  If we find an error, we adjust the weights in all these layers, gradually improving the model's predictions.")
-print("  This is how deep learning models, like those powering ChatGPT, get so good at their tasks over time.")
-```
+[Pseudo Code | Machine Learning]()
 
 **What's Important Here:**
 
@@ -479,7 +192,7 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 **Goal:** Help students grasp how AI moves beyond human-written rules to learn patterns from data. They'll first try to identify cats in images and write rules by hand (simulating traditional programming logic), then discover why giving examples and letting the AI figure it out (supervised learning) is more flexible. After that, they'll explore text-based fill-in-the-blank guessing to understand self-supervised learning—the technique ChatGPT uses.
 
-**Materials Needed:**  The PowerPoint presentation accompanying this workshop found at [PowerPointNameANDLink](). Pen and paper for each student.
+**Materials Needed:**  The PowerPoint presentation accompanying this workshop found at [How To Train Your AI: Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics](https://1drv.ms/p/c/750d396c5cadcebd/EbXQ-zaNwKtHiNZgmaK3G6oBGB8DWOktvCLz9rm4FJkJbw?e=a3iPZj). Pen and paper for each student.
 
 **Estimated Time:** 25–30 minutes total (about 15 minutes for images/cats activity, 10 minutes for text/fill-in-the-blank activity).
 
@@ -568,7 +281,7 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 **Materials Needed:**
 
-* Laptops with Internet access for students to visit the workshop link: [**Guess, Check, Adjust: Coding AI One Step at a Time**](#InsertWorkshopURLHere). Visual Studio Code for Education provides a browser based coding environment that the students will work in.
+* Laptops with Internet access for students to visit the workshop link: [**Guess, Check, Adjust: Training AI One Step at a Time**](https://vscodeedu.com/Q4eHFHOieGscZpldANxN). Visual Studio Code for Education provides a browser based coding environment that the students will work in.
 * Each student will need a Microsoft account to log in.  
 * Remind students to click the "Save a copy and edit" button in the lower-left corner of Visual Studio Code for Education before making changes to their files.  
 * Ideally, one laptop per 3–4 students for collaborative group work, but more individual devices are even better.
@@ -579,16 +292,9 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 ![VSCodeEditingNote](./vscode-editing-note.png)
 
-
-
-
-
-
-
-
 ### Overall Flow of Coding Activities
 
-Each of these files is accessible from the VS Code for Education project found at [**Guess, Check, Adjust: Coding AI One Step at a Time**](#InsertWorkshopURLHere). Students will progress through the workshop one file at at time, each building on the previous.
+Each of these files is accessible from the VS Code for Education project found at [**Guess, Check, Adjust: Training AI One Step at a Time**](https://vscodeedu.com/Q4eHFHOieGscZpldANxN). Students will progress through the workshop one file at at time, each building on the previous.
 
 * **File 1: `01_basic_predictor.py`**  
   This file picks words at random with no context or learning. Students see nonsense output and understand this as the baseline—pure randomness before any intelligence is added.
