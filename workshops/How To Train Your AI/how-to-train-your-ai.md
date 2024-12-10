@@ -564,7 +564,7 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 ## Activity 2: Guess, Check, Adjust: Training AI One Step at a Time
 
-**Goal:** Transition from understanding concepts to hands-on coding experience. Students will explore how a basic text prediction model works by writing and running simple Python code. They’ll start with a basic model that produces nonsensical predictions, then make small adjustments (like tweaking parameters for word selection) and rerun the code to observe improvements. By the end, they’ll have an interactive AI-like model they’ve built and improved themselves.
+**Goal:** Transition from understanding concepts to hands-on coding experience. Students will explore how a basic text prediction model works by writing and running simple Python code. They'll start with a basic model that produces nonsensical predictions, then make small adjustments (like tweaking parameters for word selection) and rerun the code to observe improvements. By the end, they'll have an interactive AI-like model they've built and improved themselves.
 
 **Materials Needed:**
 
@@ -579,165 +579,176 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 ![VSCodeEditingNote](./vscode-editing-note.png)
 
+
+
+
+
+
+
+
 ### Overall Flow of Coding Activities
 
 Each of these files is accessible from the VS Code for Education project found at [**Guess, Check, Adjust: Coding AI One Step at a Time**](#InsertWorkshopURLHere). Students will progress through the workshop one file at at time, each building on the previous.
 
 * **File 1: `01_basic_predictor.py`**  
-  Students run code that chooses the next word completely at random from a given dataset. They see nonsense and realize this is the "starting point."
+  This file picks words at random with no context or learning. Students see nonsense output and understand this as the baseline—pure randomness before any intelligence is added.
 
-* **File 2: `02_markov_window.py`**  
-  Students explore a Markov approach, which predicts the next word based on the patterns of word sequences in the training text. A `window_size` parameter controls how many previous words the model considers when making its prediction. Initially, with `window_size = 1`, the model uses only the most recent word, resulting in predictions slightly better than random. When students adjust `window_size = 2`, the model considers the last two words, leading to noticeably more coherent and context-aware predictions.
+* **File 2: `02_markov_improved.py`**  
+  In this file, students learn about **Markov chains** and **temperature**:
 
-* **File 3: `03_tweak_probability.py`**  
-  Students refine how the model chooses the next word. Rather than giving all possible next words an equal chance, the model uses word frequency to weigh the options, favoring more common next words. Students also experiment with a "temperature"-like parameter, which controls the randomness of the predictions—lower values make the output more focused and predictable, while higher values add variety but can make the text less coherent. This allows students to see how tweaking probabilities affects the model's behavior.
+  * **Markov Chain (window_size):**  
+    A Markov chain picks the next word based on the words that came right before it. By setting a `window_size`, the model looks at that many previous words to decide what comes next. For example, if `window_size=2`, it checks the last two words and picks a word that often followed those two words in the training text. Increasing `window_size` generally gives the model more context, leading to more coherent output.
 
-* **File 4: `04_interactive.py`**  
-  Students run an interactive session where they can type a starting word and see how the model predicts continuations. They realize it’s still limited because it only knows the small dataset they trained it on, unlike ChatGPT’s massive training.
+  * **Temperature:**  
+    Temperature controls how "adventurous" the model is when choosing the next word. A lower temperature (e.g., 0.2) makes the model stick more closely to the most common or "safe" choices, resulting in more predictable and coherent text. A higher temperature (e.g., 1.0) allows the model to pick less common words more often, adding variety and creativity but sometimes producing less coherent sentences.
+
+  Students start with less ideal defaults (like `window_size=1` and `temperature=1.0`) and must experiment (e.g., `window_size=2` and `temperature=0.5`) to achieve more coherent and satisfying results.
+
+* **File 3: `03_interactive.py`**  
+  In the final file, students take full control. They adjust `window_size`, `temperature`, and `output_length` interactively and choose a starting word. They can try the suggested starting words (e.g., "Alice", "May", "On", "I", "The") or pick their own. By experimenting, they see how their choices influence coherence, style, and variety, directly building on all previous lessons. They should realize it's still limited because it only knows the small dataset they trained it on, unlike ChatGPT's massive training.
 
 Each file in the Visual Studio Code for Education project includes detailed comments and instructions, telling students what to change and what to observe.
 
 ### Before Starting
 
-* Ensure all students have access to the Visual Studio Code for Education environment via a provided URL.
-* They should see an environment with these files: `README.md`, `data.txt`, `01_basic_predictor.py`, `02_markov_window.py`, `03_tweak_probability.py`, `04_interactive.py`.
-* In `data.txt`, you have a small dataset of sentences (e.g., simple English sentences, short stories, or well-known phrases).
+* Ensure students have access to the Visual Studio Code for Education environment and the `data.txt` file.
+* Students should see: `README.md`, `data.txt`, `01_basic_predictor.py`, `02_markov_improved.py`, and `03_interactive.py`.
+* Let them know the `data.txt` file has a small dataset. Remind them that small datasets limit the complexity and realism of the text but still demonstrate the core concepts.
 
-### Ideal Settings for Facilitators
+### Ideal Settings for Facilitators (Suggested Parameters)
 
-As students progress through the files in this workshop, they will experiment with training a mock AI system by providing input settings such as `window_size`, `output_length`, and `temperature`. The goal is for them to tweak these settings on their own and observe how changes impact the generated output. However, if students struggle or ask for guidance, here are the recommended settings based on the `data.txt` file provided with the Visual Studio Code for Education project. These settings are not "right" answers but are optimized for this dataset to produce the best learning outcomes.
+As students progress through the files in this workshop, they will experiment with training a mock AI system by providing input settings such as `window_size` and `temperature`. The goal is for them to tweak these settings on their own and observe how changes impact the generated output. However, if students struggle or ask for guidance, here are the recommended settings based on the `data.txt` file provided with the Visual Studio Code for Education project. These settings are not "right" answers but are optimized for this dataset to produce the best learning outcomes.
 
-#### File: `02_markov_window.py`
+#### File: `01_basic_predictor.py`
 
-**Purpose:** Introduces the concept of context (`window_size`) in predicting the next word.
+**Purpose:** Establishes a baseline of random output. No parameters to tweak here—just run it and see nonsense.
 
-* **Default Settings (first run):**
-  * `window_size = 1`
-  * `output_length = 10`
-  * **What Students Will Observe:** Random and disconnected text, showing the limitations of minimal context.
+**What Students Will Observe:** Complete randomness, demonstrating the need for learning and context. This file has no settings. It's meant to be run as a baseline to show how useless computers are until we, humans, introduce some logic teaching them how to make guesses, check them, adjust, and then eventually improve, so much so that we end up with something like ChatGPT i our world today.
 
-* **Progression (show improvement):**
-  * `window_size = 2`
-  * `output_length = 15`
-  * **What Students Will Observe:** Smoother transitions between words with more coherent sequences.
+#### File: `02_markov_improved.py`
 
-* **Ideal for Exploration:**
-  * **`window_size = 3`**, **`output_length = 20`**
-  * **What Students Will Observe:** Recognizable patterns and meaningful phrases, illustrating how context improves predictions.
+**Purpose:** Introduces `window_size` (context) and `temperature` (predictability vs. creativity).
 
-* **Exploration Limits:**
-  * **`window_size = 4`**, **`output_length = 25`**
-  * **What Students Will Observe:** More coherent but longer outputs, possibly showing limitations of the dataset.
+* **First Run (Defaults):**  
+  * `window_size = 1`  
+  * `temperature = 1.0`  
+  * `output_length = 20` (fixed)  
+  **Observation:** Slight improvement over pure random but not very coherent.
 
-#### File: `03_tweak_probability.py
+* **Suggested Improvement:**  
+  * `window_size = 2`  
+  * `temperature = 0.5`  
+  **What Students Will Observe:** More coherent phrases and a noticeable improvement in sentence flow.
 
-**Purpose:** Introduces word frequency and `temperature` to adjust randomness in predictions.
+* **Further Exploration:**  
+  * Try `window_size = 3` or even up to 4 (within allowed range).  
+  * Experiment with `temperature` around `0.3` to `0.7`.  
+  **Observation:** More context from a higher window size often leads to more coherent sequences. Lower temperature makes the output more predictable and structured, while higher temperature adds variety and sometimes nonsensical choices.
 
-* **Default Settings (first run):**
-  * `window_size = 2`
-  * `temperature = 0.5`
-  * `output_length = 12`
-  * **What Students Will Observe:** Balanced output with a mix of common and less frequent words.
+Encourage students to try several combinations. The point is for them to discover that some settings yield better, more coherent text than others..
 
-* **Low Randomness (more predictable):**
-  * `temperature = 0.2`
-  * **What Students Will Observe:** Frequent and predictable word choices, producing output that often sticks to common patterns.
+#### File: `03_interactive.py`
 
-* **High Randomness (more creative):**
-  * `temperature = 0.8`
-  * **What Students Will Observe:** Unusual and creative combinations but with potential loss of coherence.
+**Purpose:** Students choose `output_length`, `window_size`, `temperature`, and a starting word interactively.
 
-* **Exploration Limits:**
-  * **`window_size = 3`**, **`temperature = 0.3 to 0.7`**, **`output_length = 15`**
-  * **What Students Will Observe:** Balance between coherence and creativity with noticeable effects of `temperature`.
+* **First Run (Defaults):**  
+  * `output_length = 20`  
+  * `window_size = 2`  
+  * `temperature = 0.3`  
+  * Suggested starting words: "Alice", "May", "On", "I", "The"
+  
+  **What Students Will Observe:** Text that starts to resemble patterns in the training data with moderate coherence.
 
-#### File: `04_interactive.py`
+* **Suggested Tweaks for More Coherence:**  
+  * Keep `window_size = 2 or 3`  
+  * Lower temperature to around `0.2 - 0.5` for more predictable, coherent text.  
+  * Increase `window_size` if they want to see the effect of more context.  
+  **Observation:** With careful tuning, students can produce more fluid, story-like output.
 
-**Purpose:** Students provide a starting word to see how the model generates text interactively.
-
-* **Default Settings (first run):**
-  * `window_size = 2`
-  * `temperature = 0.3`
-  * **What Students Will Observe:** Output resembling training data and maintaining coherence.
-
-* **Exploration Settings:**
-  * **Starting Word Suggestions:**
-    * Common words from `data.txt` such as "The", "May", or "With".
-    * Fun or unique inputs like "Groot", "Mordor", or "Infinity."
-  * **Adjusted Parameters:**
-    * `window_size = 3`
-    * `temperature = 0.5`
-    * **What Students Will Observe:** Output adapts to the starting word while balancing coherence and randomness.
-
-* **Stretch Settings:**
-  * `window_size = 4`, `temperature = 0.1`
-  * **What Students Will Observe:** Stronger predictability and coherence, but limited by dataset constraints.
+* **Encourage Variety:**  
+  * Try a higher temperature (like `1.0`) with a small window size to see more playful but less coherent text.  
+  * Experiment with different starting words and notice how the initial prompt guides the generated text.
 
 ### General Recommendations
 
-* **Encourage Experimentation:** Let students explore different settings independently and reflect on how they impact output quality.
-* **Facilitator Demonstration:** If students struggle, demonstrate the "Ideal for Exploration" settings to highlight the potential for better results.
-* **Explain Trade-Offs:** Use the exploration limits to discuss trade-offs between coherence, randomness, and dataset size.
-* **Reinforce Dataset Constraints:** Highlight that the small dataset limits the model, providing a real-world analogy to AI systems requiring large-scale data.
+* **Encourage Experimentation:** Remind students that there are no right or wrong answers. The point is to try different values and observe changes in coherence and style.
+  
+* **Facilitator Guidance:** If students struggle to find good results, suggest `window_size=2` and `temperature=0.5` in `02_markov_improved.py`, and in `03_interactive.py`, try `output_length=20`, `window_size=2`, `temperature=0.3`, and start with a suggested word like "Alice", "May", or "The".
+
+* **Explain Trade-Offs:**  
+  * Larger `window_size` often means more coherent text but you need enough output length to see it.  
+  * Lower `temperature` makes text more stable but possibly repetitive; higher `temperature` adds creativity but can lead to nonsense.
+
+* **Dataset Constraints:**  
+  Remind students that the dataset is small and handmade. Real AI models like those behind ChatGPT use huge datasets. This tiny model will never produce perfect text, but it shows the core idea of context and probability shaping the output.
 
 ### Step-by-Step Instructions
 
 1. **Introduce the Concept (2 minutes):**  
-   *"We've talked about how AI learns through guess-check-adjust. Now you'll experience this by building a tiny text-predicting model. It starts off clueless and random, and through small changes, you'll make its predictions more coherent."*
+   **Facilitator Says:**  
+   *"We've discussed how AI 'learns' by guessing and adjusting. Now you'll see a tiny example. We'll start from random nonsense, then use previous words as hints (Markov chains), and finally tweak how the model picks words (temperature) to produce more coherent output. Let's see how this evolves step-by-step."*
 
-2. **Open `01_basic_predictor.py` (3 minutes):**  
-   *"Open `01_basic_predictor.py`. Read the comments at the top. Run this code by pressing the 'Run' button in the top-right corner. Observe the output. It will likely produce nonsensical text. This is our starting point—no learning, just random guessing."*
+2. **Run `01_basic_predictor.py` (3 minutes):**  
+   **Facilitator Says:**  
+   *"Open `01_basic_predictor.py`. This code picks words at random with no context, just to show you the baseline. Click 'Run' and observe the output."*  
+   **What Students See:** Nonsensical text—pure randomness.  
+   **Facilitator Explains:**  
+   *"This is our starting point: no learning, no pattern, no understanding. Just random words from the dataset."*
 
 3. **Discuss Results (2 minutes):**  
-   *"Do you see how random it is? Our model just picks words at random from the dataset. No patterns. This is like guessing blindly without adjusting anything."*
+   **Facilitator Says:**  
+   *"See how random it is? There's no pattern because we're not considering what came before. This illustrates why context matters and why adjustments are needed to get something that feels more like 'real' text."*
 
-4. **Move to `02_markov_window.py` (5–7 minutes):**  
-   *"Open `02_markov_window.py`. Here we introduce a 'window size'—the number of previous words we consider before predicting the next one. Initially, `window_size = 1`. Run it and see what you get. Slightly better than pure random right? Now change `window_size = 2` in the code comments as instructed and run again. Does the text sound more coherent?"*
+4. **Move to `02_markov_improved.py` (5–10 minutes):**  
+   **Facilitator Says:**  
+   *"Now open `02_markov_improved.py`. Here, we introduce two key concepts: 'window_size' and 'temperature'."*  
 
-   *"This small change made us consider one more word of context. That's like looking back further into the sentence, giving our model a better clue about what comes next."*
+   * **Markov Chain (window_size):**  
+     *"A Markov chain picks the next word based on the previous words. `window_size` controls how many previous words we consider. Start with `window_size=1` (the default) and run it. Compare to the random output—notice any improvement?"*  
+     *"Now try `window_size=2` by entering '2' when prompted. With more context, the model often picks a more suitable next word. Does it sound more coherent?"*
+
+   * **Temperature:**  
+     *"Next, change `temperature`. Lower temperature (e.g., 0.5) makes the model more predictable—like it's choosing the most common word that fits. Higher temperature (e.g., 1.0 or more) introduces variety but can lead to stranger sentences."*  
+
+   **Facilitator Encourages Experimentation:**  
+   *"After seeing the default output, try `window_size=2` and `temperature=0.5`. Check if the text feels more natural. Adjust these values further to see how output changes. Explore `window_size=3` or try temperatures like 0.2 or 0.8 to see the differences."*
 
 5. **Check Understanding (2 minutes):**  
-   *"What did changing `window_size` do? It made the model more 'informed' about the context. Instead of just the last word, now it sees two words before picking the next one. Real AI models consider even more context, leading to more natural predictions."*
+   **Facilitator Asks:**  
+   *"What happened when you increased the window_size? Did it become more coherent? What about lowering temperature—did it feel more predictable? This shows how adding context and adjusting probability can guide the model toward better results."*
 
-6. **Move to `03_tweak_probability.py` (5–10 minutes):**  
-   *"Open `03_tweak_probability.py`. Here, we introduce a way to adjust how the model picks the next word. Instead of equal chance for each possible word, we weigh them by how frequently they follow the given sequence. Run it as-is first."*
+6. **Move to `03_interactive.py` (5–10 minutes):**  
+   **Facilitator Says:**  
+   *"Open `03_interactive.py`. Now you're fully in control. You choose how many words to generate, the window_size, the temperature, and even the starting word. The model will continue from what you start with."*  
 
-   *"Now, try changing a parameter called `temperature` (or a similar parameter indicated in the comments) to a lower value and run again. A lower `temperature` makes the model pick the most likely next word more often, producing more predictable text. A higher `temperature` introduces more randomness, maybe leading to more creative but less stable output."*
+   **Facilitator Suggestions:**  
+   *"Try using the settings you found effective in `02_markov_improved.py`. For example, `window_size=2`, `temperature=0.3 or 0.5`, and `output_length=20`. Start with a suggested word like 'Alice' or 'May' and see how it goes."*  
+   *"If you pick a different starting word, the style might change. A higher temperature might make it more creative, while a lower temperature might keep it consistent."*
 
-7. **Discuss the Improvements (2–3 minutes):**  
-   *"By adjusting these parameters, you've seen how the model's output changes. We've never hard-coded rules about how to form sentences. Instead, we just tweak 'knobs' to let it pick words more intelligently from patterns it found in the data."*
+7. **Encourage Further Exploration (2–3 minutes):**  
+   **Facilitator Says:**  
+   *"Play with different parameters. Try higher `window_size` for even more context, or a higher temperature for wilder output. Notice how your starting word influences the topic of the generated text. Experiment until you find a combination you like."*
 
-8. **Open `04_interactive.py` (5–7 minutes):**  
-   *"Finally, open `04_interactive.py`. This script lets you type a starting word and then the model will continue your sentence word-by-word based on the learned patterns. Run it, type a word like 'The', and see what happens."*
-
-   *"Notice it still can't chat like ChatGPT. Why not? Because it only trained on a tiny dataset. It doesn't have huge amounts of text or advanced layers like ChatGPT does. But this shows you the same fundamental principle in a tiny form."*
-
-9. **Conclusion (3–5 minutes):**  
-   *"You've seen how AI starts from random guesses and, through small changes—like adding context (window size) and adjusting probabilities—it can produce more sensible text. Real AI models do this on a massive scale, with billions of parameters and huge datasets, resulting in the sophisticated language understanding you see in tools like ChatGPT."*
-
-## Scaling Up to Real AI Models
-
-In real life, companies like OpenAI, Google, Meta, and Anthropic gather enormous amounts of data from the internet—text from books, articles, forums, and more—and use huge computer servers to train their models. They run through this guess-and-check process billions of times. That's why these models can cost millions of dollars to train. It's also why smaller labs often can't do this at home: you need lots of computers and tons of electricity!
-
-**Result:** After all this training, the AI model can respond to your questions in a chat, recognize objects in images, suggest code fixes, or do many other tasks. It does this by having internalized patterns from a massive amount of examples.
+8. **Discussion and Wrap-Up (3–5 minutes):**  
+   **Facilitator Summarizes:**  
+   *"You started from random guesses and ended up guiding the model to produce more coherent text by adding context (Markov chain) and adjusting how it picks words (temperature). Real AI models do this at a massive scale, using huge datasets and intricate training methods. Here, you've seen the core idea: guess, check, adjust."*  
+   *"This simple demo helps you understand that what feels like 'intelligence' is really about patterns, context, and careful parameter tuning. If you've got the hang of this, you've taken your first steps into understanding how tools like ChatGPT work under the hood."*
 
 ### Key Takeaways
 
-* **AI Is Math, Not Magic:** It's about probabilities and patterns, not understanding or emotions.
+In real life, companies like OpenAI, Google, Meta, and Anthropic gather enormous amounts of data from the internet—text from books, articles, forums, and more—and use huge computer servers to train their models. They run through this guess-and-check process billions of times. That's why these models can cost millions of dollars to train. It's also why smaller labs often can't do this at home: you need lots of computers and tons of electricity!
 
-* **Speed and Scale:** Big companies use massive data and powerful GPUs to do trillions of these guess-and-check operations.
+* **AI as Patterns, Not Magic:** AI isn't alive or thinking. It's a pattern-recognition system that predicts what comes next based on statistical probabilities.
 
-* **No True Understanding:** The model doesn't know what words mean; it just knows how they tend to appear together.
+* **Math and Scale:** Underneath the hood, AI is math-driven. Big models run trillions of guess-check-adjust steps on huge datasets, using powerful computers to speed up the process.
 
-* **Human Feedback Matters:** Fine-tuning with human input makes the model more useful and less confusing.
+* **No True Understanding:** AI doesn't "know" what words mean or what images actually look like. It identifies patterns and probabilities rather than understanding concepts.
 
-## Wrapping Up
+* **Human Feedback is Crucial:** Adjustments guided by human input (fine-tuning) make AI more useful, coherent, and aligned with what we need it to do.
 
-AI isn't "alive" or "thinking" like humans do. It's more like a super-smart pattern machine—guessing and adjusting, guessing and adjusting—until it's unbelievably good at predicting the right words or identifying what's in an image.
+* **Core Concept—Guess, Check, Learn:** Whether it's labeling images or predicting words, AI starts clueless, guesses, checks against real data, and learns from mistakes. Over time, this iterative process transforms random guesses into outputs that feel remarkably intelligent.
 
-For images, it relies on labeled examples ("cat," "not cat"). For text, it teaches itself by predicting words without needing explicit "this is right/wrong" labels for every single sentence. Over time, it learns patterns so complex that it can fool us into feeling like it truly understands.
-
-This is the essence of machine learning: starting off clueless, making random guesses, and then using feedback to improve, step by step, until something that once seemed impossible—like a computer writing a poem or identifying a cat—becomes almost trivial. AI might seem magical, but underneath the hood, it's guess, check, learn, repeat—on a massive scale that combines math, patterns, and computing power to create what feels like intelligence.
+Ultimately, what appears as intelligence is the result of careful pattern analysis, massive amounts of data, and continuous refinement. The "magic" is just math, practice, and scale—over and over until it feels like understanding.
 
 ## Additional Learning Resources
 
