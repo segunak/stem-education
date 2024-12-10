@@ -1,290 +1,75 @@
-**Ideal Settings for Facilitators**
-
-This section provides guidance for facilitators on ideal parameter settings across the three coding exercises. These settings are designed to help students observe meaningful output while experimenting with `window_size`, `output_length`, and `temperature`. The goal is for students to discover these settings through trial and error. However, facilitators can use these as a fallback to guide struggling students or to demonstrate expected behavior.
-
----
-
-### **File: `02_markov_window.py`**
-
-**Purpose:** Introduces the concept of context (`window_size`) in predicting the next word.
-
-- **Default Settings (first run):**
-  - `window_size = 1`
-  - `output_length = 10`
-  - **What Students Will Observe:** Random and disconnected text, showing the limitations of minimal context.
-
-- **Progression (show improvement):**
-  - `window_size = 2`
-  - `output_length = 15`
-  - **What Students Will Observe:** Smoother transitions between words with more coherent sequences.
-
-- **Ideal for Exploration:**
-  - **`window_size = 3`**, **`output_length = 20`**
-  - **What Students Will Observe:** Recognizable patterns and meaningful phrases, illustrating how context improves predictions.
-
-- **Exploration Limits:**
-  - **`window_size = 4`**, **`output_length = 25`**
-  - **What Students Will Observe:** More coherent but longer outputs, possibly showing limitations of the dataset.
-
----
-
-### **File: `03_tweak_probability.py`**
-
-**Purpose:** Introduces word frequency and `temperature` to adjust randomness in predictions.
-
-* **Default Settings (first run):**
-  * `window_size = 2`
-  * `temperature = 0.5`
-  * `output_length = 12`
-  * **What Students Will Observe:** Balanced output with a mix of common and less frequent words.
-
-* **Low Randomness (more predictable):**
-  * `temperature = 0.2`
-  * **What Students Will Observe:** Frequent and predictable word choices, producing output that often sticks to common patterns.
-
-* **High Randomness (more creative):**
-  * `temperature = 0.8`
-  * **What Students Will Observe:** Unusual and creative combinations but with potential loss of coherence.
-
-* **Exploration Limits:**
-  * **`window_size = 3`**, **`temperature = 0.3 to 0.7`**, **`output_length = 15`**
-  * **What Students Will Observe:** Balance between coherence and creativity with noticeable effects of `temperature`.
-
-***
-
-### **File: `04_interactive.py`**
-
-**Purpose:** Students provide a starting word to see how the model generates text interactively.
-
-* **Default Settings (first run):**
-  * `window_size = 2`
-  * `temperature = 0.3`
-  * **What Students Will Observe:** Output resembling training data and maintaining coherence.
-
-* **Exploration Settings:**
-  * **Starting Word Suggestions:**
-    * Common words from `data.txt` such as "The", "May", or "With".
-    * Fun or unique inputs like "Groot", "Mordor", or "Infinity."
-  * **Adjusted Parameters:**
-    * `window_size = 3`
-    * `temperature = 0.5`
-    * **What Students Will Observe:** Output adapts to the starting word while balancing coherence and randomness.
-
-* **Stretch Settings:**
-  * `window_size = 4`, `temperature = 0.1`
-  * **What Students Will Observe:** Stronger predictability and coherence, but limited by dataset constraints.
-
----
-
-### **General Recommendations**
-- **Encourage Experimentation:** Let students explore different settings independently and reflect on how they impact output quality.
-- **Facilitator Demonstration:** If students struggle, demonstrate the "Ideal for Exploration" settings to highlight the potential for better results.
-- **Explain Trade-Offs:** Use the exploration limits to discuss trade-offs between coherence, randomness, and dataset size.
-- **Reinforce Dataset Constraints:** Highlight that the small dataset limits the model, providing a real-world analogy to AI systems requiring large-scale data.
-
-By using these settings, facilitators can create an engaging and insightful experience for students while guiding them toward meaningful understanding of AI concepts.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## TO DO (Pending Decisions & Finalizations)
-
-1. **PowerPoint Content & Flow:**  
-   - Finalize the sequence of slides and talking points for the presentation portion.
-   - Decide how much emphasis to place on image-based recognition examples vs. text-based examples. (Current inclination: briefly mention image-based concepts, then focus on text-based LLM explanation.)
-   - Confirm whether to integrate the cat image recognition activity fully or to reference it briefly and move on to text-based models.
-
-2. **Coding Activity Details (Visual Studio Code for Education):**  
-   - Determine the exact coding exercise. Options include:  
-     - A simplified Markov chain text generator that shows how probability tables work.  
-     - A very small “training” simulation where students adjust code or parameters to improve the model's guesses.
-   - Decide if you can incorporate an external API (OpenAI or Hugging Face) without overwhelming students.
-   - Create a step-by-step guide for students within VS Code (e.g., starter code and instructions).
-
-3. **Choosing the Example Text and Context Window:**  
-   - Decide on a simple dataset or text snippet to demonstrate how next-word prediction works in code.
-   - Determine if you will show students a frequency table or just have them run code that produces a simple output.
-
-4. **Final Definitions and Jargon Simplification:**  
-   - Finalize simple, student-friendly definitions for Machine Learning, Neural Networks, and Deep Learning.
-   - Ensure consistency and clarity when using terms like "weights," "fine-tuning," and "stochastic."
-
-5. **Time Management:**
-   - Confirm how to split the 1-hour session:  
-     - Proposed: 30 minutes lecture (with PowerPoint and pen-and-paper activity) and ~30 minutes coding.
-   - Adjust if needed.
-
-6. **Pen-and-Paper Activity Details:**
-   - Finalize instructions for the “fill in the blank” and “cat vs. not cat” pen-and-paper exercises.
-   - Decide if the foreign/gibberish language demonstration will be a brief classroom activity or tied directly to the coding segment.
-
----
-
-## Workshop Overview
-
-**Title:** How To Train Your AI—Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics
-
-**Duration:** ~1 hour (approx. 30 min presentation & discussion, 30 min coding activity)
-
-**Audience:** High school students with little to no technical background in AI or coding.
-
-**Goal:**  
-By the end of this workshop, students should have a fundamental understanding of what AI and ChatGPT are doing under the hood, how Machine Learning (ML), Neural Networks (NNs), and Deep Learning (DL) fit together, and experience a hands-on coding activity to reinforce these concepts in a simplified form.
-
----
-
-## Introduction
-
-Modern AI, like ChatGPT, seems magical, but it's really about patterns, math, and massive amounts of practice. Unlike Hollywood robots, AI doesn't have feelings or self-awareness. It can't “understand” the way humans do. Instead, it looks for patterns in data, guesses answers, and then improves those guesses based on feedback—over and over again until it appears impressively intelligent.
-
-**Key Idea:** Machine Learning is a giant guess-and-check process. The AI tries something, sees if it's right, and adjusts. Repeat this millions or billions of times, and you get results that seem like true understanding but are really just well-tuned patterns.
-
----
-
-## Types of AI Training
-
-### Supervised Learning (Example: Images)
-
-- **Scenario:** Teaching a model to recognize if an image contains a cat.
-- **Process:**  
-  1. Show the model many labeled examples ("cat," "not cat").  
-  2. The model guesses whether a new image is a cat.  
-  3. Compare the guess to the correct label and adjust the internal “weights.”  
-  4. Repeat thousands or millions of times.
-  
-- **Outcome:** Eventually, the model gets very good at recognizing cats. This is supervised learning because we provide the correct answers (labels).
-
-### Self-Supervised Learning (Text and ChatGPT)
-
-- **Scenario:** Large Language Models like ChatGPT don't get explicit labels for each word. Instead, they try to predict the next word in a sentence.
-- **Process:**  
-  1. The AI reads tons of text (books, articles, websites).  
-  2. Given a sequence of words, it guesses the next word.  
-  3. Check against the actual next word in the original text.  
-  4. If wrong, adjust weights; if right, reinforce the current approach.
-  
-- **Outcome:** Over trillions of guesses, the model learns grammar, common phrases, and context. It becomes very good at producing sentences that sound human.
-
-**Note:** The model isn't understanding meaning—it's just playing a massive “fill-in-the-blank” game at a superhuman scale.
-
----
-
-## Linking Machine Learning, Neural Networks, and Deep Learning
-
-- **Machine Learning (ML):** The broad field of teaching computers to learn from examples rather than explicit instructions.  
-- **Neural Networks (NNs):** A specific technique in ML inspired by the human brain. Networks consist of layers of “neurons,” each focusing on different aspects of the data. Over many examples, they adjust their internal weights to improve.  
-- **Deep Learning (DL):** A subset of ML that uses many layers (hence “deep”) of neural networks. This allows models to learn very complex patterns, like understanding language context in ChatGPT.
-
-**In Short:**
-- ML: The overall guess-and-check learning approach.
-- NNs: The layered structure used to process inputs and learn patterns.
-- DL: NNs but with many layers, enabling the model to learn very intricate patterns.
-
----
-
-## Understanding ChatGPT Through Simple Concepts
-
-### Markov Chains and Frequency Tables
-
-Early attempts to generate text used frequency tables (like Markov chains) to guess the next word. However, these methods struggled with long context and complexity.
-
-- **Markov Chains:**  
-  - Look at one or two previous words and guess the next word based on frequency.
-  - Works somewhat but results are often nonsense because it can't handle long-range context or deep meaning.
-
-### Transition to Deep Learning
-
-Instead of manually building huge frequency tables, deep learning lets the model learn its own patterns for predicting the next word. By training on vast text corpora, the model figures out which words often follow others without us telling it the rules.
-
-**Stochastic:**  
-The word means “randomly determined.” Language models introduce randomness to avoid repeating the same predictable answer and to sound more natural. This is why sometimes responses vary.
-
----
-
-## Fine-Tuning and Human-in-the-Loop
-
-After the model learns to predict words well, humans come in to help it be more helpful and less nonsensical. Human testers give feedback on the model's answers, and the model adjusts again. This process, called **fine-tuning**, improves the quality of interactions, making the AI more polite, helpful, and context-aware.
-
----
-
-## Workshop Activities
-
-### Activity 1 (In-Class, Pen-and-Paper or Slide Interaction)
-
-**Guessing the Next Word:**
-- Show a phrase: "to be or not to ____"
-  - Students guess "be."
-- Show another: "rock and ____"
-  - Students guess "roll."
-- Show a less obvious sentence where context matters.
-  
-Discuss how students are predicting words based on experience, just like how AI models predict based on massive training examples.
-
-**Image Recognition Demo (Optional):**
-- Show unfamiliar images and ask students to guess what they are. Then reveal the answers later. They see how their guesses improve after knowing some correct answers. This parallels the guess-adjust cycle in AI.
-
-### Activity 2 (PowerPoint Simulation of Training)
-
-**Simulated Neural Network Training:**
-- Present a scenario where students play roles as neurons (like the cat example).  
-- They guess “cat” or “not cat” and get feedback (you say "correct" or "incorrect").  
-- After several rounds, they adjust their “weights” (i.e., rely more on certain clues).
-
-**Language Prediction Simulation:**
-- Show a simple dataset of text.
-- Highlight how building a giant frequency table by hand is impossible.
-- Introduce the idea of letting the computer figure it out by trial and error (deep learning).
-
-### Activity 3 (Coding with VS Code for Education)
-
-**Proposed Coding Exercise (Exact Details TBD):**
-- Students open a pre-set coding environment with a basic script that:  
-  - Loads a tiny dataset of text (could be a simple story or a small corpus of sentences).
-  - Attempts to guess the next word. Initially, it's random and bad.
-  - Students modify a parameter or run a "training" function that simulates adjusting weights based on correct/incorrect guesses.
-  - Over multiple runs, they see improvement in how the code predicts words.
-
-**Markov/NN Hybrid Simplification (TBD):**
-- Show how starting from a simple “count what words follow which” approach leads to poor results.
-- Introduce a “layer” of code that tries to weigh different inputs differently, simulating a simple neural network concept.
-- If time allows and not too complex, mention how randomness (stochastic) can affect the output.
-
----
-
-## Practical Notes and Advice for Students
-
-- **AI Is Math, Not Magic:** It's about probabilities and patterns, not understanding or emotions.
-- **Speed and Scale:** Big companies use massive data and powerful GPUs to do trillions of these guess-and-check operations.
-- **No True Understanding:** The model doesn't know what words mean; it just knows how they tend to appear together.
-- **Human Feedback Matters:** Fine-tuning with human input makes the model more useful and less confusing.
-
----
-
-## After the Workshop
-
-- Students leave with a basic understanding of how ChatGPT-like AI works:  
-  - It predicts words based on patterns learned from huge text datasets.
-  - It uses deep learning to handle complex patterns rather than building simple frequency tables manually.
-- Provide optional resources for further learning.
-
-**Additional Reading:**
-- [A Completely Non-Technical Explanation of AI and Deep Learning](https://www.parand.com/a-completely-non-technical-explanation-of-ai.html)  
-- [OpenAI's Blog and Documentation](https://openai.com/research)
-
----
-
-## Summary
-
-This workshop aims to strip away the intimidation factor of AI and show that at its core, AI is a well-trained guesser. By exploring Machine Learning, Neural Networks, Deep Learning, and ChatGPT's text-prediction strategies, students see how patterns, feedback, and massive computation come together to produce what appears to be intelligent behavior.
+Below are some suggestions and considerations for both improving the training data and enhancing the code for a better student experience.
+
+### Improving and Expanding the Training Data
+
+Right now, the training data is a collection of popular movie quotes, phrases, and cultural references. While it’s fun and recognizable, it’s also quite varied and somewhat random. A key reason language models produce more coherent text as they improve is because they learn patterns that are easier to identify in more consistent or thematically grouped data. If you add more data that:
+
+1. **Forms Short Narratives or Stories:**  
+   Include some short, coherent paragraphs that tell a simple story—maybe 3–5 sentences each—about a character, a day at school, an adventure, etc. This will help the model produce more contextually coherent output when `window_size` is increased. For example:
+   ```
+   Alice woke up early and decided to explore the old forest.
+   She walked past towering trees and listened to birds singing.
+   By noon, she found a hidden stream and sat down to rest.
+   As evening fell, she followed the fireflies back home.
+   ```
+   Adding multiple short stories like this provides patterns of context, continuity, and narrative flow.
+
+2. **Include a Few Longer Sentences or Paragraphs with Repeated Themes:**  
+   The model currently sees mostly short, punchy lines. Include a handful of longer sentences or small paragraphs that repeat certain subjects or structures. For example:
+   ```
+   On a crisp autumn morning, the cat perched silently on the windowsill, watching leaves tumble in the wind and children laugh on their way to school.
+   In the quiet library, pages turned softly, and a sense of calm understanding settled over the readers.
+   ```
+   Such data helps the model pick up on descriptive language and context clues.
+
+3. **Add More Transitional and Contextual Phrases:**  
+   Right now, many phrases are stand-alone quotes. Add text that uses transitions like "However," "Later that day," "Meanwhile," "As a result," and so forth. This encourages the model to produce more logically connected sentences.
+
+4. **Keep Some Familiar Quotes and Cultural References, But Group Them:**  
+   Maybe group the movie quotes by theme or genre so that when the model looks back a few words, it’s more likely to find related thematic content. For example, cluster some fantasy references together (Lord of the Rings, Harry Potter, Game of Thrones), some science fiction references together (Star Wars, Star Trek, Marvel), and so on. This can help the model form mini “topic clusters” that produce more coherent responses as you tweak the window size and temperature.
+
+By blending thematic clusters, short narratives, and a few longer descriptive passages, your dataset will give the model richer patterns to learn from. Students will see more coherent text emerge, especially by the time they reach the interactive phase.
+
+### Potential Improvements to the Code
+
+1. **Adjusting `window_size` and Output Length Defaults:**  
+   For `01_basic_predictor.py`, no context is fine. For `02_markov_window.py`, consider picking a slightly higher default `window_size` (e.g., 2 instead of 1) and a reasonable `output_length` (like 20) to immediately show the benefit of increased context. Students can still experiment, but starting with slightly more context might give them a better initial “wow” moment.
+
+2. **Highlighting the Effects of Changes More Clearly:**  
+   In `02_markov_window.py`, after generating text, you might print out a message comparing the result to what they saw in `01_basic_predictor.py`. This helps reinforce the concept that the improvement in coherence is due to the Markov approach.
+
+3. **Introduce a Simple Tokenization Step (Optional):**  
+   While you’re mainly dealing with whitespace tokenization, you could use a simple library like `nltk` (no API key required) for slightly more robust tokenization if desired. This might make punctuation handling cleaner, resulting in more natural outputs.
+
+   ```python
+   # Example (in setup code, not necessarily required):
+   import nltk
+   nltk.download('punkt')
+   from nltk.tokenize import word_tokenize
+   ```
+   
+   Using `word_tokenize` on each line might yield cleaner word sequences for the Markov model. This is optional but can improve the learning experience slightly.
+
+4. **Enhance the Interactive Phase (04_interactive.py):**  
+   - Allow students to input multiple starting words (if `window_size` > 1) or pick from a predefined set of starting phrases to guide the text generation toward something more coherent.
+   - Print out some statistics: for example, after generation, show how many unique words the model considered at each step, or how the temperature affected word choice. This gives a more tangible sense of what’s changing under the hood.
+   - If you’re open to additional Python libraries that don’t require API keys, consider using `collections.Counter` or `numpy` for slightly more sophisticated probability sampling. This wouldn’t drastically change the output quality but might give students more insights into how probabilities are computed and how changing temperature affects distribution sampling.
+
+5. **Adding Comments and Instructions in the Code:**
+   The code is already commented, but you might add more educational comments that remind students what’s happening at each step. For instance:
+   ```python
+   # Here we pick the next word based on the current 'window' of previous words.
+   # If temperature is low, we bias towards the most frequent words.
+   # If temperature is high, we add more randomness.
+   # Students: Try changing these values and observe the results.
+   ```
+
+   These in-code nudges help guide students to experiment more confidently.
+
+### Conclusion
+
+- **Expanded and More Structured Training Data:** Helps the model learn better patterns, improving coherence.
+- **Minor Code Tweaks and More Guidance:** Ensures students see clearer progress from random output to coherent text.
+- **Optional Simple Libraries:** Like NLTK for tokenization—no API key required—could slightly improve token handling.
+
+With these adjustments, by the time students reach `04_interactive.py`, they should see a noticeable improvement in the quality of generated text compared to the initial random output, making the exercise more rewarding and illustrating the concepts more clearly.
