@@ -597,13 +597,90 @@ Each of these files is accessible from the VS Code for Education project found a
 
 Each file in the Visual Studio Code for Education project includes detailed comments and instructions, telling students what to change and what to observe.
 
-### Step-by-Step Instructions
-
-**Before Starting:**
+### Before Starting
 
 * Ensure all students have access to the Visual Studio Code for Education environment via a provided URL.
 * They should see an environment with these files: `README.md`, `data.txt`, `01_basic_predictor.py`, `02_markov_window.py`, `03_tweak_probability.py`, `04_interactive.py`.
 * In `data.txt`, you have a small dataset of sentences (e.g., simple English sentences, short stories, or well-known phrases).
+
+### Ideal Settings for Facilitators
+
+As students progress through the files in this workshop, they will experiment with training a mock AI system by providing input settings such as `window_size`, `output_length`, and `temperature`. The goal is for them to tweak these settings on their own and observe how changes impact the generated output. However, if students struggle or ask for guidance, here are the recommended settings based on the `data.txt` file provided with the Visual Studio Code for Education project. These settings are not "right" answers but are optimized for this dataset to produce the best learning outcomes.
+
+#### File: `02_markov_window.py`
+
+**Purpose:** Introduces the concept of context (`window_size`) in predicting the next word.
+
+* **Default Settings (first run):**
+  * `window_size = 1`
+  * `output_length = 10`
+  * **What Students Will Observe:** Random and disconnected text, showing the limitations of minimal context.
+
+* **Progression (show improvement):**
+  * `window_size = 2`
+  * `output_length = 15`
+  * **What Students Will Observe:** Smoother transitions between words with more coherent sequences.
+
+* **Ideal for Exploration:**
+  * **`window_size = 3`**, **`output_length = 20`**
+  * **What Students Will Observe:** Recognizable patterns and meaningful phrases, illustrating how context improves predictions.
+
+* **Exploration Limits:**
+  * **`window_size = 4`**, **`output_length = 25`**
+  * **What Students Will Observe:** More coherent but longer outputs, possibly showing limitations of the dataset.
+
+#### File: `03_tweak_probability.py
+
+**Purpose:** Introduces word frequency and `temperature` to adjust randomness in predictions.
+
+* **Default Settings (first run):**
+  * `window_size = 2`
+  * `temperature = 0.5`
+  * `output_length = 12`
+  * **What Students Will Observe:** Balanced output with a mix of common and less frequent words.
+
+* **Low Randomness (more predictable):**
+  * `temperature = 0.2`
+  * **What Students Will Observe:** Frequent and predictable word choices, producing output that often sticks to common patterns.
+
+* **High Randomness (more creative):**
+  * `temperature = 0.8`
+  * **What Students Will Observe:** Unusual and creative combinations but with potential loss of coherence.
+
+* **Exploration Limits:**
+  * **`window_size = 3`**, **`temperature = 0.3 to 0.7`**, **`output_length = 15`**
+  * **What Students Will Observe:** Balance between coherence and creativity with noticeable effects of `temperature`.
+
+#### File: `04_interactive.py`
+
+**Purpose:** Students provide a starting word to see how the model generates text interactively.
+
+* **Default Settings (first run):**
+  * `window_size = 2`
+  * `temperature = 0.3`
+  * **What Students Will Observe:** Output resembling training data and maintaining coherence.
+
+* **Exploration Settings:**
+  * **Starting Word Suggestions:**
+    * Common words from `data.txt` such as "The", "May", or "With".
+    * Fun or unique inputs like "Groot", "Mordor", or "Infinity."
+  * **Adjusted Parameters:**
+    * `window_size = 3`
+    * `temperature = 0.5`
+    * **What Students Will Observe:** Output adapts to the starting word while balancing coherence and randomness.
+
+* **Stretch Settings:**
+  * `window_size = 4`, `temperature = 0.1`
+  * **What Students Will Observe:** Stronger predictability and coherence, but limited by dataset constraints.
+
+### General Recommendations
+
+* **Encourage Experimentation:** Let students explore different settings independently and reflect on how they impact output quality.
+* **Facilitator Demonstration:** If students struggle, demonstrate the "Ideal for Exploration" settings to highlight the potential for better results.
+* **Explain Trade-Offs:** Use the exploration limits to discuss trade-offs between coherence, randomness, and dataset size.
+* **Reinforce Dataset Constraints:** Highlight that the small dataset limits the model, providing a real-world analogy to AI systems requiring large-scale data.
+
+### Step-by-Step Instructions
 
 1. **Introduce the Concept (2 minutes):**  
    *"We've talked about how AI learns through guess-check-adjust. Now you'll experience this by building a tiny text-predicting model. It starts off clueless and random, and through small changes, you'll make its predictions more coherent."*
@@ -637,224 +714,6 @@ Each file in the Visual Studio Code for Education project includes detailed comm
 
 9. **Conclusion (3–5 minutes):**  
    *"You've seen how AI starts from random guesses and, through small changes—like adding context (window size) and adjusting probabilities—it can produce more sensible text. Real AI models do this on a massive scale, with billions of parameters and huge datasets, resulting in the sophisticated language understanding you see in tools like ChatGPT."*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Step-by-Step Instructions
-
-TODO - Remove this. For the workshop, what you have is an online version of Visual Studio Code, Visual Studio Code for Education, which simplifies a lot of the process of using VS Code, no local install, no worrying about having Git installed for syncing updates. That's really it. You've got VS Code in a web browser and Python access within it. The workshop should be file based I think. File 1.py or some name is the first level, then they make some changes, then you say "go to File 2.py" and then go to File 3.py and each file has really really really good and clear comments and takes them through the steps of getting the AI system, whatever it may be, to start predicting text properly, not giving them the answers but providing hints. I think a Markov approach might be best to use here to make it simple for the students. IT needs ot be something they can easily tune from each step to each step of the code and see how they're able to change things. it should also give them some options to be more advanced if they want to change something else, maybe a learning rate and see how it affects things.
-
-One key thing with the training process is as the facilaitor, I need to have an idea of what exact settings in the code, what exact "tweaks" result in really good and cool output where the students go like "oh wow it used to suck but now it sounds just like ChatGPT!". It'd also be nice if there could be a live terminal poriton in the last File.py, where they can run it and talk to the thing they just trained. They train it then interact with it, but notbaly it should be limited in covnersation to what they trained it on. They should try to treat it like ChatGPT and see it doesn't work becaues this mini model wasn't trained on all that.
-
-Here are some notes on how this could work
-
-1. **Introduce the Coding Task (3 minutes):**  
-   Say:  
-   *"Now you'll act like an AI engineer. We'll start with a very simple code example that tries to predict the next word based on what it has seen before. Initially, it might be random or not very good. Your job is to tweak the code and rerun it until you see better predictions."*
-
-2. **Show the Starter Code (5 minutes):**  
-   * Explain the code structure:
-     * Input data: A small set of sentences or phrases (e.g., "The cat sat on the mat", "The dog barked at the cat", etc.).
-     * The code reads these sentences and tries to guess the next word after seeing a given word.
-
-   * Highlight that currently, the code might just pick random words or only consider one-step word transitions (TO DO, make this more clear. What do you mean by one step?).
-
-   Tell the students:  
-   *"Run the code as-is. See what text it produces. It might look weird or nonsensical. That's okay—this is your starting point."*
-
-3. **First Run and Observation (5 minutes):**  
-   Have students press "Run" and watch the output. It might produce random phrases or silly output. Encourage them to describe what they see. Ask:  
-   *"Is this text making sense? Why or why not?"*
-
-   Reinforce that this is what a model looks like before proper training or adjustments.
-
-4. **Adjusting Parameters (5–10 minutes):**  
-   Provide them with instructions in the code comments on how to adjust a "weight," "probability calculation," or "window size" for picking the next word based on the previous word. For example, if using a Markov approach, they can:
-   * Change from looking at just one previous word to two previous words.
-   * Adjust a "learning_rate"-like variable if you introduced one conceptually.
-
-   Say:  
-   *"Try changing this line of code from `window_size = 1` to `window_size = 2` and rerun. Does it produce more coherent text now?"*
-
-   They run it again and observe if the output is slightly more sensible.
-
-5. **Iterative Improvement (5–10 minutes):**  
-   Guide them through one or two more tweaks:
-   * Maybe tweak a randomization parameter, so it picks the most likely next word more often rather than random ones.
-   * Add a print statement to see what words are considered at each step.
-
-   After each change, they run the code and see if the generated text improves in terms of sounding more like the input data's style.
-
-6. **Discussion (3–5 minutes):**  
-   After they see some improvement, ask:  
-   *"What changed when we adjusted these parameters? We never wrote any rules telling the computer how to form a sentence. Instead, we let it learn from patterns in the text. By changing how it picks the next word (like adjusting a knob), we improved its predictions."*
-
-   Connect this back to the guess-check-adjust logic. Remind them that a real AI model does this on a gigantic scale and uses complex math to adjust millions (or billions) of these "knobs" instead of just one or two.
-
-**Key Message:** Just like the pen-and-paper activities, this coding exercise shows that AI improves by repeatedly guessing and adjusting. Students got to "be the AI builders" and see that even a tiny, simplified model requires trial, error, and adjusting parameters to improve its guesses.
-
-
-
-And here are older notes on ideas for this coding portion. I need to unify this all into a set of stpe by step instructions, including the code that will be in the files that go into the VS Code for Education project that they access from a browser. Not concepts the actual code, the full code, with very very deep and expansive commenting and instructions inside the actual code as to what they should be doing and when to move to each file and instrucitons like "click the play button in the upper right hand corner to run the code" sort of stuff. 
-
-**Proposed Coding Exercise (Exact Details TBD):**
-- Students open a pre-set coding environment with a basic script that:  
-  - Loads a tiny dataset of text (could be a simple story or a small corpus of sentences).
-  - Attempts to guess the next word. Initially, it's random and bad.
-  - Students modify a parameter or run a "training" function that simulates adjusting weights based on correct/incorrect guesses.
-  - Over multiple runs, they see improvement in how the code predicts words.
-
-**Markov/NN Hybrid Simplification (TBD):**
-- Show how starting from a simple “count what words follow which” approach leads to poor results.
-- Introduce a “layer” of code that tries to weigh different inputs differently, simulating a simple neural network concept.
-- If time allows and not 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Image Acitivyt for Supervised Learning
-
-* Start by showing images of cats and images that are not cats. Ask the class to answer for each image. is this a cat or tihs not a cat. Make them easy images to start.
-* Ask the class to write you a set of rules for identifying if an image is a cat. Every person in the classroom writes their rules. Encoruage them to be specific.
-* Then show more images, compare them to rules from some handpicked student examples. Have some images be that of other types of cats, a Lion, a black panther, the mascot of some popular cat school, a Lynx, a serval, an ocelot, a caracal, Garfield, any other popular culture cats.
-* Show something that would be a twister in thaat it meets almost all the criteria students would write, 4 legs, ears, whiskers, all that, but its not a cat.
-* Drive home that what they're doing on pen and paper is traditional programming. You write code, instructions, that hav eto tell the computer every single small detail of how to identify something or what to do. If you don't tell it, it doesn't know. It's dumb.
-* Now you transition into AI. What if we could let the computer learn on it's own how to identify cats? You mentio nnow what supervised leanring is and you teach on it. This is how AI can idnetify images then come back at you and generat eimages. The students have likely heard of AI generated images.
-
-Text acitivyt for self supervised learning
-
-* Next, popular phrases on screen but with a missing word, you start with easy ones and ask the class to guess. For example, rock and roll, let's get ready to rumble, any other Gen Z popular phrases like very mindful, very demure, anyhting that's a phrase so popular eveyrone seems to know it. You remove one word and ask them to fill in the blank.
-* Now you make it harder, you give them phrases where it really is impossible to guess the next word without context. You emphasize how hard it would be to write a compute rprogram that guesses the next word the moment you go beyond the probailtie table sort of logic from the easy examples of knowing what word comes after another most frequently. Somehow in this example you've got to drive home how hard this is in a traditiional programming way
-* Then you unveil self supervised learning as a concept. This is such an important acitivyt because you really emphasize ChatGPT uses this kind of training. That's what's going on. You drive home that this thing has no idea what you're saying, it's guessing, but it's been tarianed, honed so much, at insane scale, with an insane number of examples, doing the same thing millions, billions, trillions of times, guessing, checking, adjusting how it guesses, the weights .You explain that through this example. 
-
-## Second Activity - The "let's train a text based AI model on a small scale and let you see how it works and understand how oh my goodness this thing is relaly just guess and chekc so many times it become good at guessing and it's because it's taking in input from us as humans, maybe feed the model some popular text all students would know or heard of, something funny (Give htis a way better more concise activity name.)
-
-Coding Activity
-
-Now you say we're going to write some code that trains an AI model. Choose self supervised learning, the ChatGPT style of training, because that's the more prevalent for them as they likely use it. Now have some sort of code walk through, similar to how Code Academy works, in Visual Studio Code for Education where they have to write code, press the "Run" button, see it fail, then change the code and see it succeed before moving to the next part of iit. The end output should show them in a very very simple way how text based large language model training works and how ChatGPT is made possible by it. This is where i'm thinking of using Markov texts which are generated using Markov chains, which are stochastic processes that predict the next word in a sequence based on the frequency of word pairs in the input text. The generated text will have a similar structure to the input text.
-
-For them to see how that can be done. For them to start with something that doesn't work and then after writing code they see it does work now and it's predicting words. They need to be on the builder side of AI, not just the prompting giving input side, in this actiivty.
-
-## Activities to Understand This
-
-### Activity 1: Guessing the Pattern (Images)
-
-- Show students a series of images that might be unfamiliar—maybe pictures of a rare animal or object they've never seen before.
-- Ask them: "Is this a [mystery object]?" They have to guess without knowing the right answer.  
-- After a few attempts, reveal the right answers and let them try again. They'll adjust their mental "weights" (in their brain!) to guess better next time, just like an AI.
-
-### Activity 2: Define Rules for Recognition (Cats vs. Dogs)
-
-- Ask each student to write down a set of rules to identify a cat. For example, "A cat has 4 legs." Then show them tricky images: a close-up of just a cat's face (no legs visible) or a cartoon cat. See how their rules fail.  
-- Explain that it's really hard to write perfect rules for something like recognizing a cat. This is why AI models rely on massive amounts of examples and the guess-and-check method rather than a neat list of instructions.
-
-### Activity 3: Predicting the Next Word (Text)
-
-- Write a sentence on the board with a blank: "The dog chased the ___." Ask students to guess what the next word might be. Most say "ball" or "cat" because of common language patterns.  
-- Reveal the actual next word (from a chosen text). Discuss how they guessed based on what they've seen in similar sentences.  
-- This is exactly what a text-based AI model does—just at an unimaginable scale!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Scaling Up to Real AI Models
 

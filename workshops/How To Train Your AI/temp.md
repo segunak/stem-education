@@ -1,13 +1,88 @@
+**Ideal Settings for Facilitators**
 
+This section provides guidance for facilitators on ideal parameter settings across the three coding exercises. These settings are designed to help students observe meaningful output while experimenting with `window_size`, `output_length`, and `temperature`. The goal is for students to discover these settings through trial and error. However, facilitators can use these as a fallback to guide struggling students or to demonstrate expected behavior.
 
+---
 
+### **File: `02_markov_window.py`**
 
+**Purpose:** Introduces the concept of context (`window_size`) in predicting the next word.
 
+- **Default Settings (first run):**
+  - `window_size = 1`
+  - `output_length = 10`
+  - **What Students Will Observe:** Random and disconnected text, showing the limitations of minimal context.
 
+- **Progression (show improvement):**
+  - `window_size = 2`
+  - `output_length = 15`
+  - **What Students Will Observe:** Smoother transitions between words with more coherent sequences.
 
+- **Ideal for Exploration:**
+  - **`window_size = 3`**, **`output_length = 20`**
+  - **What Students Will Observe:** Recognizable patterns and meaningful phrases, illustrating how context improves predictions.
 
+- **Exploration Limits:**
+  - **`window_size = 4`**, **`output_length = 25`**
+  - **What Students Will Observe:** More coherent but longer outputs, possibly showing limitations of the dataset.
 
+---
 
+### **File: `03_tweak_probability.py`**
+
+**Purpose:** Introduces word frequency and `temperature` to adjust randomness in predictions.
+
+* **Default Settings (first run):**
+  * `window_size = 2`
+  * `temperature = 0.5`
+  * `output_length = 12`
+  * **What Students Will Observe:** Balanced output with a mix of common and less frequent words.
+
+* **Low Randomness (more predictable):**
+  * `temperature = 0.2`
+  * **What Students Will Observe:** Frequent and predictable word choices, producing output that often sticks to common patterns.
+
+* **High Randomness (more creative):**
+  * `temperature = 0.8`
+  * **What Students Will Observe:** Unusual and creative combinations but with potential loss of coherence.
+
+* **Exploration Limits:**
+  * **`window_size = 3`**, **`temperature = 0.3 to 0.7`**, **`output_length = 15`**
+  * **What Students Will Observe:** Balance between coherence and creativity with noticeable effects of `temperature`.
+
+***
+
+### **File: `04_interactive.py`**
+
+**Purpose:** Students provide a starting word to see how the model generates text interactively.
+
+* **Default Settings (first run):**
+  * `window_size = 2`
+  * `temperature = 0.3`
+  * **What Students Will Observe:** Output resembling training data and maintaining coherence.
+
+* **Exploration Settings:**
+  * **Starting Word Suggestions:**
+    * Common words from `data.txt` such as "The", "May", or "With".
+    * Fun or unique inputs like "Groot", "Mordor", or "Infinity."
+  * **Adjusted Parameters:**
+    * `window_size = 3`
+    * `temperature = 0.5`
+    * **What Students Will Observe:** Output adapts to the starting word while balancing coherence and randomness.
+
+* **Stretch Settings:**
+  * `window_size = 4`, `temperature = 0.1`
+  * **What Students Will Observe:** Stronger predictability and coherence, but limited by dataset constraints.
+
+---
+
+### **General Recommendations**
+- **Encourage Experimentation:** Let students explore different settings independently and reflect on how they impact output quality.
+- **Facilitator Demonstration:** If students struggle, demonstrate the "Ideal for Exploration" settings to highlight the potential for better results.
+- **Explain Trade-Offs:** Use the exploration limits to discuss trade-offs between coherence, randomness, and dataset size.
+- **Reinforce Dataset Constraints:** Highlight that the small dataset limits the model, providing a real-world analogy to AI systems requiring large-scale data.
+
+By using these settings, facilitators can create an engaging and insightful experience for students while guiding them toward meaningful understanding of AI concepts.
 
 
 
