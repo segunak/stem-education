@@ -84,7 +84,7 @@ Adjusting weights is like refining your guesses over time. Imagine if you guesse
 
 Visit the link below to view a simplified Python-based pseudo-code to connect the concept of Machine Learning with code. This example uses a basic "guess-and-check" loop for predicting whether an image is a cat.
 
-[Pseudo Code | Machine Learning]()
+[Pseudo Code | Machine Learning](https://github.com/segunak/stem-education/blob/779ded52c6d910cb08139cbf4c6a6ea75b3d81cf/workshops/How%20To%20Train%20Your%20AI/pseudo-code/pseudo_code_machine_learning.py)
 
 **Key Concept:** We used "brightness" as a stand-in for any feature the AI might consider. In reality, a model might look at many different features, not just brightness. Over time, by adjusting the weight, the model learns whether brightness is a good clue to determine if something is a cat. This is, of course, a simple example—real Machine Learning uses more complex algorithms and data structures.
 
@@ -144,7 +144,7 @@ What about recognizing text or generating words, like **ChatGPT**?
 
 Visit the link below to view a Python-based pseudo code example showing how a Neural Network processes data through layers. We'll keep this as simple as possible!
 
-[Pseudo Code | Neural Networks]()
+[Pseudo Code | Neural Networks](https://github.com/segunak/stem-education/blob/779ded52c6d910cb08139cbf4c6a6ea75b3d81cf/workshops/How%20To%20Train%20Your%20AI/pseudo-code/pseudo_code_neural_networks.py)
 
 That's it! It's the same guess-check-adjust process as before, but now we have layers:
 
@@ -172,7 +172,7 @@ Deep Learning takes the idea of Neural Networks a step further by adding many mo
 
 We've seen how Machine Learning and Neural Networks work in simplified code. For Deep Learning, the idea is exactly the same—guess, check, adjust—but with more layers. Let's show a very high-level, extremely simplified pseudo code example. Visit the link below to check it out.
 
-[Pseudo Code | Machine Learning]()
+[Pseudo Code | Deep Learning](https://github.com/segunak/stem-education/blob/779ded52c6d910cb08139cbf4c6a6ea75b3d81cf/workshops/How%20To%20Train%20Your%20AI/pseudo-code/pseudo_code_deep_learning.py)
 
 **What's Important Here:**
 
