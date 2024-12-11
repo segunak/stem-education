@@ -111,6 +111,35 @@ def pick_next_word(key):
 def is_sentence_end(word):
     return word.endswith(('.', '!', '?'))
 
+# Function to normalize capitalization and punctuation
+def normalize_text(generated):
+    text = " ".join(generated)
+    
+    # Split into sentences based on common sentence-ending punctuation
+    sentences = []
+    current_sentence = []
+    for word in text.split():
+        current_sentence.append(word)
+        if is_sentence_end(word):  # Check if the word ends a sentence
+            sentences.append(" ".join(current_sentence))
+            current_sentence = []
+
+    # Add any remaining words as a final sentence
+    if current_sentence:
+        sentences.append(" ".join(current_sentence))
+
+    # Capitalize the first word of each sentence and ensure punctuation spacing
+    normalized_sentences = []
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if sentence:
+            # Capitalize the first character of the sentence
+            sentence = sentence[0].upper() + sentence[1:]
+            normalized_sentences.append(sentence)
+
+    # Join sentences with proper spacing
+    return " ".join(normalized_sentences)
+
 # Generate text
 print("\nGenerating text...\n")
 start_key = random.choice(list(markov_dict.keys()))
@@ -135,9 +164,12 @@ for _ in range(fixed_output_length - window_size):
     if is_sentence_end(next_word) and len(generated) >= fixed_output_length // 2:
         break
 
+# Normalize text for capitalization and punctuation
+normalized_output = normalize_text(generated)
+
 print(f"Generated text (window_size={window_size}, temperature={temperature}, length={fixed_output_length}):\n")
 print("*" * 50)
-print(" ".join(generated))
+print(normalized_output)
 print("*" * 50 + "\n")
 
 print("Experiment with window_size and temperature for more coherent or creative text.")
