@@ -5,6 +5,7 @@
 # - Choose window_size (how many previous words guide the next choice).
 # - Choose temperature (how "predictable" vs. "creative" the word selection is).
 # - Provide a starting word (case-insensitive).
+# - Simulates training through iterative refinement.
 #
 # There's no single "right" answer—experiment!
 # Try different parameters and starting words to see how they affect the output.
@@ -36,8 +37,9 @@ words_lower_set = set(words_lower)
 
 # Default parameters
 default_window_size = 6
-default_temperature = 0.4
+default_temperature = 1.5
 default_output_length = 30
+default_training_iterations = 500
 
 # Allowed ranges
 MIN_WINDOW_SIZE = 1
@@ -153,15 +155,22 @@ else:
     start_key = random.choice(list(markov_dict.keys()))
     generated = list(start_key)
 
-print("\nGenerating text...\n")
+print("\nGenerating text with training...\n")
+
+def refine_weights():
+    """Refine weights in the Markov dictionary based on training iterations."""
+    for _ in range(default_training_iterations):
+        for key in markov_dict:
+            next_words = markov_dict[key]
+            total = sum(next_words.values())
+            for word in next_words:
+                next_words[word] = (next_words[word] + 0.1) / (total + 0.1 * len(next_words))
+
+refine_weights()
 
 for i in range(output_length - window_size):
     curr_key = tuple(generated[-window_size:])
-
-    # Dynamically adjust temperature based on position
-    dynamic_temperature = temperature + (i / output_length) * 0.3  # Increase slightly over time
     next_word = pick_next_word(curr_key)
-
     generated.append(next_word)
 
 formatted_output = capitalize_and_punctuate(generated)

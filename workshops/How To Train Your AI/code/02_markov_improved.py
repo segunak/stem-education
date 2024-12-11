@@ -3,6 +3,7 @@
 # In this script, we improve on the random output from 01_basic_predictor.py by:
 # 1. Considering previous words before choosing the next (a Markov chain idea).
 # 2. Adjusting how "predictable" or "creative" the choices are (temperature).
+# 3. Introducing iterative training to refine the output quality.
 #
 # Markov Chain Concept (Simple Version):
 # Instead of picking the next word randomly, we look at the last 'window_size' words.
@@ -19,7 +20,7 @@
 # 1. Run once with defaults by pressing Enter. Compare to 01_basic_predictor.py output.
 #    You should see some improvement, but maybe not great.
 # 2. Then rerun and try different settings:
-#    For example, window_size=4 and temperature=0.4 might produce more coherent text.
+#    For example, window_size=6 and temperature=1.1 might produce more coherent text.
 # 3. Experiment with different values and see what happens.
 
 import os
@@ -39,6 +40,7 @@ for line in lines:
 default_window_size = 1
 default_temperature = 1.0
 fixed_output_length = 30
+default_training_iterations = 500
 
 MIN_WINDOW_SIZE = 1
 MAX_WINDOW_SIZE = 10
@@ -74,8 +76,8 @@ temperature = get_user_input(f"\nEnter temperature (default={default_temperature
 # Build Markov dictionary with smoothing
 markov_dict = {}
 for i in range(len(words) - window_size):
-    key = tuple(words[i:i+window_size])
-    next_word = words[i+window_size]
+    key = tuple(words[i:i + window_size])
+    next_word = words[i + window_size]
     if key not in markov_dict:
         markov_dict[key] = {}
     if next_word not in markov_dict[key]:
@@ -83,10 +85,23 @@ for i in range(len(words) - window_size):
     markov_dict[key][next_word] += 1
 
 # Add smoothing to all keys
-for key, next_words in markov_dict.items():
-    total = sum(next_words.values())
-    for word in next_words:
-        next_words[word] = (next_words[word] + 1) / (total + len(next_words))
+def smooth_markov_dict():
+    for key, next_words in markov_dict.items():
+        total = sum(next_words.values())
+        for word in next_words:
+            next_words[word] = (next_words[word] + 1) / (total + len(next_words))
+
+# Training loop to refine weights
+def refine_weights():
+    for _ in range(default_training_iterations):
+        for key in markov_dict:
+            next_words = markov_dict[key]
+            total = sum(next_words.values())
+            for word in next_words:
+                next_words[word] = (next_words[word] + 0.1) / (total + 0.1 * len(next_words))
+
+smooth_markov_dict()
+refine_weights()
 
 def pick_next_word(key):
     if key not in markov_dict:
@@ -141,7 +156,7 @@ def normalize_text(generated):
     return " ".join(normalized_sentences)
 
 # Generate text
-print("\nGenerating text...\n")
+print("\nGenerating text with training...\n")
 start_key = random.choice(list(markov_dict.keys()))
 generated = list(start_key)
 used_words = set(generated)  # Track used words to reduce parroting
@@ -152,9 +167,6 @@ if generated:
 
 for i in range(fixed_output_length - window_size):
     curr_key = tuple(generated[-window_size:])
-
-    # Dynamically adjust temperature based on position
-    dynamic_temperature = temperature + (i / fixed_output_length) * 0.3  # Increase slightly over time
     next_word = pick_next_word(curr_key)
 
     # Avoid consecutive repetition
