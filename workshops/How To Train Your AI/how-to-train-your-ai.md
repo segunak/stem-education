@@ -4,7 +4,7 @@
 
 * **Duration:** ~1 hour (approx. 30 min presentation, interactive activity, & discussion, 30 min coding activity)
 
-* **Required Materials:** Pen, paper, and laptops with Internet access, preferably 1 per 4-5 students.
+* **Required Materials:** Pen, paper, Microsoft accounts, and laptops with Internet access, preferably 1 per 4-5 students.
 
 * **Audience:** Students ranging from high school to college, with skill levels spanning from little to no technical background to those with significant experience.
 
@@ -283,7 +283,7 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 * Laptops with Internet access for students to visit the workshop link: [**Guess, Check, Adjust: Training AI One Step at a Time**](https://vscodeedu.com/Q4eHFHOieGscZpldANxN). Visual Studio Code for Education provides a browser based coding environment that the students will work in.
 * Each student will need a Microsoft account to log in.  
-* Remind students to click the play button in the upper right hand corner of the Visual Studio Code for Education environment in their browser to run each code file. The files prompt students for input, providing instructions on options they can use to tweak the training parameters. 
+* Remind students to click the play button in the upper right hand corner of the Visual Studio Code for Education environment in their browser to run each code file. The files prompt students for input, providing instructions on options they can use to tweak the training parameters.
 * Ideally, one laptop per 3–4 students for collaborative group work, but more individual devices are even better.
 
 **Estimated Time:** 30–40 minutes, depending on students' technical background and prior coding experience. Adjust timing for additional guidance or discussion as needed.
@@ -304,7 +304,7 @@ Each of these files is accessible from the VS Code for Education project found a
   * **Temperature:**  
     Temperature controls how "adventurous" the model is when choosing the next word. A lower temperature (e.g., 0.2) makes the model stick more closely to the most common or "safe" choices, resulting in more predictable and coherent text. A higher temperature (e.g., 1.0) allows the model to pick less common words more often, adding variety and creativity but sometimes producing less coherent sentences.
 
-  Students start with less ideal defaults (like `window_size=1` and `temperature=1.0`) and must experiment (e.g., `window_size=2` and `temperature=0.5`) to achieve more coherent and satisfying results.
+  Students start with less ideal defaults (like `window_size=1` and `temperature=1.0`) and must experiment to achieve more coherent and satisfying results.
 
 * **File 3: `03_interactive.py`**  
   In the final file, students take full control. They adjust `window_size`, `temperature`, and `output_length` interactively and choose a starting word. They can try the suggested starting words (e.g., "Alice", "May", "On", "I", "The") or pick their own. By experimenting, they see how their choices influence coherence, style, and variety, directly building on all previous lessons. They should realize it's still limited because it only knows the small dataset they trained it on, unlike ChatGPT's massive training.
@@ -334,36 +334,36 @@ As students progress through the files in this workshop, they will experiment wi
 * **First Run (Defaults):**  
   * `window_size = 1`  
   * `temperature = 1.0`  
-  * `output_length = 20` (fixed)  
+  * `fixed_output_length = 30`
   **Observation:** Slight improvement over pure random but not very coherent.
 
 * **Suggested Improvement:**  
-  * `window_size = 2`  
+  * `window_size = 3`  
   * `temperature = 0.5`  
-  **What Students Will Observe:** More coherent phrases and a noticeable improvement in sentence flow.
+  **What Students Will Observe:** More coherent phrases but not quite perfect.
 
 * **Further Exploration:**  
-  * Try `window_size = 7` or even up to 10 (within allowed range).  
-  * Experiment with `temperature` around `1.0` to `1.5`.  
+  * Try optimal values of `window_size = 6` or even higher values within the acceptable range.  
+  * Experiment with `temperature` around `.4` to `.6`.  
   **Observation:** More context from a higher window size often leads to more coherent sequences. Lower temperature makes the output more predictable and structured, while higher temperature adds variety and sometimes nonsensical choices.
 
-Encourage students to try several combinations. The point is for them to discover that some settings yield better, more coherent text than others..
+Encourage students to try several combinations. The point is for them to discover that some settings yield better, more coherent text than others.
 
 #### File: `03_interactive.py`
 
 **Purpose:** Students choose `output_length`, `window_size`, `temperature`, and a starting word interactively.
 
 * **First Run (Defaults):**  
-  * `output_length = 20`  
-  * `window_size = 2`  
-  * `temperature = 0.3`  
-  * Suggested starting words: "Alice", "May", "On", "I", "The"
+  * `output_length = 30`  
+  * `window_size = 6`  
+  * `temperature = 0.4`  
+  * Suggested starting words: "On", "I", "The"
   
   **What Students Will Observe:** Text that starts to resemble patterns in the training data with moderate coherence.
 
 * **Suggested Tweaks for More Coherence:**  
-  * Keep `window_size = 2 or 3`  
-  * Lower temperature to around `0.2 - 0.5` for more predictable, coherent text.  
+  * Keep `window_size = 5 - 6`  
+  * Lower temperature to around `0.4 - 0.6` for more predictable, coherent text.  
   * Increase `window_size` if they want to see the effect of more context.  
   **Observation:** With careful tuning, students can produce more fluid, story-like output.
 
@@ -375,7 +375,7 @@ Encourage students to try several combinations. The point is for them to discove
 
 * **Encourage Experimentation:** Remind students that there are no right or wrong answers. The point is to try different values and observe changes in coherence and style.
   
-* **Facilitator Guidance:** If students struggle to find good results, suggest `window_size=2` and `temperature=0.5` in `02_markov_improved.py`, and in `03_interactive.py`, try `output_length=20`, `window_size=2`, `temperature=0.3`, and start with a suggested word like "Alice", "May", or "The".
+* **Facilitator Guidance:** If students struggle to find good results, suggest `window_size=6` and `temperature=0.4` in `02_markov_improved.py`, and in `03_interactive.py`, try `output_length=30`, `window_size=6`, `temperature=0.4`, and let a default starting word be chosen.
 
 * **Explain Trade-Offs:**  
   * Larger `window_size` often means more coherent text but you need enough output length to see it.  
@@ -407,13 +407,13 @@ Encourage students to try several combinations. The point is for them to discove
 
    * **Markov Chain (window_size):**  
      *"A Markov chain picks the next word based on the previous words. `window_size` controls how many previous words we consider. Start with `window_size=1` (the default) and run it. Compare to the random output—notice any improvement?"*  
-     *"Now try `window_size=2` by entering '2' when prompted. With more context, the model often picks a more suitable next word. Does it sound more coherent?"*
+     *"Now try `window_size=3` by entering '3' when prompted. With more context, the model often picks a more suitable next word. Does it sound more coherent? Keep experimenting!"*
 
    * **Temperature:**  
      *"Next, change `temperature`. Lower temperature (e.g., 0.5) makes the model more predictable—like it's choosing the most common word that fits. Higher temperature (e.g., 1.0 or more) introduces variety but can lead to stranger sentences."*  
 
    **Facilitator Encourages Experimentation:**  
-   *"After seeing the default output, try `window_size=2` and `temperature=0.5`. Check if the text feels more natural. Adjust these values further to see how output changes. Explore `window_size=3` or try temperatures like 0.2 or 0.8 to see the differences."*
+   *"After seeing the default output, try `window_size=2` and `temperature=0.5`. Check if the text feels more natural. Adjust these values further to see how output changes. Explore `window_size=6` or try temperatures like 0.4 to 0.6 to see the differences."*
 
 5. **Check Understanding (2 minutes):**  
    **Facilitator Asks:**  
@@ -424,7 +424,7 @@ Encourage students to try several combinations. The point is for them to discove
    *"Open `03_interactive.py`. Now you're fully in control. You choose how many words to generate, the window_size, the temperature, and even the starting word. The model will continue from what you start with."*  
 
    **Facilitator Suggestions:**  
-   *"Try using the settings you found effective in `02_markov_improved.py`. For example, `window_size=2`, `temperature=0.3 or 0.5`, and `output_length=20`. Start with a suggested word like 'Alice' or 'May' and see how it goes."*  
+   *"Try using the settings you found effective in `02_markov_improved.py`. For example, `window_size=3`, `temperature=0.4-0.6`, and `output_length=30`. Start with a suggested word like 'Alice' or 'May' and see how it goes."*  
    *"If you pick a different starting word, the style might change. A higher temperature might make it more creative, while a lower temperature might keep it consistent."*
 
 7. **Encourage Further Exploration (2–3 minutes):**  

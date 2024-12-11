@@ -35,8 +35,8 @@ words_lower = [w.lower() for w in words]
 words_lower_set = set(words_lower)
 
 # Default parameters
-default_window_size = 3
-default_temperature = 0.5
+default_window_size = 6
+default_temperature = 0.4
 default_output_length = 30
 
 # Allowed ranges
@@ -51,7 +51,7 @@ print("\n--- 03_interactive.py ---")
 print("Welcome to interactive mode! Here you choose the parameters and a starting word.")
 print("Experiment with different settings and see how the output changes.\n")
 
-# Get output_length
+# Get user input with validation
 def get_user_input(prompt, default, min_val, max_val, cast_type):
     user_input = input(prompt).strip()
     if user_input:
@@ -119,7 +119,7 @@ def pick_next_word(key):
     return probs[-1][0]
 
 def is_sentence_end(word):
-    return word.endswith(('.', '!', '?'))
+    return word.endswith(('.', '!', '?', '."', '."')) or word.endswith(("'.", ")?"))
 
 def capitalize_and_punctuate(output):
     sentences = []
@@ -155,9 +155,14 @@ else:
 
 print("\nGenerating text...\n")
 
-for _ in range(output_length - window_size):
+for i in range(output_length - window_size):
     curr_key = tuple(generated[-window_size:])
-    generated.append(pick_next_word(curr_key))
+
+    # Dynamically adjust temperature based on position
+    dynamic_temperature = temperature + (i / output_length) * 0.3  # Increase slightly over time
+    next_word = pick_next_word(curr_key)
+
+    generated.append(next_word)
 
 formatted_output = capitalize_and_punctuate(generated)
 

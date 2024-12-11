@@ -19,7 +19,7 @@
 # 1. Run once with defaults by pressing Enter. Compare to 01_basic_predictor.py output.
 #    You should see some improvement, but maybe not great.
 # 2. Then rerun and try different settings:
-#    For example, window_size=2 and temperature=0.5 might produce more coherent text.
+#    For example, window_size=4 and temperature=0.4 might produce more coherent text.
 # 3. Experiment with different values and see what happens.
 
 import os
@@ -68,7 +68,7 @@ def get_user_input(prompt, default, min_val, max_val, cast_type):
 window_size = get_user_input(f"Enter window_size (default={default_window_size}, allowed {MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
                              default_window_size, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int)
 
-temperature = get_user_input(f"Enter temperature (default={default_temperature}, range {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
+temperature = get_user_input(f"\nEnter temperature (default={default_temperature}, range {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
                               default_temperature, MIN_TEMPERATURE, MAX_TEMPERATURE, float)
 
 # Build Markov dictionary with smoothing
@@ -109,12 +109,12 @@ def pick_next_word(key):
     return probs[-1][0]
 
 def is_sentence_end(word):
-    return word.endswith(('.', '!', '?'))
+    return word.endswith(('.', '!', '?', '."', '."')) or word.endswith(("'.", ")?"))
 
 # Function to normalize capitalization and punctuation
 def normalize_text(generated):
     text = " ".join(generated)
-    
+
     # Split into sentences based on common sentence-ending punctuation
     sentences = []
     current_sentence = []
@@ -128,13 +128,13 @@ def normalize_text(generated):
     if current_sentence:
         sentences.append(" ".join(current_sentence))
 
-    # Capitalize the first word of each sentence and ensure punctuation spacing
+    # Capitalize first character of each sentence
     normalized_sentences = []
     for sentence in sentences:
         sentence = sentence.strip()
         if sentence:
-            # Capitalize the first character of the sentence
-            sentence = sentence[0].upper() + sentence[1:]
+            sentence = sentence[0].upper() + sentence[1:]  # Capitalize
+            sentence = sentence.replace(" i ", " I ")  # Correct standalone "i"
             normalized_sentences.append(sentence)
 
     # Join sentences with proper spacing
@@ -150,8 +150,11 @@ used_words = set(generated)  # Track used words to reduce parroting
 if generated:
     generated[0] = generated[0].capitalize()
 
-for _ in range(fixed_output_length - window_size):
+for i in range(fixed_output_length - window_size):
     curr_key = tuple(generated[-window_size:])
+
+    # Dynamically adjust temperature based on position
+    dynamic_temperature = temperature + (i / fixed_output_length) * 0.3  # Increase slightly over time
     next_word = pick_next_word(curr_key)
 
     # Avoid consecutive repetition
