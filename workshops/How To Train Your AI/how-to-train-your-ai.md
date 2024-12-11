@@ -29,8 +29,8 @@ By processing these numerical inputs, the AI relies on math and probability to i
 **In Short:**
 
 * **Machine Learning** is the overall field of teaching computers to learn from examples.
-* **Neural Networks** are a specific technique within Machine Learning that processes data through layers of neurons.
-* **Deep Learning** is a subset of Neural Networks with many layers, allowing AI to learn intricate patterns and make sophisticated predictions.
+* **Neural Networks:** A specialized Machine Learning approach that organizes many small computing units ("artificial neurons") into interconnected layers. Each layer refines the data based on what previous layers found, allowing the network to learn richer, more abstract patterns from the raw input.
+* **Deep Learning:** A subset of Neural Networks that uses many layers of these artificial neurons. With more layers, the model can capture extremely complex relationships, resulting in more accurate and sophisticated predictions.
 
 ### Different Types of AI Training
 
@@ -283,14 +283,10 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 * Laptops with Internet access for students to visit the workshop link: [**Guess, Check, Adjust: Training AI One Step at a Time**](https://vscodeedu.com/Q4eHFHOieGscZpldANxN). Visual Studio Code for Education provides a browser based coding environment that the students will work in.
 * Each student will need a Microsoft account to log in.  
-* Remind students to click the "Save a copy and edit" button in the lower-left corner of Visual Studio Code for Education before making changes to their files.  
+* Remind students to click the play button in the upper right hand corner of the Visual Studio Code for Education environment in their browser to run each code file. The files prompt students for input, providing instructions on options they can use to tweak the training parameters. 
 * Ideally, one laptop per 3–4 students for collaborative group work, but more individual devices are even better.
 
 **Estimated Time:** 30–40 minutes, depending on students' technical background and prior coding experience. Adjust timing for additional guidance or discussion as needed.
-
-**When sharing the Visual Studio Code for Education link with students, please remind them to log in with a Microsoft account. To edit each file and make their own changes, students must click the "Save a copy and edit" button located in the lower left corner.**
-
-![VSCodeEditingNote](./vscode-editing-note.png)
 
 ### Overall Flow of Coding Activities
 
@@ -327,7 +323,7 @@ As students progress through the files in this workshop, they will experiment wi
 
 #### File: `01_basic_predictor.py`
 
-**Purpose:** Establishes a baseline of random output. No parameters to tweak here—just run it and see nonsense.
+**Purpose:** Establishes a baseline of random output. No parameters to tweak here—just run it and see nonsense. Encourage students to look at `data.txt` after running this file to observe the training data the code is using.
 
 **What Students Will Observe:** Complete randomness, demonstrating the need for learning and context. This file has no settings. It's meant to be run as a baseline to show how useless computers are until we, humans, introduce some logic teaching them how to make guesses, check them, adjust, and then eventually improve, so much so that we end up with something like ChatGPT i our world today.
 
@@ -347,8 +343,8 @@ As students progress through the files in this workshop, they will experiment wi
   **What Students Will Observe:** More coherent phrases and a noticeable improvement in sentence flow.
 
 * **Further Exploration:**  
-  * Try `window_size = 3` or even up to 4 (within allowed range).  
-  * Experiment with `temperature` around `0.3` to `0.7`.  
+  * Try `window_size = 7` or even up to 10 (within allowed range).  
+  * Experiment with `temperature` around `1.0` to `1.5`.  
   **Observation:** More context from a higher window size often leads to more coherent sequences. Lower temperature makes the output more predictable and structured, while higher temperature adds variety and sometimes nonsensical choices.
 
 Encourage students to try several combinations. The point is for them to discover that some settings yield better, more coherent text than others..
@@ -396,7 +392,7 @@ Encourage students to try several combinations. The point is for them to discove
 
 2. **Run `01_basic_predictor.py` (3 minutes):**  
    **Facilitator Says:**  
-   *"Open `01_basic_predictor.py`. This code picks words at random with no context, just to show you the baseline. Click 'Run' and observe the output."*  
+   *"Open `01_basic_predictor.py`. This code picks words at random with no context, just to show you the baseline. Click 'Run' and observe the output. Now open `data.txt` to view the training data for the code. Are there any phrases you recognize? Can you map the random output to what's seen in the training data? The system creates nothing new, it only draws from what has been provided to it!"*  
    **What Students See:** Nonsensical text—pure randomness.  
    **Facilitator Explains:**  
    *"This is our starting point: no learning, no pattern, no understanding. Just random words from the dataset."*

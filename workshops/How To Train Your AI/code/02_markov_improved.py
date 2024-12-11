@@ -21,8 +21,6 @@
 # 2. Then rerun and try different settings:
 #    For example, window_size=2 and temperature=0.5 might produce more coherent text.
 # 3. Experiment with different values and see what happens.
-#
-# After experimenting here, move on to 03_interactive.py.
 
 import os
 import random
@@ -40,7 +38,7 @@ for line in lines:
 # Not-so-ideal defaults, encouraging experimentation:
 default_window_size = 1
 default_temperature = 1.0
-fixed_output_length = 20
+fixed_output_length = 30
 
 MIN_WINDOW_SIZE = 1
 MAX_WINDOW_SIZE = 10
@@ -50,42 +48,30 @@ MAX_TEMPERATURE = 2.0
 print("\n--- 02_markov_improved.py ---")
 print("Now we consider previous words (Markov method) and adjust word selection (temperature).")
 print("This should be better than pure random, but might not be perfect.\n")
-
 print(f"Defaults: window_size={default_window_size}, temperature={default_temperature}, output_length={fixed_output_length}")
 print("Press Enter for defaults, or try different values.\n")
-print("Hint: After seeing the defaults, try window_size=2 and temperature=0.5 for more coherence.\n")
 
-# Get window_size
-print(f"Enter window_size (default={default_window_size}, allowed {MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}):")
-ws_input = input("Press Enter or type a number: ").strip()
-if ws_input:
-    try:
-        window_size = int(ws_input)
-        if not (MIN_WINDOW_SIZE <= window_size <= MAX_WINDOW_SIZE):
-            print(f"\nInvalid. Using default ({default_window_size}).")
-            window_size = default_window_size
-    except ValueError:
-        print(f"\nInvalid. Using default ({default_window_size}).")
-        window_size = default_window_size
-else:
-    window_size = default_window_size
+# Get user input with validation
+def get_user_input(prompt, default, min_val, max_val, cast_type):
+    user_input = input(prompt).strip()
+    if user_input:
+        try:
+            value = cast_type(user_input)
+            if min_val <= value <= max_val:
+                return value
+            else:
+                print(f"Out of range. Using default ({default}).")
+        except ValueError:
+            print(f"Invalid input. Using default ({default}).")
+    return default
 
-# Get temperature
-print(f"\nEnter temperature (default={default_temperature}, {MIN_TEMPERATURE}-{MAX_TEMPERATURE}):")
-t_input = input("Press Enter or type a number: ").strip()
-if t_input:
-    try:
-        temperature = float(t_input)
-        if not (MIN_TEMPERATURE <= temperature <= MAX_TEMPERATURE):
-            print(f"\nInvalid. Using default ({default_temperature}).")
-            temperature = default_temperature
-    except ValueError:
-        print(f"\nInvalid. Using default ({default_temperature}).")
-        temperature = default_temperature
-else:
-    temperature = default_temperature
+window_size = get_user_input(f"Enter window_size (default={default_window_size}, allowed {MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
+                             default_window_size, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int)
 
-# Build a dictionary of which words tend to follow which sequences
+temperature = get_user_input(f"Enter temperature (default={default_temperature}, range {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
+                              default_temperature, MIN_TEMPERATURE, MAX_TEMPERATURE, float)
+
+# Build Markov dictionary with smoothing
 markov_dict = {}
 for i in range(len(words) - window_size):
     key = tuple(words[i:i+window_size])
@@ -96,18 +82,24 @@ for i in range(len(words) - window_size):
         markov_dict[key][next_word] = 0
     markov_dict[key][next_word] += 1
 
+# Add smoothing to all keys
+for key, next_words in markov_dict.items():
+    total = sum(next_words.values())
+    for word in next_words:
+        next_words[word] = (next_words[word] + 1) / (total + len(next_words))
+
 def pick_next_word(key):
-    # If this sequence hasn't been seen, pick a random word
     if key not in markov_dict:
-        return random.choice(words)
+        key = random.choice(list(markov_dict.keys()))
     word_freqs = markov_dict[key]
     total = sum(word_freqs.values())
+
     # Adjust frequencies by temperature
-    freqs = [(w, (count/total)**(1/temperature)) for w, count in word_freqs.items()]
+    freqs = [(w, (count / total) ** (1 / temperature)) for w, count in word_freqs.items()]
     re_total = sum(freq for _, freq in freqs)
-    probs = []
-    for w, freq in freqs:
-        probs.append((w, freq/re_total))
+    probs = [(w, freq / re_total) for w, freq in freqs]
+
+    # Weighted random choice
     r = random.random()
     cum = 0
     for w, p in probs:
@@ -116,22 +108,38 @@ def pick_next_word(key):
             return w
     return probs[-1][0]
 
+def is_sentence_end(word):
+    return word.endswith(('.', '!', '?'))
+
+# Generate text
 print("\nGenerating text...\n")
 start_key = random.choice(list(markov_dict.keys()))
 generated = list(start_key)
+used_words = set(generated)  # Track used words to reduce parroting
+
+# Capitalize the first word of the output
+if generated:
+    generated[0] = generated[0].capitalize()
 
 for _ in range(fixed_output_length - window_size):
     curr_key = tuple(generated[-window_size:])
     next_word = pick_next_word(curr_key)
+
+    # Avoid consecutive repetition
+    if next_word in used_words and random.random() > 0.5:
+        next_word = random.choice(words)
     generated.append(next_word)
+    used_words.add(next_word)
+
+    # Break at sentence boundaries
+    if is_sentence_end(next_word) and len(generated) >= fixed_output_length // 2:
+        break
 
 print(f"Generated text (window_size={window_size}, temperature={temperature}, length={fixed_output_length}):\n")
 print("*" * 50)
 print(" ".join(generated))
 print("*" * 50 + "\n")
 
-print("Compare this to the random output from 01_basic_predictor.py.")
-print("It's using context now, so it might be slightly better.")
-print("Try different window_size and temperature values. For example, window_size=2, temperature=0.5")
-print("It might give more coherent results. Experiment!")
-
+print("Experiment with window_size and temperature for more coherent or creative text.")
+print("Observe how adjusting parameters changes the quality of the output!")
+print("Notice improvements in avoiding repetitive or parroted text.\n")
