@@ -166,7 +166,7 @@ for i in range(output_length - window_size):
 
 formatted_output = capitalize_and_punctuate(generated)
 
-print(f"Generated text (window_size={window_size}, temperature={temperature}, length={output_length}):")
+print(f"Generated text (window_size={window_size}, temperature={temperature}, length={output_length}):\n")
 print("*" * 50)
 print(formatted_output)
 print("*" * 50)
