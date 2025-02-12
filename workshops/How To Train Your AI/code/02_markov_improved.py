@@ -26,6 +26,7 @@
 import os
 import random
 
+# Get path to data in the same folder
 script_dir = os.path.dirname(__file__)
 data_file_path = os.path.join(script_dir, "data.txt")
 
@@ -34,13 +35,15 @@ with open(data_file_path, "r") as f:
 
 words = []
 for line in lines:
+    # Split each line into words and add to the list
     words.extend(line.strip().split())
 
-# Not-so-ideal defaults, encouraging experimentation:
+# Defaults intentionally set to produce "meh" results
 default_window_size = 1
-default_temperature = 1.0
+default_temperature = 1.8
 fixed_output_length = 30
-default_training_iterations = 500
+
+default_training_iterations = 20 
 
 MIN_WINDOW_SIZE = 1
 MAX_WINDOW_SIZE = 10
@@ -53,7 +56,7 @@ print("This should be better than pure random, but might not be perfect.\n")
 print(f"Defaults: window_size={default_window_size}, temperature={default_temperature}, output_length={fixed_output_length}")
 print("Press Enter for defaults, or try different values.\n")
 
-# Get user input with validation
+# Ask user for window_size & temperature
 def get_user_input(prompt, default, min_val, max_val, cast_type):
     user_input = input(prompt).strip()
     if user_input:
@@ -67,13 +70,17 @@ def get_user_input(prompt, default, min_val, max_val, cast_type):
             print(f"Invalid input. Using default ({default}).")
     return default
 
-window_size = get_user_input(f"Enter window_size (default={default_window_size}, allowed {MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
-                             default_window_size, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int)
+window_size = get_user_input(
+    f"Enter window_size (default={default_window_size}, allowed {MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
+    default_window_size, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
+)
 
-temperature = get_user_input(f"\nEnter temperature (default={default_temperature}, range {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
-                              default_temperature, MIN_TEMPERATURE, MAX_TEMPERATURE, float)
+temperature = get_user_input(
+    f"\nEnter temperature (default={default_temperature}, range {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
+    default_temperature, MIN_TEMPERATURE, MAX_TEMPERATURE, float
+)
 
-# Build Markov dictionary with smoothing
+# Build a Markov dictionary keyed by tuples of length=window_size, leading to next_word counts
 markov_dict = {}
 for i in range(len(words) - window_size):
     key = tuple(words[i:i + window_size])
@@ -84,107 +91,140 @@ for i in range(len(words) - window_size):
         markov_dict[key][next_word] = 0
     markov_dict[key][next_word] += 1
 
-# Add smoothing to all keys
 def smooth_markov_dict():
+    """
+    Basic smoothing so that no next_word has zero probability.
+    This helps avoid missing keys and extremely skewed distributions.
+    """
     for key, next_words in markov_dict.items():
         total = sum(next_words.values())
-        for word in next_words:
-            next_words[word] = (next_words[word] + 1) / (total + len(next_words))
+        for w in next_words:
+            # Add +1 to each count, then divide by total+len(next_words)
+            next_words[w] = (next_words[w] + 1) / (total + len(next_words))
 
-# Training loop to refine weights
-def refine_weights():
-    for _ in range(default_training_iterations):
+def refine_weights(iterations):
+    """
+    Extra 'training' pass to push probabilities around.
+    Each pass slightly increases each count, emphasizing differences.
+    More iterations -> sharper distinctions in frequent vs. rare words.
+    """
+    for _ in range(iterations):
         for key in markov_dict:
             next_words = markov_dict[key]
             total = sum(next_words.values())
-            for word in next_words:
-                next_words[word] = (next_words[word] + 0.1) / (total + 0.1 * len(next_words))
+            # We'll do a small push to each next_word
+            for w in next_words:
+                # This push helps highlight frequent words vs. infrequent
+                next_words[w] = (next_words[w] + 0.05) / (total + 0.05 * len(next_words))
 
+# Smooth and refine
 smooth_markov_dict()
-refine_weights()
+refine_weights(default_training_iterations)
 
 def pick_next_word(key):
+    """
+    Given the last 'window_size' words (key), pick the next word.
+    We'll:
+    1) Grab the dictionary of possible next words & their frequencies
+    2) Adjust frequencies further by temperature
+       - We use an exponent to amplify or dampen differences
+    3) Weighted random choice to pick next_word
+    """
     if key not in markov_dict:
+        # If unseen combo, pick a random key to keep going
         key = random.choice(list(markov_dict.keys()))
-    word_freqs = markov_dict[key]
-    total = sum(word_freqs.values())
+    next_words = markov_dict[key]
+    total = sum(next_words.values())
 
-    # Adjust frequencies by temperature
-    freqs = [(w, (count / total) ** (1 / temperature)) for w, count in word_freqs.items()]
-    re_total = sum(freq for _, freq in freqs)
-    probs = [(w, freq / re_total) for w, freq in freqs]
+    # Convert raw count to a temperature-adjusted probability
+    # (count / total)^(1.2 / temperature) gives bigger extremes
+    # for low vs. high temperature than the standard approach
+    weighted_probs = []
+    for w, count in next_words.items():
+        # normalized frequency
+        freq = count / total
+        # apply exponent for temperature effect
+        freq = freq ** (1.5 / temperature)  ### CHANGED: intensify exponent
+        weighted_probs.append((w, freq))
 
-    # Weighted random choice
-    r = random.random()
-    cum = 0
-    for w, p in probs:
-        cum += p
-        if r < cum:
+    # Now we do a standard weighted random pick from these adjusted frequencies
+    sum_of_weights = sum([wp[1] for wp in weighted_probs])
+    r = random.random() * sum_of_weights
+    cumulative = 0.0
+    for w, wp in weighted_probs:
+        cumulative += wp
+        if r <= cumulative:
             return w
-    return probs[-1][0]
+
+    # fallback if something goes off
+    return weighted_probs[-1][0]
 
 def is_sentence_end(word):
+    """
+    Simple check if a word appears to end a sentence
+    (punctuation).
+    """
     return word.endswith(('.', '!', '?', '."', '."')) or word.endswith(("'.", ")?"))
 
-# Function to normalize capitalization and punctuation
 def normalize_text(generated):
+    """
+    Joins words into a string, attempts basic sentence splitting,
+    then capitalizes the first letter of each sentence.
+    """
     text = " ".join(generated)
-
-    # Split into sentences based on common sentence-ending punctuation
+    all_words = text.split()
     sentences = []
     current_sentence = []
-    for word in text.split():
-        current_sentence.append(word)
-        if is_sentence_end(word):  # Check if the word ends a sentence
+
+    for w in all_words:
+        current_sentence.append(w)
+        if is_sentence_end(w):
             sentences.append(" ".join(current_sentence))
             current_sentence = []
-
-    # Add any remaining words as a final sentence
     if current_sentence:
         sentences.append(" ".join(current_sentence))
 
-    # Capitalize first character of each sentence
-    normalized_sentences = []
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if sentence:
-            sentence = sentence[0].upper() + sentence[1:]  # Capitalize
-            sentence = sentence.replace(" i ", " I ")  # Correct standalone "i"
-            normalized_sentences.append(sentence)
+    # Capitalize each sentence
+    final_sentences = []
+    for s in sentences:
+        s = s.strip()
+        if s:
+            # Capitalize first letter
+            s = s[0].upper() + s[1:]
+            final_sentences.append(s)
 
-    # Join sentences with proper spacing
-    return " ".join(normalized_sentences)
+    return " ".join(final_sentences)
 
-# Generate text
-print("\nGenerating text with training...\n")
+print("\nGenerating text with your chosen settings...\n")
+
+# Start from a random key
 start_key = random.choice(list(markov_dict.keys()))
 generated = list(start_key)
-used_words = set(generated)  # Track used words to reduce parroting
 
-# Capitalize the first word of the output
-if generated:
-    generated[0] = generated[0].capitalize()
+# We'll keep track of used words just to reduce immediate repetition
+used_words = set(generated)
 
+# We'll produce 'fixed_output_length' total words, though might exit early if we see a sentence end
 for i in range(fixed_output_length - window_size):
-    curr_key = tuple(generated[-window_size:])
-    next_word = pick_next_word(curr_key)
+    current_key = tuple(generated[-window_size:])
+    next_word = pick_next_word(current_key)
 
-    # Avoid consecutive repetition
-    if next_word in used_words and random.random() > 0.5:
+    # occasionally skip a repeated word
+    if next_word in used_words and random.random() > 0.7:
         next_word = random.choice(words)
     generated.append(next_word)
     used_words.add(next_word)
 
-    # Break at sentence boundaries
-    if is_sentence_end(next_word) and len(generated) >= fixed_output_length // 2:
+    # if we see a sentence end and we've generated over half the words, we might stop
+    if is_sentence_end(next_word) and len(generated) > fixed_output_length // 2:
         break
 
-# Normalize text for capitalization and punctuation
-normalized_output = normalize_text(generated)
+# Normalize final output
+final_text = normalize_text(generated)
 
 print(f"Generated text (window_size={window_size}, temperature={temperature}, length={fixed_output_length}):\n")
 print("*" * 50)
-print(normalized_output)
+print(final_text)
 print("*" * 50 + "\n")
 
 print("Experiment with window_size and temperature for more coherent or creative text.")
