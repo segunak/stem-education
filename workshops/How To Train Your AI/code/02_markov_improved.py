@@ -27,8 +27,6 @@ import os
 import sys
 import random
 
-LIVE_MODE = False
-
 # Path to data file in the same folder
 script_dir = os.path.dirname(__file__)
 data_file_path = os.path.join(script_dir, "data.txt")
@@ -40,6 +38,9 @@ with open(data_file_path, "r") as f:
 words = []
 for line in lines:
     words.extend(line.strip().split())
+
+
+LIVE_MODE = False
 
 # Defaults intentionally set to produce "meh" results
 DEFAULT_WINDOW_SIZE = 1

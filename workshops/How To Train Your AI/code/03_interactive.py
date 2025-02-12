@@ -17,6 +17,7 @@
 #
 # This demonstrates random → context-aware → interactive → plus improved training logic!
 
+import re
 import os
 import random
 
@@ -34,13 +35,14 @@ for line in lines:
 words_lower = [w.lower() for w in words]
 words_lower_set = set(words_lower)
 
-# Default parameters
-DEFAULT_WINDOW_SIZE = 6
-DEFAULT_TEMPERATURE = 1.5
-DEFAULT_OUTPUT_LENGTH = 30
-DEFAULT_TRAINING_ITERATIONS = 500
+LIVE_MODE = False
 
-# Allowed ranges
+# Defaults intentionally set to produce "meh" results
+DEFAULT_WINDOW_SIZE = 1
+DEFAULT_TEMPERATURE = 1.8
+DEFAULT_OUTPUT_LENGTH = 30
+DEFAULT_TRAINING_ITERATIONS = 100 
+
 MIN_WINDOW_SIZE = 1
 MAX_WINDOW_SIZE = 50
 MIN_OUTPUT_LENGTH = 5
@@ -48,12 +50,9 @@ MAX_OUTPUT_LENGTH = 50
 MIN_TEMPERATURE = 0.1
 MAX_TEMPERATURE = 2.0
 
-print("\n--- 03_interactive.py ---")
-print("Welcome to interactive mode! Here you choose the parameters and a starting word.")
-print("Experiment with different settings and see how the output changes.\n")
-
 def get_user_input(prompt, default, min_val, max_val, cast_type):
     user_in = input(prompt).strip()
+    # Allow something like ".7" by prepending "0"
     if user_in.startswith('.'):
         user_in = '0' + user_in
 
@@ -67,25 +66,6 @@ def get_user_input(prompt, default, min_val, max_val, cast_type):
         except ValueError:
             print(f"Invalid input. Using default ({default}).")
     return default
-
-# Step 1) Prompt for number of words to generate
-output_length = get_user_input(
-    f"How many words to generate? (default={DEFAULT_OUTPUT_LENGTH}, {MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}): ",
-    DEFAULT_OUTPUT_LENGTH, MIN_OUTPUT_LENGTH, MAX_OUTPUT_LENGTH, int
-)
-
-# Step 2) Prompt for window_size
-max_ws = min(MAX_WINDOW_SIZE, output_length - 1)
-window_size = get_user_input(
-    f"\nEnter window_size (default={DEFAULT_WINDOW_SIZE}, {MIN_WINDOW_SIZE}-{max_ws}): ",
-    DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, max_ws, int
-)
-
-# Step 3) Prompt for temperature
-temperature = get_user_input(
-    f"\nEnter temperature (default={DEFAULT_TEMPERATURE}, {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
-    DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
-)
 
 def build_markov_dict(window_size):
     """
@@ -154,67 +134,137 @@ def pick_next_word(key):
             return w
     return weighted_probs[-1][0]
 
-markov_dict = build_markov_dict(window_size)
-smooth_markov_dict(markov_dict)
-refine_weights(markov_dict, DEFAULT_TRAINING_ITERATIONS)
-
-print("\nEnter a starting word (case-insensitive).")
-print("Try one of these if you're stuck: 'I', 'The', 'On', 'How'.")
-print("If your chosen word does not exist in the training data, we'll choose a random starter.\n")
-start_word = input("Starting word: ").strip()
-start_word_lower = start_word.lower()
-
-if start_word_lower in words_lower_set:
-    # find the case-accurate version
-    for w in words:
-        if w.lower() == start_word_lower:
-            start_word = w
-            break
-    # build an initial set of words up to window_size
-    start_key = [start_word]
-    while len(start_key) < window_size:
-        start_key.append(random.choice(words))
-    generated = list(start_key)
-else:
-    print("\nThat starting word isn't in the training data. Using a random start.\n")
-    chosen_key = random.choice(list(markov_dict.keys()))
-    generated = list(chosen_key)
-
-used_words = set(generated)
-
-for i in range(output_length - window_size):
-    curr_key = tuple(generated[-window_size:])
-    next_word = pick_next_word(curr_key)
-    # occasionally skip repeated words
-    if next_word in used_words and random.random() > 0.7:
-        next_word = random.choice(words)
-    generated.append(next_word)
-    used_words.add(next_word)
 
 def capitalize_and_punctuate(output):
     """
-    Original function from your code, or you can rename it to 'normalize_text'.
-    We'll keep it consistent with your existing approach.
+    Improved sentence processing:
+      1) Splits tokens into sentence chunks.
+      2) Capitalizes the first character of each sentence.
+      3) Ensures the sentence ends with a single punctuation (if needed).
+      4) Removes accidental repeated punctuation like '..' or '!!'.
     """
     sentences = []
-    sentence = []
+    current_sentence = []
+
+    # Step 1: Group words into sentences
     for word in output:
-        sentence.append(word)
-        if (word.endswith(('.', '!', '?', '."', '."')) or
-            word.endswith(("'.", ")?"))):
-            sentences.append(" ".join(sentence))
-            sentence = []
-    if sentence:
-        sentences.append(" ".join(sentence))
-    return ". ".join(sentences).capitalize()
+        current_sentence.append(word)
+        # Check if word ends a sentence
+        if any(word.endswith(p) for p in ('.', '!', '?', '."', '."',"'.", ")?")):
+            sentences.append(" ".join(current_sentence))
+            current_sentence = []
+    if current_sentence:
+        sentences.append(" ".join(current_sentence))
 
-formatted_output = capitalize_and_punctuate(generated)
+    final_sentences = []
 
-print(f"Generated text (window_size={window_size}, temperature={temperature}, length={output_length}):\n")
-print("*" * 50)
-print(formatted_output)
-print("*" * 50)
+    # Step 2: Clean up each sentence
+    for s in sentences:
+        s = s.strip()
 
-print("\nTry different parameters or a different starting word and run again.")
-print("Notice how each choice affects the style and coherence of the output.")
-print("Explore and have fun!\n")
+        # (a) Remove extra spaces before punctuation
+        #     e.g. "Hello ." => "Hello."
+        s = re.sub(r'\s+([.?!])', r'\1', s)
+
+        # (b) Fix repeated punctuation, e.g. '..' => '.'
+        s = re.sub(r'([.?!])\1+', r'\1', s)
+
+        # (c) Capitalize first character if not empty
+        if s:
+            s = s[0].upper() + s[1:]
+
+        final_sentences.append(s)
+
+    # Step 3: Join the cleaned sentences with a space so they appear as distinct sentences but share one line
+    text = " ".join(final_sentences)
+
+    return text
+
+def run_interactive():
+    """
+    The main routine that prompts for user settings, builds the Markov chain,
+    refines weights, and generates text, all in one run.
+    """
+    # Step 1) Prompt for number of words to generate
+    output_length = get_user_input(
+        f"How many words to generate? (default={DEFAULT_OUTPUT_LENGTH}, {MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}): ",
+        DEFAULT_OUTPUT_LENGTH, MIN_OUTPUT_LENGTH, MAX_OUTPUT_LENGTH, int
+    )
+
+    # Step 2) Prompt for window_size
+    max_ws = min(MAX_WINDOW_SIZE, output_length - 1)
+    window_size = get_user_input(
+        f"\nEnter window_size (default={DEFAULT_WINDOW_SIZE}, {MIN_WINDOW_SIZE}-{max_ws}): ",
+        DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, max_ws, int
+    )
+
+    # Step 3) Prompt for temperature
+    temperature = get_user_input(
+        f"\nEnter temperature (default={DEFAULT_TEMPERATURE}, {MIN_TEMPERATURE}-{MAX_TEMPERATURE}): ",
+        DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
+    )
+
+    markov_dict = build_markov_dict(window_size)
+    smooth_markov_dict(markov_dict)
+    refine_weights(markov_dict, DEFAULT_TRAINING_ITERATIONS)
+
+    print("\nEnter a starting word (case-insensitive).")
+    print("Try one of these if you're stuck: 'I', 'The', 'On', 'How'.")
+    print("If your chosen word does not exist in the training data, we'll choose a random starter.\n")
+    start_word = input("Starting word: ").strip()
+    start_word_lower = start_word.lower()
+
+    if start_word_lower in words_lower_set:
+        # find the case-accurate version
+        for w in words:
+            if w.lower() == start_word_lower:
+                start_word = w
+                break
+        # build an initial set of words up to window_size
+        start_key = [start_word]
+        while len(start_key) < window_size:
+            start_key.append(random.choice(words))
+        generated = list(start_key)
+    else:
+        print("\nThat starting word isn't in the training data. Using a random start.\n")
+        chosen_key = random.choice(list(markov_dict.keys()))
+        generated = list(chosen_key)
+
+    used_words = set(generated)
+
+    for i in range(output_length - window_size):
+        curr_key = tuple(generated[-window_size:])
+        next_word = pick_next_word(curr_key)
+        # occasionally skip repeated words
+        if next_word in used_words and random.random() > 0.7:
+            next_word = random.choice(words)
+        generated.append(next_word)
+        used_words.add(next_word)
+
+    formatted_output = capitalize_and_punctuate(generated)
+
+    print(f"Generated text (window_size={window_size}, temperature={temperature}, length={output_length}):\n")
+    print("*" * 50)
+    print(formatted_output)
+    print("*" * 50)
+
+    print("\nTry different parameters or a different starting word and run again.")
+    print("Notice how each choice affects the style and coherence of the output.")
+    print("Explore and have fun!\n")
+
+print("\n--- 03_interactive.py ---")
+print("Welcome to interactive mode! Here you choose the parameters and a starting word.")
+print("Experiment with different settings and see how the output changes.\n")
+
+try:
+    if not LIVE_MODE:
+        # Single-run mode
+        run_interactive()
+    else:
+        # Live console mode: loop indefinitely
+        while True:
+            run_interactive()
+            print("LIVE_MODE is ON. Re-running immediately. Press Ctrl+C to exit.\n")
+except KeyboardInterrupt:
+    print("\nExiting... Goodbye!")
+    sys.exit(0)
