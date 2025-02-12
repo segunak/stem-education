@@ -39,7 +39,6 @@ words = []
 for line in lines:
     words.extend(line.strip().split())
 
-
 LIVE_MODE = False
 
 # Defaults intentionally set to produce "meh" results

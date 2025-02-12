@@ -19,6 +19,7 @@
 
 import re
 import os
+import sys
 import random
 
 script_dir = os.path.dirname(__file__)
@@ -41,7 +42,7 @@ LIVE_MODE = False
 DEFAULT_WINDOW_SIZE = 1
 DEFAULT_TEMPERATURE = 1.8
 DEFAULT_OUTPUT_LENGTH = 30
-DEFAULT_TRAINING_ITERATIONS = 100 
+DEFAULT_TRAINING_ITERATIONS = 20 
 
 MIN_WINDOW_SIZE = 1
 MAX_WINDOW_SIZE = 50
@@ -107,7 +108,7 @@ def refine_weights(markov_dict, iterations):
             for w in next_words:
                 next_words[w] = (next_words[w] + 0.05) / (total + 0.05 * len(next_words))
 
-def pick_next_word(key):
+def pick_next_word(markov_dict, key, temperature):
     """
     Picks the next word with temperature-based exponent = (1.5 / temperature)
     for sharper extremes at high vs. low temperatures.
@@ -163,9 +164,7 @@ def capitalize_and_punctuate(output):
         s = s.strip()
 
         # (a) Remove extra spaces before punctuation
-        #     e.g. "Hello ." => "Hello."
         s = re.sub(r'\s+([.?!])', r'\1', s)
-
         # (b) Fix repeated punctuation, e.g. '..' => '.'
         s = re.sub(r'([.?!])\1+', r'\1', s)
 
@@ -204,9 +203,10 @@ def run_interactive():
         DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
     )
 
-    markov_dict = build_markov_dict(window_size)
-    smooth_markov_dict(markov_dict)
-    refine_weights(markov_dict, DEFAULT_TRAINING_ITERATIONS)
+    # Build + refine Markov dictionary
+    markov_data = build_markov_dict(window_size)
+    smooth_markov_dict(markov_data)
+    refine_weights(markov_data, DEFAULT_TRAINING_ITERATIONS)
 
     print("\nEnter a starting word (case-insensitive).")
     print("Try one of these if you're stuck: 'I', 'The', 'On', 'How'.")
@@ -215,27 +215,25 @@ def run_interactive():
     start_word_lower = start_word.lower()
 
     if start_word_lower in words_lower_set:
-        # find the case-accurate version
         for w in words:
             if w.lower() == start_word_lower:
                 start_word = w
                 break
-        # build an initial set of words up to window_size
         start_key = [start_word]
         while len(start_key) < window_size:
             start_key.append(random.choice(words))
         generated = list(start_key)
     else:
         print("\nThat starting word isn't in the training data. Using a random start.\n")
-        chosen_key = random.choice(list(markov_dict.keys()))
+        chosen_key = random.choice(list(markov_data.keys()))
         generated = list(chosen_key)
 
     used_words = set(generated)
 
-    for i in range(output_length - window_size):
+    for _ in range(output_length - window_size):
         curr_key = tuple(generated[-window_size:])
-        next_word = pick_next_word(curr_key)
-        # occasionally skip repeated words
+        next_word = pick_next_word(markov_data, curr_key, temperature)
+
         if next_word in used_words and random.random() > 0.7:
             next_word = random.choice(words)
         generated.append(next_word)
