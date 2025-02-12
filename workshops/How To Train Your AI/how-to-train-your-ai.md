@@ -344,7 +344,7 @@ As students progress through the files in this workshop, they will experiment wi
 
 * **Further Exploration:**  
   * Try optimal values of `window_size = 6` or even higher values within the acceptable range.  
-  * Experiment with `temperature` around `1.2` to `1.5`.  
+  * Experiment with `temperature` around `0.7` to `1.0`.  
   **Observation:** More context from a higher window size often leads to more coherent sequences. Lower temperature makes the output more predictable and structured, while higher temperature adds variety and sometimes nonsensical choices.
 
 Encourage students to try several combinations. The point is for them to discover that some settings yield better, more coherent text than others.
