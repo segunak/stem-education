@@ -6,6 +6,17 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+#intro-header { 
+	font-size: 2.75em;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #ff66c4, #ff5e90, #ff6347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -197,10 +208,10 @@ input, select, textarea {
 		}
 
 			h1.major:after {
-				background-image: -moz-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: -webkit-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: -ms-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: linear-gradient(to right, #5e42a6, #f21368);
+				background-image: -moz-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: -webkit-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: -ms-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: linear-gradient(to right, #4B2E83, #f21368);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -2536,7 +2547,7 @@ input, select, textarea {
 			}
 
 				.wrapper.style1 .icon.major:before {
-					color: #5e42a6;
+					color: #4B2E83;
 				}
 
 				.wrapper.style1-alt .icon.major:before {
@@ -3240,7 +3251,7 @@ input, select, textarea {
 		}
 
 		.wrapper.style1 {
-			background-color: #5e42a6;
+			background-color: #4B2E83;
 		}
 
 		.wrapper.style1-alt {
@@ -3370,7 +3381,7 @@ input, select, textarea {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #5e42a6;
+		background-color: #4B2E83;
 		cursor: default;
 		padding: 1.75em 2em;
 	}
@@ -3765,10 +3776,10 @@ input, select, textarea {
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: -webkit-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: -ms-linear-gradient(to right, #5e42a6, #f21368);
-				background-image: linear-gradient(to right, #5e42a6, #f21368);
+				background-image: -moz-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: -webkit-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: -ms-linear-gradient(to right, #4B2E83, #f21368);
+				background-image: linear-gradient(to right, #4B2E83, #f21368);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
