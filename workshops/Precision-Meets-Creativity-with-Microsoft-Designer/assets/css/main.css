@@ -1852,6 +1852,7 @@ input, select, textarea {
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.6em;
+		font-family: inherit;
 		font-weight: bold;
 		height: calc(4.75em + 2px);
 		letter-spacing: 0.25em;
@@ -1928,7 +1929,7 @@ input, select, textarea {
 		button.primary,
 		.button.primary {
 			background-color: #dddddd;
-			color: #312450 !important;
+			color:#00274D !important;
 		}
 
 			input[type="submit"].primary:after,
