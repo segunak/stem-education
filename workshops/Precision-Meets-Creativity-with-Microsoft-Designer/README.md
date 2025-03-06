@@ -23,23 +23,33 @@ These are all the prompts used in this workshop. If you want to make your own pr
 
 ### Prompt 1: Anime Warrior
 
-Create a powerful anime character! Fill in the blanks and generate your image. [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+powerful+%5Badjective%5D+anime+warrior+standing+on+a+%5Blocation%5D%2C+with+a+glowing+%5Bcolor%5D+aura+around+them%2C+preparing+to+unleash+their+ultimate+move.+The+scene+is+drawn+in+the+style+of+%5Banime+style%5D.&referrer=PromptTemplate)
+Create a powerful anime character! Fill in the blanks and generate your image.
+
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+powerful+%5Badjective%5D+anime+warrior+standing+on+a+%5Blocation%5D%2C+with+a+glowing+%5Bcolor%5D+aura+around+them%2C+preparing+to+unleash+their+ultimate+move.+The+scene+is+drawn+in+the+style+of+%5Banime+style%5D.&referrer=PromptTemplate)
 
 ### Prompt 2: Classroom of the Future
 
-Imagine a futuristic school where learning is powered by technology. Fill in the blanks and generate your image. [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+high-tech+classroom+in+the+year+%5Bfuture+year%5D%2C+where+students+use+%5Bsome+kind+of+futuristic+device%5D+to+absorb+knowledge+at+lightning+speed.+The+walls+are+covered+in+holographic+displays+showing+%5Bsubject+of+choice%5D%2C+and+the+teacher+is+a+%5BAI+or+robot+or+human+or+whatever+you+want%5D.+The+scene+is+illustrated+in+a+%5Bart+style%5D+aesthetic.&referrer=PromptTemplate)
+Imagine a futuristic school where learning is powered by technology. Fill in the blanks and generate your image.
+
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+high-tech+classroom+in+the+year+%5Bfuture+year%5D%2C+where+students+use+%5Bsome+kind+of+futuristic+device%5D+to+absorb+knowledge+at+lightning+speed.+The+walls+are+covered+in+holographic+displays+showing+%5Bsubject+of+choice%5D%2C+and+the+teacher+is+a+%5BAI+or+robot+or+human+or+whatever+you+want%5D.+The+scene+is+illustrated+in+a+%5Bart+style%5D+aesthetic.&referrer=PromptTemplate)
 
 ### Prompt 3: Dream Destination
 
-Visualize your dream destination! Describe its scenery and generate your image. [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+awe-inspiring+scene+of+%5Byour+dream+destination%5D%2C+where+%5Bdescribe+unique+landscape%5D.+The+atmosphere+feels+%5Badjective%5D.+The+sky+is+filled+with+%5Bweather+condition%5D%2C+and+the+people+or+creatures+there+are+%5Bdescribe+activity%5D.+The+image+is+created+in+a+%5Bart+style%5D.&referrer=PromptTemplate)
+Visualize your dream destination! Describe its scenery and generate your image.
+
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+awe-inspiring+scene+of+%5Byour+dream+destination%5D%2C+where+%5Bdescribe+unique+landscape%5D.+The+atmosphere+feels+%5Badjective%5D.+The+sky+is+filled+with+%5Bweather+condition%5D%2C+and+the+people+or+creatures+there+are+%5Bdescribe+activity%5D.+The+image+is+created+in+a+%5Bart+style%5D.&referrer=PromptTemplate)
 
 ### Prompt 4: Ultimate Rom-Com Scene
 
-Imagine a scene from the perfect romantic comedy movie. Fill in the blanks and generate your image. [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Bromantic/comedic%5D+moment+between+%5Bcharacter+1%5D+and+%5Bcharacter+2%5D+in+%5Blocation%5D%2C+with+a+%5Bfunny/cute%5D+twist.+The+setting+is+filled+with+%5Baesthetic+details%5D%2C+capturing+the+heartwarming+essence+of+a+classic+rom-com.&referrer=PromptTemplate)
+Imagine a scene from the perfect romantic comedy movie. Fill in the blanks and generate your image.
+
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Bromantic/comedic%5D+moment+between+%5Bcharacter+1%5D+and+%5Bcharacter+2%5D+in+%5Blocation%5D%2C+with+a+%5Bfunny/cute%5D+twist.+The+setting+is+filled+with+%5Baesthetic+details%5D%2C+capturing+the+heartwarming+essence+of+a+classic+rom-com.&referrer=PromptTemplate)
 
 ### Prompt 5: The Ultimate AI-Powered Invention
 
-Imagine an AI-powered invention that makes life better! This is your chance to be creative and think about how technology can help people in the future. Fill in the blanks to describe your idea. [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+AI-powered+%5Bdevice%5D+that+helps+%5Bwho+it+helps%5D+by+%5Bwhat+it+does%5D.+It+looks+like+%5Bappearance+or+shape%5D+and+features+%5Bkey+capability%5D.+The+invention+is+used+in+%5Bsetting+or+place%5D+and+has+a+%5Bcolor+scheme%5D+design.+It+was+inspired+by+%5Bcool+influence+or+theme%5D+and+makes+people+feel+%5Bemotion+or+reaction%5D.&referrer=PromptTemplate)
+Imagine an AI-powered invention that makes life better! This is your chance to be creative and think about how technology can help people in the future. Fill in the blanks to describe your idea.
+
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+AI-powered+%5Bdevice%5D+that+helps+%5Bwho+it+helps%5D+by+%5Bwhat+it+does%5D.+It+looks+like+%5Bappearance+or+shape%5D+and+features+%5Bkey+capability%5D.+The+invention+is+used+in+%5Bsetting+or+place%5D+and+has+a+%5Bcolor+scheme%5D+design.+It+was+inspired+by+%5Bcool+influence+or+theme%5D+and+makes+people+feel+%5Bemotion+or+reaction%5D.&referrer=PromptTemplate)
 
 ## Resources
 
