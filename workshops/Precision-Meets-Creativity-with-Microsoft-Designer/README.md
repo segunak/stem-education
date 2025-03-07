@@ -61,7 +61,7 @@ Imagine an AI-powered invention that makes life better! This is your chance to b
 
 The template used for the website can be found [here](https://html5up.net/hyperspace). The license for the template is [here](./LICENSE.TXT). Other stuff used is below.
 
-- Font Awesome (<fontawesome.io>)
-- jQuery (<jquery.com>)
-- Scrollex (<github.com/ajlkn/jquery.scrollex>)
-- Responsive Tools (<github.com/ajlkn/responsive-tools>)
+- Font Awesome (<https://fontawesome.io>)
+- jQuery (<https://jquery.com>)
+- Scrollex (<https://github.com/ajlkn/jquery.scrollex>)
+- Responsive Tools (<https://github.com/ajlkn/responsive-tools>)
