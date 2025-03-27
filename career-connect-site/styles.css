@@ -394,6 +394,7 @@ nav ul li a:hover::after {
 
 .ms-resource {
     display: flex;
+    flex-direction: row;
     background-color: var(--bg-light);
     border-radius: 8px;
     overflow: hidden;
@@ -412,14 +413,15 @@ nav ul li a:hover::after {
     justify-content: center;
     background: var(--gradient-primary);
     color: var(--text-light);
-    padding: 2rem;
-    font-size: 2.5rem;
-    min-width: 100px;
+    padding: 1.5rem;
+    font-size: 2rem;
+    min-width: 80px;
 }
 
 .ms-resource-content {
-    padding: 2rem;
+    padding: 1.5rem;
     flex-grow: 1;
+    width: 100%;
 }
 
 .ms-resource-content h3 {
@@ -589,6 +591,14 @@ footer .container {
     .ms-resource img {
         height: 250px;
     }
+    
+    .hero h2 {
+        font-size: 2.4rem;
+    }
+    
+    .ms-charlotte {
+        padding: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -657,6 +667,25 @@ footer .container {
     .social-media {
         margin-top: 1rem;
     }
+    
+    /* Microsoft resources section mobile optimization */
+    .ms-resource {
+        flex-direction: column;
+    }
+    
+    .resource-icon {
+        min-width: auto;
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .ms-resource-content {
+        padding: 1.5rem;
+    }
+    
+    .ms-charlotte h3 {
+        font-size: 1.4rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -670,5 +699,19 @@ footer .container {
     
     section {
         padding: 3rem 0;
+    }
+    
+    .ms-charlotte {
+        padding: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .ms-resource-content {
+        padding: 1.2rem;
+    }
+    
+    .ms-resource-content .btn {
+        display: block;
+        text-align: center;
     }
 }
