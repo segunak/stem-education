@@ -142,6 +142,23 @@ header .container {
     font-weight: 700;
 }
 
+@media screen and (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo h1 {
+        font-size: 1rem;
+    }
+    
+    .logo img {
+        height: 30px;
+        margin-right: 8px;
+    }
+}
+
 nav ul {
     display: flex;
     list-style: none;
@@ -773,8 +790,8 @@ nav ul li a:hover::after {
 footer {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    padding: 1rem 0;
-    font-size: 0.9rem;
+    padding: 0.6rem 0;
+    font-size: 0.85rem;
 }
 
 footer .container {
@@ -785,6 +802,11 @@ footer .container {
 
 .footer-content {
     text-align: left;
+    margin: 0;
+}
+
+.footer-content p {
+    margin-bottom: 0;
 }
 
 footer a {
@@ -800,12 +822,12 @@ footer a:hover {
 .social-media {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .social-media a {
     color: var(--text-light);
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -816,7 +838,7 @@ social-media a:hover {
 @media screen and (max-width: 768px) {
     footer .container {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 0.5rem;
     }
     
     .footer-content {
