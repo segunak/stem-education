@@ -244,28 +244,192 @@ nav ul li a:hover::after {
     opacity: 0.95;
 }
 
-/* Professionals Section */
+/* Updated Professionals Section */
 .professionals {
-    background-color: var(--bg-gray);
+    background-color: var(--bg-off-white);
     text-align: center;
+    padding-bottom: 3rem;
+}
+
+.connection-tip {
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: var(--box-shadow);
+}
+
+.connection-tip i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-right: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.connection-tip h4 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.connection-tip blockquote {
+    background: var(--bg-gray);
+    padding: 1.2rem;
+    border-radius: 6px;
+    font-style: italic;
+    color: var(--text-color);
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.locations-tabs {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 0 1.5rem;
+    gap: 1rem;
+}
+
+.tab-button {
+    background: var(--bg-light);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active, .tab-button:hover {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.raleigh-intro {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--box-shadow);
+    text-align: left;
+}
+
+.raleigh-intro h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.raleigh-intro a {
+    font-weight: 600;
+}
+
+.key-contacts {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.key-contacts h3 {
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.key-contacts h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+.key-contacts p {
+    margin-bottom: 2rem;
+}
+
+.key-profiles {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.key-profile-card {
+    background-color: var(--bg-light);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.key-profile-card .profile-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+}
+
+.key-profile-card .profile-info h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.key-profile-card .profile-info p {
+    margin-bottom: 1.2rem;
+    font-weight: 500;
 }
 
 .profiles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
 .profile-card {
     background-color: var(--bg-light);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 1.5rem;
     box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .profile-card:hover {
@@ -291,29 +455,33 @@ nav ul li a:hover::after {
 }
 
 .profile-info {
-    text-align: center;
     width: 100%;
 }
 
+.profile-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
 .profile-info h3 {
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
 }
 
 .profile-info p {
-    color: var(--bg-dark);
-    margin-bottom: 0.75rem;
     font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 .profile-link {
     display: inline-flex;
     align-items: center;
-    color: var(--primary-color);
     font-weight: 600;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 4px;
+    margin-top: 0.8rem;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    background-color: var(--bg-gray);
+    color: var(--primary-color);
     transition: all 0.3s ease;
 }
 
@@ -323,7 +491,79 @@ nav ul li a:hover::after {
 }
 
 .profile-link i {
-    margin-right: 5px;
+    margin-right: 6px;
+}
+
+.creator-card {
+    border: 2px dashed var(--accent-color);
+    position: relative;
+}
+
+.creator-card::before {
+    content: '✨';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile responsive styles for the professionals section */
+@media screen and (max-width: 768px) {
+    .connection-tip {
+        flex-direction: column;
+    }
+    
+    .connection-tip i {
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+    
+    .key-profiles {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .key-profile-card {
+        max-width: 100%;
+    }
+    
+    .profiles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .profile-avatar .initials {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .locations-tabs {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .tab-button {
+        width: 100%;
+    }
+    
+    .profile-card {
+        padding: 1.2rem;
+    }
+    
+    .profiles-grid {
+        gap: 1rem;
+    }
 }
 
 /* Resources Section */
@@ -531,20 +771,10 @@ nav ul li a:hover::after {
 
 /* Footer */
 footer {
-    background: var(--bg-dark);
+    background-color: var(--bg-dark);
     color: var(--text-light);
-    padding: 2.5rem 0;
-    position: relative;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--gradient-primary);
+    padding: 1rem 0;
+    font-size: 0.9rem;
 }
 
 footer .container {
@@ -553,33 +783,45 @@ footer .container {
     align-items: center;
 }
 
-.footer-content p {
-    margin-bottom: 0.5rem;
-    opacity: 0.9;
+.footer-content {
+    text-align: left;
 }
 
-.footer-content a {
+footer a {
     color: var(--accent-color);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
-.footer-content a:hover {
-    color: var(--accent-secondary);
-    text-decoration: underline;
+footer a:hover {
+    opacity: 0.8;
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .social-media a {
     color: var(--text-light);
-    font-size: 1.5rem;
-    margin-left: 1.2rem;
-    transition: transform 0.3s ease, color 0.3s ease;
-    display: inline-block;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 
-.social-media a:hover {
+social-media a:hover {
     color: var(--accent-color);
-    transform: translateY(-3px);
+}
+
+@media screen and (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .footer-content {
+        text-align: center;
+    }
 }
 
 /* Responsive Design */
