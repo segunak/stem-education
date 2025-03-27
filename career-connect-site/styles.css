@@ -686,6 +686,26 @@ footer .container {
     .ms-charlotte h3 {
         font-size: 1.4rem;
     }
+    
+    /* Resource categories mobile optimization */
+    .category h3 {
+        font-size: 1.6rem;
+    }
+    
+    .resource-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -714,4 +734,134 @@ footer .container {
         display: block;
         text-align: center;
     }
+    
+    .category {
+        margin-bottom: 2.5rem;
+    }
+    
+    .category h3 {
+        font-size: 1.4rem;
+    }
+    
+    .resource-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Resources Section */
+.resources {
+    background-color: var(--bg-off-white);
+    text-align: center;
+}
+
+.resource-categories {
+    margin-top: 2rem;
+}
+
+.category {
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.category h3 {
+    display: inline-block;
+    position: relative;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+}
+
+.category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+.resource-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.resource-card {
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    width: 60px;
+    height: 60px;
+    background: var(--bg-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.resource-card:hover .card-icon {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+}
+
+.resource-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.resource-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.resource-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.resource-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.resource-link:hover {
+    color: var(--secondary-color);
+}
+
+.resource-link:hover::after {
+    width: 100%;
 }
