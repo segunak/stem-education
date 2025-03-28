@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: temperature-parameter
 title: The Temperature Parameter
 content: |

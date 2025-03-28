@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: exploring-training-data
 title: Exploring the Training Data
 content: |
@@ -25,7 +25,7 @@ settings:
   hideEditor: true
   hideFileExplorer: false
 ---
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: random-prediction
 title: Random Text Generator
 content: |

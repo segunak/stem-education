@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson.schema.json
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: lesson2
 title: Adding Intelligence with Markov Chains
 objectives: Learn how context and parameters improve text generation by implementing Markov chains and temperature control.
