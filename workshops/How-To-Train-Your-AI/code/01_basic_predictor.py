@@ -22,26 +22,35 @@ data_file_path = os.path.join(script_dir, "data.txt")
 with open(data_file_path, "r") as f:
     lines = f.readlines()
 
-# Split lines into words
+# Split lines into words and get stats
 words = []
 for line in lines:
     words.extend(line.strip().split())
 
-# Generate multiple examples to show randomness
+total_words = len(words)
+unique_words = len(set(words))
+
+print("\n=== WELCOME TO AI TRAINING: STEP 1 - PURE RANDOMNESS ===")
+print(f"\nAnalyzing training data:")
+print(f"• Total words: {total_words}")
+print(f"• Unique words: {unique_words}")
+print(f"• Vocabulary ratio: {(unique_words/total_words)*100:.1f}%")
+
+print("\nGenerating 3 completely random examples to show why we need better methods:\n")
+
 NUM_EXAMPLES = 3
 output_length = 10
 
-print("\n--- 01_basic_predictor.py ---")
-print("Showing multiple random outputs to demonstrate complete lack of pattern:\n")
-
 for i in range(NUM_EXAMPLES):
     generated_words = [random.choice(words) for _ in range(output_length)]
-    print(f"Example {i+1}:")
+    print(f"\nExample {i+1}:")
     print("*" * 50)
     print(" ".join(generated_words))
     print("*" * 50)
-    print()
 
-print("\nNotice how each output is completely different and makes no sense!")
-print("This is because we're just picking words at random with no context or learning.")
-print("Check data.txt to see the training data, then move on to 02_markov_improved.py")
+print("\nWhat did we learn?")
+print("1. Random word selection produces nonsense")
+print("2. No grammar or meaning because there's no context")
+print("3. Each run is completely different - no consistency")
+print("\nMove on to 02_markov_improved.py to see how adding")
+print("context and probability makes the output more coherent!")

@@ -177,33 +177,34 @@ def get_user_input(prompt, default_val, min_val, max_val, cast_type):
 
 def run_markov():
     print("\n" + ("=" * 70))
-    print("TEACHING A COMPUTER TO WRITE: THE MARKOV METHOD")
+    print("STEP 2: TEACHING THE COMPUTER TO USE CONTEXT")
     print("=" * 70)
     
-    print("\nWhat's happening here?")
-    print("1. The computer looks at a few words that were just 'written'")
-    print("2. It finds what words usually came next in similar situations")
-    print("3. It picks one of those words to continue the text")
-    print("\nYou control two important settings:\n")
+    print("\nWhat's happening behind the scenes:")
+    print("1. We look at groups of words in sequence")
+    print("2. We track what words usually come next")
+    print("3. We use probability to make smarter choices\n")
+
+    print("For each setting below, you can either:")
+    print("• Enter a value in the suggested range")
+    print("• Just press Enter to use the default value\n")
 
     print("1. CONTEXT SIZE (window_size):")
     print("   • Small (1-2): Only looks at the last word or two")
     print("   • Medium (3-5): Looks at the last few words, like a short phrase")
-    print("   • Large (6-10): Looks at many words, almost like a full sentence\n")
-    print("   Example: with window_size=3 and text 'The black cat',")
-    print("           the model looks at all 3 words to guess what comes next.\n")
+    print("   • Large (6-10): Looks at many words, almost like a full sentence")
+    print(f"   • Default: {DEFAULT_WINDOW_SIZE} (Hit Enter to use this)\n")
 
     window_size = get_user_input(
-        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
+        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
     )
 
     print("\n2. CREATIVITY CONTROL (temperature):")
     print("   • Low (0.1-0.5): Plays it safe, picks the most common next word")
     print("   • Medium (0.6-1.0): Balances between common and interesting choices")
-    print("   • High (1.1-2.0): Gets creative, might make unusual word combinations\n")
-    print("   Example: After 'The cat', with low temperature it might always pick 'sat',")
-    print("           but with high temperature it might pick 'danced' or 'flew'!\n")
+    print("   • High (1.1-2.0): Gets creative, might make unusual word combinations")
+    print(f"   • Default: {DEFAULT_TEMPERATURE} (Hit Enter to use this)\n")
 
     temperature = get_user_input(
         f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
@@ -223,7 +224,10 @@ def run_markov():
     print(f"\nGenerating {NUM_EXAMPLES} examples with your settings:")
     print(f"(window_size={window_size}, temperature={temperature})\n")
 
+    # Add debug info during generation
+    print("\nWatching the AI think...")
     for i in range(NUM_EXAMPLES):
+        print(f"\nGenerating Example {i+1}:")
         start_key = random.choice(list(markov_dict.keys()))
         generated = list(start_key)
         used_words = set(generated)
@@ -240,11 +244,27 @@ def run_markov():
             if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
                 break
 
+            next_words = markov_dict[current_key]
+            
+            # Show probabilities occasionally
+            if random.random() < 0.3:  # 30% chance to show debug
+                print("\nDebug: Looking at last few words:", " ".join(current_key))
+                print("Possible next words (with probabilities):")
+                for word, prob in sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:5]:
+                    print(f"  • '{word}': {prob:.2f}")
+
         final_text = normalize_text(generated)
         print(f"\nExample {i+1}:")
         print("*" * 50)
         print(final_text)
         print("*" * 50)
+
+    print("\nWant to see how probability affects the output?")
+    print("• Try lower temperature (0.3-0.5) for more predictable text")
+    print("• Try higher temperature (1.2-2.0) for more creative/chaotic text")
+    print("\nWant to see how context affects coherence?")
+    print("• Try smaller window_size (1-2) to see more random connections")
+    print("• Try larger window_size (5-6) to see more natural phrases")
 
     print("\nWant to improve the output? Here's what to try:")
     print("1. Increase window_size (try 3-6) for more coherent sentences")

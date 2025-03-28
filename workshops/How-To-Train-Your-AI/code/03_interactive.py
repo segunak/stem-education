@@ -184,7 +184,14 @@ def capitalize_and_punctuate(output):
     return text
 
 def run_interactive():
-    """Update the console output in run_interactive()"""
+    print("\nINTERACTIVE AI TRAINING SESSION")
+    print("=" * 30)
+    print("\nIn this demo, you'll see how real AI engineers:")
+    print("1. Choose parameters like window_size and temperature")
+    print("2. Train models through multiple iterations")
+    print("3. Use starting prompts to guide generation")
+    print("4. Evaluate and adjust based on results\n")
+
     print("\n" + ("=" * 70))
     print("INTERACTIVE AI TRAINING SESSION")
     print("Let's create an AI that writes text based on your settings!")
@@ -240,6 +247,21 @@ def run_interactive():
         print(f"   Training iteration {i+1}/{DEFAULT_TRAINING_ITERATIONS}...")
         refine_weights(markov_data, 1)
 
+    # Add training visualization
+    print("\nTraining your AI model...")
+    print("Progress: [", end="")
+    for i in range(DEFAULT_TRAINING_ITERATIONS):
+        print("=", end="", flush=True)
+        refine_weights(markov_data, 1)
+        print(">", end="", flush=True)
+    print("] Done!")
+
+    # Add more context about starting words
+    print("\nNow for the starting word(s):")
+    print("• Choose common words like 'The', 'In', 'By' for stable results")
+    print("• Try specific words to guide the topic")
+    print("• Multiple words work too - they set stronger context")
+
     print("\nEnter a starting word (case-insensitive).")
     print("Try one of these if you're stuck: 'I', 'The', 'On', 'How'.")
     print("If your chosen word does not exist in the training data, we'll choose a random starter.\n")
@@ -285,6 +307,21 @@ def run_interactive():
         print("*" * 50)
         print(formatted_output)
         print("*" * 50)
+
+    # Enhanced feedback after generation
+    print("\nWhat did we learn?")
+    if window_size <= 2:
+        print("• Small window_size means less context - notice any choppiness?")
+    elif window_size >= 6:
+        print("• Large window_size means more context - see how phrases flow?")
+    
+    if temperature < 0.5:
+        print("• Low temperature made choices more predictable")
+    elif temperature > 1.5:
+        print("• High temperature allowed more creative combinations")
+
+    print("\nTry again with different settings to see how they affect the output!")
+    print("This is similar to how real AI engineers tune their models.")
 
     print("\nHow did your AI do? Here's what different results might mean:")
     print("\nIf the text seems random or disconnected:")
