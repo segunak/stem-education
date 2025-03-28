@@ -196,7 +196,7 @@ def run_markov():
     print(f"   • Default: {DEFAULT_WINDOW_SIZE} (Hit Enter to use this)\n")
 
     window_size = get_user_input(
-        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}): ",
+        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
     )
 

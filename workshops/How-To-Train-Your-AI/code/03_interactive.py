@@ -209,7 +209,7 @@ def run_interactive():
     print("   • Long (31-50): Complex story attempts")
     
     output_length = get_user_input(
-        f"\nHow many words? ({MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}) [default={DEFAULT_OUTPUT_LENGTH}]: ",
+        f"Enter output length ({MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}) [default={DEFAULT_OUTPUT_LENGTH}]: ",
         DEFAULT_OUTPUT_LENGTH, MIN_OUTPUT_LENGTH, MAX_OUTPUT_LENGTH, int
     )
 
@@ -221,7 +221,7 @@ def run_interactive():
     
     max_ws = min(MAX_WINDOW_SIZE, output_length - 1)
     window_size = get_user_input(
-        f"\nEnter window_size ({MIN_WINDOW_SIZE}-{max_ws}) [default={DEFAULT_WINDOW_SIZE}]: ",
+        f"Enter window_size ({MIN_WINDOW_SIZE}-{max_ws}) [default={DEFAULT_WINDOW_SIZE}]: ",
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, max_ws, int
     )
 
@@ -232,7 +232,7 @@ def run_interactive():
     print("   • Experimental (1.1-2.0): Wild creativity")
     
     temperature = get_user_input(
-        f"\nEnter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
+        f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
         DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
     )
 
@@ -262,25 +262,30 @@ def run_interactive():
     print("• Try specific words to guide the topic")
     print("• Multiple words work too - they set stronger context")
 
-    print("\nEnter a starting word (case-insensitive).")
-    print("Try one of these if you're stuck: 'I', 'The', 'On', 'How'.")
-    print("If your chosen word does not exist in the training data, we'll choose a random starter.\n")
-    start_word = input("Starting word: ").strip()
-    start_word_lower = start_word.lower()
+    print("\nEnter a starting word (or press Enter for random):")
+    print("Suggestions: 'The', 'In', 'On', 'How'")
+    start_word = input("Starting word [Enter for random]: ").strip()
 
-    if start_word_lower in words_lower_set:
-        for w in words:
-            if w.lower() == start_word_lower:
-                start_word = w
-                break
-        start_key = [start_word]
-        while len(start_key) < window_size:
-            start_key.append(random.choice(words))
+    if not start_word:  # If user just pressed Enter
+        print("\nUsing a random start...")
+        start_key = random.choice(list(markov_data.keys()))
         generated = list(start_key)
+        print(f"Random starting words: '{' '.join(generated)}'\n")
     else:
-        print("\nThat starting word isn't in the training data. Using a random start.\n")
-        chosen_key = random.choice(list(markov_data.keys()))
-        generated = list(chosen_key)
+        start_word_lower = start_word.lower()
+        if start_word_lower in words_lower_set:
+            for w in words:
+                if w.lower() == start_word_lower:
+                    start_word = w
+                    break
+            start_key = [start_word]
+            while len(start_key) < window_size:
+                start_key.append(random.choice(words))
+            generated = list(start_key)
+        else:
+            print("\nThat starting word isn't in the training data. Using a random start.\n")
+            start_key = random.choice(list(markov_data.keys()))
+            generated = list(start_key)
 
     used_words = set(generated)
 
