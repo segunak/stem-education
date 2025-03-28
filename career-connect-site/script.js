@@ -28,6 +28,12 @@ const professionalsData = {
     ],
     "professionals": [
       {
+        "name": "Brandon Gary",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/begary/",
+        "expertise": ""
+      },
+      {
         "name": "Jerome Collins",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
