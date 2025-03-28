@@ -24,3 +24,55 @@ settings:
   hideRepl: true
   hideEditor: true
   hideFileExplorer: false
+---
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: random-prediction
+title: Random Text Generator
+content: |
+  # Random Text Generator
+
+  **Your Task:** Run the code below to see what random text generation looks like.
+
+  ## Steps:
+  1. Click the **Run** button in the REPL panel
+  2. Look at the output - it's completely random!
+  3. Open `data.txt` in the file explorer to see where these words came from
+
+  ## Key Point:
+  This shows the baseline before any AI learning. The words are chosen randomly with no context or pattern.
+
+code: |
+  # Random Text Generator
+  # This picks words completely at random with no learning or context.
+
+  import os
+  import random
+
+  # Load training data
+  script_dir = os.path.dirname(__file__)
+  data_file_path = os.path.join(script_dir, "../../data.txt")
+
+  with open(data_file_path, "r") as f:
+      lines = f.readlines()
+
+  # Split lines into words
+  words = []
+  for line in lines:
+      words.extend(line.strip().split())
+
+  # Generate 10 random words
+  output_length = 10
+  generated_words = [random.choice(words) for _ in range(output_length)]
+
+  print("\n=== RANDOM TEXT GENERATION ===")
+  print("Words chosen completely at random with no intelligence:\n")
+  print("*" * 50)
+  print(" ".join(generated_words))
+  print("*" * 50)
+  print("\nDoes this make any sense? Notice how there's no pattern or coherence.")
+  print("This is our starting point before adding any intelligence.")
+
+settings:
+  hideRepl: false
+  hideEditor: false
+  hideFileExplorer: false
