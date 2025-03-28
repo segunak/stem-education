@@ -100,8 +100,12 @@ def pick_next_word(markov_dict, key, temperature):
     2) Temperature-based exponent to weigh probabilities
     3) Weighted random choice
     """
+    # If we don't have this exact key, pick a random one from what we know
     if key not in markov_dict:
-        key = random.choice(list(markov_dict.keys()))
+        # Let's be transparent about fallbacks
+        print(f"\nDebug: No exact match for sequence '{' '.join(key)}', using random fallback...")
+        return random.choice(words)  # Fall back to any word from training data
+    
     next_words = markov_dict[key]
     total = sum(next_words.values())
 
@@ -109,7 +113,6 @@ def pick_next_word(markov_dict, key, temperature):
     weighted_probs = []
     for w, count in next_words.items():
         freq = count / total
-        # exponent for more extreme changes in high vs. low temperature
         freq = freq ** (1.5 / temperature)
         weighted_probs.append((w, freq))
 
@@ -176,41 +179,34 @@ def get_user_input(prompt, default_val, min_val, max_val, cast_type):
     return default_val
 
 def run_markov():
-    print("\n" + ("=" * 70))
-    print("STEP 2: TEACHING THE COMPUTER TO USE CONTEXT")
-    print("=" * 70)
+    print("\n=== STEP 2: ADDING CONTEXT AND CREATIVITY ===")
+    print("-" * 50)
     
-    print("\nWhat's happening behind the scenes:")
-    print("1. We look at groups of words in sequence")
-    print("2. We track what words usually come next")
-    print("3. We use probability to make smarter choices\n")
+    print("\nSet two parameters to control the output:")
+    print("1. window_size: How many previous words to consider")
+    print("2. temperature: How creative vs predictable to be\n")
 
-    print("For each setting below, you can either:")
-    print("• Enter a value in the suggested range")
-    print("• Just press Enter to use the default value\n")
-
-    print("1. CONTEXT SIZE (window_size):")
-    print("   • Small (1-2): Only looks at the last word or two")
-    print("   • Medium (3-5): Looks at the last few words, like a short phrase")
-    print("   • Large (6-10): Looks at many words, almost like a full sentence")
-    print(f"   • Default: {DEFAULT_WINDOW_SIZE} (Hit Enter to use this)\n")
-
+    print("WINDOW SIZE:")
+    print("• Small (1-2): Basic word-to-word connections")
+    print("• Medium (3-5): Phrase-level patterns")
+    print("• Large (6-10): Full sentence coherence")
+    
     window_size = get_user_input(
-        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
+        f"\nEnter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
     )
 
-    print("\n2. CREATIVITY CONTROL (temperature):")
-    print("   • Low (0.1-0.5): Plays it safe, picks the most common next word")
-    print("   • Medium (0.6-1.0): Balances between common and interesting choices")
-    print("   • High (1.1-2.0): Gets creative, might make unusual word combinations")
-    print(f"   • Default: {DEFAULT_TEMPERATURE} (Hit Enter to use this)\n")
-
+    print("\nTEMPERATURE:")
+    print("• Low (0.1-0.5): Safe, predictable choices")
+    print("• Medium (0.6-1.0): Balanced creativity")
+    print("• High (1.1-2.0): Wild, experimental text")
+    
     temperature = get_user_input(
-        f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
+        f"\nEnter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
         DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
     )
 
+    print("\nGenerating text with your settings...")
     # Build Markov model
     print("\nBuilding language model...")
     markov_dict = build_markov_dict(window_size)
@@ -234,51 +230,48 @@ def run_markov():
 
         for _ in range(FIXED_OUTPUT_LENGTH - window_size):
             current_key = tuple(generated[-window_size:])
-            next_word = pick_next_word(markov_dict, current_key, temperature)
+            
+            # Show what we're trying to predict from
+            if random.random() < 0.3:  # 30% chance to show debug
+                print("\nDebug: Looking at last few words:", " ".join(current_key))
+                # Only show probabilities if we have this sequence
+                if current_key in markov_dict:
+                    next_words = markov_dict[current_key]
+                    print("Possible next words (with probabilities):")
+                    for word, prob in sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:5]:
+                        print(f"  • '{word}': {prob:.2f}")
 
+            next_word = pick_next_word(markov_dict, current_key, temperature)
+            
+            # Avoid repetition
             if next_word in used_words and random.random() > 0.7:
                 next_word = random.choice(words)
+            
             generated.append(next_word)
             used_words.add(next_word)
 
             if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
                 break
 
-            next_words = markov_dict[current_key]
-            
-            # Show probabilities occasionally
-            if random.random() < 0.3:  # 30% chance to show debug
-                print("\nDebug: Looking at last few words:", " ".join(current_key))
-                print("Possible next words (with probabilities):")
-                for word, prob in sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:5]:
-                    print(f"  • '{word}': {prob:.2f}")
-
         final_text = normalize_text(generated)
-        print(f"\nExample {i+1}:")
-        print("*" * 50)
+        print(f"\nOutput {i+1}:")
+        print("=" * 50)
         print(final_text)
-        print("*" * 50)
+        print("=" * 50)
 
-    print("\nWant to see how probability affects the output?")
-    print("• Try lower temperature (0.3-0.5) for more predictable text")
-    print("• Try higher temperature (1.2-2.0) for more creative/chaotic text")
-    print("\nWant to see how context affects coherence?")
-    print("• Try smaller window_size (1-2) to see more random connections")
-    print("• Try larger window_size (5-6) to see more natural phrases")
+    print("\nWant better results?")
+    print("• More coherent: Use window_size=5-6")
+    print("• More creative: Increase temperature")
+    print("• More stable: Decrease temperature")
 
-    print("\nWant to improve the output? Here's what to try:")
-    print("1. Increase window_size (try 3-6) for more coherent sentences")
-    print("2. Adjust temperature:")
-    print("   • Too random? Lower it (try 0.5-0.7)")
-    print("   • Too repetitive? Raise it (try 1.0-1.2)")
-    print("\nRun the program again with different settings!")
-    print("Remember: There's no perfect combination - experiment and see what happens!\n")
+    print("\n>>> Next step: Run 03_interactive.py to control")
+    print("              both parameters and starting words!\n")
 
 print("\n--- WORD PREDICTION EXPERIMENT ---\n")
 print("In this step, we're teaching the computer to predict words like humans do!")
 print("When you read 'The cat sat on the ___', you can probably guess 'mat' or 'chair'.")
 print("That's because you've seen similar patterns in other sentences before.\n")
-print("Now we'll help the computer learn to make these kinds of predictions.")
+print("Now we'll help the computer learn to make these kinds of predictions.\n")
 print("You'll control HOW it learns through two important settings:")
 print(" 1. How many previous words it considers (window_size)")
 print(" 2. How creative it gets with its guesses (temperature)\n")

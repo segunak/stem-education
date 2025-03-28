@@ -184,40 +184,31 @@ def capitalize_and_punctuate(output):
     return text
 
 def run_interactive():
-    print("\nINTERACTIVE AI TRAINING SESSION")
-    print("=" * 30)
-    print("\nIn this demo, you'll see how real AI engineers:")
-    print("1. Choose parameters like window_size and temperature")
-    print("2. Train models through multiple iterations")
-    print("3. Use starting prompts to guide generation")
-    print("4. Evaluate and adjust based on results\n")
+    print("\n=== STEP 3: FULL AI CONTROL ===")
+    print("-" * 50)
+    
+    print("\nCONTROL PANEL:")
+    print("1. Set text length")
+    print("2. Choose context window")
+    print("3. Adjust creativity")
+    print("4. Pick starting word\n")
 
-    print("\n" + ("=" * 70))
-    print("INTERACTIVE AI TRAINING SESSION")
-    print("Let's create an AI that writes text based on your settings!")
-    print("=" * 70)
-
-    print("\nYou'll control three important settings:")
-    print("1. How many words to generate (length)")
-    print("2. How much context to consider (window_size)")
-    print("3. How creative the AI should be (temperature)")
-
-    # Step 1: Output Length
-    print("\n1. TEXT LENGTH")
-    print("   • Short (5-15): Quick experiments")
-    print("   • Medium (16-30): Good for testing coherence")
-    print("   • Long (31-50): Complex story attempts")
+    # Length
+    print("TEXT LENGTH:")
+    print("• Short (5-15): Quick test")
+    print("• Medium (16-30): Standard text")
+    print("• Long (31-50): Full paragraph")
     
     output_length = get_user_input(
-        f"Enter output length ({MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}) [default={DEFAULT_OUTPUT_LENGTH}]: ",
+        f"\nEnter length ({MIN_OUTPUT_LENGTH}-{MAX_OUTPUT_LENGTH}) [default={DEFAULT_OUTPUT_LENGTH}]: ",
         DEFAULT_OUTPUT_LENGTH, MIN_OUTPUT_LENGTH, MAX_OUTPUT_LENGTH, int
     )
 
-    # Step 2: Context Window
-    print("\n2. CONTEXT WINDOW")
-    print("   • Small (1-2): Word-by-word connections")
-    print("   • Medium (3-5): Phrase-level patterns")
-    print("   • Large (6+): Sentence-level coherence")
+    # Context Window
+    print("\nCONTEXT WINDOW:")
+    print("• Small (1-2): Word-by-word connections")
+    print("• Medium (3-5): Phrase-level patterns")
+    print("• Large (6+): Sentence-level coherence")
     
     max_ws = min(MAX_WINDOW_SIZE, output_length - 1)
     window_size = get_user_input(
@@ -225,50 +216,47 @@ def run_interactive():
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, max_ws, int
     )
 
-    # Step 3: Temperature
-    print("\n3. CREATIVITY LEVEL")
-    print("   • Conservative (0.1-0.5): Very predictable")
-    print("   • Balanced (0.6-1.0): Natural variation")
-    print("   • Experimental (1.1-2.0): Wild creativity")
+    # Temperature
+    print("\nCREATIVITY LEVEL:")
+    print("• Conservative (0.1-0.5): Very predictable")
+    print("• Balanced (0.6-1.0): Natural variation")
+    print("• Experimental (1.1-2.0): Wild creativity")
     
     temperature = get_user_input(
         f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
         DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
     )
 
+    print("\nSTARTING WORD:")
+    print("• Enter a word to guide the topic")
+    print("• Press Enter for random start")
+    print("• Suggestions: 'The', 'In', 'On', 'How'")
+    
+    start_word = input("\nEnter starting word [Enter=random]: ").strip()
+
     # Build and train model with progress feedback
     print("\nPreparing your AI model...")
     print("1. Building language patterns...")
-    markov_data = build_markov_dict(window_size)
+    markov_dict = build_markov_dict(window_size)  # Changed variable name to be consistent
     print("2. Smoothing probabilities...")
-    smooth_markov_dict(markov_data)
+    smooth_markov_dict(markov_dict)
     print("3. Training model...")
     for i in range(DEFAULT_TRAINING_ITERATIONS):
         print(f"   Training iteration {i+1}/{DEFAULT_TRAINING_ITERATIONS}...")
-        refine_weights(markov_data, 1)
+        refine_weights(markov_dict, 1)
 
     # Add training visualization
     print("\nTraining your AI model...")
     print("Progress: [", end="")
     for i in range(DEFAULT_TRAINING_ITERATIONS):
         print("=", end="", flush=True)
-        refine_weights(markov_data, 1)
+        refine_weights(markov_dict, 1)
         print(">", end="", flush=True)
     print("] Done!")
 
-    # Add more context about starting words
-    print("\nNow for the starting word(s):")
-    print("• Choose common words like 'The', 'In', 'By' for stable results")
-    print("• Try specific words to guide the topic")
-    print("• Multiple words work too - they set stronger context")
-
-    print("\nEnter a starting word (or press Enter for random):")
-    print("Suggestions: 'The', 'In', 'On', 'How'")
-    start_word = input("Starting word [Enter for random]: ").strip()
-
     if not start_word:  # If user just pressed Enter
         print("\nUsing a random start...")
-        start_key = random.choice(list(markov_data.keys()))
+        start_key = random.choice(list(markov_dict.keys()))  # Changed from markov_data to markov_dict
         generated = list(start_key)
         print(f"Random starting words: '{' '.join(generated)}'\n")
     else:
@@ -284,7 +272,7 @@ def run_interactive():
             generated = list(start_key)
         else:
             print("\nThat starting word isn't in the training data. Using a random start.\n")
-            start_key = random.choice(list(markov_data.keys()))
+            start_key = random.choice(list(markov_dict.keys()))
             generated = list(start_key)
 
     used_words = set(generated)
@@ -299,7 +287,7 @@ def run_interactive():
         
         for _ in range(output_length - window_size):
             curr_key = tuple(generated[-window_size:])
-            next_word = pick_next_word(markov_data, curr_key, temperature)
+            next_word = pick_next_word(markov_dict, curr_key, temperature)
 
             if next_word in used_words and random.random() > 0.7:
                 next_word = random.choice(words)
@@ -308,42 +296,17 @@ def run_interactive():
 
         formatted_output = capitalize_and_punctuate(generated)
         
-        print(f"\nExample {i+1}:")
-        print("*" * 50)
+        print(f"\nOutput {i+1}:")
+        print("=" * 50)
         print(formatted_output)
-        print("*" * 50)
+        print("=" * 50)
 
-    # Enhanced feedback after generation
-    print("\nWhat did we learn?")
-    if window_size <= 2:
-        print("• Small window_size means less context - notice any choppiness?")
-    elif window_size >= 6:
-        print("• Large window_size means more context - see how phrases flow?")
-    
-    if temperature < 0.5:
-        print("• Low temperature made choices more predictable")
-    elif temperature > 1.5:
-        print("• High temperature allowed more creative combinations")
+    print("\nNot happy with the results?")
+    print("• Text too random? → Increase window_size or lower temperature")
+    print("• Text too boring? → Increase temperature or try new starting word")
+    print("• Want better flow? → Use window_size=6, temperature=0.7")
 
-    print("\nTry again with different settings to see how they affect the output!")
-    print("This is similar to how real AI engineers tune their models.")
-
-    print("\nHow did your AI do? Here's what different results might mean:")
-    print("\nIf the text seems random or disconnected:")
-    print("• Try increasing window_size (6 or higher)")
-    print("• Try lowering temperature (0.5-0.7)")
-    
-    print("\nIf the text seems too repetitive:")
-    print("• Try increasing temperature (0.8-1.2)")
-    print("• Try a different starting word")
-    
-    print("\nIf the text seems pretty good:")
-    print("• Try tweaking the settings slightly")
-    print("• See if you can make it even better!")
-    
-    print("\nRemember: Real AI models like ChatGPT use these same basic ideas,")
-    print("just with much more data and computing power!")
-    print("\nTry again with different settings to see how they affect the output.\n")
+    print("\nTry again with different settings to improve the output!\n")
 
 print("\n--- 03_interactive.py ---")
 print("Welcome to interactive mode! Here you choose the parameters and a starting word.")

@@ -30,27 +30,29 @@ for line in lines:
 total_words = len(words)
 unique_words = len(set(words))
 
-print("\n=== WELCOME TO AI TRAINING: STEP 1 - PURE RANDOMNESS ===")
-print(f"\nAnalyzing training data:")
+print("\n=== STEP 1: RANDOM TEXT GENERATION ===")
+print("-" * 50)
+print(f"Training data stats:")
 print(f"• Total words: {total_words}")
 print(f"• Unique words: {unique_words}")
-print(f"• Vocabulary ratio: {(unique_words/total_words)*100:.1f}%")
 
-print("\nGenerating 3 completely random examples to show why we need better methods:\n")
+print("\nGenerating 3 random examples...")
+print("(Notice how they make no sense!)\n")
 
 NUM_EXAMPLES = 3
 output_length = 10
 
 for i in range(NUM_EXAMPLES):
     generated_words = [random.choice(words) for _ in range(output_length)]
-    print(f"\nExample {i+1}:")
-    print("*" * 50)
+    print(f"Example {i+1}:")
+    print("=" * 50)
     print(" ".join(generated_words))
-    print("*" * 50)
+    print("=" * 50 + "\n")
 
-print("\nWhat did we learn?")
-print("1. Random word selection produces nonsense")
-print("2. No grammar or meaning because there's no context")
-print("3. Each run is completely different - no consistency")
-print("\nMove on to 02_markov_improved.py to see how adding")
-print("context and probability makes the output more coherent!")
+print("What we learned:")
+print("• Random words = nonsense text")
+print("• No context = no meaning")
+print("• We need a smarter approach!")
+
+print("\n>>> Next step: Run 02_markov_improved.py to see how adding")
+print("              context makes the output more coherent.\n")
