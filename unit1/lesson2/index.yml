@@ -1,5 +1,0 @@
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
-id: lesson2
-title: REPLACE - LESSON TITLE
-lessonParts:
-  - lessonpart1.yml

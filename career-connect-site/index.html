@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Discovery Day - Charlotte, NC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+                <h1>Discovery Day Connect</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#charlotte">Charlotte</a></li>
+                    <li><a href="#professionals">Professionals</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#next-steps">Next Steps</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Connect with Tech Professionals in Charlotte</h2>
+            <p>Thank you for attending Microsoft's Discovery Day at our Charlotte, North Carolina campus! Use this site
+                to connect with the professionals you met and discover resources to help you on your tech journey.</p>
+            <a href="#professionals" class="btn">Connect Now</a>
+        </div>
+    </section>
+
+    <section id="charlotte" class="charlotte-section">
+        <div class="container">
+            <div class="ms-charlotte">
+                <h3>Microsoft in Charlotte, North Carolina</h3>
+                <p>Microsoft's Charlotte campus is a vibrant technology hub in the Southeast region. Our teams here work
+                    on a variety of exciting projects across cloud computing, AI, business applications, and more. The
+                    Charlotte office provides numerous opportunities for students and early career professionals
+                    interested in technology careers.</p>
+                <p>Discovery Day is just the beginning of your connection with Microsoft Charlotte. Stay in touch for
+                    future events, internships, and career opportunities in our growing tech community.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="professionals" class="professionals">
+        <div class="container">
+            <h2>Connect with Microsoft Professionals</h2>
+            <p>Here are the LinkedIn profiles of people you met during your Discovery Day experience, or other valuable
+                Microsoft contacts worth connecting with. Expanding your network with these professionals will help you
+                stay connected to Microsoft's presence in the region.</p>
+
+            <div class="connection-tip">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <h4>Connection Tip</h4>
+                    <p>When sending a connection request, include a personalized note like this:</p>
+                    <blockquote>
+                        "Hello! I hope this message finds you well. I got the chance to visit the Microsoft Charlotte
+                        campus on a school trip through the Discovery Day Program. I'd like to connect to stay engaged
+                        with Microsoft and to expand my professional network. Thank you for considering my request!"
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="locations-tabs">
+                <button class="tab-button active" data-tab="charlotte">Charlotte Campus</button>
+                <button class="tab-button" data-tab="raleigh">Raleigh Campus</button>
+            </div>
+
+            <div class="tab-content active" id="charlotte-tab">
+                <div class="key-contacts">
+                    <h3>Key Charlotte Campus Contacts</h3>
+                    <p>These leaders are particularly important to connect with as they share many campus updates and
+                        opportunities:</p>
+
+                    <div class="key-profiles">
+                        <!-- Charlotte key contacts will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <h3>Microsoft Charlotte Professionals</h3>
+                <div class="profiles-grid">
+                    <!-- Charlotte professionals will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="raleigh-tab">
+                <div class="raleigh-intro">
+                    <h3>Microsoft Raleigh Campus</h3>
+                    <p>Microsoft has a growing presence in Raleigh, alongside other tech giants like
+                        <a href="https://careers.google.com/" target="_blank">Google</a>,
+                        <a href="https://www.apple.com/careers/" target="_blank">Apple</a>,
+                        <a href="https://www.nvidia.com/en-us/about-nvidia/careers/" target="_blank">NVIDIA</a>,
+                        <a href="https://jobs.cisco.com/" target="_blank">Cisco</a>,
+                        <a href="https://www.ibm.com/careers/" target="_blank">IBM</a>,
+                        <a href="https://www.redhat.com/en/jobs" target="_blank">Red Hat</a>, and
+                        <a href="https://www.sas.com/en_us/careers.html" target="_blank">SAS</a>
+                        in the <a href="https://www.rtp.org/" target="_blank">Research Triangle Park</a>. This area is
+                        close to many prestigious universities including
+                        <a href="https://duke.edu/" target="_blank">Duke University</a>,
+                        <a href="https://www.unc.edu/" target="_blank">UNC Chapel Hill</a>,
+                        <a href="https://www.ncsu.edu/" target="_blank">NC State University</a>, and
+                        <a href="https://www.wfu.edu/" target="_blank">Wake Forest University</a>.
+                    </p>
+                </div>
+
+                <div class="key-contacts">
+                    <h3>Key Raleigh Campus Contacts</h3>
+                    <p>These leaders are particularly important to connect with:</p>
+
+                    <div class="key-profiles">
+                        <!-- Raleigh key contacts will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <h3>Microsoft Raleigh Professionals</h3>
+                <div class="profiles-grid">
+                    <!-- Raleigh professionals will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2>Learning Resources</h2>
+            <p>Continue your learning journey with these Microsoft resources to boost your career and tech skills:</p>
+
+            <div class="resource-categories">
+                <div class="category">
+                    <h3>Career Guidance</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h4>Microsoft Careers</h4>
+                            <p>The main Microsoft careers website. Explore current positions and opportunities waiting
+                                for you!</p>
+                            <a href="https://careers.microsoft.com/" target="_blank" class="resource-link">Explore
+                                Careers</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h4>Microsoft Events</h4>
+                            <p>Stay updated on upcoming Microsoft events, workshops, and hackathons.</p>
+                            <a href="https://www.microsoft.com/en-us/events/" target="_blank" class="resource-link">Find
+                                Events</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Hiring Tips</h4>
+                            <p>Insider tips on how Microsoft hires and what you need to do to get ready for a career in
+                                tech.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/hiring-tips" target="_blank"
+                                class="resource-link">Get Prepared</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Microsoft Professions</h4>
+                            <p>Whether you're interested in technical or non-technical roles, there's a place for you in
+                                tech. Explore the variety of career paths available.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/professions.html" target="_blank"
+                                class="resource-link">Find Your Fit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Student Opportunities</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h4>Student Certifications</h4>
+                            <p>Prove your technical skills with Microsoft Certifications at discounted academic prices.
+                            </p>
+                            <a href="https://learn.microsoft.com/en-us/training/student-hub/certifications"
+                                target="_blank" class="resource-link">Get Certified</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <h4>Early in Profession Recruiting</h4>
+                            <p>Join this LinkedIn group to connect directly with Microsoft recruiters and discover
+                                opportunities.</p>
+                            <a href="https://www.linkedin.com/groups/14490227/" target="_blank"
+                                class="resource-link">Connect with Recruiters</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h4>Early in Profession</h4>
+                            <p>Your primary hub for internships and early career opportunities at Microsoft.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/programs/students.html" target="_blank"
+                                class="resource-link">Start Your Journey</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4>Explore Microsoft</h4>
+                            <p>Special internship program designed specifically for college freshmen and sophomores.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/exploremicrosoft" target="_blank"
+                                class="resource-link">Explore Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Learning & Development</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Microsoft Learn</h4>
+                            <p>Boost your resume with real tech skills through Microsoft's free training program.</p>
+                            <a href="https://learn.microsoft.com/en-us/training/" target="_blank"
+                                class="resource-link">Start Learning</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h4>Student Discounts</h4>
+                            <p>Free access to Microsoft Certification exams and training for college students!</p>
+                            <a href="https://learn.microsoft.com/en-us/certifications/student-discounts" target="_blank"
+                                class="resource-link">Get Certified</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h4>University Partnerships</h4>
+                            <p>Access coursework from top universities like Oxford and Carnegie Mellon on Microsoft
+                                Learn.</p>
+                            <a href="https://learn.microsoft.com/en-us/training/topics/universities" target="_blank"
+                                class="resource-link">Explore Courses</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4>Imagine Cup</h4>
+                            <p>A year-long tech competition for students – like a sports league, but for cool tech
+                                projects!</p>
+                            <a href="https://imaginecup.microsoft.com/en-us" target="_blank"
+                                class="resource-link">Compete Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Community & Culture</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <h4>Microsoft on LinkedIn</h4>
+                            <p>Follow Microsoft on LinkedIn (which, fun fact, is also a Microsoft product!)</p>
+                            <a href="https://www.linkedin.com/company/microsoft" target="_blank"
+                                class="resource-link">Connect Now</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h4>Student Ambassadors</h4>
+                            <p>Become a Microsoft rep on your campus for networking and mentoring opportunities.</p>
+                            <a href="https://studentambassadors.microsoft.com/" target="_blank"
+                                class="resource-link">Join Program</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4>Microsoft Leap</h4>
+                            <p>A program for developing unconventional talent and launching tech careers.</p>
+                            <a href="https://leap.microsoft.com/en-US/" target="_blank" class="resource-link">Take the
+                                Leap</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Military & Veterans</h4>
+                            <p>Special career resources for service members at any stage of your military career.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/programs/military.html" target="_blank"
+                                class="resource-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Life at Microsoft</h3>
+                    <div class="resource-cards">
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Microsoft Culture</h4>
+                            <p>Curious what it's like working here? Get the inside scoop on Microsoft's culture.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/life-at-microsoft/culture.html"
+                                target="_blank" class="resource-link">Experience Culture</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h4>Benefits</h4>
+                            <p>From healthcare to stock options - see what perks come with working at Microsoft.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/life-at-microsoft/benefits.html"
+                                target="_blank" class="resource-link">View Benefits</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h4>Flexible Workspace</h4>
+                            <p>Remote? Hybrid? In-office? Find out how Microsoft's flexible work policy works.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/life-at-microsoft/flexible-work.html"
+                                target="_blank" class="resource-link">Explore Options</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h4>Recent Graduates</h4>
+                            <p>Just graduated? Check out all Microsoft's programs for recent college grads.</p>
+                            <a href="https://careers.microsoft.com/v2/global/en/recentgraduate" target="_blank"
+                                class="resource-link">Start Career</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="next-steps" class="next-steps">
+        <div class="container">
+            <h2>Your Next Steps</h2>
+            <p>Here's what you can do to continue your tech journey:</p>
+
+            <div class="steps-timeline">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect on LinkedIn</h3>
+                        <p>Reach out to the professionals you met today and add them to your network.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Explore Learning Resources</h3>
+                        <p>Pick one skill you want to develop and start with the resources provided above.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Stay Connected</h3>
+                        <p>Follow Microsoft on social media and sign up for newsletters to stay informed.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Apply for Opportunities</h3>
+                        <p>Look for internships, programs, and opportunities that match your interests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© <span id="current-year"></span> Discovery Day Connect | Built by <a href="https://segunakinyemi.com/" target="_blank">Segun Akinyemi</a></p>
+            </div>
+            <div class="social-media">
+                <a href="https://github.com/segunak" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/segunofsolace" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/segunakinyemi" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
