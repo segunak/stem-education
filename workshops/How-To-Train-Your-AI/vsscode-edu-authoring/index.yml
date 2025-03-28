@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: how-to-train-your-ai
 title: How To Train Your AI
-objectives: Learn how AI models are trained by building your own simple text prediction system, and understand the core concepts behind modern AI like ChatGPT.
+objectives: Train your own simple text prediction system to understand how AI models like ChatGPT learn.
 lessons:
-  - lesson1/index.yml
-  - lesson2/index.yml
-  - lesson3/index.yml
+  - unit1/index.yml
+  - unit2/index.yml
+  - unit3/index.yml

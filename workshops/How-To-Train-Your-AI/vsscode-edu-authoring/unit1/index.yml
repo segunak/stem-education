@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: how-to-train-your-ai
+title: How To Train Your AI
+objectives: Learn how AI models are trained by building your own simple text prediction system, and understand the core concepts behind modern AI like ChatGPT.
+lessons:
+  - lesson1/index.yml
+  - lesson2/index.yml
+  - lesson3/index.yml
+
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/unit.schema.json
+id: unit1
+title: Unit 1 - Random Baseline
+objectives: Start with a simple random text generator to establish a baseline.
+lessons:
+  - lesson1/index.yml

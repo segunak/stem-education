@@ -1,0 +1,188 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: markov-chains
+title: Adding Context with Markov Chains
+content: |
+  # Adding Context with Markov Chains
+
+  **Your Task:** Run the code and experiment with different settings to improve text coherence.
+
+  ## Key Parameters:
+  - **Window Size** (1-10): How many previous words to consider
+    - Higher values = more context = more coherent text
+  - **Temperature** (0.1-2.0): Controls creativity vs. predictability
+    - Lower values = more predictable/coherent text
+    - Higher values = more variety/creativity
+
+  ## Try These Settings:
+  1. Default: `window_size=1`, `temperature=1.8` (not great)
+  2. Better: `window_size=3`, `temperature=0.5` (improved)
+  3. Best: `window_size=6`, `temperature=0.7` (good balance)
+
+code: |
+  # Markov Chain Text Generator
+  # This improves on random text by considering previous words (context)
+  # and controlling word selection with temperature.
+
+  import os
+  import sys
+  import random
+
+  # Load training data
+  script_dir = os.path.dirname(__file__)
+  data_file_path = os.path.join(script_dir, "../../data.txt")
+
+  with open(data_file_path, "r") as f:
+      lines = f.readlines()
+
+  words = []
+  for line in lines:
+      words.extend(line.strip().split())
+
+  # Settings
+  DEFAULT_WINDOW_SIZE = 1
+  DEFAULT_TEMPERATURE = 1.8
+  OUTPUT_LENGTH = 30
+  TRAINING_ITERATIONS = 20
+
+  MIN_WINDOW_SIZE = 1
+  MAX_WINDOW_SIZE = 10
+  MIN_TEMPERATURE = 0.1
+  MAX_TEMPERATURE = 2.0
+
+  def build_markov_dict(window_size):
+      """Build a dictionary of word patterns and their possible next words"""
+      markov_dict = {}
+      for i in range(len(words) - window_size):
+          key = tuple(words[i:i + window_size])
+          next_word = words[i + window_size]
+          if key not in markov_dict:
+              markov_dict[key] = {}
+          if next_word not in markov_dict[key]:
+              markov_dict[key][next_word] = 0
+          markov_dict[key][next_word] += 1
+      return markov_dict
+
+  def smooth_markov_dict(markov_dict):
+      """Make sure no probability is zero"""
+      for key, next_words in markov_dict.items():
+          total = sum(next_words.values())
+          for w in next_words:
+              next_words[w] = (next_words[w] + 1) / (total + len(next_words))
+
+  def refine_weights(markov_dict, iterations):
+      """Improve the model through iterative refinement"""
+      for _ in range(iterations):
+          for key in markov_dict:
+              next_words = markov_dict[key]
+              total = sum(next_words.values())
+              for w in next_words:
+                  next_words[w] = (next_words[w] + 0.05) / (total + 0.05 * len(next_words))
+
+  def pick_next_word(markov_dict, key, temperature):
+      """Choose the next word based on context and temperature"""
+      if key not in markov_dict:
+          key = random.choice(list(markov_dict.keys()))
+      next_words = markov_dict[key]
+      total = sum(next_words.values())
+
+      # Apply temperature to adjust probabilities
+      weighted_probs = []
+      for w, count in next_words.items():
+          freq = count / total
+          freq = freq ** (1.5 / temperature)
+          weighted_probs.append((w, freq))
+
+      sum_weights = sum(adj for _, adj in weighted_probs)
+      r = random.random() * sum_weights
+      cumulative = 0.0
+      for w, adj in weighted_probs:
+          cumulative += adj
+          if r <= cumulative:
+              return w
+
+      return weighted_probs[-1][0]
+
+  def format_text(generated):
+      """Format the output to look more like a proper sentence"""
+      text = " ".join(generated)
+      if text:
+          text = text[0].upper() + text[1:]
+          if not text.endswith(('.', '!', '?')):
+              text += "."
+      return text
+
+  def get_user_input(prompt, default_val, min_val, max_val, cast_type):
+      """Get and validate user input"""
+      user_in = input(prompt).strip().lower()
+      if user_in == 'quit':
+          sys.exit(0)
+      elif user_in:
+          try:
+              val = cast_type(user_in)
+              if min_val <= val <= max_val:
+                  return val
+              else:
+                  print(f"Out of range. Using default ({default_val}).")
+          except ValueError:
+              print(f"Invalid input. Using default ({default_val}).")
+      return default_val
+
+  def run_markov():
+      """Main function to run the text generator"""
+      print("\n=== MARKOV CHAIN TEXT GENERATION ===")
+      print("Enter your settings below (or press Enter for defaults):")
+      
+      # Get window size
+      print("\nwindow_size: How many previous words to consider")
+      print("• Higher = more coherent text, Lower = more randomness")
+      window_size = get_user_input(
+          f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
+          DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
+      )
+      
+      # Get temperature
+      print("\ntemperature: How predictable vs. creative the output is")
+      print("• Lower (0.1-0.5) = more predictable, Higher (1.0-2.0) = more variety")
+      temperature = get_user_input(
+          f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
+          DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
+      )
+      
+      # Build and refine the Markov model
+      markov_dict = build_markov_dict(window_size)
+      smooth_markov_dict(markov_dict)
+      refine_weights(markov_dict, TRAINING_ITERATIONS)
+      
+      # Generate text
+      start_key = random.choice(list(markov_dict.keys()))
+      generated = list(start_key)
+      used_words = set(generated)
+      
+      for _ in range(OUTPUT_LENGTH - window_size):
+          current_key = tuple(generated[-window_size:])
+          next_word = pick_next_word(markov_dict, current_key, temperature)
+          
+          # Avoid repeating words too much
+          if next_word in used_words and random.random() > 0.7:
+              next_word = random.choice(words)
+          generated.append(next_word)
+          used_words.add(next_word)
+      
+      # Format and print the output
+      final_text = format_text(generated)
+      print(f"\nGenerated text with window_size={window_size}, temperature={temperature}:\n")
+      print("*" * 50)
+      print(final_text)
+      print("*" * 50 + "\n")
+      
+      print("TIP: Try different window_size and temperature values to see how they affect the output.")
+      print("     Higher window_size = more context = more coherent text")
+      print("     Lower temperature = more predictable text, Higher = more creative")
+
+  # Run the main function
+  run_markov()
+
+settings:
+  hideRepl: false
+  hideEditor: false
+  hideFileExplorer: false

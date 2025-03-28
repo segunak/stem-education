@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson.schema.json
+id: lesson1
+title: Interactive Text Generation
+objectives: Create your best AI text output by controlling all parameters together.
+parts:
+  - lessonpart1.yml

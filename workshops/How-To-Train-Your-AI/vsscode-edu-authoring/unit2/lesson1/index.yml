@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson.schema.json
+id: lesson1
+title: Markov Chain Text Generation
+objectives: Experiment with window size and temperature to improve text coherence.
+parts:
+  - lessonpart1.yml

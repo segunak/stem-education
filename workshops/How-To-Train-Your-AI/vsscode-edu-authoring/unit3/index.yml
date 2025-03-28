@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/unit.schema.json
+id: unit3
+title: Unit 3 - Interactive Control
+objectives: Take full control by combining all parameters and choosing your starting word.
+lessons:
+  - lesson1/index.yml
