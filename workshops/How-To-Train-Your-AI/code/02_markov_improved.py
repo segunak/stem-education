@@ -233,13 +233,17 @@ def run_markov():
             
             # Show what we're trying to predict from
             if random.random() < 0.3:  # 30% chance to show debug
-                print("\nDebug: Looking at last few words:", " ".join(current_key))
+                print(f"\nLooking at: '{' '.join(current_key)}'")
                 # Only show probabilities if we have this sequence
                 if current_key in markov_dict:
                     next_words = markov_dict[current_key]
-                    print("Possible next words (with probabilities):")
-                    for word, prob in sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:5]:
-                        print(f"  • '{word}': {prob:.2f}")
+                    total = sum(next_words.values())
+                    print("Most likely next words:")
+                    # Show top 3 most likely words with percentages
+                    sorted_words = sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:3]
+                    for word, count in sorted_words:
+                        percentage = (count / total) * 100
+                        print(f"• '{word}' ({percentage:.1f}% chance)")
 
             next_word = pick_next_word(markov_dict, current_key, temperature)
             
