@@ -789,6 +789,69 @@ nav ul li a:hover::after {
     margin-bottom: 0.8rem;
 }
 
+/* AI in Software Development Section */
+.ai-website-note {
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-website-note::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.ai-website-note i {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    z-index: 2;
+}
+
+.ai-website-note p {
+    margin-bottom: 0;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.ai-website-note a {
+    color: var(--text-light);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.ai-website-note a:hover {
+    color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+    .ai-website-note {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.2rem;
+    }
+    
+    .ai-website-note i {
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+        font-size: 2rem;
+    }
+}
+
 /* Footer */
 footer {
     background-color: var(--bg-dark);
