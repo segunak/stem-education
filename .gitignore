@@ -1,3 +1,0 @@
-# Ignore all .env files
-*.env
-__pycache__

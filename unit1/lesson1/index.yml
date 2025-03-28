@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lesson1
+title: "Tutorial: Welcome to Authoring"
+description: >
+  In this lesson, you’ll learn how to create and manage your own lessons in VS
+  Code for Education. You’ll add pages, include content, customize settings, and
+  upload code files to create a hands-on learning experience for your students.
+objectives: |-
+  - Create new lesson pages in the Table of Contents​
+  - Add and format content using the WYSIWYG editor​
+  - Adjust page settings to control what students can see and do​
+  - Add code files and enable students to interact with them​
+  - Organize your lesson to keep your workspace focused​
+lessonParts:
+  - lessonpart1.yml
+  - lessonpart2.yml
+  - lessonpart3.yml
+  - lessonpart4.yml
+  - lessonpart5.yml
+  - lessonpart6.yml

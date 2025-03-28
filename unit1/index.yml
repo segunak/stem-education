@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: unit1
+title: Unit 1
+objectives: Learn about the course and its objectives.
+lessons:
+  - lesson1/index.yml
+  - lesson2/index.yml

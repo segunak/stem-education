@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lessonpart3
+title: Add content to a lesson page
+duration: 5
+content: >
+  After adding a new page, you’ll see our **WYSIWYG editor** in this panel. It
+  lets you type and format text just like you would in a word processor, with
+  buttons for:
+
+
+  * **Bold** and *Italic* text
+
+  * **Strikethrough**
+
+  * **Blockquotes**
+
+  * **Inline Code** or code blocks
+
+  * **Images**
+
+  * **Numbered** and **bulleted** lists
+
+
+  You can also **copy and paste** from other documents, and the editor will
+  preserve most basic formatting. Feel free to highlight key concepts, embed
+  code snippets, or insert screenshots and diagrams for extra clarity.
+
+
+  Because we’re in **Beta**, we appreciate any feedback on your editing
+  experience—just click **“Give Feedback”** or join our Community discussions to
+  let us know what’s working well or could be improved!

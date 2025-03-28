@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lessonpart1
+title: Your first page title here
+content: "# Enter your content here"
