@@ -27,13 +27,21 @@ words = []
 for line in lines:
     words.extend(line.strip().split())
 
-# We just pick a sequence of random words, no context or learning.
+# Generate multiple examples to show randomness
+NUM_EXAMPLES = 3
 output_length = 10
-generated_words = [random.choice(words) for _ in range(output_length)]
 
 print("\n--- 01_basic_predictor.py ---")
-print("Randomly generated words (no context, no learning):\n")
-print("*" * 50)
-print(" ".join(generated_words))
-print("*" * 50)
-print("\nDoes the sentence above make any sort of sense? Take a look at data.txt to see the training data!")
+print("Showing multiple random outputs to demonstrate complete lack of pattern:\n")
+
+for i in range(NUM_EXAMPLES):
+    generated_words = [random.choice(words) for _ in range(output_length)]
+    print(f"Example {i+1}:")
+    print("*" * 50)
+    print(" ".join(generated_words))
+    print("*" * 50)
+    print()
+
+print("\nNotice how each output is completely different and makes no sense!")
+print("This is because we're just picking words at random with no context or learning.")
+print("Check data.txt to see the training data, then move on to 02_markov_improved.py")

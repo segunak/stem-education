@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson-v2.schema.json
+id: ai-fundamentals
+title: "AI Fundamentals: Machine Learning, Neural Networks, and Deep Learning"
+description: "Understand how AI systems like ChatGPT learn from data"
+duration: 15
+lessonParts:
+  - id: ai-basics
+    title: "AI Basics: Guess, Check, Adjust"
+    duration: 10
+    showContent: true
+    showEditor: false
+    content: |
+      # How AI Actually Works: Guess, Check, Adjust
+
+      Modern AI like ChatGPT might seem magical, but it's really just **patterns, math, and lots of practice**. AI functions by analyzing data, detecting patterns, making educated guesses, and improving through feedback.
+
+      ## The Core Process: Guess, Check, Adjust
+
+      At its heart, all AI follows this simple cycle:
+      1. **Guess**: Make a prediction based on patterns in the data
+      2. **Check**: Compare the prediction to the correct answer
+      3. **Adjust**: Tweak internal parameters to get closer to the right answer next time
+
+      This process happens millions or billions of times during training!
+
+      ![ML, NN, DL Connection](ml-nn-dl-connection.png)
+
+      ## Key Concepts You'll Apply Today
+
+      * **Context Window**: Looking at previous words to predict the next one
+      * **Temperature**: Controlling how "creative" vs. "predictable" the AI is
+      * **Training**: The process of improving predictions through repetition
+
+      In the next unit, you'll build your own simple AI text generator and see these concepts in action!

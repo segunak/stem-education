@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/unit-v2.schema.json
+id: building-ai
+title: "Building Your Own AI: From Random Text to Coherent Sentences"
+description: "Create and improve a text generation model step by step"
+duration: 45
+lessons:
+  - random-text-generation/index.yml
+  - markov-chain-model/index.yml
+  - interactive-model/index.yml
+  - connecting-to-chatgpt/index.yml

@@ -1,27 +1,29 @@
 # 02_markov_improved.py
 #
-# In this script, we improve on the random output from 01_basic_predictor.py by:
-# 1. Considering previous words before choosing the next (a Markov chain idea).
-# 2. Adjusting how "predictable" or "creative" the choices are (temperature).
-# 3. Introducing iterative training to refine the output quality.
+# What is the Markov Method?
+# -------------------------
+# Imagine writing a sentence. After each word, you look back at what you just wrote
+# to decide what word should come next. That's basically what the Markov method does!
 #
-# Markov Chain Concept (Simple Version):
-# Instead of picking the next word randomly, we look at the last 'window_size' words.
-# We then choose a next word based on how often it followed those words in the training text.
+# For example, if you wrote "The cat", your brain knows that words like "sat", "walked",
+# or "jumped" would make sense next, but "banana" probably wouldn't.
 #
-# window_size: How many previous words we consider (1 to 10).
-#  - Larger window_size = more context = often more coherent text.
+# The Markov method works the same way:
+# 1. It looks at the last few words (called the "window")
+# 2. Checks what words often came next in similar situations in its training data
+# 3. Picks one of those words as the next word in the sequence
 #
-# temperature: Controls how we pick from the possible next words (0.1 to 2.0).
-#  - Lower temperature (e.g. 0.2) = more predictable and coherent.
-#  - Higher temperature (e.g. 1.0) = more variety, but can be less coherent.
+# In this script, you control:
+# 1. window_size: How many previous words to look at (like context/memory)
+# 2. temperature: How "creative" vs "safe" the word choices should be
+#
+# Lower temperature (0.1-0.5) = Picks common/predictable next words
+# Higher temperature (1.0-2.0) = More willing to try unusual combinations
 #
 # Instructions:
-# 1. Run once with defaults by pressing Enter. Compare to 01_basic_predictor.py output.
-#    You should see some improvement, but maybe not great.
-# 2. Then rerun and try different settings:
-#    For example, window_size=6 and temperature=1.1 might produce more coherent text.
-# 3. Experiment with different values and see what happens.
+# 1. First run with defaults (just press Enter when asked)
+# 2. Then try window_size=3, temperature=0.7 
+# 3. Finally experiment with your own values!
 
 import os
 import sys
@@ -174,72 +176,92 @@ def get_user_input(prompt, default_val, min_val, max_val, cast_type):
     return default_val
 
 def run_markov():
-    """
-    The main routine that prompts for window_size & temperature once,
-    builds/refines the Markov model, generates text, and prints the result.
-    """
-    print("\n" + ("*" * 50))
-    print("Enter settings below. (Press Enter without typing anything to use default values.)")
-    print("*" * 50 + "\n")
+    print("\n" + ("=" * 70))
+    print("TEACHING A COMPUTER TO WRITE: THE MARKOV METHOD")
+    print("=" * 70)
+    
+    print("\nWhat's happening here?")
+    print("1. The computer looks at a few words that were just 'written'")
+    print("2. It finds what words usually came next in similar situations")
+    print("3. It picks one of those words to continue the text")
+    print("\nYou control two important settings:\n")
 
-    print("window_size controls how many previous words the model considers when choosing the next word.")
-    print("• Larger window_size → more context, often more coherent text.")
-    print("• Smaller window_size → less context, can be more random.\n")
+    print("1. CONTEXT SIZE (window_size):")
+    print("   • Small (1-2): Only looks at the last word or two")
+    print("   • Medium (3-5): Looks at the last few words, like a short phrase")
+    print("   • Large (6-10): Looks at many words, almost like a full sentence\n")
+    print("   Example: with window_size=3 and text 'The black cat',")
+    print("           the model looks at all 3 words to guess what comes next.\n")
 
-    # 1) Prompt for window_size
     window_size = get_user_input(
-        f"Enter a window_size between 1 and 10 [default={DEFAULT_WINDOW_SIZE}]: ",
+        f"Enter window_size ({MIN_WINDOW_SIZE}-{MAX_WINDOW_SIZE}) [default={DEFAULT_WINDOW_SIZE}]: ",
         DEFAULT_WINDOW_SIZE, MIN_WINDOW_SIZE, MAX_WINDOW_SIZE, int
     )
 
-    print("\ntemperature controls how 'creative' or random the text generation is.")
-    print("• Lower temperature (around 0.1-0.5) → more predictable, stable text.")
-    print("• Higher temperature (around 1.0-2.0) → more variety, but possibly less coherent.\n")
+    print("\n2. CREATIVITY CONTROL (temperature):")
+    print("   • Low (0.1-0.5): Plays it safe, picks the most common next word")
+    print("   • Medium (0.6-1.0): Balances between common and interesting choices")
+    print("   • High (1.1-2.0): Gets creative, might make unusual word combinations\n")
+    print("   Example: After 'The cat', with low temperature it might always pick 'sat',")
+    print("           but with high temperature it might pick 'danced' or 'flew'!\n")
 
-    # 2) Prompt for temperature
     temperature = get_user_input(
-        f"Enter a temperature between 0.1 and 2.0 [default={DEFAULT_TEMPERATURE}]: ",
+        f"Enter temperature ({MIN_TEMPERATURE}-{MAX_TEMPERATURE}) [default={DEFAULT_TEMPERATURE}]: ",
         DEFAULT_TEMPERATURE, MIN_TEMPERATURE, MAX_TEMPERATURE, float
     )
 
-    # 3) Build / refine Markov dict based on new window_size
+    # Build Markov model
+    print("\nBuilding language model...")
     markov_dict = build_markov_dict(window_size)
+    print("Smoothing probabilities...")
     smooth_markov_dict(markov_dict)
+    print(f"Training model ({DEFAULT_TRAINING_ITERATIONS} iterations)...")
     refine_weights(markov_dict, DEFAULT_TRAINING_ITERATIONS)
 
-    # 4) Generate text
-    start_key = random.choice(list(markov_dict.keys()))
-    generated = list(start_key)
-    used_words = set(generated)
+    # Generate multiple examples with same settings
+    NUM_EXAMPLES = 2
+    print(f"\nGenerating {NUM_EXAMPLES} examples with your settings:")
+    print(f"(window_size={window_size}, temperature={temperature})\n")
 
-    # 5) Produce 'FIXED_OUTPUT_LENGTH' words
-    for _ in range(FIXED_OUTPUT_LENGTH - window_size):
-        current_key = tuple(generated[-window_size:])
-        next_word = pick_next_word(markov_dict, current_key, temperature)
+    for i in range(NUM_EXAMPLES):
+        start_key = random.choice(list(markov_dict.keys()))
+        generated = list(start_key)
+        used_words = set(generated)
 
-        # occasionally skip repeated word
-        if next_word in used_words and random.random() > 0.7:
-            next_word = random.choice(words)
-        generated.append(next_word)
-        used_words.add(next_word)
+        for _ in range(FIXED_OUTPUT_LENGTH - window_size):
+            current_key = tuple(generated[-window_size:])
+            next_word = pick_next_word(markov_dict, current_key, temperature)
 
-        # end early if we see sentence boundary & have at least half the words
-        if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
-            break
+            if next_word in used_words and random.random() > 0.7:
+                next_word = random.choice(words)
+            generated.append(next_word)
+            used_words.add(next_word)
 
-    # 6) Format and print output
-    final_text = normalize_text(generated)
-    print("\nGenerated text with your chosen settings:")
-    print(f"(window_size={window_size}, temperature={temperature}, length={FIXED_OUTPUT_LENGTH})\n")
-    print("*" * 50)
-    print(final_text)
-    print("*" * 50 + "\n")
+            if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
+                break
 
-print("\n--- 02_markov_improved.py ---\n")
-print("Now we use a Markov chain to look at the last few words for context, plus a temperature setting that controls how 'adventurous' the word choices are.\n")
-print("This approach is smarter than picking words purely at random, but the quality still depends on your settings—so it's not always perfect!\n")
-print(f"Defaults: window_size={DEFAULT_WINDOW_SIZE}, temperature={DEFAULT_TEMPERATURE}, output_length={FIXED_OUTPUT_LENGTH}")
-print("\n--- 02_markov_improved.py ---")
+        final_text = normalize_text(generated)
+        print(f"\nExample {i+1}:")
+        print("*" * 50)
+        print(final_text)
+        print("*" * 50)
+
+    print("\nWant to improve the output? Here's what to try:")
+    print("1. Increase window_size (try 3-6) for more coherent sentences")
+    print("2. Adjust temperature:")
+    print("   • Too random? Lower it (try 0.5-0.7)")
+    print("   • Too repetitive? Raise it (try 1.0-1.2)")
+    print("\nRun the program again with different settings!")
+    print("Remember: There's no perfect combination - experiment and see what happens!\n")
+
+print("\n--- WORD PREDICTION EXPERIMENT ---\n")
+print("In this step, we're teaching the computer to predict words like humans do!")
+print("When you read 'The cat sat on the ___', you can probably guess 'mat' or 'chair'.")
+print("That's because you've seen similar patterns in other sentences before.\n")
+print("Now we'll help the computer learn to make these kinds of predictions.")
+print("You'll control HOW it learns through two important settings:")
+print(" 1. How many previous words it considers (window_size)")
+print(" 2. How creative it gets with its guesses (temperature)\n")
 
 try:
     if not LIVE_MODE:

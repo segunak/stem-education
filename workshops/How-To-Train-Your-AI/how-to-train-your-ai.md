@@ -192,7 +192,7 @@ Each concept builds on the previous one, and the core idea never changes: we gue
 
 **Goal:** Help students grasp how AI moves beyond human-written rules to learn patterns from data. They'll first try to identify cats in images and write rules by hand (simulating traditional programming logic), then discover why giving examples and letting the AI figure it out (supervised learning) is more flexible. After that, they'll explore text-based fill-in-the-blank guessing to understand self-supervised learning—the technique ChatGPT uses.
 
-**Materials Needed:**  The PowerPoint presentation accompanying this workshop found at [How To Train Your AI: Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics](https://1drv.ms/p/c/750d396c5cadcebd/EbXQ-zaNwKtHiNZgmaK3G6oBGB8DWOktvCLz9rm4FJkJbw?e=a3iPZj). Pen and paper for each student.
+**Materials Needed:** The PowerPoint presentation accompanying this workshop found at [How To Train Your AI: Demystifying ChatGPT With Machine Learning, Neural Networks, and Deep Learning Basics](https://1drv.ms/p/c/750d396c5cadcebd/EbXQ-zaNwKtHiNZgmaK3G6oBGB8DWOktvCLz9rm4FJkJbw?e=a3iPZj). Pen and paper for each student.
 
 **Estimated Time:** 25–30 minutes total (about 15 minutes for images/cats activity, 10 minutes for text/fill-in-the-blank activity).
 
@@ -310,6 +310,120 @@ Each of these files is accessible from the VS Code for Education project found a
   In the final file, students take full control. They adjust `window_size`, `temperature`, and `output_length` interactively and choose a starting word. They can try the suggested starting words (e.g., "On", "I", "The") or pick their own. By experimenting, they see how their choices influence coherence, style, and variety, directly building on all previous lessons. They should realize it's still limited because it only knows the small dataset they trained it on, unlike ChatGPT's massive training.
 
 Each file in the Visual Studio Code for Education project includes detailed comments and instructions, telling students what to change and what to observe.
+
+### Parameter Guide for Facilitators
+
+Based on analysis of the latest code and data.txt, here are the optimal settings:
+
+#### 01_basic_predictor.py
+
+* **Purpose:** Shows 3 random examples to demonstrate lack of patterns
+* **Parameters:** None (intentionally pure randomness)
+* **What to Watch:** Students should notice completely different, nonsensical output each run
+
+#### 02_markov_improved.py
+
+Optimal Settings:
+
+* `window_size`: 5-6
+* `temperature`: 0.7-0.8
+
+Why These Work Best:
+
+* **Window Size Analysis:**
+  * Most coherent patterns in data.txt are 5-6 words long
+  * Examples from data.txt show natural groupings:
+    * "In the quiet corners of"
+    * "By observing the migration of"
+  * Code performance degrades outside this range:
+    * < 5 words: insufficient context
+    * > 6 words: too restrictive, limits options
+
+* **Temperature Analysis:**
+  * Based on `freq ** (1.5 / temperature)` in pick_next_word()
+  * 0.7-0.8 provides optimal balance:
+    * Low enough to maintain coherence
+    * High enough to avoid repetition
+    * Matches natural variation in training data
+
+#### 03_interactive.py
+
+Optimal Settings:
+
+* `output_length`: 25-30
+* `window_size`: 6-7
+* `temperature`: 0.6-0.7
+* Best starting words: "The", "In", "By"
+
+Why These Work Best:
+
+* **Output Length:**
+  * Matches average paragraph length in data.txt
+  * Long enough to show context benefits
+  * Short enough to maintain coherence
+
+* **Window Size:**
+  * Slightly larger than markov_improved because:
+    * Has starting word advantage
+    * capitalize_and_punctuate() works better with more context
+    * More data available when following a known start
+
+* **Temperature:**
+  * Lower than markov_improved because:
+    * Starting word provides theme
+    * Need more consistency
+    * Helps maintain narrative flow
+
+* **Starting Words:**
+  * Begin many high-quality sequences in data.txt
+  * Lead to multiple branching possibilities
+  * Common enough to have reliable patterns
+
+### Running the Workshop
+
+For each file:
+
+1. **01_basic_predictor.py**
+   * Have students run it multiple times
+   * Point out how output is always random
+   * Show connection to data.txt content
+
+2. **02_markov_improved.py**
+   * First run: Use defaults to show "meh" output
+   * Second run: Guide to window_size=5, temperature=0.7
+   * Third run: Let students experiment freely
+
+3. **03_interactive.py**
+   * Start with: length=30, window_size=6, temperature=0.7
+   * Try different starting words
+   * Encourage parameter experimentation
+
+### Student Guidance Strategy
+
+When students run the code:
+
+1. **First Run:** Let them use defaults to see "meh" results
+2. **Second Run:** Guide them toward these ranges:
+   * For 02_markov_improved.py: suggest window_size=5, temperature=0.7
+   * For 03_interactive.py: suggest length=30, window_size=6, temperature=0.7
+3. **Exploration:** Encourage experimentation within these ranges:
+   * window_size: 5-7
+   * temperature: 0.6-0.8
+   * length: 25-30
+
+### Common Issues and Solutions
+
+1. **Text Too Random:**
+   * Problem: window_size too small or temperature too high
+   * Solution: Increase window_size to 6, decrease temperature to 0.7
+
+2. **Text Too Repetitive:**
+   * Problem: temperature too low or window_size too large
+   * Solution: Increase temperature to 0.8-1.0
+
+3. **Incoherent Output:**
+   * Problem: Often happens with default settings
+   * Solution: Guide students to optimal ranges above
 
 ### Before Starting
 

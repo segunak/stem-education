@@ -1,14 +1,16 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: how-to-train-your-ai
-title: "Guess, Check, Adjust: Training AI One Step at a Time"
-level: beginner
-description: This is a hands-on workshop where you'll act as an AI engineer, learning how AI models like ChatGPT are trained. Perfect for beginners, it offers a clear, practical introduction to building and understanding AI systems.
+title: "How To Train Your AI: Demystifying ChatGPT Through Building Simple AI Models"
+level: intermediate
+description: "Learn the basics of AI, machine learning, and how large language models like ChatGPT work by building and training your own simple text generator."
+objectives: "By the end of this workshop, you'll understand the fundamentals of how AI models like ChatGPT work, experience the core 'guess, check, adjust' cycle that powers machine learning, and build your own simple text generation model with adjustable parameters."
+prerequisites: "Basic understanding of programming concepts. No prior Python experience required."
+duration: 60
 cardImageUrl: https://vscodeedu.com/assets/course-cards/card6.png
 contacts:
   - displayName: "Segun Akinyemi"
     affiliation: Microsoft
     homePageUrl: https://segunakinyemi.com/
 units:
-  - unit1/index.yml
-  - unit2/index.yml
-  - unit3/index.yml
+  - understanding-ai/index.yml
+  - building-ai/index.yml

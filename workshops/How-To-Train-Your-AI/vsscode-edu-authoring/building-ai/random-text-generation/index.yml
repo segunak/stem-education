@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson-v2.schema.json
+id: random-text-generation
+title: "Step 1: Random Text Generation (Baseline)"
+description: "See what happens without any learning or context"
+duration: 10
+lessonParts:
+  - id: random-baseline
+    title: "Random Word Selection"
+    duration: 5
+    showContent: true
+    showEditor: true
+    showTerminal: true
+    content: |
+      # Step 1: Random Text Generation
+
+      Let's start by seeing what happens when we generate text randomly with **no learning or context**. This establishes our baseline before adding any "intelligence."
+
+      ## Instructions
+
+      1. First, look at the training data in `data.txt` - this contains the text our AI will learn from
+      2. Run `01_basic_predictor.py` and observe the output
+      3. Notice how the random output makes no sense - this shows why we need AI to learn patterns
+
+      ## What's Happening?
+
+      The code simply picks random words from our training data with no consideration for what words should come next. Real AI systems need to learn which words typically follow others to generate coherent text.
+
+      **Run the code and see the random output before continuing!**
+    editors:
+      - data.txt
+      - 01_basic_predictor.py

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/unit-v2.schema.json
+id: understanding-ai
+title: "Understanding AI: From Random Guesses to Intelligent Predictions"
+description: "Learn the core concepts behind modern AI systems like ChatGPT"
+duration: 15
+lessons:
+  - ai-fundamentals/index.yml
