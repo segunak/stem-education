@@ -1,0 +1,497 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://vscodeedu.com/assets/schema/course-v2.schema.json",
+    "title": "Visual Studio Code for Education Course",
+    "description": "Definition of a course for Visual Studio Code for Education.",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "The unique identifier for a course.",
+        "$ref": "#/$defs/id"
+      },
+      "level": {
+        "description": "Difficulty level of the course.",
+        "type": "string",
+        "enum": [
+          "beginner",
+          "intermediate",
+          "advanced",
+          "expert"
+        ],
+        "default": "beginner"
+      },
+      "title": {
+        "description": "The title of the course.",
+        "$ref": "#/$defs/title"
+      },
+      "description": {
+        "description": "A brief description of the course.",
+        "$ref": "#/$defs/description"
+      },
+      "objectives": {
+        "description": "The learning objectives of the course.",
+        "$ref": "#/$defs/description"
+      },
+      "prerequisites": {
+        "description": "The prerequisites for the course.",
+        "$ref": "#/$defs/description"
+      },
+      "duration": {
+        "description": "Estimated amount of time to complete the course in minutes.",
+        "$ref": "#/$defs/duration"
+      },
+      "contacts": {
+        "description": "Course author contact information.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "displayName": {
+              "description": "Display name of the contact.",
+              "$ref": "#/$defs/displayName"
+            },
+            "affiliation": {
+              "description": "Display name of the contact.",
+              "$ref": "#/$defs/displayName"
+            },
+            "email": {
+              "description": "The email address of the contact.",
+              "type": "string",
+              "format": "email"
+            },
+            "pictureUrl": {
+              "description": "The URL of the contact's picture.",
+              "$ref": "#/$defs/location"
+            },
+            "homePageUrl": {
+              "description": "The URL of the contact's home page.",
+              "$ref": "#/$defs/location"
+            }
+          },
+          "required": [
+            "displayName"
+          ]
+        }
+      },
+      "files": {
+        "description": "Additional files that are part of the course.",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "description": "The full path of the file.",
+              "$ref": "#/$defs/path"
+            },
+            "content": {
+              "description": "Contents of the file.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "content"
+          ]
+        }
+      },
+      "units": {
+        "description": "The units that make up the course.",
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "anyOf": [
+            {
+              "description": "The location (URL) of unit definition.",
+              "$ref": "#/$defs/location"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The unique identifier for a unit.",
+                  "$ref": "#/$defs/id"
+                },
+                "title": {
+                  "description": "The title of the unit.",
+                  "$ref": "#/$defs/title"
+                },
+                "description": {
+                  "description": "A brief description of the unit.",
+                  "$ref": "#/$defs/description"
+                },
+                "objectives": {
+                  "description": "The learning objectives of the unit.",
+                  "$ref": "#/$defs/description"
+                },
+                "duration": {
+                  "description": "Estimated amount of time to complete the unit in minutes.",
+                  "$ref": "#/$defs/duration"
+                },
+                "lessons": {
+                  "description": "The lessons that make up the unit.",
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "description": "The location (URL) of lesson definition.",
+                        "$ref": "#/$defs/location"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "The unique identifier for a lesson.",
+                            "$ref": "#/$defs/id"
+                          },
+                          "title": {
+                            "description": "The title of the lesson.",
+                            "$ref": "#/$defs/title"
+                          },
+                          "description": {
+                            "description": "A brief description of the lesson.",
+                            "$ref": "#/$defs/description"
+                          },
+                          "objectives": {
+                            "description": "The learning objectives of the lesson.",
+                            "$ref": "#/$defs/description"
+                          },
+                          "duration": {
+                            "description": "Estimated amount of time to complete the lesson in minutes.",
+                            "$ref": "#/$defs/duration"
+                          },
+                          "standards": {
+                            "description": "The standards that the lesson aligns with.",
+                            "type": "array",
+                            "items": {
+                              "uniqueItems": true,
+                              "$ref": "#/$defs/standardId"
+                            }
+                          },
+                          "lessonParts": {
+                            "description": "The lesson parts that make up the lesson.",
+                            "type": "array",
+                            "minItems": 1,
+                            "uniqueItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "description": "The location (URL) of unit definition.",
+                                  "$ref": "#/$defs/location"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "description": "The unique identifier for a lesson part.",
+                                      "$ref": "#/$defs/id"
+                                    },
+                                    "title": {
+                                      "description": "The title of the lesson part.",
+                                      "$ref": "#/$defs/title"
+                                    },
+                                    "duration": {
+                                      "description": "Estimated amount of time to complete the lesson part in minutes.",
+                                      "$ref": "#/$defs/duration"
+                                    },
+                                    "showContent": {
+                                      "description": "Show the content view in the UI.",
+                                      "type": "boolean",
+                                      "default": "true"
+                                    },
+                                    "showEditor": {
+                                      "description": "Show the code editors in the UI.",
+                                      "type": "boolean",
+                                      "default": "false"
+                                    },
+                                    "showTerminal": {
+                                      "description": "Show the terminal in the UI.",
+                                      "type": "boolean",
+                                      "default": "false"
+                                    },
+                                    "showExplorer": {
+                                      "description": "Show the file explorer in the UI.",
+                                      "type": "boolean",
+                                      "default": "false"
+                                    },
+                                    "dependsOn": {
+                                      "description": "Full IDs of lesson parts that must be completed before this lesson part.",
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/$defs/fullId",
+                                        "uniqueItems": true
+                                      }
+                                    },
+                                    "content": {
+                                      "description": "The content of the lesson part.",
+                                      "type": "string"
+                                    },
+                                    "editors": {
+                                      "description": "The code editors for the lesson part.",
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/$defs/path",
+                                        "uniqueItems": true
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "title",
+                                    "content"
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "$defs": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z\\d.](?:[a-z\\d.-]{0,48}[a-z\\d.])?$"
+      },
+      "fullId": {
+        "type": "string",
+        "pattern": "^[a-z\\d.](?:[a-z\\d.-]{0,48}[a-z\\d.])?(?::[a-z\\d.](?:[a-z\\d.-]{0,48}[a-z\\d.])?){0,9}$"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      },
+      "displayName": {
+        "type": "string",
+        "maxLength": 100
+      },
+      "duration": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 500000
+      },
+      "location": {
+        "type": "string",
+        "format": "uri"
+      },
+      "path": {
+        "type": "string",
+        "pattern": "^(?:[a-zA-Z]:[\\/]|\\\\|/)?(?:[^\u003C\u003E:\"/\\|?*]+(?:[\\/](?![\\/]))?)*[^\u003C\u003E:\"/\\|?*]*$",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "standardId": {
+        "type": "string",
+        "enum": [
+          "1a-ap-08",
+          "1a-ap-09",
+          "1a-ap-10",
+          "1a-ap-11",
+          "1a-ap-12",
+          "1a-ap-13",
+          "1a-ap-14",
+          "1a-ap-15",
+          "1a-cs-01",
+          "1a-cs-02",
+          "1a-cs-03",
+          "1a-da-05",
+          "1a-da-06",
+          "1a-da-07",
+          "1a-ic-16",
+          "1a-ic-17",
+          "1a-ic-18",
+          "1a-ni-04",
+          "1b-ap-08",
+          "1b-ap-09",
+          "1b-ap-10",
+          "1b-ap-11",
+          "1b-ap-12",
+          "1b-ap-13",
+          "1b-ap-14",
+          "1b-ap-15",
+          "1b-ap-16",
+          "1b-ap-17",
+          "1b-cs-01",
+          "1b-cs-02",
+          "1b-cs-03",
+          "1b-da-06",
+          "1b-da-07",
+          "1b-ic-18",
+          "1b-ic-19",
+          "1b-ic-20",
+          "1b-ic-21",
+          "1b-ni-04",
+          "1b-ni-05",
+          "2-ap-10",
+          "2-ap-11",
+          "2-ap-12",
+          "2-ap-13",
+          "2-ap-14",
+          "2-ap-15",
+          "2-ap-16",
+          "2-ap-17",
+          "2-ap-18",
+          "2-ap-19",
+          "2-cs-01",
+          "2-cs-02",
+          "2-cs-03",
+          "2-da-07",
+          "2-da-08",
+          "2-da-09",
+          "2-ic-20",
+          "2-ic-21",
+          "2-ic-22",
+          "2-ic-23",
+          "2-ni-04",
+          "2-ni-05",
+          "2-ni-06",
+          "3a-ap-13",
+          "3a-ap-14",
+          "3a-ap-15",
+          "3a-ap-16",
+          "3a-ap-17",
+          "3a-ap-18",
+          "3a-ap-19",
+          "3a-ap-20",
+          "3a-ap-21",
+          "3a-ap-22",
+          "3a-ap-23",
+          "3a-cs-01",
+          "3a-cs-02",
+          "3a-cs-03",
+          "3a-da-09",
+          "3a-da-10",
+          "3a-da-11",
+          "3a-da-12",
+          "3a-ic-24",
+          "3a-ic-25",
+          "3a-ic-26",
+          "3a-ic-27",
+          "3a-ic-28",
+          "3a-ic-29",
+          "3a-ic-30",
+          "3a-ni-04",
+          "3a-ni-05",
+          "3a-ni-06",
+          "3a-ni-07",
+          "3a-ni-08",
+          "3b-ap-08",
+          "3b-ap-09",
+          "3b-ap-10",
+          "3b-ap-11",
+          "3b-ap-12",
+          "3b-ap-13",
+          "3b-ap-14",
+          "3b-ap-15",
+          "3b-ap-16",
+          "3b-ap-17",
+          "3b-ap-18",
+          "3b-ap-19",
+          "3b-ap-20",
+          "3b-ap-21",
+          "3b-ap-22",
+          "3b-ap-23",
+          "3b-ap-24",
+          "3b-cs-01",
+          "3b-cs-02",
+          "3b-da-05",
+          "3b-da-06",
+          "3b-da-07",
+          "3b-ic-25",
+          "3b-ic-26",
+          "3b-ic-27",
+          "3b-ic-28",
+          "3b-ni-03",
+          "3b-ni-04"
+        ]
+      },
+      "codeLanguage": {
+        "type": "string",
+        "enum": [
+          "abap",
+          "bat",
+          "bibtex",
+          "clojure",
+          "coffeescript",
+          "c",
+          "cpp",
+          "csharp",
+          "dockercompose",
+          "css",
+          "cuda-cpp",
+          "diff",
+          "dockerfile",
+          "fsharp",
+          "git-commit",
+          "git-rebase",
+          "go",
+          "groovy",
+          "handlebars",
+          "haml",
+          "html",
+          "ini",
+          "java",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "jsonc",
+          "latex",
+          "less",
+          "lua",
+          "makefile",
+          "markdown",
+          "objective-c",
+          "objective-cpp",
+          "perl",
+          "perl6",
+          "php",
+          "plaintext",
+          "powershell",
+          "jade",
+          "pug",
+          "python",
+          "r",
+          "razor",
+          "ruby",
+          "rust",
+          "scss",
+          "sass",
+          "shaderlab",
+          "shellscript",
+          "slim",
+          "sql",
+          "stylus",
+          "swift",
+          "typescript",
+          "typescriptreact",
+          "tex",
+          "vb",
+          "vue",
+          "vue-html",
+          "xml",
+          "xsl",
+          "yaml"
+        ]
+      }
+    }
+  }

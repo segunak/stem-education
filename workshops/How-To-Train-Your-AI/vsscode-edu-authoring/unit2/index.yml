@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/unit.schema.json
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: unit2
 title: Unit 2 - Adding Context
 objectives: Improve text generation by adding context with Markov chains and temperature control.
