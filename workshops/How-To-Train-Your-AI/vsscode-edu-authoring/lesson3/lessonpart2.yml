@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: starting-words
+title: Starting Words and Their Impact
+content: |
+  # Starting Words and Their Impact
+  
+  One powerful feature of our interactive AI model is the ability to select a starting word. This gives you more control over the generated text's theme and direction.
+  
+  ## How Starting Words Work
+  
+  In our previous models, we randomly selected a starting sequence. With the interactive model, you can choose the first word, and the model will:
+  
+  1. Begin with your chosen word
+  2. Use the Markov chain to predict following words based on your window size
+  3. Continue generating text while applying your temperature setting
+  
+  ## The Power of Initial Conditions
+  
+  The starting word acts as a seed that influences the entire text. Different starting words can lead to completely different outputs, even with identical window size and temperature settings.
+  
+  This demonstrates an important concept in AI: **initial conditions matter**. Real AI systems are also sensitive to how they begin processing information.
+  
+  ## Good Starting Words
+  
+  Some words are better starting points than others:
+  
+  - **Common words** like "The", "I", or "On" often appear in many contexts in the training data, giving the model flexibility
+  - **Specific words** that appear less frequently might lead to more focused or limited text
+  - **Words that don't appear** in the training data will cause the model to select a random start
+  
+  In the next section, you'll get to experiment with different starting words along with other parameters.
+
+settings:
+  hideRepl: true
+  hideEditor: true
+  hideFileExplorer: false

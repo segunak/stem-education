@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: what-is-markov-chain
+title: What is a Markov Chain?
+content: |
+  # What is a Markov Chain?
+  
+  A Markov chain is a mathematical system that moves from one "state" to another based on probabilities. For text generation, these "states" are words or sequences of words.
+  
+  ## How Markov Chains Work for Text
+  
+  Imagine we have the sentence: "The cat sat on the mat"
+  
+  If we want to predict what comes after "The cat", we look at our training data to find all occurrences of "The cat" and see what words followed it. Maybe we find:
+  - "The cat sat..." (appears 3 times)
+  - "The cat jumped..." (appears 1 time)
+  
+  Using this information, if we see "The cat" again, we'd predict "sat" with 75% probability and "jumped" with 25% probability.
+  
+  ## Window Size: How Much Context to Consider
+  
+  A key parameter in Markov chains is "window size" - how many previous words we use for context:
+  
+  - **Window Size = 1**: Only look at the last word (e.g., after "cat", what comes next?)
+  - **Window Size = 2**: Look at the last two words (e.g., after "The cat", what comes next?)
+  - **Window Size = 3**: Look at the last three words (e.g., after "The cat sat", what comes next?)
+  
+  Larger window sizes generally produce more coherent text because they capture more context, but they require more training data to work well.
+  
+  ## Building a Markov Dictionary
+  
+  To implement a Markov chain, we create a "dictionary" that maps sequences of words (keys) to possible next words and their frequencies (values).
+  
+  In the next section, we'll examine how this works in code.
+
+settings:
+  hideRepl: true
+  hideEditor: true
+  hideFileExplorer: true

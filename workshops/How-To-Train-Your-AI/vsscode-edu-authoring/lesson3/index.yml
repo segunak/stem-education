@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson.schema.json
+id: lesson3
+title: Interactive AI Control
+objectives: Take full control of your AI text generation system by combining all concepts and experimenting with starting words and parameters.
+parts:
+  - lessonpart1.yml
+  - lessonpart2.yml
+  - lessonpart3.yml

@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: understanding-context
+title: Understanding Context in Text Generation
+content: |
+  # Understanding Context in Text Generation
+  
+  In the previous lesson, we saw that random text generation produces nonsensical results. Real language has patterns and structure - words appear in certain sequences, not randomly.
+  
+  ## The Importance of Context
+  
+  When humans write or speak, each word we choose depends on the words that came before it. For example, after "The cat sat on the", you might expect words like "mat", "chair", or "windowsill" - but probably not words like "democracy" or "photosynthesis".
+  
+  This relationship between words is called **context**, and it's a fundamental concept in AI text generation.
+  
+  ## Moving from Random to Context-Aware
+  
+  To improve our text generation, we need to:
+  
+  1. **Analyze the training data** to see which words tend to follow others
+  2. **Use this information** when choosing the next word
+  3. **Make the selections probabilistic** so there's still some variety
+  
+  In this lesson, we'll introduce two key concepts that help with this:
+  
+  - **Markov chains**: A mathematical way to use previous words to predict the next one
+  - **Temperature**: A parameter that controls how "creative" vs. "predictable" the output is
+  
+  By adding these concepts, our text generation will become noticeably more coherent than the random approach.
+
+settings:
+  hideRepl: true
+  hideEditor: true
+  hideFileExplorer: true

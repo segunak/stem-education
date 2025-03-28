@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: temperature-parameter
+title: The Temperature Parameter
+content: |
+  # The Temperature Parameter
+  
+  In addition to window size, another important parameter in text generation is "temperature." This controls how predictable or creative the model's word choices are.
+  
+  ## What is Temperature?
+  
+  Temperature is a parameter that affects the probability distribution when selecting the next word. It's named after the concept of temperature in physics, where higher temperatures mean more molecular movement and randomness.
+  
+  In text generation:
+  
+  - **Low temperature** (e.g., 0.2): The model becomes more conservative and predictable, strongly favoring words with the highest probability
+  - **High temperature** (e.g., 1.5): The model becomes more adventurous and creative, giving more consideration to less probable words
+  
+  ## How Temperature Works
+  
+  When choosing the next word, we adjust the probabilities based on temperature:
+  
+  1. With **low temperature**, high-probability words become even more likely, and low-probability words become even less likely
+  2. With **high temperature**, probabilities become more uniform, giving lower-probability words a better chance
+  
+  Finding the right temperature is important:
+  
+  - Too low → repetitive, predictable text
+  - Too high → chaotic, nonsensical text
+  - Just right → coherent yet interesting text
+  
+  In the next section, you'll experiment with different window sizes and temperatures to see how they affect the generated text.
+
+settings:
+  hideRepl: true
+  hideEditor: true
+  hideFileExplorer: true

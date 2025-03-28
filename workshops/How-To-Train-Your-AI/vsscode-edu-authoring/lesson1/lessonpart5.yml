@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lessonpart5
+title: Creating code files
+duration: 5
+content: >
+  Want to include your own code  files in the lesson? The File Explorer located
+  in the bottom left corner is here to help. You can either **drag and drop**
+  them directly into the File Explorer or select the **(+) icon** to create a
+  new file.&#x20;
+
+
+  When creating a file:
+
+
+  1. At the top of the screen, **enter a name for the file** (e.g., `script.py`,
+  `index.html`, `main.js`) so it has a proper extension.
+
+  2. **Show the Code Editor** (in Lesson Page Settings) if you want students to
+  open and modify the file directly.
+
+
+  By adjusting these settings, you control whether learners will have access to
+  review and interact with your code file hands‐on.&#x20;
+
+  Experiment with creating files and adjusting the settings - your changes are
+  immediate, so you can see how each option affects the learning experience.
+
+  If you run into issues or have ideas to improve our Authoring Beta, please
+  select **“Give Feedback”** or join our Community discussion.

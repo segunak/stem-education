@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lesson.schema.json
+id: lesson1
+title: Random Text Generation
+objectives: Learn about the baseline approach to text generation without any intelligence and establish why AI training is necessary.
+parts:
+  - lessonpart1.yml
+  - lessonpart2.yml
+  - lessonpart3.yml

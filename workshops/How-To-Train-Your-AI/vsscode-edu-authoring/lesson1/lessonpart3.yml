@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/lessonpart.schema.json
+id: random-text-generation
+title: Random Text Generation
+content: |
+  # Random Text Generation
+  
+  Let's start with the simplest approach to text generation: pure randomness. This establishes our baseline before adding any "intelligence."
+
+  ## The Random Approach
+  
+  In this approach:
+  1. We load words from our training data
+  2. We pick words completely at random
+  3. We put these words together to form a "sentence"
+  
+  This method doesn't consider context, meaning, or grammar - it's just random selection. It's like putting all the words in a hat and drawing them out blindfolded.
+  
+  ## Try It Yourself
+  
+  Look at the code in the editor. This simple program:
+  - Loads the words from `data.txt`
+  - Picks 10 random words
+  - Prints them as output
+  
+  When you're ready, click the "Run" button in the REPL to see what random text looks like.
+  
+  ## Questions to Consider:
+  
+  After running the code:
+  - Does the output make any sense?
+  - Can you see any coherent phrases or patterns?
+  - Why doesn't random selection produce meaningful text?
+  
+  This demonstrates why we need more sophisticated approaches to generate text that sounds like it was written by a human. In the next lesson, we'll start adding intelligence to our model.
+
+code: |
+  # 01_basic_predictor.py
+  #
+  # In this script, we pick words at random to form sentences, without any learning or context.
+  # Instructions:
+  # 1. Run this code by clicking the "Run" button.
+  # 2. Observe the output in the terminal below.
+  # 3. Notice that the output does not resemble your training text at all—it's random.
+  #
+  # This shows you the starting point: pure randomness, no understanding.
+
+  import os
+  import random
+
+  # Ensure the script always reads data.txt from the same directory as this script
+  script_dir = os.path.dirname(__file__)
+  data_file_path = os.path.join(script_dir, "data.txt")
+
+  # Read the data
+  with open(data_file_path, "r") as f:
+      lines = f.readlines()
+
+  # Split lines into words
+  words = []
+  for line in lines:
+      words.extend(line.strip().split())
+
+  # We just pick a sequence of random words, no context or learning.
+  output_length = 10
+  generated_words = [random.choice(words) for _ in range(output_length)]
+
+  print("\n--- 01_basic_predictor.py ---")
+  print("Randomly generated words (no context, no learning):\n")
+  print("*" * 50)
+  print(" ".join(generated_words))
+  print("*" * 50)
+  print("\nDoes the sentence above make any sort of sense? Take a look at data.txt to see the training data!")
+
+settings:
+  hideRepl: false
+  hideEditor: true
+  hideFileExplorer: false
