@@ -34,6 +34,66 @@ const professionalsData = {
         "expertise": ""
       },
       {
+        "name": "Dave Vespa",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/drvespa/",
+        "expertise": ""
+      },
+      {
+        "name": "Lex Barbosa",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
+        "expertise": ""
+      },
+      {
+        "name": "Avlokita Sharma",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
+        "expertise": ""
+      },
+      {
+        "name": "Allan Matias",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
+        "expertise": ""
+      },
+      {
+        "name": "John Daly",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
+        "expertise": ""
+      },
+      {
+        "name": "Uchenna Nwosu",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/unwosu44/",
+        "expertise": ""
+      },
+      {
+        "name": "Cynthia Rice",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
+        "expertise": ""
+      },
+      {
+        "name": "Stacey Whitfield",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/staceywhitfield/",
+        "expertise": ""
+      },
+      {
+        "name": "Kyle Watson",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
+        "expertise": ""
+      },
+      {
+        "name": "Peshal Nepal",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
+        "expertise": ""
+      },
+      {
         "name": "Jerome Collins",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
@@ -62,19 +122,6 @@ const professionalsData = {
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
         "expertise": ""
-      },
-      {
-        "name": "Lex Barbosa",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
-        "expertise": ""
-      },
-      {
-        "name": "Segun Akinyemi",
-        "title": "Creator of this website",
-        "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
-        "expertise": "",
-        "isCreator": true
       },
       {
         "name": "Mayha Shah",
@@ -107,52 +154,23 @@ const professionalsData = {
         "expertise": ""
       },
       {
-        "name": "Richmond Baker",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/richmond-baker-iii-he-him-his-9b60471/",
-        "expertise": ""
-      },
-      {
-        "name": "Rich Chambers",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
-        "expertise": ""
-      },
-      {
         "name": "Pauline Robinson",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
         "expertise": ""
       },
       {
-        "name": "Avlokita Sharma",
+        "name": "Denisse Alvarado",
         "title": "",
-        "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
+        "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
         "expertise": ""
       },
       {
-        "name": "Kyle Watson",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
-        "expertise": ""
-      },
-      {
-        "name": "Peshal Nepal",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
-        "expertise": ""
-      },
-      {
-        "name": "Allan Matias",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
-        "expertise": ""
-      },
-      {
-        "name": "John Daly",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
-        "expertise": ""
+        "name": "Segun Akinyemi",
+        "title": "Creator of this website",
+        "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
+        "expertise": "",
+        "isCreator": true
       },
       {
         "name": "Henrique Oliveira",
@@ -173,33 +191,15 @@ const professionalsData = {
         "expertise": ""
       },
       {
-        "name": "Uchenna Nwosu",
+        "name": "Richmond Baker",
         "title": "",
-        "linkedIn": "https://www.linkedin.com/in/unwosu44/",
+        "linkedIn": "https://www.linkedin.com/in/richmond-baker-iii-he-him-his-9b60471/",
         "expertise": ""
       },
       {
-        "name": "Cynthia Rice",
+        "name": "Rich Chambers",
         "title": "",
-        "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
-        "expertise": ""
-      },
-      {
-        "name": "Stacey Whitfield",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/staceywhitfield/",
-        "expertise": ""
-      },
-      {
-        "name": "Denisse Alvarado",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
-        "expertise": ""
-      },
-      {
-        "name": "Dave Vespa",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/drvespa/",
+        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
         "expertise": ""
       }
     ]
