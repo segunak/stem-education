@@ -277,46 +277,40 @@ def run_interactive():
 
     used_words = set(generated)
 
-    # Generate multiple examples
-    NUM_EXAMPLES = 2
-    print(f"\nGenerating {NUM_EXAMPLES} different examples with your settings...")
+    # Generate single example
+    print("\nGenerating text with your settings...")
+    generated = list(start_key)
+    used_words = set(generated)
     
-    for i in range(NUM_EXAMPLES):
-        generated = list(start_key)
-        used_words = set(generated)
+    print("\nStarting with:", " ".join(generated))
+    
+    for _ in range(output_length - window_size):
+        curr_key = tuple(generated[-window_size:])
         
-        print(f"\nExample {i+1}:")
-        print("Starting with:", " ".join(generated))
+        # Show AI thinking occasionally (30% chance)
+        if random.random() < 0.3:
+            print(f"\nLooking at: '{' '.join(curr_key)}'")
+            if curr_key in markov_dict:
+                next_words = markov_dict[curr_key]
+                total = sum(next_words.values())
+                print("Top 3 likely next words:")
+                sorted_words = sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:3]
+                for word, count in sorted_words:
+                    percentage = (count / total) * 100
+                    print(f"• '{word}' ({percentage:.1f}% chance)")
+
+        next_word = pick_next_word(markov_dict, curr_key, temperature)
         
-        for _ in range(output_length - window_size):
-            curr_key = tuple(generated[-window_size:])
-            
-            # Show AI thinking process occasionally (30% chance)
-            if random.random() < 0.3:
-                print(f"\nLooking at: '{' '.join(curr_key)}'")
-                if curr_key in markov_dict:
-                    next_words = markov_dict[curr_key]
-                    total = sum(next_words.values())
-                    print("Top 3 likely next words:")
-                    # Show top 3 most likely next words with percentages
-                    sorted_words = sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:3]
-                    for word, count in sorted_words:
-                        percentage = (count / total) * 100
-                        print(f"• '{word}' ({percentage:.1f}% chance)")
+        if next_word in used_words and random.random() > 0.7:
+            next_word = random.choice(words)
+        generated.append(next_word)
+        used_words.add(next_word)
 
-            next_word = pick_next_word(markov_dict, curr_key, temperature)
-            
-            # Avoid repetition
-            if next_word in used_words and random.random() > 0.7:
-                next_word = random.choice(words)
-            generated.append(next_word)
-            used_words.add(next_word)
-
-        formatted_output = capitalize_and_punctuate(generated)
-        print("\nFinal output:")
-        print("=" * 50)
-        print(formatted_output)
-        print("=" * 50)
+    formatted_output = capitalize_and_punctuate(generated)
+    print("\nGenerated text:")
+    print("=" * 50)
+    print(formatted_output)
+    print("=" * 50)
 
     print("\nNot happy with the results?")
     print("• Text too random? → Increase window_size or lower temperature")

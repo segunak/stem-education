@@ -215,53 +215,46 @@ def run_markov():
     print(f"Training model ({DEFAULT_TRAINING_ITERATIONS} iterations)...")
     refine_weights(markov_dict, DEFAULT_TRAINING_ITERATIONS)
 
-    # Generate multiple examples with same settings
-    NUM_EXAMPLES = 2
-    print(f"\nGenerating {NUM_EXAMPLES} examples with your settings:")
+    # Generate one example with settings
+    print("\nGenerating text with your settings:")
     print(f"(window_size={window_size}, temperature={temperature})\n")
 
-    # Add debug info during generation
-    print("\nWatching the AI think...")
-    for i in range(NUM_EXAMPLES):
-        print(f"\nGenerating Example {i+1}:")
-        start_key = random.choice(list(markov_dict.keys()))
-        generated = list(start_key)
-        used_words = set(generated)
+    # Generate text
+    print("Watching the AI think...")
+    start_key = random.choice(list(markov_dict.keys()))
+    generated = list(start_key)
+    used_words = set(generated)
 
-        for _ in range(FIXED_OUTPUT_LENGTH - window_size):
-            current_key = tuple(generated[-window_size:])
-            
-            # Show what we're trying to predict from
-            if random.random() < 0.3:  # 30% chance to show debug
-                print(f"\nLooking at: '{' '.join(current_key)}'")
-                # Only show probabilities if we have this sequence
-                if current_key in markov_dict:
-                    next_words = markov_dict[current_key]
-                    total = sum(next_words.values())
-                    print("Most likely next words:")
-                    # Show top 3 most likely words with percentages
-                    sorted_words = sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:3]
-                    for word, count in sorted_words:
-                        percentage = (count / total) * 100
-                        print(f"• '{word}' ({percentage:.1f}% chance)")
+    for _ in range(FIXED_OUTPUT_LENGTH - window_size):
+        current_key = tuple(generated[-window_size:])
+        
+        # Show AI thinking occasionally (30% chance)
+        if random.random() < 0.3:
+            print(f"\nLooking at: '{' '.join(current_key)}'")
+            if current_key in markov_dict:
+                next_words = markov_dict[current_key]
+                total = sum(next_words.values())
+                print("Most likely next words:")
+                sorted_words = sorted(next_words.items(), key=lambda x: x[1], reverse=True)[:3]
+                for word, count in sorted_words:
+                    percentage = (count / total) * 100
+                    print(f"• '{word}' ({percentage:.1f}% chance)")
 
-            next_word = pick_next_word(markov_dict, current_key, temperature)
-            
-            # Avoid repetition
-            if next_word in used_words and random.random() > 0.7:
-                next_word = random.choice(words)
-            
-            generated.append(next_word)
-            used_words.add(next_word)
+        next_word = pick_next_word(markov_dict, current_key, temperature)
+        
+        if next_word in used_words and random.random() > 0.7:
+            next_word = random.choice(words)
+        generated.append(next_word)
+        used_words.add(next_word)
 
-            if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
-                break
+        if is_sentence_end(next_word) and len(generated) > FIXED_OUTPUT_LENGTH // 2:
+            break
 
-        final_text = normalize_text(generated)
-        print(f"\nOutput {i+1}:")
-        print("=" * 50)
-        print(final_text)
-        print("=" * 50)
+    final_text = normalize_text(generated)
+    print("\nGenerated text:")
+    print("=" * 50)
+    print(final_text)
+    print("=" * 50)
 
     print("\nWant better results?")
     print("• More coherent: Use window_size=5-6")
