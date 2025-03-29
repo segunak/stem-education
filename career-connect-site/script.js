@@ -191,12 +191,6 @@ const professionalsData = {
         "expertise": ""
       },
       {
-        "name": "Richmond Baker",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/richmond-baker-iii-he-him-his-9b60471/",
-        "expertise": ""
-      },
-      {
         "name": "Rich Chambers",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/richkchambers/",
