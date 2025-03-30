@@ -1930,7 +1930,35 @@ input, select, textarea {
 		.button.primary {
 			background-color: #dddddd;
 			color:#00274D !important;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+			transition: all 0.3s ease;
 		}
+
+			input[type="submit"].primary:before,
+			input[type="reset"].primary:before,
+			input[type="button"].primary:before,
+			button.primary:before,
+			.button.primary:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+				transition: all 0.5s ease;
+				z-index: -1;
+			}
+
+			input[type="submit"].primary:hover:before,
+			input[type="reset"].primary:hover:before,
+			input[type="button"].primary:hover:before,
+			button.primary:hover:before,
+			.button.primary:hover:before {
+				left: 100%;
+			}
 
 			input[type="submit"].primary:after,
 			input[type="reset"].primary:after,
@@ -3011,7 +3039,13 @@ input, select, textarea {
 		-ms-flex-direction: row;
 		flex-direction: row;
 		min-height: 22.5em;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
 	}
+
+		.spotlights > section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+		}
 
 		body.is-ie .spotlights > section {
 			min-height: 0;
@@ -3921,3 +3955,134 @@ input, select, textarea {
 			}
 
 		}
+
+		@media screen and (max-width: 480px) {
+			#intro h1 {
+				font-size: 2em;
+			}
+		}
+
+/* Progress Tracker */
+.progress-tracker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    background-color: rgba(49, 36, 80, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.progress-step.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5e42a6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.progress-step:hover .step-icon {
+    background-color: #f21368;
+    transform: scale(1.1);
+}
+
+.progress-step span {
+    font-size: 0.7em;
+    color: #dddddd;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+}
+
+.progress-line {
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(to right, #5e42a6, #f21368);
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 980px) {
+    .progress-tracker {
+        padding: 10px 5px;
+    }
+    
+    .step-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8em;
+    }
+    
+    .progress-line {
+        width: 15px;
+    }
+    
+    .progress-step span {
+        font-size: 0.6em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .progress-tracker {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 10px 0;
+    }
+    
+    .progress-step {
+        margin: 0 10px;
+    }
+    
+    .progress-line {
+        width: 10px;
+    }
+}
+
+/* Floating Helper Button */
+.floating-helper {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #5e42a6, #f21368);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-helper:hover {
+    transform: scale(1.1);
+}
+
+/* Word List Items - Make them copyable */
+.word-list span {
+    user-select: all;
+}

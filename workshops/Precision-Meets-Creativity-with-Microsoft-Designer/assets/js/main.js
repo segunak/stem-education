@@ -106,12 +106,85 @@
 									else if ($this.hasClass('active-locked'))
 										$this.removeClass('active-locked');
 
+									// Update progress tracker
+									updateProgressTracker(id.substring(1));
+
 							}
 						});
 
 				});
 
 		}
+
+	// Progress Tracker
+	function updateProgressTracker(currentSection) {
+		// Remove active class from all steps
+		$('.progress-step').removeClass('active');
+
+		// Add active class to the current step
+		$('.progress-step[data-step="' + currentSection + '"]').addClass('active');
+
+		// Also mark all previous steps as active (completed)
+		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5"];
+		var currentIndex = sections.indexOf(currentSection);
+
+		for (var i = 0; i <= currentIndex; i++) {
+			$('.progress-step[data-step="' + sections[i] + '"]').addClass('active');
+		}
+	}
+
+	// Initialize progress tracker with first step active
+	$(document).ready(function() {
+		// Set first step active by default
+		$('.progress-step[data-step="intro"]').addClass('active');
+
+		// Add click handlers to progress steps
+		$('.progress-step').on('click', function() {
+			var section = $(this).data('step');
+			$('html, body').animate({
+				scrollTop: $('#' + section).offset().top
+			}, 1000);
+		});
+
+		// Add floating helper button
+		$('<div class="floating-helper"><i class="fas fa-lightbulb"></i></div>')
+			.appendTo('body')
+			.on('click', function() {
+				// Toggle wordbank visibility
+				$('html, body').animate({
+					scrollTop: $('#wordbank').offset().top
+				}, 1000);
+			});
+
+		// Make word bank items clickable to copy text
+		$('.word-list span').on('click', function() {
+			var text = $(this).text();
+			
+			// Create temporary element for copying
+			var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val(text).select();
+			document.execCommand("copy");
+			$temp.remove();
+			
+			// Visual feedback
+			$(this).css('background', '#5e42a6');
+			
+			// Show tooltip
+			var $tooltip = $('<div class="copy-tooltip">Copied!</div>');
+			$(this).append($tooltip);
+			
+			setTimeout(function() {
+				$tooltip.fadeOut(function() {
+					$(this).remove();
+				});
+			}, 1000);
+			
+			setTimeout(function() {
+				$(this).css('background', '');
+			}.bind(this), 300);
+		});
+	});
 
 	// Scrolly.
 		$('.scrolly').scrolly({
