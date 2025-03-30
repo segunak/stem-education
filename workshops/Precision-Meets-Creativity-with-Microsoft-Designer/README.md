@@ -27,11 +27,11 @@ Create a powerful anime character! Fill in the blanks and generate your image.
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+powerful+%5Badjective%5D+anime+warrior+standing+on+a+%5Blocation%5D%2C+with+a+glowing+%5Bcolor%5D+aura+around+them%2C+preparing+to+unleash+their+ultimate+move.+The+scene+is+drawn+in+the+style+of+%5Banime+style%5D.&referrer=PromptTemplate)
 
-### Prompt 2: Classroom of the Future
+### Prompt 2: Futuristic Music Festival
 
-Imagine a futuristic school where learning is powered by technology. Fill in the blanks and generate your image.
+Create a wild musical extravaganza set in the future! Fill in the blanks and generate your image.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+high-tech+classroom+in+the+year+%5Bfuture+year%5D%2C+where+students+use+%5Bsome+kind+of+futuristic+device%5D+to+absorb+knowledge+at+lightning+speed.+The+walls+are+covered+in+holographic+displays+showing+%5Bsubject+of+choice%5D%2C+and+the+teacher+is+a+%5BAI+or+robot+or+human+or+whatever+you+want%5D.+The+scene+is+illustrated+in+a+%5Bart+style%5D+aesthetic.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+mind-blowing+%5Badjective%5D+music+festival+in+the+year+%5Bfuturistic+year%5D%2C+headlined+by+a+performer+inspired+by+%5Bpop+star+or+band%5D%2C+with+neon-lit+holographic+stages+and+fans+wearing+%5Bfuturistic+fashion+item%5D.+The+scene+is+depicted+in+a+%5Bart+style%5D+aesthetic.&referrer=PromptTemplate)
 
 ### Prompt 3: Dream Destination
 
