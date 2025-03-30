@@ -3136,7 +3136,7 @@ input, select, textarea {
 
 			.spotlights > section > .content p {
 				max-width: 600px;
-				margin: 0 auto 1.5em;
+				margin: 0 0 1.5em 0;
 				line-height: 1.6;
 			}
 
@@ -3693,144 +3693,144 @@ input, select, textarea {
 				}
 
 				#sidebar nav > ul > li:nth-child(1) {
-					-moz-transition-delay: 0.45s;
-					-webkit-transition-delay: 0.45s;
-					-ms-transition-delay: 0.45s;
-					transition-delay: 0.45s;
-				}
+						-moz-transition-delay: 0.45s;
+						-webkit-transition-delay: 0.45s;
+						-ms-transition-delay: 0.45s;
+						transition-delay: 0.45s;
+					}
 
 				#sidebar nav > ul > li:nth-child(2) {
-					-moz-transition-delay: 0.65s;
-					-webkit-transition-delay: 0.65s;
-					-ms-transition-delay: 0.65s;
-					transition-delay: 0.65s;
-				}
+						-moz-transition-delay: 0.65s;
+						-webkit-transition-delay: 0.65s;
+						-ms-transition-delay: 0.65s;
+						transition-delay: 0.65s;
+					}
 
 				#sidebar nav > ul > li:nth-child(3) {
-					-moz-transition-delay: 0.85s;
-					-webkit-transition-delay: 0.85s;
-					-ms-transition-delay: 0.85s;
-					transition-delay: 0.85s;
-				}
+						-moz-transition-delay: 0.85s;
+						-webkit-transition-delay: 0.85s;
+						-ms-transition-delay: 0.85s;
+						transition-delay: 0.85s;
+					}
 
 				#sidebar nav > ul > li:nth-child(4) {
-					-moz-transition-delay: 1.05s;
-					-webkit-transition-delay: 1.05s;
-					-ms-transition-delay: 1.05s;
-					transition-delay: 1.05s;
-				}
+						-moz-transition-delay: 1.05s;
+						-webkit-transition-delay: 1.05s;
+						-ms-transition-delay: 1.05s;
+						transition-delay: 1.05s;
+					}
 
 				#sidebar nav > ul > li:nth-child(5) {
-					-moz-transition-delay: 1.25s;
-					-webkit-transition-delay: 1.25s;
-					-ms-transition-delay: 1.25s;
-					transition-delay: 1.25s;
-				}
+						-moz-transition-delay: 1.25s;
+						-webkit-transition-delay: 1.25s;
+						-ms-transition-delay: 1.25s;
+						transition-delay: 1.25s;
+					}
 
 				#sidebar nav > ul > li:nth-child(6) {
-					-moz-transition-delay: 1.45s;
-					-webkit-transition-delay: 1.45s;
-					-ms-transition-delay: 1.45s;
-					transition-delay: 1.45s;
-				}
+						-moz-transition-delay: 1.45s;
+						-webkit-transition-delay: 1.45s;
+						-ms-transition-delay: 1.45s;
+						transition-delay: 1.45s;
+					}
 
 				#sidebar nav > ul > li:nth-child(7) {
-					-moz-transition-delay: 1.65s;
-					-webkit-transition-delay: 1.65s;
-					-ms-transition-delay: 1.65s;
-					transition-delay: 1.65s;
-				}
+						-moz-transition-delay: 1.65s;
+						-webkit-transition-delay: 1.65s;
+						-ms-transition-delay: 1.65s;
+						transition-delay: 1.65s;
+					}
 
 				#sidebar nav > ul > li:nth-child(8) {
-					-moz-transition-delay: 1.85s;
-					-webkit-transition-delay: 1.85s;
-					-ms-transition-delay: 1.85s;
-					transition-delay: 1.85s;
-				}
+						-moz-transition-delay: 1.85s;
+						-webkit-transition-delay: 1.85s;
+						-ms-transition-delay: 1.85s;
+						transition-delay: 1.85s;
+					}
 
 				#sidebar nav > ul > li:nth-child(9) {
-					-moz-transition-delay: 2.05s;
-					-webkit-transition-delay: 2.05s;
-					-ms-transition-delay: 2.05s;
-					transition-delay: 2.05s;
-				}
+						-moz-transition-delay: 2.05s;
+						-webkit-transition-delay: 2.05s;
+						-ms-transition-delay: 2.05s;
+						transition-delay: 2.05s;
+					}
 
 				#sidebar nav > ul > li:nth-child(10) {
-					-moz-transition-delay: 2.25s;
-					-webkit-transition-delay: 2.25s;
-					-ms-transition-delay: 2.25s;
-					transition-delay: 2.25s;
-				}
+						-moz-transition-delay: 2.25s;
+						-webkit-transition-delay: 2.25s;
+						-ms-transition-delay: 2.25s;
+						transition-delay: 2.25s;
+					}
 
 				#sidebar nav > ul > li:nth-child(11) {
-					-moz-transition-delay: 2.45s;
-					-webkit-transition-delay: 2.45s;
-					-ms-transition-delay: 2.45s;
-					transition-delay: 2.45s;
-				}
+						-moz-transition-delay: 2.45s;
+						-webkit-transition-delay: 2.45s;
+						-ms-transition-delay: 2.45s;
+						transition-delay: 2.45s;
+					}
 
 				#sidebar nav > ul > li:nth-child(12) {
-					-moz-transition-delay: 2.65s;
-					-webkit-transition-delay: 2.65s;
-					-ms-transition-delay: 2.65s;
-					transition-delay: 2.65s;
-				}
+						-moz-transition-delay: 2.65s;
+						-webkit-transition-delay: 2.65s;
+						-ms-transition-delay: 2.65s;
+						transition-delay: 2.65s;
+					}
 
 				#sidebar nav > ul > li:nth-child(13) {
-					-moz-transition-delay: 2.85s;
-					-webkit-transition-delay: 2.85s;
-					-ms-transition-delay: 2.85s;
-					transition-delay: 2.85s;
-				}
+						-moz-transition-delay: 2.85s;
+						-webkit-transition-delay: 2.85s;
+						-ms-transition-delay: 2.85s;
+						transition-delay: 2.85s;
+					}
 
 				#sidebar nav > ul > li:nth-child(14) {
-					-moz-transition-delay: 3.05s;
-					-webkit-transition-delay: 3.05s;
-					-ms-transition-delay: 3.05s;
-					transition-delay: 3.05s;
-				}
+						-moz-transition-delay: 3.05s;
+						-webkit-transition-delay: 3.05s;
+						-ms-transition-delay: 3.05s;
+						transition-delay: 3.05s;
+					}
 
 				#sidebar nav > ul > li:nth-child(15) {
-					-moz-transition-delay: 3.25s;
-					-webkit-transition-delay: 3.25s;
-					-ms-transition-delay: 3.25s;
-					transition-delay: 3.25s;
-				}
+						-moz-transition-delay: 3.25s;
+						-webkit-transition-delay: 3.25s;
+						-ms-transition-delay: 3.25s;
+						transition-delay: 3.25s;
+					}
 
 				#sidebar nav > ul > li:nth-child(16) {
-					-moz-transition-delay: 3.45s;
-					-webkit-transition-delay: 3.45s;
-					-ms-transition-delay: 3.45s;
-					transition-delay: 3.45s;
-				}
+						-moz-transition-delay: 3.45s;
+						-webkit-transition-delay: 3.45s;
+						-ms-transition-delay: 3.45s;
+						transition-delay: 3.45s;
+					}
 
 				#sidebar nav > ul > li:nth-child(17) {
-					-moz-transition-delay: 3.65s;
-					-webkit-transition-delay: 3.65s;
-					-ms-transition-delay: 3.65s;
-					transition-delay: 3.65s;
-				}
+						-moz-transition-delay: 3.65s;
+						-webkit-transition-delay: 3.65s;
+						-ms-transition-delay: 3.65s;
+						transition-delay: 3.65s;
+					}
 
 				#sidebar nav > ul > li:nth-child(18) {
-					-moz-transition-delay: 3.85s;
-					-webkit-transition-delay: 3.85s;
-					-ms-transition-delay: 3.85s;
-					transition-delay: 3.85s;
-				}
+						-moz-transition-delay: 3.85s;
+						-webkit-transition-delay: 3.85s;
+						-ms-transition-delay: 3.85s;
+						transition-delay: 3.85s;
+					}
 
 				#sidebar nav > ul > li:nth-child(19) {
-					-moz-transition-delay: 4.05s;
-					-webkit-transition-delay: 4.05s;
-					-ms-transition-delay: 4.05s;
-					transition-delay: 4.05s;
-				}
+						-moz-transition-delay: 4.05s;
+						-webkit-transition-delay: 4.05s;
+						-ms-transition-delay: 4.05s;
+						transition-delay: 4.05s;
+					}
 
 				#sidebar nav > ul > li:nth-child(20) {
-					-moz-transition-delay: 4.25s;
-					-webkit-transition-delay: 4.25s;
-					-ms-transition-delay: 4.25s;
-					transition-delay: 4.25s;
-				}
+						-moz-transition-delay: 4.25s;
+						-webkit-transition-delay: 4.25s;
+						-ms-transition-delay: 4.25s;
+						transition-delay: 4.25s;
+					}
 
 		#sidebar nav a {
 			-moz-transition: color 0.2s ease;
