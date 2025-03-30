@@ -4166,6 +4166,13 @@ input, select, textarea {
     .step-icon {
         margin-bottom: 0;
     }
+    
+    /* Hide Word Bank step in progress tracker on mobile devices */
+    .progress-step[data-step="wordbank"],
+    .progress-step[data-step="wordbank"] + .progress-line,
+    .progress-step[data-step="wordbank"] ~ .progress-line:last-of-type {
+        display: none;
+    }
 }
 
 /* Floating Helper Button - completely removed from flow on desktop */

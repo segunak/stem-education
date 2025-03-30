@@ -122,7 +122,7 @@
 		$('.progress-step').removeClass('active');
 
 		// Add active class to the current step and all previous steps
-		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "wordbank"];
+		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "bonus-prompts", "wordbank"];
 		var currentIndex = sections.indexOf(currentSection);
 
 		if (currentIndex >= 0) {
@@ -221,7 +221,7 @@
 	// Check which section is currently in view
 	function checkCurrentSection() {
 		var scrollPosition = $(window).scrollTop() + ($(window).height() / 2);
-		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "wordbank"];
+		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "bonus-prompts", "wordbank"];
 		
 		// Find which section is currently in view
 		for (var i = 0; i < sections.length; i++) {
