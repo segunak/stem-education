@@ -177,6 +177,17 @@
 			}.bind(this), 800);
 		});
 
+		 // Initialize bonus prompts section
+		const bonusToggleBtn = document.getElementById('toggle-bonus-prompts');
+		const bonusPromptContainer = document.querySelector('.bonus-prompts-container');
+		
+		if (bonusToggleBtn && bonusPromptContainer) {
+			bonusToggleBtn.addEventListener('click', function() {
+				this.classList.toggle('active');
+				bonusPromptContainer.classList.toggle('show');
+			});
+		}
+
 		// Enhance intro section on mobile - collapse lengthy text
 		if ($(window).width() <= 736) {
 			enhanceMobileIntro();
