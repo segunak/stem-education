@@ -1932,7 +1932,9 @@ input, select, textarea {
 			color:#00274D !important;
 			position: relative;
 			overflow: hidden;
-			z-index: 1;
+			border-radius: 30px;
+			padding: 0 2.5em;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 			transition: all 0.3s ease;
 		}
 
@@ -1967,6 +1969,24 @@ input, select, textarea {
 			.button.primary:after {
 				display: none;
 			}
+
+		input[type="submit"].primary:hover,
+		input[type="reset"].primary:hover,
+		input[type="button"].primary:hover,
+		button.primary:hover,
+		.button.primary:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+		}
+
+		input[type="submit"].primary:active,
+		input[type="reset"].primary:active,
+		input[type="button"].primary:active,
+		button.primary:active,
+		.button.primary:active {
+			transform: translateY(-1px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
 		input[type="reset"].disabled,
@@ -3040,6 +3060,9 @@ input, select, textarea {
 		flex-direction: row;
 		min-height: 22.5em;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		border-radius: 8px;
+		overflow: hidden;
+		margin: 20px 0;
 	}
 
 		.spotlights > section:hover {
@@ -3082,7 +3105,7 @@ input, select, textarea {
 			}
 
 		.spotlights > section > .content {
-			padding: 4em 5em 2em 5em ;
+			padding: 3em 4em 2em 4em;
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
@@ -3109,6 +3132,28 @@ input, select, textarea {
 				-ms-transition: opacity 1s ease, -ms-transform 1s ease;
 				transition: opacity 1s ease, transform 1s ease;
 				opacity: 1;
+			}
+
+			.spotlights > section > .content p {
+				max-width: 600px;
+				margin: 0 auto 1.5em;
+				line-height: 1.6;
+			}
+
+			.spotlights > section > .content h2 {
+				margin-bottom: 0.75em;
+				position: relative;
+				display: inline-block;
+			}
+
+			.spotlights > section > .content h2:after {
+				content: '';
+				position: absolute;
+				width: 60%;
+				height: 3px;
+				background: linear-gradient(to right, #5e42a6, transparent);
+				bottom: -10px;
+				left: 0;
 			}
 
 		.spotlights > section:nth-child(2) {
@@ -3174,7 +3219,11 @@ input, select, textarea {
 			}
 
 			.spotlights > section > .content {
-				padding: 3em 2em 1em 2em ;
+				padding: 2em 1.5em 1em 1.5em;
+			}
+
+			.spotlights > section > .content h2 {
+				font-size: 1.5em;
 			}
 
 		}
@@ -3278,7 +3327,7 @@ input, select, textarea {
 			@media screen and (max-width: 736px) {
 
 				.wrapper > .inner {
-					padding: 3em 2em 1em 2em ;
+					padding: 2.5em 1.5em 1em 1.5em ;
 				}
 
 			}
@@ -3344,6 +3393,10 @@ input, select, textarea {
 			}
 
 			@media screen and (max-width: 736px) {
+
+				.wrapper.style1.fullscreen {
+					padding: 0;
+				}
 
 				.wrapper.fullscreen {
 					padding: 2em 0;
@@ -3946,6 +3999,10 @@ input, select, textarea {
 					font-size: 1em;
 				}
 
+				#intro ol li {
+					margin-bottom: 1em;
+				}
+
 			}
 
 		@media screen and (max-width: 1280px) {
@@ -3968,7 +4025,7 @@ input, select, textarea {
     justify-content: center;
     align-items: center;
     padding: 15px 10px;
-    background-color: rgba(49, 36, 80, 0.9);
+    background-color: rgba(49, 36, 80, 0.95); /* More opacity for better visibility */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -4001,6 +4058,11 @@ input, select, textarea {
     align-items: center;
     margin-bottom: 5px;
     transition: all 0.3s ease;
+}
+
+.progress-step.active .step-icon {
+    background-color: #f21368;
+    box-shadow: 0 0 10px rgba(242, 19, 104, 0.5);
 }
 
 .progress-step:hover .step-icon {
@@ -4045,9 +4107,9 @@ input, select, textarea {
 
 @media screen and (max-width: 736px) {
     .progress-tracker {
+        padding: 8px 0;
         overflow-x: auto;
         justify-content: flex-start;
-        padding: 10px 0;
     }
     
     .progress-step {
@@ -4056,6 +4118,14 @@ input, select, textarea {
     
     .progress-line {
         width: 10px;
+    }
+    
+    .progress-step span {
+        display: none; /* Hide text on very small screens */
+    }
+    
+    .step-icon {
+        margin-bottom: 0;
     }
 }
 
@@ -4078,11 +4148,87 @@ input, select, textarea {
     transition: all 0.3s ease;
 }
 
+.floating-helper i {
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
 .floating-helper:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floating-helper:hover i {
+    transform: rotate(15deg);
+}
+
+.helper-tooltip {
+    position: absolute;
+    background: #312450;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    right: 70px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.floating-helper:hover .helper-tooltip {
+    opacity: 1;
+}
+
+@media screen and (max-width: 736px) {
+    .floating-helper {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .floating-helper i {
+        font-size: 1.2em;
+    }
 }
 
 /* Word List Items - Make them copyable */
 .word-list span {
     user-select: all;
+    position: relative;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #5e42a6;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+/* Mobile Introduction Enhancements */
+.mobile-toggle {
+    display: none;
+    background: linear-gradient(135deg, #5e42a6, #f21368);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

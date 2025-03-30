@@ -121,15 +121,14 @@
 		// Remove active class from all steps
 		$('.progress-step').removeClass('active');
 
-		// Add active class to the current step
-		$('.progress-step[data-step="' + currentSection + '"]').addClass('active');
-
-		// Also mark all previous steps as active (completed)
-		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5"];
+		// Add active class to the current step and all previous steps
+		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "wordbank"];
 		var currentIndex = sections.indexOf(currentSection);
 
-		for (var i = 0; i <= currentIndex; i++) {
-			$('.progress-step[data-step="' + sections[i] + '"]').addClass('active');
+		if (currentIndex >= 0) {
+			for (var i = 0; i <= currentIndex; i++) {
+				$('.progress-step[data-step="' + sections[i] + '"]').addClass('active');
+			}
 		}
 	}
 
@@ -146,15 +145,12 @@
 			}, 1000);
 		});
 
-		// Add floating helper button
-		$('<div class="floating-helper"><i class="fas fa-lightbulb"></i></div>')
-			.appendTo('body')
-			.on('click', function() {
-				// Toggle wordbank visibility
-				$('html, body').animate({
-					scrollTop: $('#wordbank').offset().top
-				}, 1000);
-			});
+		// Add floating helper for quick word bank access
+		$('.floating-helper').on('click', function() {
+			$('html, body').animate({
+				scrollTop: $('#wordbank').offset().top
+			}, 1000);
+		});
 
 		// Make word bank items clickable to copy text
 		$('.word-list span').on('click', function() {
@@ -171,19 +167,69 @@
 			$(this).css('background', '#5e42a6');
 			
 			// Show tooltip
-			var $tooltip = $('<div class="copy-tooltip">Copied!</div>');
-			$(this).append($tooltip);
+			$(this).append('<div class="copy-tooltip">Copied!</div>');
 			
 			setTimeout(function() {
-				$tooltip.fadeOut(function() {
+				$(this).find('.copy-tooltip').fadeOut(function() {
 					$(this).remove();
 				});
-			}, 1000);
-			
-			setTimeout(function() {
 				$(this).css('background', '');
-			}.bind(this), 300);
+			}.bind(this), 800);
 		});
+
+		// Enhance intro section on mobile - collapse lengthy text
+		if ($(window).width() <= 736) {
+			enhanceMobileIntro();
+		}
+
+		// Check which section is currently in view when page loads
+		checkCurrentSection();
+	});
+
+	// Function to make intro more mobile-friendly
+	function enhanceMobileIntro() {
+		var $introList = $('#intro ol');
+		if ($introList.length > 0 && !$introList.hasClass('enhanced')) {
+			$introList.addClass('enhanced');
+			
+			// Create a toggle button
+			var $toggle = $('<div class="mobile-toggle">Show detailed instructions</div>');
+			$introList.after($toggle);
+			
+			// Initially hide all but first 2 items on small screens
+			$introList.find('li:gt(1)').hide();
+			
+			// Toggle visibility on click
+			$toggle.on('click', function() {
+				$introList.find('li:gt(1)').slideToggle();
+				$(this).text($(this).text() === 'Show detailed instructions' ? 'Hide detailed instructions' : 'Show detailed instructions');
+			});
+		}
+	}
+
+	// Check which section is currently in view
+	function checkCurrentSection() {
+		var scrollPosition = $(window).scrollTop() + ($(window).height() / 2);
+		var sections = ["intro", "prompt1", "prompt2", "prompt3", "prompt4", "prompt5", "wordbank"];
+		
+		// Find which section is currently in view
+		for (var i = 0; i < sections.length; i++) {
+			var $section = $('#' + sections[i]);
+			if ($section.length > 0) {
+				var sectionTop = $section.offset().top;
+				var sectionBottom = sectionTop + $section.height();
+				
+				if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+					updateProgressTracker(sections[i]);
+					break;
+				}
+			}
+		}
+	}
+
+	// Update active section on scroll
+	$(window).on('scroll', function() {
+		checkCurrentSection();
 	});
 
 	// Scrolly.
