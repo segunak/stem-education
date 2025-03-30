@@ -4372,3 +4372,68 @@ input, select, textarea {
 .bonus-prompt p {
     margin-bottom: 1.5em;
 }
+
+/* Bonus Prompt Styling */
+.bonus-prompt-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.bonus-image {
+    flex: 0 0 150px;
+    height: 150px;
+    min-height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bonus-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.bonus-prompt:hover .bonus-image img {
+    transform: scale(1.05);
+}
+
+.bonus-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bonus-text h3 {
+    margin-top: 0;
+}
+
+/* Center the Generate Image button in bonus prompts */
+.bonus-text .button {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto 0 0;
+}
+
+@media screen and (max-width: 736px) {
+    .bonus-prompt-content {
+        flex-direction: column;
+    }
+    
+    .bonus-image {
+        flex: 0 0 120px;
+        height: 120px;
+        min-height: 120px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .bonus-text {
+        padding-top: 10px;
+    }
+}
