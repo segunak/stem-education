@@ -46,6 +46,18 @@ const professionalsData = {
         "expertise": ""
       },
       {
+        "name": "Imani Ricks",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
+        "expertise": ""
+      },
+      {
+        "name": "Will Case",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
+        "expertise": ""
+      },
+      {
         "name": "Avlokita Sharma",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
