@@ -3592,6 +3592,38 @@ input, select, textarea {
 
 /* Footer */
 
+	#footer {
+		background-color: rgba(35, 25, 60, 0.9);
+		padding: 1.5em 0;
+		width: calc(100% - 18em);
+		z-index: 10;
+		position: relative;
+	}
+
+	#footer > .inner {
+		max-width: 65em;
+		margin: 0 auto;
+		padding: 0 2em;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	#footer .menu {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#footer .menu li {
+		white-space: nowrap;
+		margin: 0 1em;
+		padding: 0.5em 0;
+	}
+
 	#sidebar + #wrapper + #footer {
 		margin-left: 18em;
 	}
@@ -3600,6 +3632,11 @@ input, select, textarea {
 
 			#sidebar + #wrapper + #footer {
 				margin-left: 0;
+			}
+
+			#footer {
+				width: 100%; /* Full width on smaller screens */
+				margin-left: 0 !important;
 			}
 
 		}
