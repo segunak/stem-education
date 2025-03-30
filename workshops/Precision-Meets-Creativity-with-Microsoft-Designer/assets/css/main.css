@@ -3593,7 +3593,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		background-color: rgba(35, 25, 60, 0.9);
+		background-color: #312450;
 		padding: 1.5em 0;
 		width: calc(100% - 18em);
 		z-index: 10;
@@ -3621,7 +3621,6 @@ input, select, textarea {
 	#footer .menu li {
 		white-space: nowrap;
 		margin: 0 1em;
-		padding: 0.5em 0;
 	}
 
 	#sidebar + #wrapper + #footer {
@@ -4166,7 +4165,7 @@ input, select, textarea {
     }
 }
 
-/* Floating Helper Button */
+/* Floating Helper Button - completely removed from flow on desktop */
 .floating-helper {
     position: fixed;
     bottom: 30px;
@@ -4175,7 +4174,7 @@ input, select, textarea {
     height: 60px;
     background: linear-gradient(135deg, #5e42a6, #f21368);
     border-radius: 50%;
-    display: flex;
+    display: none; /* Completely hidden on desktop */
     justify-content: center;
     align-items: center;
     color: white;
@@ -4217,8 +4216,10 @@ input, select, textarea {
     opacity: 1;
 }
 
+/* Only show floating helper on mobile devices (when sidebar is hidden) */
 @media screen and (max-width: 736px) {
     .floating-helper {
+        display: flex; /* Show on mobile */
         width: 50px;
         height: 50px;
         bottom: 20px;
