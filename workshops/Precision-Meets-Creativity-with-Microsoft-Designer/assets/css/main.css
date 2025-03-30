@@ -3595,7 +3595,7 @@ input, select, textarea {
 	#footer {
 		background-color: #312450;
 		padding: 1.5em 0;
-		width: calc(100% - 18em);
+		width: 100%;
 		z-index: 10;
 		position: relative;
 	}
