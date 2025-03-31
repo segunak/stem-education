@@ -28,7 +28,7 @@ Create a powerful anime character! Fill in the blanks and generate your image.
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+powerful+%5Badjective%5D+anime+warrior+standing+on+a+%5Blocation%5D%2C+with+a+glowing+%5Bcolor%5D+aura+around+them%2C+preparing+to+unleash+their+ultimate+move.+The+scene+is+drawn+in+the+style+of+%5Banime+style%5D.&referrer=PromptTemplate)
 
-### Prompt 2: Dream Custom Sneaker Design
+### Prompt 2: Custom Sneaker Design
 
 Design the ultimate custom sneakers! Fill in the blanks to create a shoe that everyone would want to wear.
 
