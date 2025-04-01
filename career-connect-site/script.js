@@ -154,6 +154,12 @@ const professionalsData = {
         "expertise": ""
       },
       {
+        "name": "Daniel Santana-Garcia",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/danielsntn/",
+        "expertise": ""
+      },
+      {
         "name": "Rasuwl Walls",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/rasuwl/",
