@@ -40,17 +40,17 @@ Visualize your dream destination! Describe its scenery and generate your image.
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+awe-inspiring+scene+of+%5Byour+dream+destination%5D%2C+where+%5Bdescribe+unique+landscape%5D.+The+atmosphere+feels+%5Badjective%5D.+The+sky+is+filled+with+%5Bweather+condition%5D%2C+and+the+people+or+creatures+there+are+%5Bdescribe+activity%5D.+The+image+is+created+in+a+%5Bart+style%5D.&referrer=PromptTemplate)
 
-### Prompt 4: Ultimate Movie Scene
+### Prompt 4: Movie Scene
 
-Become a film director! Create a captivating movie scene in any genre you choose - action, horror, sci-fi, comedy, or something entirely unique.
+Become a film director! Create a captivating movie scene in any genre - action, horror, sci-fi, comedy, or something entirely your own.
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+dramatic+scene+from+a+%5Bgenre%5D+movie+showing+%5Bcharacter+type%5D+in+a+%5Blocation%5D+during+a+%5Bdramatic+situation%5D.+The+scene+has+%5Bcinematic+element%5D+lighting%2C+and+the+atmosphere+feels+%5Bemotion/mood%5D.+Visual+details+include+%5Benvironmental+elements%5D+and+%5Bspecial+effects%5D.+The+image+is+rendered+in+%5Bfilm+style%5D+with+%5Bcolor+grading%5D+tones.&referrer=PromptTemplate)
 
-### Prompt 5: Ultimate Fantasy Gaming Character
+### Prompt 5: Game Character
 
-Design an epic character for your dream fantasy game! Fill in the blanks to bring your gaming hero to life with magical abilities and legendary gear.
+Design a character for any type of video game! Fill in the blanks to bring your gaming hero or villain to life with unique abilities and gear.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+epic+%5Bclass/role%5D+character+from+a+fantasy+game+set+in+%5Bgame+world+setting%5D+wielding+%5Bweapon+or+magical+item%5D.+They+are+wearing+%5Barmor/outfit+style%5D+with+%5Bspecial+effect%5D+emanating+around+them.+Their+companion+is+a+%5Bmagical+creature%5D+that+can+%5Bspecial+ability%5D.+The+scene+is+in+a+%5Bartistic+style%5D+rendering.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+epic+%5Bclass/role%5D+character+from+a+%5Bgame+genre%5D+game+set+in+%5Bgame+world+setting%5D+wielding+%5Bweapon+or+magical+item%5D.+They+are+wearing+%5Barmor/outfit+style%5D+with+%5Bspecial+effect%5D+emanating+around+them.+Their+companion+is+a+%5Bmagical+creature%5D+that+can+%5Bspecial+ability%5D.+The+scene+is+in+a+%5Bartistic+style%5D+rendering.&referrer=PromptTemplate)
 
 ## Bonus Prompts
 
