@@ -40,11 +40,11 @@ Visualize your dream destination! Describe its scenery and generate your image.
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+awe-inspiring+scene+of+%5Byour+dream+destination%5D%2C+where+%5Bdescribe+unique+landscape%5D.+The+atmosphere+feels+%5Badjective%5D.+The+sky+is+filled+with+%5Bweather+condition%5D%2C+and+the+people+or+creatures+there+are+%5Bdescribe+activity%5D.+The+image+is+created+in+a+%5Bart+style%5D.&referrer=PromptTemplate)
 
-### Prompt 4: Ultimate Rom-Com Scene
+### Prompt 4: Ultimate Movie Scene
 
-Imagine a scene from the perfect romantic comedy movie. Fill in the blanks and generate your image.
+Become a film director! Create a captivating movie scene in any genre you choose - action, horror, sci-fi, comedy, or something entirely unique.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Bromantic/comedic%5D+moment+between+%5Bcharacter+1%5D+and+%5Bcharacter+2%5D+in+%5Blocation%5D%2C+with+a+%5Bfunny/cute%5D+twist.+The+setting+is+filled+with+%5Baesthetic+details%5D%2C+capturing+the+heartwarming+essence+of+a+classic+rom-com.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+dramatic+scene+from+a+%5Bgenre%5D+movie+showing+%5Bcharacter+type%5D+in+a+%5Blocation%5D+during+a+%5Bdramatic+situation%5D.+The+scene+has+%5Bcinematic+element%5D+lighting%2C+and+the+atmosphere+feels+%5Bemotion/mood%5D.+Visual+details+include+%5Benvironmental+elements%5D+and+%5Bspecial+effects%5D.+The+image+is+rendered+in+%5Bfilm+style%5D+with+%5Bcolor+grading%5D+tones.&referrer=PromptTemplate)
 
 ### Prompt 5: Ultimate Fantasy Gaming Character
 
@@ -62,17 +62,17 @@ Create an image that looks like it would go viral on social media! Fill in the b
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Badjective%5D+social+media+influencer+going+viral+for+%5Bunusual+activity%5D+in+a+%5Bunexpected+location%5D.+They%27re+wearing+%5Bfashion+style%5D+and+using+%5Btrendy+gadget/prop%5D+while+%5Baction%5D.+The+background+features+%5Bbackground+elements%5D%2C+and+everyone+is+reacting+with+%5Bemotion%5D.+The+image+is+in+%5Bartistic+style%5D+with+%5Blighting/effect%5D+highlights.&referrer=PromptTemplate)
 
-### AI-Driven Entertainment Platform
+### Design Your Dream Game
 
-Dream up a futuristic entertainment system that merges cutting-edge technology with fun! Fill in the blanks to create an innovative digital platform of tomorrow.
+Create the cover art or key promotional image for your own original video game! Fill in the blanks to visualize the next gaming sensation.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+AI-driven+%5Btype+of+entertainment+platform%5D+that+engages+%5Btarget+audience%5D+by+%5Bunique+interactive+function%5D.+The+interface+features+a+%5Bfuturistic+aesthetic%5D+design%2C+powered+by+%5Bcutting-edge+technology%5D.+It+includes+an+innovative+%5Bspecial+feature%5D+that+captivates+users%2C+with+a+striking+%5Bcolor+palette%5D+theme.+The+overall+design+draws+inspiration+from+%5Bgeneral+visual+style+or+trend%5D%2C+creating+an+atmosphere+that+evokes+%5Bpositive+emotion%5D.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+epic+promotional+image+for+a+new+video+game+called+%5Bgame+title%5D.+The+main+character+is+a+%5Bcharacter+description%5D+with+%5Bspecial+ability%5D+powers%2C+facing+off+against+%5Bantagonist/challenge%5D+in+a+%5Bgame+world+setting%5D.+The+scene+features+%5Bgame+mechanic+or+special+effect%5D+and+%5Bsecondary+visual+element%5D.+The+game+has+a+%5Bgame+genre%5D+style+with+%5Bart+direction%5D+graphics+and+%5Blighting/color+scheme%5D+that+creates+a+%5Bmood%5D+atmosphere.&referrer=PromptTemplate)
 
-### Futuristic School of 3050
+### Futuristic AI Invention
 
-Reimagine what education might look like in the future! Fill in the blanks to create a classroom from the year 3050.
+Design an innovative AI-powered gadget or invention that could change the world! Fill in the blanks to visualize a game-changing technology of tomorrow.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+high-tech+classroom+in+the+year+3050+where+students+use+%5Bfuturistic+device%5D+instead+of+%5Bcurrent+school+item%5D.+The+teacher+is+a+%5Btype+of+teacher/AI%5D+demonstrating+%5Bsubject%5D+through+%5Bteaching+method%5D.+The+walls+display+%5Bwall+features%5D%2C+and+students+sit+on+%5Bfurniture+type%5D.+Outside+the+windows+you+can+see+%5Bfuturistic+scenery%5D%2C+and+the+classroom+has+a+%5Baesthetic+style%5D+design+with+%5Bcolor+scheme%5D+highlights.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+revolutionary+AI-powered+%5Btype+of+device/invention%5D+that+helps+people+%5Bsolve+problem/perform+task%5D+through+its+%5Bkey+feature%5D+technology.+The+device+has+a+%5Bdesign+aesthetic%5D+appearance+with+%5Bvisual+element%5D+that+glows+when+activated.+It%27s+being+used+in+a+%5Blocation/setting%5D+environment%2C+demonstrating+its+%5Bspecial+capability%5D.+The+overall+design+incorporates+%5Bmaterial/texture%5D+and+%5Bcolor+scheme%5D%2C+creating+a+%5Bmood/impression%5D+feeling+about+the+future+of+technology.&referrer=PromptTemplate)
 
 ## Resources
 
