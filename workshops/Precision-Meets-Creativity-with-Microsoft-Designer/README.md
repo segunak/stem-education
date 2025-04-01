@@ -62,11 +62,11 @@ Create an image that looks like it would go viral on social media! Fill in the b
 
 [Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Badjective%5D+social+media+influencer+going+viral+for+%5Bunusual+activity%5D+in+a+%5Bunexpected+location%5D.+They%27re+wearing+%5Bfashion+style%5D+and+using+%5Btrendy+gadget/prop%5D+while+%5Baction%5D.+The+background+features+%5Bbackground+elements%5D%2C+and+everyone+is+reacting+with+%5Bemotion%5D.+The+image+is+in+%5Bartistic+style%5D+with+%5Blighting/effect%5D+highlights.&referrer=PromptTemplate)
 
-### Design Your Dream Game
+### Create Your Signature Style
 
-Create the cover art or key promotional image for your own original video game! Fill in the blanks to visualize the next gaming sensation.
+Design a person with your dream style and aesthetic! Choose their look, clothing, and career to express your ideal fashion sense.
 
-[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=An+epic+promotional+image+for+a+new+video+game+called+%5Bgame+title%5D.+The+main+character+is+a+%5Bcharacter+description%5D+with+%5Bspecial+ability%5D+powers%2C+facing+off+against+%5Bantagonist/challenge%5D+in+a+%5Bgame+world+setting%5D.+The+scene+features+%5Bgame+mechanic+or+special+effect%5D+and+%5Bsecondary+visual+element%5D.+The+game+has+a+%5Bgame+genre%5D+style+with+%5Bart+direction%5D+graphics+and+%5Blighting/color+scheme%5D+that+creates+a+%5Bmood%5D+atmosphere.&referrer=PromptTemplate)
+[Prompt Link](https://designer.microsoft.com/image-creator?scenario=texttoimage&p=A+%5Bethnicity%2Frace%5D+%5Bgender%5D+professional+%5Bcareer%2Fprofession%5D+with+%5Bhair+style%5D+wearing+a+%5Bclothing+style%5D+outfit+in+%5Bcolor+scheme%5D+colors+with+%5Bdistinctive+accessory%5D.+They+have+a+%5Bpersonality+trait%5D+expression+and+are+photographed+in+a+%5Blocation%5D+environment.+The+image+has+a+%5Bphotography+style%5D+aesthetic+with+%5Blighting+type%5D+lighting.&referrer=PromptTemplate)
 
 ### Futuristic AI Invention
 
