@@ -29,19 +29,19 @@ const professionalsData = {
     "professionals": [
       {
         "name": "Kristoff Little",
-        "title": "",
+        "title": "Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
         "expertise": ""
       },
       {
         "name": "Franz Maurrasse",
-        "title": "",
+        "title": "Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
         "expertise": ""
       },
       {
         "name": "Chloe Duffield",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/chloeduffielducla/",
         "expertise": ""
       },
