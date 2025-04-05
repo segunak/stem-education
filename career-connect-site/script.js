@@ -168,14 +168,6 @@ const professionalsData = {
         "notes": "2024 Charlotte Business Journal Power 100 Honoree",
         "isStarred": true
       },
-      // Principal Group Engineering Manager
-      {
-        "name": "Anusha Meka",
-        "title": "Principal Group Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "notes": "2025 Charlotte Business Journal Women in Business Honoree",
-        "isStarred": true
-      },
       // Product Managers
       {
         "name": "Will Case",
@@ -188,6 +180,14 @@ const professionalsData = {
         "title": "Product Manager",
         "linkedIn": "https://www.linkedin.com/in/mldukes/",
         "notes": ""
+      },
+      // Principal Group Engineering Manager
+      {
+        "name": "Anusha Meka",
+        "title": "Principal Group Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/anushameka/",
+        "notes": "2025 Charlotte Business Journal Women in Business Honoree",
+        "isStarred": true
       },
       // Software Engineers
       {
