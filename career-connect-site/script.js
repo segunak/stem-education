@@ -173,7 +173,8 @@ const professionalsData = {
         "name": "Anusha Meka",
         "title": "Principal Group Engineering Manager",
         "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "notes": ""
+        "notes": "2025 Charlotte Business Journal Women in Business Honoree",
+        "isStarred": true
       },
       // Product Managers
       {
