@@ -390,6 +390,9 @@ nav ul li a:hover::after {
 
 .key-contacts p {
     margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .key-profiles {
@@ -910,6 +913,19 @@ footer a:hover {
     
     .footer-content {
         text-align: center;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .social-media a {
+        display: inline-flex;
+        font-size: 1.4rem; /* Slightly larger icons on mobile */
+        padding: 0.5rem;
     }
 }
 
