@@ -47,199 +47,193 @@ const professionalsData = {
       },
       {
         "name": "Victor Hart",
-        "title": "",
+        "title": "Integration Technical Infrastructure Manager",
         "linkedIn": "https://www.linkedin.com/in/vhart/",
         "expertise": ""
       },
       {
         "name": "Carrie White",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
         "expertise": ""
       },
       {
         "name": "Brandon Gary",
-        "title": "",
+        "title": "Thermal Architect",
         "linkedIn": "https://www.linkedin.com/in/begary/",
         "expertise": ""
       },
       {
         "name": "Dave Vespa",
-        "title": "",
+        "title": "Software Engineer",
         "linkedIn": "https://www.linkedin.com/in/drvespa/",
         "expertise": ""
       },
       {
         "name": "Lex Barbosa",
-        "title": "",
+        "title": "Design Operations Program Manager",
         "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
         "expertise": ""
       },
       {
         "name": "Imani Ricks",
-        "title": "",
+        "title": "UX Designer",
         "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
         "expertise": ""
       },
       {
         "name": "Will Case",
-        "title": "",
+        "title": "Product Manager",
         "linkedIn": "https://www.linkedin.com/in/willspacecase/",
         "expertise": ""
       },
       {
         "name": "Avlokita Sharma",
-        "title": "",
+        "title": "Technical Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
         "expertise": ""
       },
       {
         "name": "Allan Matias",
-        "title": "",
+        "title": "Technical Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
         "expertise": ""
       },
       {
         "name": "John Daly",
-        "title": "",
+        "title": "Technical Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
         "expertise": ""
       },
       {
         "name": "Uchenna Nwosu",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/unwosu44/",
         "expertise": ""
       },
       {
         "name": "Cynthia Rice",
-        "title": "",
+        "title": "Technical Advisor",
         "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
         "expertise": ""
       },
       {
         "name": "Stacey Whitfield",
-        "title": "",
+        "title": "Technical Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/staceywhitfield/",
         "expertise": ""
       },
       {
         "name": "Kyle Watson",
-        "title": "",
+        "title": "Talent Acquisition Manager",
         "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
         "expertise": ""
       },
       {
         "name": "Peshal Nepal",
-        "title": "",
+        "title": "Software Engineer",
         "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
         "expertise": ""
       },
       {
         "name": "Jerome Collins",
-        "title": "",
+        "title": "Commercial Executive",
         "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
         "expertise": ""
       },
       {
+        "name": "Anusha Meka",
+        "title": "Principal Group Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/anushameka/",
+        "expertise": ""
+      },
+      {
         "name": "Jonathan Lindsay",
-        "title": "",
+        "title": "Customer Success Account Manager Management",
         "linkedIn": "https://www.linkedin.com/in/jonathanllindsay/",
         "expertise": ""
       },
       {
         "name": "Samuel Blackmon",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/sblackmon/",
         "expertise": ""
       },
       {
-        "name": "Anusha Meka",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "expertise": ""
-      },
-      {
         "name": "Rich Chambers",
-        "title": "",
+        "title": "Cybersecurity Managing Director",
         "linkedIn": "https://www.linkedin.com/in/richkchambers/",
         "expertise": ""
       },
       {
         "name": "Trevor Suarez",
-        "title": "",
+        "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
         "expertise": ""
       },
       {
         "name": "Mayha Shah",
-        "title": "",
+        "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/mayhashah/",
         "expertise": ""
       },
       {
         "name": "Jimmy Avila",
-        "title": "",
+        "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/jimmyavila/",
         "expertise": ""
       },
       {
         "name": "Moises Castro",
-        "title": "",
+        "title": "Principal Director of Software Engineering",
         "linkedIn": "https://www.linkedin.com/in/moises-castro-52637117/",
         "expertise": ""
       },
       {
         "name": "Daniel Santana-Garcia",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/danielsntn/",
         "expertise": ""
       },
       {
         "name": "Rasuwl Walls",
-        "title": "",
+        "title": "Director of Sales",
         "linkedIn": "https://www.linkedin.com/in/rasuwl/",
         "expertise": ""
       },
       {
         "name": "Meiko Lopez",
-        "title": "",
+        "title": "Product Manager",
         "linkedIn": "https://www.linkedin.com/in/mldukes/",
         "expertise": ""
       },
       {
         "name": "Pauline Robinson",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
         "expertise": ""
       },
       {
         "name": "Denisse Alvarado",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
         "expertise": ""
       },
       {
         "name": "Henrique Oliveira",
-        "title": "",
+        "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/henryoliveira5/",
         "expertise": ""
       },
       {
-        "name": "Bhavesh Rana",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/imbhaveshrana/",
-        "expertise": ""
-      },
-      {
         "name": "Jason Waybright",
-        "title": "",
+        "title": "Director Specialist",
         "linkedIn": "https://www.linkedin.com/in/jason-waybright-6841987/",
         "expertise": ""
       },
       {
         "name": "Segun Akinyemi",
-        "title": "Creator of this website",
+        "title": "Software Engineer",
         "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
         "expertise": "",
         "isCreator": true
