@@ -17,226 +17,249 @@ const professionalsData = {
         "name": "James Bolling",
         "title": "Charlotte Campus Director",
         "linkedIn": "https://www.linkedin.com/in/jamesbolling/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Chemere Davis",
         "title": "Charlotte Business Program Manager",
         "linkedIn": "https://www.linkedin.com/in/chemeredavis/",
-        "expertise": ""
+        "notes": ""
       }
     ],
     "professionals": [
-      {
-        "name": "Kristoff Little",
-        "title": "Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
-        "expertise": ""
-      },
-      {
-        "name": "Franz Maurrasse",
-        "title": "Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
-        "expertise": ""
-      },
-      {
-        "name": "Chloe Duffield",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/chloeduffielducla/",
-        "expertise": ""
-      },
-      {
-        "name": "Victor Hart",
-        "title": "Integration Technical Infrastructure Manager",
-        "linkedIn": "https://www.linkedin.com/in/vhart/",
-        "expertise": ""
-      },
-      {
-        "name": "Carrie White",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
-        "expertise": ""
-      },
-      {
-        "name": "Brandon Gary",
-        "title": "Thermal Architect",
-        "linkedIn": "https://www.linkedin.com/in/begary/",
-        "expertise": ""
-      },
-      {
-        "name": "Dave Vespa",
-        "title": "Software Engineer",
-        "linkedIn": "https://www.linkedin.com/in/drvespa/",
-        "expertise": ""
-      },
-      {
-        "name": "Lex Barbosa",
-        "title": "Design Operations Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
-        "expertise": ""
-      },
+      // UX Designer
       {
         "name": "Imani Ricks",
         "title": "UX Designer",
         "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
-        "expertise": ""
+        "notes": "Works on the Minecraft team",
+        "isStarred": true
       },
+      // Thermal Architect
       {
-        "name": "Will Case",
-        "title": "Product Manager",
-        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
-        "expertise": ""
+        "name": "Brandon Gary",
+        "title": "Thermal Architect",
+        "linkedIn": "https://www.linkedin.com/in/begary/",
+        "notes": ""
       },
-      {
-        "name": "Avlokita Sharma",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
-        "expertise": ""
-      },
-      {
-        "name": "Allan Matias",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
-        "expertise": ""
-      },
-      {
-        "name": "John Daly",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
-        "expertise": ""
-      },
-      {
-        "name": "Uchenna Nwosu",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/unwosu44/",
-        "expertise": ""
-      },
-      {
-        "name": "Cynthia Rice",
-        "title": "Technical Advisor",
-        "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
-        "expertise": ""
-      },
-      {
-        "name": "Stacey Whitfield",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/staceywhitfield/",
-        "expertise": ""
-      },
-      {
-        "name": "Kyle Watson",
-        "title": "Talent Acquisition Manager",
-        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
-        "expertise": ""
-      },
-      {
-        "name": "Peshal Nepal",
-        "title": "Software Engineer",
-        "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
-        "expertise": ""
-      },
+      // Commercial Executive
       {
         "name": "Jerome Collins",
         "title": "Commercial Executive",
         "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
-        "expertise": ""
+        "notes": ""
       },
+      // Director of Sales
       {
-        "name": "Anusha Meka",
-        "title": "Principal Group Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "expertise": ""
+        "name": "Rasuwl Walls",
+        "title": "Director of Sales",
+        "linkedIn": "https://www.linkedin.com/in/rasuwl/",
+        "notes": ""
       },
+      // Design Operations Program Manager
       {
-        "name": "Jonathan Lindsay",
-        "title": "Customer Success Account Manager Management",
-        "linkedIn": "https://www.linkedin.com/in/jonathanllindsay/",
-        "expertise": ""
+        "name": "Lex Barbosa",
+        "title": "Design Operations Program Manager",
+        "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
+        "notes": "2025 Charlotte Business Journal 40 under 40 Honoree",
+        "isStarred": true
       },
-      {
-        "name": "Samuel Blackmon",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/sblackmon/",
-        "expertise": ""
-      },
-      {
-        "name": "Rich Chambers",
-        "title": "Cybersecurity Managing Director",
-        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
-        "expertise": ""
-      },
+      // Cloud Solution Architects
       {
         "name": "Trevor Suarez",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Mayha Shah",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/mayhashah/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Jimmy Avila",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/jimmyavila/",
-        "expertise": ""
-      },
-      {
-        "name": "Moises Castro",
-        "title": "Principal Director of Software Engineering",
-        "linkedIn": "https://www.linkedin.com/in/moises-castro-52637117/",
-        "expertise": ""
-      },
-      {
-        "name": "Daniel Santana-Garcia",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/danielsntn/",
-        "expertise": ""
-      },
-      {
-        "name": "Rasuwl Walls",
-        "title": "Director of Sales",
-        "linkedIn": "https://www.linkedin.com/in/rasuwl/",
-        "expertise": ""
-      },
-      {
-        "name": "Meiko Lopez",
-        "title": "Product Manager",
-        "linkedIn": "https://www.linkedin.com/in/mldukes/",
-        "expertise": ""
-      },
-      {
-        "name": "Pauline Robinson",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
-        "expertise": ""
-      },
-      {
-        "name": "Denisse Alvarado",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Henrique Oliveira",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/henryoliveira5/",
-        "expertise": ""
+        "notes": ""
       },
+      // Customer Success Account Managers
+      {
+        "name": "Chloe Duffield",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/chloeduffielducla/",
+        "notes": ""
+      },
+      {
+        "name": "Carrie White",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
+        "notes": ""
+      },
+      {
+        "name": "Uchenna Nwosu",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/unwosu44/",
+        "notes": ""
+      },
+      {
+        "name": "Samuel Blackmon",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/sblackmon/",
+        "notes": ""
+      },
+      {
+        "name": "Daniel Santana-Garcia",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/danielsntn/",
+        "notes": ""
+      },
+      {
+        "name": "Pauline Robinson",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
+        "notes": ""
+      },
+      {
+        "name": "Denisse Alvarado",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
+        "notes": ""
+      },
+      // Customer Success Account Manager Management
+      {
+        "name": "Jonathan Lindsay",
+        "title": "Customer Success Account Manager Management",
+        "linkedIn": "https://www.linkedin.com/in/jonathanllindsay/",
+        "notes": ""
+      },
+      // Cybersecurity Managing Director
+      {
+        "name": "Rich Chambers",
+        "title": "Cybersecurity Managing Director",
+        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
+        "notes": ""
+      },
+      // Director Specialist
       {
         "name": "Jason Waybright",
         "title": "Director Specialist",
         "linkedIn": "https://www.linkedin.com/in/jason-waybright-6841987/",
-        "expertise": ""
+        "notes": ""
+      },
+      // Integration Technical Infrastructure Manager
+      {
+        "name": "Victor Hart",
+        "title": "Integration Technical Infrastructure Manager",
+        "linkedIn": "https://www.linkedin.com/in/vhart/",
+        "notes": ""
+      },
+      // Principal Director of Software Engineering
+      {
+        "name": "Moises Castro",
+        "title": "Principal Director of Software Engineering",
+        "linkedIn": "https://www.linkedin.com/in/moises-castro-52637117/",
+        "notes": "2024 Charlotte Business Journal Power 100 Honoree",
+        "isStarred": true
+      },
+      // Principal Group Engineering Manager
+      {
+        "name": "Anusha Meka",
+        "title": "Principal Group Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/anushameka/",
+        "notes": ""
+      },
+      // Product Managers
+      {
+        "name": "Will Case",
+        "title": "Product Manager",
+        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
+        "notes": ""
+      },
+      {
+        "name": "Meiko Lopez",
+        "title": "Product Manager",
+        "linkedIn": "https://www.linkedin.com/in/mldukes/",
+        "notes": ""
+      },
+      // Software Engineers
+      {
+        "name": "Dave Vespa",
+        "title": "Software Engineer",
+        "linkedIn": "https://www.linkedin.com/in/drvespa/",
+        "notes": ""
+      },
+      {
+        "name": "Peshal Nepal",
+        "title": "Software Engineer",
+        "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
+        "notes": ""
+      },
+      // Support Engineers
+      {
+        "name": "Kristoff Little",
+        "title": "Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
+        "notes": ""
+      },
+      {
+        "name": "Franz Maurrasse",
+        "title": "Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
+        "notes": ""
+      },
+      // Talent Acquisition Manager
+      {
+        "name": "Kyle Watson",
+        "title": "Talent Acquisition Manager",
+        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
+        "notes": "Works in recruiting",
+        "isStarred": true
+      },
+      // Technical Advisor
+      {
+        "name": "Cynthia Rice",
+        "title": "Technical Advisor",
+        "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
+        "notes": ""
+      },
+      // Technical Support Engineers
+      {
+        "name": "Avlokita Sharma",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
+        "notes": ""
+      },
+      {
+        "name": "Allan Matias",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
+        "notes": ""
+      },
+      {
+        "name": "John Daly",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
+        "notes": ""
+      },
+      {
+        "name": "Stacey Whitfield",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/staceywhitfield/",
+        "notes": ""
       },
       {
         "name": "Segun Akinyemi",
         "title": "Software Engineer",
         "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
-        "expertise": "",
-        "isCreator": true
+        "notes": "Site creator",
+        "isStarred": true
       }
     ]
   },
@@ -246,45 +269,46 @@ const professionalsData = {
         "name": "Ken Key",
         "title": "Raleigh Campus Director",
         "linkedIn": "https://www.linkedin.com/in/ken-key-898803a/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Angelyn Smith",
         "title": "Raleigh Business Program Manager",
         "linkedIn": "https://www.linkedin.com/in/angelynempowers/",
-        "expertise": ""
+        "notes": ""
       }
     ],
     "professionals": [
       {
         "name": "Chenae Erkerd",
-        "title": "",
+        "title": "Technical Recruiter",
         "linkedIn": "https://www.linkedin.com/in/chenae-erkerd-j-d-racr-798b2389/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Rashida Hodge",
-        "title": "",
+        "title": "Corporate Vice President of Azure Data & AI",
         "linkedIn": "https://www.linkedin.com/in/rashidahodge/",
-        "expertise": ""
+        "notes": "Distinguished NC State alumnus with extraordinary impact, powerhouse tech industry leader, yet extremely down-to-earth",
+        "isStarred": true
       },
       {
         "name": "Lakevious Battle",
-        "title": "",
+        "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/lakevious-battle/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Jasmine Young",
-        "title": "",
+        "title": "Data Scientist",
         "linkedIn": "https://www.linkedin.com/in/jasmine-young-jgy2020/",
-        "expertise": ""
+        "notes": ""
       },
       {
         "name": "Kevin Rewkowski",
-        "title": "",
+        "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/rewkowski/",
-        "expertise": ""
+        "notes": ""
       }
     ]
   }
@@ -364,7 +388,7 @@ function displayProfessionalCards(professionals, container) {
     
     professionals.forEach(profile => {
         const profileCard = document.createElement('div');
-        profileCard.className = profile.isCreator ? 'profile-card creator-card' : 'profile-card';
+        profileCard.className = profile.isStarred ? 'profile-card creator-card' : 'profile-card';
         
         // Get initials for the avatar
         const initials = profile.name.split(' ').map(n => n[0]).join('');
@@ -381,8 +405,8 @@ function displayProfessionalCards(professionals, container) {
             profileContent += `<p><em>${profile.title}</em></p>`;
         }
         
-        if (profile.expertise) {
-            profileContent += `<p><strong>Expertise:</strong> ${profile.expertise}</p>`;
+        if (profile.notes) {
+            profileContent += `<p><strong>Notes:</strong> ${profile.notes}</p>`;
         }
         
         profileContent += `
