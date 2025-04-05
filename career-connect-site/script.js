@@ -28,6 +28,36 @@ const professionalsData = {
     ],
     "professionals": [
       {
+        "name": "Kristoff Little",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
+        "expertise": ""
+      },
+      {
+        "name": "Franz Maurrasse",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
+        "expertise": ""
+      },
+      {
+        "name": "Chloe Duffield",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/chloeduffielducla/",
+        "expertise": ""
+      },
+      {
+        "name": "Victor Hart",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/vhart/",
+        "expertise": ""
+      },
+      {
+        "name": "Carrie White",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
+        "expertise": ""
+      },
+      {
         "name": "Brandon Gary",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/begary/",
@@ -130,6 +160,12 @@ const professionalsData = {
         "expertise": ""
       },
       {
+        "name": "Rich Chambers",
+        "title": "",
+        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
+        "expertise": ""
+      },
+      {
         "name": "Trevor Suarez",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
@@ -184,13 +220,6 @@ const professionalsData = {
         "expertise": ""
       },
       {
-        "name": "Segun Akinyemi",
-        "title": "Creator of this website",
-        "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
-        "expertise": "",
-        "isCreator": true
-      },
-      {
         "name": "Henrique Oliveira",
         "title": "",
         "linkedIn": "https://www.linkedin.com/in/henryoliveira5/",
@@ -209,10 +238,11 @@ const professionalsData = {
         "expertise": ""
       },
       {
-        "name": "Rich Chambers",
-        "title": "",
-        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
-        "expertise": ""
+        "name": "Segun Akinyemi",
+        "title": "Creator of this website",
+        "linkedIn": "https://www.linkedin.com/in/segunakinyemi/",
+        "expertise": "",
+        "isCreator": true
       }
     ]
   },
