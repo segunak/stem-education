@@ -92,12 +92,6 @@ const professionalsData = {
       },
       // Customer Success Account Managers
       {
-        "name": "Carrie White",
-        "title": "Customer Success Account Manager", 
-        "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
-        "notes": "",
-      },
-      {
         "name": "Chloe Duffield",
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/chloeduffielducla/",
