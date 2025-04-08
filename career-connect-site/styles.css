@@ -390,6 +390,9 @@ nav ul li a:hover::after {
 
 .key-contacts p {
     margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .key-profiles {
@@ -856,8 +859,8 @@ nav ul li a:hover::after {
 footer {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    padding: 0.6rem 0;
-    font-size: 0.85rem;
+    padding: 1.5rem 0;  /* Increased from 0.6rem to make footer taller */
+    font-size: 0.9rem;  /* Slightly increased font size */
 }
 
 footer .container {
@@ -888,27 +891,41 @@ footer a:hover {
 .social-media {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1.2rem;  /* Increased from 0.8rem for more spacing between icons */
 }
 
 .social-media a {
     color: var(--text-light);
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    font-size: 1.2rem;  /* Increased icon size */
+    transition: all 0.3s ease;
 }
 
-social-media a:hover {
+.social-media a:hover {
     color: var(--accent-color);
+    transform: translateY(-3px);  /* Added subtle hover effect */
 }
 
 @media screen and (max-width: 768px) {
     footer .container {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;  /* Increased from 0.5rem */
     }
     
     .footer-content {
         text-align: center;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .social-media a {
+        display: inline-flex;
+        font-size: 1.4rem; /* Slightly larger icons on mobile */
+        padding: 0.5rem;
     }
 }
 
