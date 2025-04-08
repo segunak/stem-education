@@ -27,7 +27,6 @@ const professionalsData = {
       }
     ],
     "professionals": [
-      // UX Designer
       {
         "name": "Imani Ricks",
         "title": "UX Designer",
@@ -35,28 +34,30 @@ const professionalsData = {
         "notes": "Works on the Minecraft team",
         "isStarred": true
       },
-      // Thermal Architect
+      {
+        "name": "Lue Hale",
+        "title": "Business Strategy Analyst",
+        "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
+        "notes": ""
+      },
       {
         "name": "Brandon Gary",
         "title": "Thermal Architect",
         "linkedIn": "https://www.linkedin.com/in/begary/",
         "notes": ""
       },
-      // Commercial Executive
       {
         "name": "Jerome Collins",
         "title": "Commercial Executive",
         "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
         "notes": ""
       },
-      // Director of Sales
       {
         "name": "Rasuwl Walls",
         "title": "Director of Sales",
         "linkedIn": "https://www.linkedin.com/in/rasuwl/",
         "notes": ""
       },
-      // Design Operations Program Manager
       {
         "name": "Lex Barbosa",
         "title": "Design Operations Program Manager",
