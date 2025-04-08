@@ -35,6 +35,12 @@ const professionalsData = {
         "isStarred": true
       },
       {
+        "name": "Carrie White",
+        "title": "Customer Success Account Manager", 
+        "linkedIn": "https://www.linkedin.com/in/carriejwhite/",
+        "notes": "",
+      },
+      {
         "name": "Lue Hale",
         "title": "Business Strategy Analyst",
         "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
