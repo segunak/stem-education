@@ -696,6 +696,66 @@ nav ul li a:hover::after {
     margin-bottom: 1.5rem;
 }
 
+/* Microsoft North Carolina Section */
+.north-carolina-section {
+    background-color: var(--bg-off-white);
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.ms-north-carolina {
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    border-left: 4px solid var(--primary-color);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ms-north-carolina h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+/* North Carolina Tech Ecosystem Section */
+.nc-tech-ecosystem-section {
+    background-color: var(--bg-off-white);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.nc-tech-highlight {
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    border-left: 4px solid var(--accent-color);
+    max-width: 1100px;
+}
+
+.nc-tech-highlight h3 {
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.nc-tech-highlight p {
+    margin-bottom: 1rem;
+}
+
+.nc-tech-highlight p:last-child {
+    margin-bottom: 0;
+}
+
 /* Next Steps Section */
 .next-steps {
     text-align: center;
