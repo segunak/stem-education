@@ -8,6 +8,8 @@ const raleighKeyProfiles = document.querySelector('#raleigh-tab .key-profiles');
 const currentYearSpan = document.getElementById('current-year');
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
+const backToTopButton = document.getElementById('back-to-top');
+const body = document.body;
 
 // Professionals data
 const professionalsData = {
@@ -138,13 +140,6 @@ const professionalsData = {
         "name": "Jonathan Lindsay",
         "title": "Customer Success Account Manager Management",
         "linkedIn": "https://www.linkedin.com/in/jonathanllindsay/",
-        "notes": ""
-      },
-      // Cybersecurity Managing Director
-      {
-        "name": "Rich Chambers",
-        "title": "Cybersecurity Managing Director",
-        "linkedIn": "https://www.linkedin.com/in/richkchambers/",
         "notes": ""
       },
       // Director Specialist
@@ -323,6 +318,7 @@ currentYearSpan.textContent = new Date().getFullYear();
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     nav.classList.toggle('active');
+    body.classList.toggle('menu-open'); // Lock scrolling when menu is open
 });
 
 // Close mobile nav when clicking a nav link
@@ -330,7 +326,21 @@ document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         nav.classList.remove('active');
+        body.classList.remove('menu-open'); // Unlock scrolling
     });
+});
+
+// Back to Top functionality
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) { // Show after scrolling down 500px
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Create and populate profile cards
@@ -424,20 +434,16 @@ function displayProfessionalCards(professionals, container) {
 }
 
 // Tab functionality for Charlotte and Raleigh profiles
-tabButtons.forEach(button => {
+tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        // Update active tab button
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        const targetTab = button.getAttribute('data-tab');
         
-        // Show corresponding tab content
-        const tabId = button.getAttribute('data-tab');
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-            if (content.id === `${tabId}-tab`) {
-                content.classList.add('active');
-            }
-        });
+        // Update active states
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        button.classList.add('active');
+        document.getElementById(`${targetTab}-tab`).classList.add('active');
     });
 });
 
@@ -451,7 +457,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         if (targetElement) {
             const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            // Add a small additional offset for better spacing
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
             
             window.scrollTo({
                 top: targetPosition,
@@ -484,6 +491,11 @@ function init() {
     
     // Initial check for elements in view
     animateOnScroll();
+    
+    // Initial check for back-to-top button visibility
+    if (window.scrollY > 500) {
+        backToTopButton.classList.add('visible');
+    }
 }
 
 // Run initialization when DOM is fully loaded

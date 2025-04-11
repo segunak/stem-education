@@ -1,9 +1,9 @@
 /* Base Styles */
 :root {
-    /* Updated modern, vibrant color palette */
+    /* Modern, vibrant color palette */
     --primary-color: #0078d4; /* Microsoft blue */
-    --secondary-color: #e78c23; /* Warm orange-gold (was mint green) */
-    --accent-color: #ff5c00; /* Brighter orange */
+    --secondary-color: #744da9; /* Modern purple */
+    --accent-color: #f7630c; /* Vibrant orange */
     --accent-secondary: #16c60c; /* Bright green */
     --text-color: #252525; /* Near black for better readability */
     --text-light: #ffffff;
@@ -13,7 +13,7 @@
     --bg-dark: #2f2f2f;
     --box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
     --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), #00b7c3); /* Blue to teal */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--accent-color), #ffb900);
 }
 
@@ -266,46 +266,6 @@ nav ul li a:hover::after {
     background-color: var(--bg-off-white);
     text-align: center;
     padding-bottom: 3rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.professionals::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top right, rgba(231, 140, 35, 0.05) 0%, rgba(231, 140, 35, 0) 60%), 
-                radial-gradient(circle at bottom left, rgba(0, 120, 212, 0.05) 0%, rgba(0, 120, 212, 0) 60%);
-    pointer-events: none;
-}
-
-.professionals-intro {
-    max-width: 100%;
-    margin: 0 auto 2rem;
-    position: relative;
-}
-
-.professionals h2 {
-    color: var(--primary-color);
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    position: relative;
-    display: inline-block;
-}
-
-.professionals-intro p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-color);
-    background-color: var(--bg-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: var(--box-shadow);
-    position: relative;
-    border-top: 4px solid var(--secondary-color);
 }
 
 .connection-tip {
@@ -736,87 +696,6 @@ nav ul li a:hover::after {
     margin-bottom: 1.5rem;
 }
 
-/* Microsoft North Carolina Section */
-.north-carolina-section {
-    background: linear-gradient(to bottom, rgba(0, 120, 212, 0.05), rgba(231, 140, 35, 0.08));
-    text-align: center;
-    padding: 5rem 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.north-carolina-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: var(--gradient-primary);
-}
-
-.ms-north-carolina {
-    background-color: var(--bg-light);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    box-shadow: var(--box-shadow);
-    text-align: left;
-    border-left: 4px solid var(--primary-color);
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.ms-north-carolina h3 {
-    color: var(--primary-color);
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-}
-
-.ms-north-carolina h4 {
-    color: var(--secondary-color);
-    font-size: 1.3rem;
-    margin-top: 1.8rem;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(231, 140, 35, 0.2);
-}
-
-/* North Carolina Tech Ecosystem Section */
-.nc-tech-ecosystem-section {
-    background-color: var(--bg-off-white);
-    text-align: center;
-    padding: 3rem 0;
-}
-
-.nc-tech-highlight {
-    background-color: var(--bg-gray);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: var(--box-shadow);
-    text-align: left;
-    border-left: 4px solid var(--accent-color);
-    max-width: 1100px;
-}
-
-.nc-tech-highlight h3 {
-    color: var(--accent-color);
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-}
-
-.nc-tech-highlight p {
-    margin-bottom: 1rem;
-}
-
-.nc-tech-highlight p:last-child {
-    margin-bottom: 0;
-}
-
 /* Next Steps Section */
 .next-steps {
     text-align: center;
@@ -909,7 +788,7 @@ nav ul li a:hover::after {
 }
 
 .step-content h3 {
-    color: var (--secondary-color);
+    color: var(--secondary-color);
     margin-bottom: 0.8rem;
 }
 
@@ -1332,4 +1211,44 @@ footer a:hover {
 
 .resource-link:hover::after {
     width: 100%;
+}
+
+/* Back to Top Button - Mobile Optimized */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.back-to-top:active {
+    transform: translateY(2px);
 }
