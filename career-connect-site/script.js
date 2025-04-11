@@ -290,6 +290,12 @@ const professionalsData = {
         "isStarred": true
       },
       {
+        "name": "Danny Davenport",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/danny-davenport-524802123/",
+        "notes": "" 
+      },
+      {
         "name": "Lakevious Battle",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/lakevious-battle/",
