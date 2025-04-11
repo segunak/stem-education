@@ -261,6 +261,24 @@ nav ul li a:hover::after {
     opacity: 0.95;
 }
 
+/* Add hero-actions styling for proper button spacing */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Creates proper spacing between buttons */
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+    .hero-actions {
+        flex-direction: column;
+        width: 80%;
+        max-width: 280px;
+        margin: 0 auto;
+        gap: 15px; /* Slightly reduced gap for mobile */
+    }
+}
+
 /* Updated Professionals Section */
 .professionals {
     background-color: var(--bg-off-white);
