@@ -1,9 +1,9 @@
 /* Base Styles */
 :root {
-    /* Modern, vibrant color palette */
+    /* Updated modern, vibrant color palette */
     --primary-color: #0078d4; /* Microsoft blue */
-    --secondary-color: #744da9; /* Modern purple */
-    --accent-color: #f7630c; /* Vibrant orange */
+    --secondary-color: #e78c23; /* Warm orange-gold (was mint green) */
+    --accent-color: #ff5c00; /* Brighter orange */
     --accent-secondary: #16c60c; /* Bright green */
     --text-color: #252525; /* Near black for better readability */
     --text-light: #ffffff;
@@ -13,7 +13,7 @@
     --bg-dark: #2f2f2f;
     --box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
     --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), #00b7c3); /* Blue to teal */
     --gradient-accent: linear-gradient(135deg, var(--accent-color), #ffb900);
 }
 
@@ -266,6 +266,46 @@ nav ul li a:hover::after {
     background-color: var(--bg-off-white);
     text-align: center;
     padding-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.professionals::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(231, 140, 35, 0.05) 0%, rgba(231, 140, 35, 0) 60%), 
+                radial-gradient(circle at bottom left, rgba(0, 120, 212, 0.05) 0%, rgba(0, 120, 212, 0) 60%);
+    pointer-events: none;
+}
+
+.professionals-intro {
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+.professionals h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.professionals-intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    border-top: 4px solid var(--secondary-color);
 }
 
 .connection-tip {
@@ -698,9 +738,21 @@ nav ul li a:hover::after {
 
 /* Microsoft North Carolina Section */
 .north-carolina-section {
-    background-color: var(--bg-off-white);
+    background: linear-gradient(to bottom, rgba(0, 120, 212, 0.05), rgba(231, 140, 35, 0.08));
     text-align: center;
-    padding-bottom: 3rem;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.north-carolina-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--gradient-primary);
 }
 
 .ms-north-carolina {
@@ -721,6 +773,15 @@ nav ul li a:hover::after {
     color: var(--primary-color);
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
+}
+
+.ms-north-carolina h4 {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(231, 140, 35, 0.2);
 }
 
 /* North Carolina Tech Ecosystem Section */
@@ -848,7 +909,7 @@ nav ul li a:hover::after {
 }
 
 .step-content h3 {
-    color: var(--secondary-color);
+    color: var (--secondary-color);
     margin-bottom: 0.8rem;
 }
 
