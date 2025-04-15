@@ -290,7 +290,7 @@ const professionalsData = {
         "notes": "" 
       },
       {
-        "name": "Dr. Tenesha Robinson",
+        "name": "Tenesha Robinson",
         "title": "Senior Consultant",
         "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-62046337/",
         "notes": ""
