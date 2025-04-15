@@ -30,13 +30,6 @@ const professionalsData = {
     ],
     "professionals": [
       {
-        "name": "Imani Ricks",
-        "title": "UX Designer",
-        "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
-        "notes": "Works on the Minecraft team",
-        "isStarred": true
-      },
-      {
         "name": "Lue Hale",
         "title": "Business Strategy Analyst",
         "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
@@ -47,6 +40,13 @@ const professionalsData = {
         "title": "Thermal Architect",
         "linkedIn": "https://www.linkedin.com/in/begary/",
         "notes": ""
+      },
+      {
+        "name": "Imani Ricks",
+        "title": "UX Designer",
+        "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
+        "notes": "Works on the Minecraft team",
+        "isStarred": true
       },
       {
         "name": "Jerome Collins",
@@ -216,7 +216,7 @@ const professionalsData = {
         "name": "Kyle Watson",
         "title": "Talent Acquisition Manager",
         "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
-        "notes": "Works in recruiting",
+        "notes": "Works in recruiting!",
         "isStarred": true
       },
       // Technical Advisor
@@ -277,16 +277,10 @@ const professionalsData = {
     ],
     "professionals": [
       {
-        "name": "Chenae Erkerd",
-        "title": "Technical Recruiter",
-        "linkedIn": "https://www.linkedin.com/in/chenae-erkerd-j-d-racr-798b2389/",
-        "notes": ""
-      },
-      {
         "name": "Rashida Hodge",
         "title": "Corporate Vice President of Azure Data & AI",
         "linkedIn": "https://www.linkedin.com/in/rashidahodge/",
-        "notes": "Distinguished NC State alumnus with extraordinary impact, powerhouse tech industry leader, yet extremely down-to-earth",
+        "notes": "Distinguished NC State alumnus with extraordinary impact, powerhouse tech industry leader, yet an extremely down-to-earth and approchable person!",
         "isStarred": true
       },
       {
@@ -294,6 +288,50 @@ const professionalsData = {
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/danny-davenport-524802123/",
         "notes": "" 
+      },
+      {
+        "name": "Dr. Tenesha Robinson",
+        "title": "Senior Consultant",
+        "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-62046337/",
+        "notes": ""
+      },
+      {
+        "name": "Chenae Erkerd",
+        "title": "Technical Recruiter",
+        "linkedIn": "https://www.linkedin.com/in/chenae-erkerd-j-d-racr-798b2389/",
+        "notes": "Works in recruiting!",
+        "isStarred": true
+      },
+      {
+        "name": "Nevonda Davis",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/nevondamba/",
+        "notes": ""
+      },
+      {
+        "name": "Breanne Dixon",
+        "title": "Recruiter",
+        "linkedIn": "https://www.linkedin.com/in/breanne-dixon-1576968a/",
+        "notes": "Works in recruiting!",
+        "isStarred": true
+      },
+      {
+        "name": "Taylor Allen-Rider",
+        "title": "UX Researcher",
+        "linkedIn": "https://www.linkedin.com/in/tallen-rider/",
+        "notes": ""
+      },
+      {
+        "name": "Alfred Gamble",
+        "title": "Human Resources Consultant",
+        "linkedIn": "https://www.linkedin.com/in/alfred-gamble-mshrm-phr-shrm-cp-2446002b/",
+        "notes": ""
+      },
+      {
+        "name": "Brigitte Woods",
+        "title": "Director of Business Planning & Management",
+        "linkedIn": "https://www.linkedin.com/in/brigitte-woods/",
+        "notes": ""
       },
       {
         "name": "Lakevious Battle",
@@ -311,6 +349,24 @@ const professionalsData = {
         "name": "Kevin Rewkowski",
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/rewkowski/",
+        "notes": ""
+      },
+      {
+        "name": "Ria Simpson",
+        "title": "Business Administrator",
+        "linkedIn": "https://www.linkedin.com/in/ria-simpson/",
+        "notes": ""
+      },
+      {
+        "name": "Kyle Reese",
+        "title": "Account Executive",
+        "linkedIn": "https://www.linkedin.com/in/kylemreese/",
+        "notes": ""
+      },
+      {
+        "name": "Trent Sandles",
+        "title": "Specialist",
+        "linkedIn": "https://www.linkedin.com/in/trentsandles/",
         "notes": ""
       }
     ]

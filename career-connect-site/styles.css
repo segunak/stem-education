@@ -286,9 +286,9 @@ nav ul li a:hover::after {
     padding-bottom: 3rem;
 }
 
-.connection-tip {
+/* Connection Tip and Job Titles Note */
+.connection-tip, .job-titles-note {
     background-color: var(--bg-light);
-    border-left: 4px solid var(--accent-color);
     border-radius: 8px;
     padding: 1.5rem;
     margin: 2rem 0;
@@ -298,16 +298,38 @@ nav ul li a:hover::after {
     box-shadow: var(--box-shadow);
 }
 
-.connection-tip i {
+.job-titles-note {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.connection-tip {
+    border-left: 4px solid var(--accent-color);
+}
+
+.connection-tip i, .job-titles-note i {
     font-size: 2rem;
-    color: var(--accent-color);
     margin-right: 1.5rem;
     margin-top: 0.5rem;
 }
 
+.job-titles-note i {
+    color: var(--secondary-color);
+}
+
+.connection-tip i {
+    color: var(--accent-color);
+}
+
+.connection-tip h4, .job-titles-note h4 {
+    margin-bottom: 0.5rem;
+}
+
 .connection-tip h4 {
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
+}
+
+.job-titles-note h4 {
+    color: var(--secondary-color);
 }
 
 .connection-tip blockquote {
@@ -319,6 +341,18 @@ nav ul li a:hover::after {
     margin-top: 1rem;
     margin-bottom: 0;
     font-size: 0.95rem;
+}
+
+/* Mobile responsive styles for the connection tip and job titles note */
+@media screen and (max-width: 768px) {
+    .connection-tip, .job-titles-note {
+        flex-direction: column;
+    }
+    
+    .connection-tip i, .job-titles-note i {
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
 }
 
 .locations-tabs {
@@ -1146,7 +1180,7 @@ footer a:hover {
     position: relative;
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    color: var(--secondary-color);
+    color: var (--secondary-color);
 }
 
 .category h3::after {
