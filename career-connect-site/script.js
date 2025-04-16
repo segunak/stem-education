@@ -164,6 +164,12 @@ const professionalsData = {
         "notes": "2024 Charlotte Business Journal Power 100 Honoree",
         "isStarred": true
       },
+      {
+        "name": "Tennill Mitchell",
+        "title": "Relationship Manager",
+        "linkedIn": "https://www.linkedin.com/in/tennill-mitchell-mfa-7a44565/",
+        "notes": ""
+      },
       // Product Managers
       {
         "name": "Will Case",
