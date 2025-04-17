@@ -67,7 +67,6 @@ const professionalsData = {
         "notes": "2025 Charlotte Business Journal 40 under 40 Honoree",
         "isStarred": true
       },
-      // Cloud Solution Architects
       {
         "name": "Trevor Suarez",
         "title": "Cloud Solution Architect",
@@ -92,7 +91,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/henryoliveira5/",
         "notes": ""
       },
-      // Customer Success Account Managers
       {
         "name": "Chloe Duffield",
         "title": "Customer Success Account Manager",
@@ -135,28 +133,24 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
         "notes": ""
       },
-      // Customer Success Account Manager Management
       {
         "name": "Jonathan Lindsay",
         "title": "Customer Success Account Manager Management",
         "linkedIn": "https://www.linkedin.com/in/jonathanllindsay/",
         "notes": ""
       },
-      // Director Specialist
       {
         "name": "Jason Waybright",
         "title": "Director Specialist",
         "linkedIn": "https://www.linkedin.com/in/jason-waybright-6841987/",
         "notes": ""
       },
-      // Integration Technical Infrastructure Manager
       {
         "name": "Victor Hart",
         "title": "Integration Technical Infrastructure Manager",
         "linkedIn": "https://www.linkedin.com/in/vhart/",
         "notes": ""
       },
-      // Principal Director of Software Engineering
       {
         "name": "Moises Castro",
         "title": "Principal Director of Software Engineering",
@@ -176,7 +170,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/kendra-ware-481810a3",
         "notes": ""   
       },
-      // Product Managers
       {
         "name": "Will Case",
         "title": "Product Manager",
@@ -189,7 +182,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/mldukes/",
         "notes": ""
       },
-      // Principal Group Engineering Manager
       {
         "name": "Anusha Meka",
         "title": "Principal Group Engineering Manager",
@@ -197,7 +189,6 @@ const professionalsData = {
         "notes": "2025 Charlotte Business Journal Women in Business Honoree",
         "isStarred": true
       },
-      // Software Engineers
       {
         "name": "Dave Vespa",
         "title": "Software Engineer",
@@ -210,7 +201,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/peshalnepal/",
         "notes": ""
       },
-      // Support Engineers
       {
         "name": "Kristoff Little",
         "title": "Support Engineer",
@@ -223,7 +213,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
         "notes": ""
       },
-      // Talent Acquisition Manager
       {
         "name": "Kyle Watson",
         "title": "Talent Acquisition Manager",
@@ -231,14 +220,12 @@ const professionalsData = {
         "notes": "Works in recruiting!",
         "isStarred": true
       },
-      // Technical Advisor
       {
         "name": "Cynthia Rice",
         "title": "Technical Advisor",
         "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
         "notes": ""
       },
-      // Technical Support Engineers
       {
         "name": "Avlokita Sharma",
         "title": "Technical Support Engineer",
