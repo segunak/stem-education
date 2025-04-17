@@ -170,6 +170,12 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/tennill-mitchell-mfa-7a44565/",
         "notes": ""
       },
+      {
+        "name": "Kendra Ware",
+        "title": "Relationship Manager",
+        "linkedIn": "https://www.linkedin.com/in/kendra-ware-481810a3",
+        "notes": ""   
+      },
       // Product Managers
       {
         "name": "Will Case",
