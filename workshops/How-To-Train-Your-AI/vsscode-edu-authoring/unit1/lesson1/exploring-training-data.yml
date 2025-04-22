@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: exploring-training-data
+title: Exploring the Training Data
+content: >
+  # Exploring the Training Data
+
+
+  Before we can understand how AI learns, let's examine the data it learns from.
+  AI models don't create information from nothing - they learn patterns from
+  existing data.
+
+
+  ## What is Training Data?
+
+
+  Training data is the collection of examples that AI uses to learn patterns.
+  For large language models like ChatGPT, this includes billions of sentences
+  from books, articles, websites, and other text sources.
+
+
+  For our simplified workshop, we're using a small dataset contained in the
+  `data.txt` file. Let's take a look:
+
+
+  ## Our Training Data
+
+
+  Open the `data.txt` file in the file explorer to see the sentences our AI
+  model will learn from. These sentences represent the entire universe of
+  knowledge for our model - it can't know anything that isn't in this data.
+
+
+  Notice that this is a very small dataset compared to real AI models, which
+  might use trillions of words of training data. Our small dataset will limit
+  what our model can do, but it's perfect for learning the core concepts.
+
+
+  Take a moment to read through the sentences in `data.txt`. You'll be able to
+  see how these sentences influence what our AI generates in the later
+  exercises.

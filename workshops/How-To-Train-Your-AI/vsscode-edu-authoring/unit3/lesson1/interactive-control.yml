@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: interactive-control
+title: Full Interactive Control
+content: >
+  # Interactive Text Generation
+
+
+  **Your Task:** Take full control of your AI by adjusting all parameters and
+  choosing a starting word.
+
+
+  ## Full Control Parameters:
+
+  - **Output Length**: How many words to generate
+
+  - **Window Size**: How much context to use
+
+  - **Temperature**: How creative vs. predictable the text will be
+
+  - **Starting Word**: The first word to begin your text
+
+
+  ## Experiment Tasks:
+
+  1. Try the default settings first
+
+  2. Then use `window_size=6`, `temperature=0.7` for better coherence
+
+  3. Try different starting words like "The", "I", or "On" to see how they
+  affect the theme
+
+
+  ## Challenge:
+
+  Can you find the perfect combination to create the most human-like text?
+editors:
+  - how-to-train-your-ai/unit3/lesson1/interactive-control/exampleNewFile.py

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: unit1
 title: Unit 1 - Random Baseline
-objectives: Start with a simple random text generator to establish a baseline before adding intelligence.
+objectives: Start with a simple random text generator to establish a baseline
+  before adding intelligence.
 lessons:
   - lesson1/index.yml
