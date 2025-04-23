@@ -30,6 +30,30 @@ const professionalsData = {
     ],
     "professionals": [
       {
+        "name": "Anthony Morris",
+        "title": "Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/morjit/",
+        "notes": ""
+      },
+      {
+        "name": "Allison Geoghegan",
+        "title": "Support Engineer Manager",
+        "linkedIn": "https://www.linkedin.com/in/allison-geoghegan/",
+        "notes": ""
+      },
+      {
+        "name": "Parneet Kaur",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/boparaikparneet/",
+        "notes": ""
+      },
+      {
+        "name": "Carlos Oquendo Jr.",
+        "title": "Director Business Application Specialist",
+        "linkedIn": "https://www.linkedin.com/in/carlos-oquendo-jr/",
+        "notes": ""
+      },
+      {
         "name": "Lue Hale",
         "title": "Business Strategy Analyst",
         "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
@@ -155,6 +179,12 @@ const professionalsData = {
         "name": "Victor Hart",
         "title": "Integration Technical Infrastructure Manager",
         "linkedIn": "https://www.linkedin.com/in/vhart/",
+        "notes": ""
+      },
+      {
+        "name": "Priscilla Morales",
+        "title": "Support Engineer Manager",
+        "linkedIn": "https://www.linkedin.com/in/priscilla-morales-4138a3bb/",
         "notes": ""
       },
       {
