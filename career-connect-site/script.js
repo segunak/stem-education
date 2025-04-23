@@ -81,7 +81,7 @@ const professionalsData = {
       },
       {
         "name": "Andrew Dawkins",
-        "title": "Consultant", 
+        "title": "Senior Consultant", 
         "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
         "notes": ""
       },
