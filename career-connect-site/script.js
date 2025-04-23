@@ -80,6 +80,12 @@ const professionalsData = {
         "notes": ""
       },
       {
+        "name": "Andrew Dawkins",
+        "title": "Consultant", 
+        "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
+        "notes": ""
+      },
+      {
         "name": "Jimmy Avila",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/jimmyavila/",

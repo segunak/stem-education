@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lesson4
+title: Build Your Mini AI
+description: Create your own text generator by combining everything you've learned!
+objectives: |-
+  🛠️ Apply your best settings to create a simple AI assistant 
+  🚀 Test different starting words to guide your AI's writing

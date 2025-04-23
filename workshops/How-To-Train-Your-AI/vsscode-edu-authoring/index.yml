@@ -1,20 +1,46 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
-id: how-to-train-your-ai
-title: "Guess, Check, Adjust: Training AI One Step at a Time"
+id: course1
+title: "Training Your AI: Finding the Perfect Settings"
 level: beginner
-description: This is a hands-on workshop where you'll act as an AI engineer,
-  learning how AI models like ChatGPT are trained. Perfect for beginners, it
-  offers a clear, practical introduction to building and understanding AI
-  systems.
-cardImageUrl: https://vscodeedu.com/assets/course-cards/card6.png
+description: >-
+  In this exercise, you'll experience what it's like to be an AI trainer,
+  working with a text generation model similar to how ChatGPT started learning -
+  through next-word prediction.
+
+  Your mission: Adjust the model parameters to transform random nonsense into
+  coherent, readable text!
+objectives: >-
+  By the end of this exercise, you'll be able to:
+
+  🧠 Understand how AI text generation models use parameters to produce coherent
+  text
+
+  🔍 Explain the role of context window in improving text coherence
+
+  🌡️ Demonstrate how temperature affects creativity vs predictability in AI
+  outputs
+
+  🛠️ Debug common issues in AI text generation by adjusting parameters
+
+  🔄 Experience the iterative process of AI model tuning that real Machine
+  Learning engineers use
+
+  ⚖️ Compare outputs from different parameter combinations to find optimal
+  settings
+prerequisites: >-
+  No coding experience required! This activity is designed for beginners.
+  Students should:
+
+  🖱️ Have basic computer skills (mouse, keyboard, web browser)
+
+  🤔 Be familiar with the concept that AI learns from examples (covered in the
+  workshop introduction)
+
+  🔑 Have a Microsoft account to access VS Code for Education
+cardImageUrl: https://vscodeedu.com/assets/course-cards/card8.png
 contacts:
   - displayName: Segun Akinyemi
     affiliation: Microsoft
     homePageUrl: https://segunakinyemi.com/
-files:
-  - path: how-to-train-your-ai/unit3/lesson1/interactive-control/exampleNewFile.py
-    content: print("test me")
 units:
   - unit1/index.yml
-  - unit2/index.yml
-  - unit3/index.yml

@@ -1,7 +1,17 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: unit1
-title: Unit 1 - Random Baseline
-objectives: Start with a simple random text generator to establish a baseline
-  before adding intelligence.
+title: "From Chaos to Coherence: AI Parameter Magic"
+description: Experience how AI text generation works by tweaking key settings!
+  You'll transform random words into meaningful text, seeing firsthand how real
+  AI systems learn.
+objectives: |-
+  🔍 Control AI text generation by adjusting key parameters 
+  🧩 See how context window affects text coherence 
+  🎭 Understand how temperature balances creativity and predictability 
+  🧠 Experience the same process AI engineers use to tune models 
+  🤖 Build a simple AI assistant using your best settings
 lessons:
   - lesson1/index.yml
+  - lesson2/index.yml
+  - lesson3/index.yml
+  - lesson4/index.yml

@@ -1,15 +1,8 @@
 # yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
 id: lesson1
-title: Random Text Generation
-description: >
-  This lesson introduces the concept of random text generation as a baseline for
-  AI systems. You'll run your first text generator to see what happens when
-  words are chosen completely at random without any intelligence or learning.
+title: Adding Context
+description: Make your text generator smarter by teaching it to look at previous
+  words to predict the next one.
 objectives: |-
-  - See what text looks like when generated with pure randomness
-  - Understand why context is important for coherent text generation
-  - Establish a baseline to compare with more advanced methods
-lessonParts:
-  - introduction.yml
-  - exploring-training-data.yml
-  - random-prediction.yml
+  🔄 Control how much context your AI considers 
+  📈 See how more context leads to better text

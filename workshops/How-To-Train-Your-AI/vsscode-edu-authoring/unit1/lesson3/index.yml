@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lesson3
+title: Finding the Sweet Spot
+description: Balance predictability and creativity by adjusting your AI's
+  "temperature" setting.
+objectives: |-
+  🌡️ Adjust how adventurous your AI is when picking words
+  ⚖️ Find the perfect balance between coherence and variety

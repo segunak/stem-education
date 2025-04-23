@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://vscodeedu.com/assets/schema/course-v2.schema.json
+id: lesson2
+title: Random Beginnings
+description: See what happens when a computer generates text with no training at all.
+objectives: |-
+  🎲 Run code that produces completely random text 
+  📚 Understand why context matters in language generation
