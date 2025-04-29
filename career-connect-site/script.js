@@ -30,6 +30,36 @@ const professionalsData = {
     ],
     "professionals": [
       {
+        "name": "Will Case",
+        "title": "Product Manager",
+        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
+        "notes": ""
+      },
+      {
+        "name": "Darlesia Weatherly",
+        "title": "Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/darlesia/",
+        "notes": ""
+      },
+      {
+        "name": "Connice Trimmingham",
+        "title": "Software Engineer",
+        "linkedIn": "https://www.linkedin.com/in/connice-trimmingham-7b9131158/",
+        "notes": ""
+      },
+      {
+        "name": "Liz Martin",
+        "title": "Business Program Manager",
+        "linkedIn": "https://www.linkedin.com/in/liz-martin-rhia-cdip-cpc-cpc-i-crc-52537813a/",
+        "notes": ""
+      },
+      {
+        "name": "Evan Kirk",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/evan-kirk-5a5a2b211/",
+        "notes": ""
+      },
+      {
         "name": "Anthony Morris",
         "title": "Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/morjit/",
@@ -205,12 +235,6 @@ const professionalsData = {
         "title": "Relationship Manager",
         "linkedIn": "https://www.linkedin.com/in/kendra-ware-481810a3",
         "notes": ""   
-      },
-      {
-        "name": "Will Case",
-        "title": "Product Manager",
-        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
-        "notes": ""
       },
       {
         "name": "Meiko Lopez",
