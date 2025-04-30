@@ -36,15 +36,15 @@ const professionalsData = {
         "notes": ""
       },
       {
-        "name": "Darlesia Weatherly",
-        "title": "Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/darlesia/",
+        "name": "Juan Flowers",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/juanflowers/",
         "notes": ""
       },
       {
-        "name": "Connice Trimmingham",
-        "title": "Software Engineer",
-        "linkedIn": "https://www.linkedin.com/in/connice-trimmingham-7b9131158/",
+        "name": "Darlesia Weatherly",
+        "title": "Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/darlesia/",
         "notes": ""
       },
       {
