@@ -2,6 +2,8 @@
 
 A single-file Python library for controlling the Petoi Bittle X Robot Dog. This unified module combines all the original Petoi Python files into one easy-to-use import.
 
+The source of the original files that were combined into 1 `Petoi.py` is <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries>. The official Python API docs are at <https://docs.petoi.com/apis/python-api>.
+
 ## Features
 
 - **Single Import**: All Petoi functionality in one file

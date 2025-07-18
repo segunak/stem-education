@@ -21,11 +21,26 @@ By the end of this workshop, students will:
 ## Materials
 
 - [Petoi Bittle X Robot Dog](https://www.petoi.com/pages/bittle-smart-robot-dog-model-overview) (1 per 5-6 students)
-- Laptops with Python and VS Code installed
-- Python packages: `openai`, `python-dotenv`, `pyserial`
-- OpenAI API key, preferably loaded from a `.env` file
-- Petoi API documentation ([sending-skills.md](../../documentation/sending-skills.md) and [serial-protocol.md](../../documentation/serial-protocol.md))
-- Pre-configured starter code
+
+- Laptops with [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com/) installed.
+
+- The Python files required to control the Petoi Bittle at <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries> but packaged into one easy to use file called `Petoi.py` [in this folder](../../code/Petoi.py)
+
+- The Python packages: [`openai`](https://pypi.org/project/openai/), [`python-dotenv`](https://pypi.org/project/python-dotenv/), [`pyserial`](https://pypi.org/project/pyserial/) installed via `pip`.
+
+- An OpenAI API key in a `.env` file. Get one at <https://platform.openai.com/api-keys> and create a `.env` file in the same directory as the project's code file.
+
+- The Petoi Python API specification created for this workshop found [in this folder](../../documentation/petoi-python-api-specification.md). The official Python API spec can be [found here](https://docs.petoi.com/apis/python-api)
+
+
+
+
+
+
+
+
+
+
 
 
 

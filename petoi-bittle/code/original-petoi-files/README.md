@@ -4,7 +4,7 @@
 
 This folder contains the original Petoi Python files that were combined into a single unified file `Petoi.py` for easier workshop deployment.
 
-The source of the original files is <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries>.
+The source of the original files  is <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries>. The official Python API docs are at <https://docs.petoi.com/apis/python-api>.
 
 ## Original Files
 
