@@ -2,55 +2,103 @@
 
 ## Overview
 
-In this workshop, students will learn the fundamental concepts of [AI Engineering](https://www.latent.space/p/ai-engineer) by connecting Large Language Models (LLMs) to the documentation for programmatically controlling the [Petoi 'Bittle X' Robot Dog](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled). This hands-on experience demonstrates how AI becomes truly powerful when given the right context, transforming from a general-purpose tool into a specialized assistant capable of controlling hardware through natural language.
+In this workshop, students will experience firsthand how AI becomes powerful through context. Starting with an AI chat interface that only knows how to send a few commands to the robot dog ([Petoi 'Bittle X'](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled)), students will progressively teach the AI new capabilities by providing it with more context about the robot's full range of abilities. This hands-on approach demonstrates the core principle of [AI Engineering](https://www.latent.space/p/ai-engineer): connecting AI to specific knowledge to solve real problems.
 
 ## Key Objectives
 
 By the end of this workshop, students will:
 
-1. **Understand AI Engineering**: Learn what distinguishes AI Engineering from traditional programming and why it's becoming the future of software development.
+1. **Understand AI Engineering**: Experience how providing context to AI transforms its capabilities from limited to comprehensive.
 
-2. **Experience Context Engineering**: Discover how giving AI specific context (like API documentation) dramatically improves its capabilities, making it more useful than general-purpose AI.
+2. **Build Iteratively**: Add new robot capabilities one by one, seeing immediate results with each addition.
 
-3. **Build an AI Context Pipeline**: Connect the Petoi API documentation to an AI model, enabling natural language control of the robot.
+3. **Read Technical Documentation**: Learn to extract key information from documentation and translate it for AI use. This is a core AI Engineering skill. Understanding a system and distilling that knowledge into context that makes AI powerful.
 
-4. **Practice Responsible AI**: Implement transparency features that show exactly what commands the AI sends to the robot before execution.
+4. **Practice Responsible AI**: Implement transparency features showing exactly what commands AI sends to hardware.
 
-5. **Develop Problem-Solving Skills**: Use AI tools like GitHub Copilot, Microsoft Copilot, and ChatGPT to overcome coding challenges, regardless of prior programming experience.
+5. **Problem-Solve with AI Tools**: Use ChatGPT, GitHub Copilot, and other AI assistants to understand and modify code.
 
 ## Materials
 
-- [Petoi Bittle X Robot Dog](https://www.petoi.com/pages/bittle-smart-robot-dog-model-overview) (1 per 5-6 students)
+- [Petoi 'Bittle X' Robot Dog](https://www.petoi.com/pages/bittle-smart-robot-dog-model-overview) (1 per 5-6 students).
 
 - Laptops with [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com/) installed.
 
-- The Python files required to control the Petoi Bittle at <https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries> but packaged into one easy to use file called `Petoi.py` [in this folder](../../code/Petoi.py)
+- The Python files required to control the robot dog [found here](https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries). They're packaged into one easy to use file called `Petoi.py` [in this folder](../../code/Petoi.py).
 
-- The Python packages: [`openai`](https://pypi.org/project/openai/), [`python-dotenv`](https://pypi.org/project/python-dotenv/), [`pyserial`](https://pypi.org/project/pyserial/) installed via `pip`.
+- The Python packages: [`openai`](https://pypi.org/project/openai/), [`python-dotenv`](https://pypi.org/project/python-dotenv/), and [`pyserial`](https://pypi.org/project/pyserial/) installed via [pip](https://pypi.org/project/pip/).
 
-- An OpenAI API key in a `.env` file. Get one at <https://platform.openai.com/api-keys> and create a `.env` file in the same directory as the project's code file.
+- An OpenAI API key in a `.env` file. You can [get one here](https://platform.openai.com/api-keys). Then create a `.env` file in the same directory as the project's code. The file should contain 1 line with the contents `OPENAI_API_KEY=YOUR_API_KEY_HERE`.
 
-- The Petoi Python API specification created for this workshop found [in this folder](../../documentation/petoi-python-api-specification.md). The official Python API spec can be [found here](https://docs.petoi.com/apis/python-api)
+- The robot dog command reference sheet (printed or digital). The official version [can be found on Petoi's website](https://docs.petoi.com/apis/serial-protocol) but an easy to print version   [is found here](../../documentation/serial-protocol.md).
 
+## Background: The Power of Context
 
+Imagine asking someone to "make coffee" without any context. They might not know where the coffee maker is, what kind of coffee you like, or even what coffee is. But give them a manual for your specific coffee maker and tell them your preferences, and suddenly they can make perfect coffee every time.
 
+This is exactly what we're doing with AI and the robot dog. [AI Models](https://artificialanalysis.ai/leaderboards/models) are brilliant but need specific context to be useful. That's where AI Engineers come in, they connect AI to the specific knowledge it needs.
 
+### Why This Matters
 
+As proclaimed by [Andrej Karpathy](https://en.wikipedia.org/wiki/Andrej_Karpathy) (former Director of AI at Tesla and founding member of OpenAI), we're entering the age of [AI Engineering](https://www.latent.space/p/ai-engineer). The future isn't just about using AI, it's about making AI useful by connecting it to real-world systems and knowledge.
 
+Traditional software engineers write code to directly control systems. AI Engineers take a different approach, they write code that teaches AI how to control those systems. It's still engineering, but instead of coding every action, you're providing AI with the knowledge it needs to figure things out.
 
+Software engineers, product managers, data analysts, data scientists, and more are all becoming AI Engineers when they focus on empowering AI for specific use cases. Even tools like [Microsoft Copilot Studio](https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio) now let people do this without writing much code at all.
 
+In this workshop, students will experience both worlds. They'll see how traditional code controls the robot directly, then transform into an AI Engineer by teaching AI to control it.
 
+## Workshop Instructions
 
+### Setup
 
+1. **Connect the robot dog**:
+   - **USB-C**: Use the included USB-C cable to connect the robot dog to your laptop. This is the most reliable connection.
+   - **Bluetooth (Alternative)**: You can also connect via Bluetooth, but the connection can be spotty.
 
+2. **Open VS Code**: Navigate to the workshop folder and open `ai-context-starter.py` in the code folder.
 
+3. **Run the program**:
+   - Click the Run button in VS Code or type `python ai-context-starter.py` in the terminal
+   - The VS Code terminal becomes your chat window for talking to the AI
 
+### Limited AI Demonstration
 
+1. **Try these commands in the terminal**:
 
+   ```txt
+   You: stand up
+   AI: Making the robot stand up...
+   [Robot stands]
+   
+   You: sit down
+   AI: Making the robot sit...
+   [Robot sits]
+   
+   You: jump
+   AI: I don't know how to do that. *plays error sound*
+   ```
 
+2. **Explain the limitation**: "The AI only knows what we've taught it. Right now, it only knows 'stand up', 'sit down', and 'rest'. But look at all these amazing things the robot can actually do!"
 
+3. **Show the command reference**: Display the full list of 50+ commands from `serial-protocol.md` in the code folder.
 
+4. **Set the challenge**: "Your job as AI Engineers is to teach the AI all these other commands so it can control the full capabilities of the robot."
 
+### Understanding the Code Structure
+
+1. **Open the starter code**: Reference `ai-context-starter.py` in the code folder.
+
+2. **Point out the key section**:
+
+   ```python
+   # This is the context we give to AI - it only knows these commands!
+   ROBOT_COMMANDS = {
+       "stand up": {"command": "kup", "description": "Makes the robot stand up"},
+       "sit down": {"command": "ksit", "description": "Makes the robot sit down"},
+       "rest": {"command": "krest", "description": "Makes the robot rest"},
+   }
+   ```
 
 
 
