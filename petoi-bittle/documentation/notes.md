@@ -74,8 +74,9 @@ Shorter version of that information about what to do with a new Bittle from the 
 
 1. Set volume to 1 `b1`
 2. Rename Bluetooth using `nBluetoothName`
-3. Deactivate Gyro using `G`. This is a boolean. If you send it again, you turn it back on. Sending this prevents the dog from freaking out when picked up.
+3. Deactivate Gyro using `gb`. This is a boolean. If you send it again, you turn it back on. Sending this prevents the dog from freaking out when picked up.
 4. Deactivate voice using `XAd`
+5. Send the `s` command after all that to save.
 
 ## Uploading Sketches
 

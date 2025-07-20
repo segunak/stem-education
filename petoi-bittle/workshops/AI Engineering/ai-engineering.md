@@ -24,13 +24,13 @@ By the end of this workshop, students will:
 
 - Laptops with [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com/) installed.
 
-- The Python files required to control the robot dog [found here](https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries). They're packaged into one easy to use file called `Petoi.py` [in this folder](../../code/Petoi.py).
+- The Python files required to control the robot dog [found here](https://github.com/PetoiCamp/Petoi_MindPlusLib/tree/main/python/libraries).
 
 - The Python packages: [`openai`](https://pypi.org/project/openai/), [`python-dotenv`](https://pypi.org/project/python-dotenv/), and [`pyserial`](https://pypi.org/project/pyserial/) installed via [pip](https://pypi.org/project/pip/).
 
 - An OpenAI API key in a `.env` file. You can [get one here](https://platform.openai.com/api-keys). Then create a `.env` file in the same directory as the project's code. The file should contain 1 line with the contents `OPENAI_API_KEY=YOUR_API_KEY_HERE`.
 
-- The robot dog command reference sheet (printed or digital). The official version [can be found on Petoi's website](https://docs.petoi.com/apis/serial-protocol) but an easy to print version   [is found here](../../documentation/serial-protocol.md).
+- The robot dog command reference sheet (printed or digital). The official version [can be found on Petoi's website](https://docs.petoi.com/apis/serial-protocol) but an easy to print version [is found here](../../documentation/serial-protocol.md).
 
 ## Background: The Power of Context
 
