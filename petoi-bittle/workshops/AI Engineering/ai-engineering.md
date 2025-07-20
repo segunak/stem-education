@@ -16,7 +16,7 @@ By the end of this workshop, students will:
 
 4. **Practice Responsible AI**: Implement transparency features showing exactly what commands AI sends to hardware.
 
-5. **Problem-Solve with AI Tools**: Use ChatGPT, GitHub Copilot, and other AI assistants to understand and modify code.
+5. **Problem-Solve with AI Tools**: Use GitHub Copilot and other AI assistants to understand and modify code. Students learn that giving up is not an option when AI tools can help them think through problems and find solutions.
 
 ## Materials
 
@@ -28,9 +28,9 @@ By the end of this workshop, students will:
 
 - The Python packages: [`openai`](https://pypi.org/project/openai/), [`python-dotenv`](https://pypi.org/project/python-dotenv/), and [`pyserial`](https://pypi.org/project/pyserial/) installed via [pip](https://pypi.org/project/pip/).
 
-- An OpenAI API key in a `.env` file. You can [get one here](https://platform.openai.com/api-keys). Then create a `.env` file in the same directory as the project's code. The file should contain 1 line with the contents `OPENAI_API_KEY=YOUR_API_KEY_HERE`.
+- An OpenAI API key in a `.env` file. You can [get one here](https://platform.openai.com/api-keys). Create a `.env` file in the `lib` folder with the contents `OPENAI_API_KEY=YOUR_API_KEY_HERE`. The program will auto-create this file if missing.
 
-- The robot dog command reference sheet (printed or digital). The official version [can be found on Petoi's website](https://docs.petoi.com/apis/serial-protocol) but an easy to print version [is found here](../../documentation/serial-protocol.md).
+- The robot dog command reference sheet available in the `challenges` folder as `robot-dog-commands.md`.
 
 ## Background: The Power of Context
 
@@ -56,111 +56,196 @@ In this workshop, students will experience both worlds. They'll see how traditio
    - **USB-C**: Use the included USB-C cable to connect the robot dog to your laptop. This is the most reliable connection.
    - **Bluetooth (Alternative)**: You can also connect via Bluetooth, but the connection can be spotty.
 
-2. **Open VS Code**: Navigate to the workshop folder and open `ai-context-starter.py` in the code folder.
+2. **Open VS Code**: Navigate to the workshop folder and open the `challenges` folder.
 
-3. **Run the program**:
-   - Click the Run button in VS Code or type `python ai-context-starter.py` in the terminal
-   - The VS Code terminal becomes your chat window for talking to the AI
+3. **API Key Setup**: The program will automatically create a `.env` file in the `lib` folder if one doesn't exist. Students need to edit this file and replace `your_key_here` with their actual OpenAI API key.
 
-### Limited AI Demonstration
+### Workshop Structure
 
-1. **Try these commands in the terminal**:
+This workshop uses a progressive challenge system where each challenge builds on the previous one:
+
+- **Challenge 1**: Teaching AI New Commands (Context Engineering)
+- **Challenge 2**: Responsible AI Transparency
+- **Challenge 3**: Command Sequences
+- **Challenge 4**: Full API Connection ([Simplified Retrieval-augmented Generation](https://www.google.com/search?q=what+is+retrieval+augmented+generation) (RAG) Implementation)
+
+Students work through challenges in the `challenges` folder while all system files remain hidden in the `lib` folder.
+
+### Facilitator Instructions
+
+#### Opening Demonstration (10 minutes)
+
+1. **Open Challenge 1**: Show `challenge-1-commands.py` in VS Code
+
+2. **Run the program**: Click the play button and demonstrate the limited AI
+
+3. **Try these commands**:
 
    ```txt
    You: stand up
-   AI: Making the robot stand up...
-   [Robot stands]
+   AI: Standing up! [Robot stands]
    
-   You: sit down
-   AI: Making the robot sit...
-   [Robot sits]
+   You: sit down  
+   AI: Making the robot sit! [Robot sits]
    
    You: jump
-   AI: I don't know how to do that. *plays error sound*
+   AI: I don't know that command yet. I can: stand up, sit down, and rest
    ```
 
-2. **Explain the limitation**: "The AI only knows what we've taught it. Right now, it only knows 'stand up', 'sit down', and 'rest'. But look at all these amazing things the robot can actually do!"
+4. **Show the command reference**: Open `robot-dog-commands.md` to show the 50+ available commands
 
-3. **Show the command reference**: Display the full list of 50+ commands from `serial-protocol.md` in the code folder.
+5. **Set the challenge**: "Your job as AI Engineers is to teach the AI these commands by adding them to the code."
 
-4. **Set the challenge**: "Your job as AI Engineers is to teach the AI all these other commands so it can control the full capabilities of the robot."
+#### Challenge 1: Teaching AI New Commands (15 minutes)
 
-### Understanding the Code Structure
+**Learning Goal**: Understand how context makes AI powerful
 
-1. **Open the starter code**: Reference `ai-context-starter.py` in the code folder.
+**Instructions for Students**:
 
-2. **Point out the key section**:
+1. Look at the `ROBOT_COMMANDS` dictionary in the code
+2. Open `robot-dog-commands.md` for available commands  
+3. Add "jump" and other commands to make the AI smarter
+4. Test by running the program and trying new commands
 
-   ```python
-   # This is the context we give to AI - it only knows these commands!
-   ROBOT_COMMANDS = {
-       "stand up": {"command": "kup", "description": "Makes the robot stand up"},
-       "sit down": {"command": "ksit", "description": "Makes the robot sit down"},
-       "rest": {"command": "krest", "description": "Makes the robot rest"},
-   }
-   ```
+**Facilitator Notes**:
 
+- Emphasize that students should use GitHub Copilot for help
+- Walk around and help students who are stuck
+- Point out how each new command immediately makes the AI more capable
 
+#### Challenge 2: Responsible AI Transparency (10 minutes)
 
+**Learning Goal**: Make AI systems transparent and trustworthy
 
+**Instructions for Students**:
 
+1. Change `SHOW_COMMANDS = False` to `True`
+2. Run the program and notice the transparency features
+3. Try various commands and observe what the AI actually sends to the robot
 
+**Facilitator Notes**:
 
-## Rough Draft 
+- Discuss why transparency matters for AI controlling physical devices
+- Point out the difference between what AI says and what it actually does
+- Connect to real-world examples like self-driving cars
 
-DELETE EERYTHINV BELOW WHEN DONE.
+#### Challenge 3: Command Sequences (15 minutes)
 
-(Short intro here)
+**Learning Goal**: Create complex behaviors from simple building blocks
 
-(Following bullet points are rough outline of where I'm going with this workshop. Maybe needs to be an Overivew section then another section called Key Objectives than another section called Mateirals then another section where we do the 1,2,3 exact steps to execute the workshop including all required code in a sub folder called "code" of this same folder that we link to if it's a lot of code, or if not just inline as code fenced)
+**Instructions for Students**:
 
-(Find some place in this to link to https://www.philschmid.de/context-engineering where it talks about how th enew skill in AI isn't really just prompt engineering it's context engineering where you hav eto put in work to give AI the right context. You as a human connect the dots)
+1. Change `ENABLE_SEQUENCES = True`
+2. Add sequence commands using the format shown in comments
+3. Create creative sequences like "dance" or "morning routine"
+4. Test the multi-step behaviors
 
-* Teach students the fundmeantal concept of AI Engineering, the importanc eof connecting AI, speciifacally in this calse large languge models (LLM's), with specific stores of contextual knowledge to empower them to actually provide value. THis is part of the growing field of [AI Engineering](https://www.latent.space/p/ai-engineer), as anointed by Andrej Karpathy, (speak here about who he is, his prestige, role at OpenAI, and contirbutions to the space). 
-* We assume that the students have played around with ChatGPT. They've used it. AI is in their face, it's everywehre. They've likely had expeirences where it kind of sucked. Why? Well, the model was trained on a set of data, and that' sall it knows. It isn't alive. It isn't constantly retraining itself. The training process itself is veyr expesninve and take stime and massive compute.
-* To combat this, in 2020 Meta relaased to the world a strategy called Retrieval Augmented Generation where they basically gave the ability for an AI model to go and look up more informaion live from data sources that someone wires up to the model. Now it can know things beyond all of what it was trained on, which is good, but how much important data is there out there that isn't pubicly available for OpenAI or Google or Meta to train thierm odels on or simply the fact that there's just too much out there to train a given model on literally it all ,so you got to have people using these models go and put in some work to connect the model to their rich source of information that can make it a lot more useful for them. Use analogies that are reltable to Gen Z high school studnets to drive this home.
-* Emphasize what a model is. use the analogy "hey when you se ChatGPT do you ever see that drpdown menu? Why are their different options"? and the point of defining this is to get to them mentally "oh wait they trained each of these things on data, on informaiton, and twewaked them to be good at diffrent things, but if I want to use one for my own thing, let's say have it help me write, and all my writing is in my private Google Drive, well then I'd have to do some work connecitng a model to my data so it can really help me". The yhave tools these days to help you do that and those tools are built by software engineers, product managers, busienss anlaysits, data scentists, data nalaystis, all of htese people are hopping on the boat and becoming AI Engineers, people connecting Ai with rich complciated sources of knowledge.
-* Okay, now we have set the stage, now we have explained where were going, now we're going to put this live into action using a fun tool, the Petioi 'Bittle X' Robot Dog.
-* The robot dog has a manual. The company that makes it, Petoi, has done all the hard work of doing the math and putting hte robot dog togehter and all that real challening stuff of figuring out the low level code that's required to control it. on top of that, using a high level proramming language, they've given us the baility to control the robot dog with PYton or C++. (Try to help the studnets understand low level verseus high level very simply. Layers of abstriaciton)
-* But here we have an opporuntity! We could write code in Python or C to do all sorts of fun things with the robot dog, have it do dance routines, and backflips, even write a program to have it be a guard dog and all that. That's traditoanl software development/engineering, that's what programmers do, but these days with AI, we have anotehr path. With those same coding skills, instead of writing all the code yourself to make the robot dog do sometihg, yo ucan assume the role of an AI Engineer!
-* Since we have really good documetnation about what kind of code you have to write to make the robot dog do something (We have an APi, applicatio nprogram interface, provided by petoi, beasically a set of really detailed instructions. a manual, a guidebook, for anyone writing code to intearct wtih their rpoduct, companies do this all the time for things they give to the world. For example, TikTok and Instagram have API's that let programmers write their own code to control stuff. Ever seen bot accounts on TikTok or IG? That's how people build them, they write code agnaist the TikTok or IG API!). Since we have a robot dog API, we can connect it to an AI model and then write natural language (prompts, prompt engineering!) to control the robot dog. That's being an AI Engineer!
-* So, what we're going to do is challenge you to write the kidn of code that allows AI to know how to control the robot dog without you having to write it all yourself in terms of writing a routine
-* (At this point I need to have a specific goal for what they should accomplish after connecting the AI model to the petoi documeatntion/instructions. Like if they get it connected what should they type into the chat window to try and get the robot dog to do some sort of specific routine and then I come around and validate they did things correctly, or have challenge sof what should be posssible basedo n how they wrote their code)
-* Students should be writing Python code, and using AI (they can use Microsfot Copilot, ChatGPT, whatever) to help them connect the dots.
-* The challenge here is that this workshop needs to be approchable to studnets of all bakcgrounds. Python is known for being syntatically simialar. The code they're editing should give them enough hints and clearity about where to start and what to change to get things working. Even if a student has zero coding background, a part of this workshop is opening hteir eyes to the world we live in with AI. Don't tell me you havae no idea how to code, tell me you know how to go to ChatGPT or Copilot, copy and paste in all the code, ask it to explain to you what it's doing becuase you don't know jack squat about coidng, even give it the petoi specs and the challenge, and have it tell yo uexactly what to do to figure this out. That's what I want to see. I want to see problem solving studnets. I want to see hteir minds open to the world we live in. Don't sit there and say you can't do it, use every tool available to you to solve hte problem.
-* So the goal is for them to succesfully build a sort of RAG pipeline that connects the specification for the petio bittle to a model and then the chatbot (this part we got to figure out, the chatbot piece, maybe just the terminal? Make it simple, have then run the python code and it tunrs into a live terminal that's their chatbot) where they should be able to just chat and control the robot dog that way. They should have semeantic level menaing, just kind of describing things and having the chatbot use AI and send commands to the robot dog.
-* One key piece of the code they write is the challenge that every single command the chatbot sends ot the robot dog it should return to you in a nicely formatted strucutred list like "I sent the following code commands to the robot dog". Drive home Repsonsibe AI heare. Don't let this thing do whatever itw ants, that's like a black mirror episode.
+**Facilitator Notes**:
 
-## Logisitscs
+- Help students understand the difference between single commands and sequences
+- Encourage creativity in sequence design
+- Show how simple commands combine into complex behaviors
 
-Logistiscs on how to pull off this workshop.
+#### Challenge 4: Full API Connection (15 minutes)
 
-* Studnets are working in browser based https://vscode.dev/ so that we don't have to install VSCode on every laptop.
-* Challenge is checking if from VSCOde deve you can connect to the petoit that's linked via bluetooth or manually plugged in. Or do you have to install all sorts of local stuff ot enable coding iwth the petoi bittle
+**Learning Goal**: Implement Retrieval Augmented Generation (RAG)
 
+**Instructions for Students**:
 
-## Challenge Station Idea
+1. Change `ENABLE_FULL_API = True`
+2. Implement the `fetch_api_documentation()` function
+3. Test the AI with access to full robot capabilities
 
-Could I have a condensed verison of thi sworkshop where I don't think of it as a whole thing delviered to sutdents but I have a 1 page print out that's set next to a laptop all set up with the loca lstuff required to be connected to the petoi bittle nad the 1 page print out is a challneg sheet like "Cna oy usolv ethis challenge!" or "Can you be an AI Engineer?" or something like that and it has python code in VS Code and it very succintly says stuff like 
+**Facilitator Notes**:
 
-* The progrma you're looking at is called Visual Studio code! (briefly explain what it is)
-* The robot is the Petoi 'Bittle X' robot dog!
-* In VSCode, there' sa file called (name of the file with all the speciifc API call instrucitosn for the petoit)
-* Also in VS cod,e there's this window to the right hta has a tool caleld GitHUb Copilot (or maybe I do this using a terminal or a prebuilt cahtbot web interface I don't know)
-* They are encouraged ot use GitHub Copilot inside of VS Code to solv ethis. Specifiaclly we want them to learn ho wto use that ssince it's a coding based AI tool. Explain it as it' slike CHtGPT but specifially for coding, it can see all the file soy ucan, ask it some questions! Sort of thing
-* Can you figure out how to change the code in (python cod efile name here) such that the AI chatbots model is able ot undrestand how  to control the robot odog and you can write natural langauge commands to make the dog do things?
-* This is called AI Engineering? Do you have what it takes to be an AI Engineer?
+- This is the most advanced challenge
+- Help students understand the concept of RAG
+- Some students may need more guidance on network programming
+- Emphasize how this connects AI to live, up-to-date information
 
-So this way instead of having to scale the robot dog to a classroom that might have 40 students and given the $300 price tag of the dogs it's going to be hard having 5+ students huddled around 1 laptop trying to do this 1 thing at the same time, it becomes a challenge sort of thing. Maybe there's a main workshop where there's other AI related teaching going on and studnets are released in small groups, or 1 by 1 to see if they can solve the challenge, and always have some easy way to reset the challenge (maybe a reset button or script that just uses git to reset to the local verison, revert all changes, use verison control)
+### Key Teaching Points
 
-I like this idea. Then any studnet that solves the challnege has to call an insructor over for validaiton and we give them an AI Eningeer ceriticate and maybe some candy and have them take a pictaure with the robot dog and the laptop and praise them for problem solving. The challenge can be on tables during lunch or an ope nnetowrking session or something like that.
+#### Context Engineering
 
+Demonstrate how the same AI becomes dramatically more capable when given better context. This is the core principle of AI Engineering.
 
-(The Challenges need to be each a 1 page document separate from this overall Context is all you need AI Engineering workshop, but this document can link to them)
+#### GitHub Copilot Usage
 
-Here are the challenges in short I wnat.
+Actively encourage students to use GitHub Copilot throughout the workshop. The terminal in VS Code serves as the chat window for this workshop experience.
 
-1. The challenge mentioned baove, can you be an AI Enigneri wth the robot dog.
-2. A varaiton of the same challenge that uses the Robot Dog with the Robot Arm and specifically is aksing stusetns to write code ot have the robot dog pick up and move an item (keep references to the item generic, examples would be a tennis ball, smal cup, etc.) 
+**For Facilitators**: Students should learn about GitHub Copilot modes. Direct them to the [VS Code Copilot Chat documentation](https://code.visualstudio.com/docs/copilot/chat/copilot-chat) to understand the different interaction modes:
 
-Both could be in the same 1 page document that you just clearly say someting like "if you're working with the robot arm dog then this is your challenge else if you're working iwth the standard dog" sort of thing.
+- **Ask Mode** (Safest): Provides suggestions without making changes to files
+- **Edit Mode** (Safe): Only modifies the currently open file
+- **Agent Mode** (Most Powerful): Can make changes across multiple files. Most useful for students but requires responsibility and careful review
+
+Show students how to:
+
+- Click the Copilot button in VS Code to open the chat panel
+- Ask specific questions about their code
+- Use different modes appropriately for their skill level
+- Review any suggested changes before accepting them
+
+#### Problem-Solving Mindset
+
+When students get stuck, guide them to:
+
+1. Read error messages carefully
+2. Ask GitHub Copilot for help
+3. Break problems into smaller pieces
+4. Ask instructors for guidance, not answers
+
+#### Responsible AI
+
+Use Challenge 2 to discuss:
+
+- Why transparency matters in AI systems
+- How to build trust with users
+- The importance of showing what AI is actually doing
+
+### Troubleshooting
+
+**Robot Connection Issues**:
+
+- Check USB cable connection
+- Verify robot is powered on (green light)
+- Try reconnecting the cable
+- Switch to Bluetooth if USB fails
+
+**API Key Problems**:
+
+- Check that `.env` file is in the `lib` folder
+- Verify the API key format is correct
+- Ensure no extra spaces in the `.env` file
+
+**Import Errors**:
+
+- Verify all files are in the correct folders
+- Check that `lib` folder contains all required files
+- Restart VS Code if needed
+
+### Wrap-up Discussion (10 minutes)
+
+**Key Questions**:
+
+- How did adding more context change what the AI could do?
+- Why is transparency important when AI controls physical devices?
+- How could you apply these AI Engineering principles to other projects?
+- What did you learn about using AI tools to solve problems?
+
+**Extension Ideas**:
+
+- Add custom robot behaviors
+- Create voice control using speech recognition
+- Connect multiple robots for coordinated actions
+- Build a web interface for robot control
+
+### Assessment
+
+Students demonstrate understanding by:
+
+- Successfully adding multiple robot commands (Challenge 1)
+- Explaining the importance of AI transparency (Challenge 2)
+- Creating working command sequences (Challenge 3)
+- Implementing basic network requests (Challenge 4)
+- Using GitHub Copilot to solve coding problems throughout

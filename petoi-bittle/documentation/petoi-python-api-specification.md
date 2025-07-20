@@ -72,7 +72,132 @@ closePort()
 - Example: `sendCmdStr('d', 2)` - Put robot down with 2-second delay
 - **Warning**: This should not be used by automated AI systems - use `sendSkillStr` instead
 
-### Advanced Control
+## Complete Skill Command Reference
+
+### Basic Postures
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `ksit` | Sit | Makes the robot sit down |
+| `kup` | Stand Up | Makes the robot stand up |
+| `krest` | Rest | Puts the robot in resting position |
+| `kzero` | Zero | Resets robot to default position |
+| `kbalance` | Balance | Makes the robot stand up neutral |
+| `kstr` | Stretch | Stretches the robot |
+| `kbuttUp` | Bottom Up | Raises the robot's bottom |
+| `kcalib` | Calibration | Puts robot in calibration pose |
+| `kdropped` | Dropped | Makes robot assume dropped position |
+| `klifted` | Lifted | Makes robot assume lifted position |
+| `klnd` | Landing | Makes robot assume landing pose |
+
+### Movement Commands
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `kwkF` | Walk Forward | Makes the robot walk forward |
+| `kwkL` | Walk Left | Makes the robot walk to the left |
+| `kwkR` | Walk Right | Makes the robot walk to the right |
+| `kbk` | Back | Makes the robot move backward |
+| `kbkL` | Back Left | Makes the robot move backward to the left |
+| `kbkR` | Back Right | Makes the robot move backward to the right |
+| `ktrF` | Trot Forward | Makes the robot trot forward |
+| `ktrL` | Trot Left | Makes the robot trot to the left |
+| `ktrR` | Trot Right | Makes the robot trot to the right |
+| `kcrF` | Crawl Forward | Makes the robot crawl forward |
+| `kcrL` | Crawl Left | Makes the robot crawl to the left |
+| `kcrR` | Crawl Right | Makes the robot crawl to the right |
+| `kbdF` | Bound Forward | Makes the robot bound forward |
+| `kjpF` | Jump Forward | Makes the robot jump forward |
+| `kvtF` | Stepping | Makes the robot perform stepping movement |
+| `kvtL` | Spin Left | Makes the robot spin to the left |
+| `kvtR` | Spin Right | Makes the robot spin to the right |
+| `kmw` | Moon Walk | Makes the robot perform the moonwalk |
+
+### Tricks & Acrobatics
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `kjmp` | Jump | Makes the robot jump |
+| `kbf` | Back Flip | Makes the robot perform a backflip |
+| `kff` | Front Flip | Makes the robot perform a front flip |
+| `kpd` | Play Dead | Makes the robot play dead |
+| `kpu` | Push Up | Makes the robot do push-ups |
+| `kpu1` | Push Up One Hand | Makes the robot do push-ups with one hand |
+| `krl` | Roll | Makes the robot roll |
+| `kbx` | Boxing | Makes the robot perform boxing movements |
+| `kmw` | Moonwalk | Makes the robot moonwalk |
+| `kvt` | Side Step | Makes the robot side step |
+| `krc` | Recover | Makes the robot recover from a fall |
+| `ktbl` | Be Table | Makes the robot assume "table" position |
+
+### Interactive Behaviors
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `kwh` | Wave Head | Makes the robot wave its head |
+| `khi` | Hi | Makes the robot wave hello |
+| `kchr` | Cheer | Makes the robot cheer |
+| `kang` | Angry | Makes the robot display angry stance |
+| `kck` | Check Around | Makes the robot check its surroundings |
+| `kcmh` | Come Here | Makes the robot beckon |
+| `khsk` | Hand Shake | Makes the robot shake hands |
+| `khg` | Hug | Makes the robot give a hug |
+| `kfiv` | High Five | Makes the robot give a high five |
+| `khu` | Hands Up | Makes the robot raise its hands |
+| `khds` | Stand on Hands | Makes the robot stand on its hands |
+| `knd` | Nod | Makes the robot nod |
+| `kpry` | Pray | Makes the robot pray |
+| `kthk` | Thank | Makes the robot show thanks |
+| `kgdb` | Good Boy | Makes the robot perform good boy behavior |
+
+### Utility & Maintenance Commands
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `ksnf` | Sniff | Makes the robot sniff |
+| `kscrh` | Scratch | Makes the robot scratch |
+| `kdg` | Dig | Makes the robot dig |
+| `kpee` | Pee | Makes the robot simulate peeing |
+| `kkc` | Kick | Makes the robot kick |
+| `kts` | Test | Puts the robot in test mode |
+| `kzz` | Sleep | Makes the robot go to sleep |
+
+### Push Commands
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `kphF` | Push Forward | Makes the robot push forward |
+| `kphL` | Push Left | Makes the robot push to the left |
+| `kphR` | Push Right | Makes the robot push to the right |
+
+### Sound Commands
+
+| Command | Action | Description |
+|---------|--------|-------------|
+| `kmeow` | Meow | Makes the robot meow |
+| `kbark` | Bark | Makes the robot bark |
+| `kgrowl` | Growl | Makes the robot growl |
+| `klaugh` | Laugh | Makes the robot laugh |
+| `kcry` | Cry | Makes the robot cry |
+
+- Send raw command strings to robot
+- Parameters:
+  - `cmdStr` (string): Raw command string
+  - `delayTime` (int): Delay in seconds
+- Available raw commands:
+  - `'c'` - Enter calibration mode
+  - `'d'` - Put robot down and shut down servos
+  - `'m'` - Control joint servo rotation (ASCII format)
+  - `'M'` - Control joint servo rotation (binary format)
+  - `'i'` - Control multiple joint servos simultaneously (ASCII format)
+  - `'I'` - Control multiple joint servos simultaneously (binary format)
+  - `'b'` - Control buzzer to beep
+  - `'K'` - Send skill data arrays in real-time
+  - `'l'` - Load skill from library
+- Example: `sendCmdStr('d', 2)` - Put robot down with 2-second delay
+- **Warning**: This should not be used by automated AI systems - use `sendSkillStr` instead
+
+## Advanced Control
 
 **`loadSkill(fileName, delayTime)`**
 
@@ -115,7 +240,7 @@ closePort()
 - No parameters required
 - Useful for debugging and discovering available skills
 
-### Sensor Reading
+## Sensor Reading
 
 **`readAnalogValue(pin)`**
 
@@ -137,7 +262,7 @@ closePort()
   - `echoPin` (int): Echo pin number
 - Returns: Distance in centimeters
 
-### Music and Sound Control
+## Music and Sound Control
 
 **`play(token, var, delayTime)`**
 
@@ -150,7 +275,7 @@ closePort()
 - Duration values: 1-8 represent note lengths (1/duration second)
 - Example: `play('b', [14, 4, 21, 4, 23, 4], 2)` - Play simple melody
 
-### Utility Functions
+## Utility Functions
 
 **`printH(head, value)`**
 
@@ -168,19 +293,7 @@ closePort()
   - `encoding` (string): Encoding format (default: 'utf-8')
 - Returns: Encoded byte string
 
-**`deacGyro()`**
-
-- Deactivate the gyroscope sensor
-- No parameters required
-- Use when gyroscope interferes with movements
-
-**`printSkillFileName()`**
-
-- Print all available skill file names
-- No parameters required
-- Useful for debugging and discovering available skills
-
-### Joint Control
+## Joint Control
 
 **`getAngle(index)`**
 
@@ -227,7 +340,7 @@ closePort()
   - `angle` (int): Angle change in degrees
 - Returns: List formatted for `rotateJoints`
 
-### Output Control
+## Output Control
 
 **`writeAnalogValue(pin, val)`**
 
@@ -242,97 +355,6 @@ closePort()
 - Parameters:
   - `pin` (int): Pin number
   - `val` (int): Value to write (0 or 1)
-
-## Complete Skill Reference
-
-### Basic Postures
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `ksit` | Sit | Makes the robot sit down |
-| `kup` | Stand Up | Makes the robot stand up |
-| `krest` | Rest | Puts the robot in resting position |
-| `kzero` | Zero | Resets robot to default position |
-| `kbalance` | Balance | Makes the robot stand up neutral |
-| `kstr` | Stretch | Stretches the robot |
-| `kbuttUp` | Bottom Up | Raises the robot's bottom |
-| `kcalib` | Calibration | Puts robot in calibration pose |
-
-### Movement Commands
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `kwkF` | Walk Forward | Makes the robot walk forward |
-| `kwkL` | Walk Left | Makes the robot walk to the left |
-| `kwkR` | Walk Right | Makes the robot walk to the right |
-| `kbk` | Back | Makes the robot move backward |
-| `kbkL` | Back Left | Makes the robot move backward to the left |
-| `kbkR` | Back Right | Makes the robot move backward to the right |
-| `ktrF` | Trot Forward | Makes the robot trot forward |
-| `ktrL` | Trot Left | Makes the robot trot to the left |
-| `ktrR` | Trot Right | Makes the robot trot to the right |
-| `kcrF` | Crawl Forward | Makes the robot crawl forward |
-| `kcrL` | Crawl Left | Makes the robot crawl to the left |
-| `kcrR` | Crawl Right | Makes the robot crawl to the right |
-| `kbdF` | Bound Forward | Makes the robot bound forward |
-| `kjpF` | Jump Forward | Makes the robot jump forward |
-| `kvtF` | Stepping | Makes the robot perform stepping movement |
-| `kvtL` | Spin Left | Makes the robot spin to the left |
-| `kmw` | Moon Walk | Makes the robot perform the moonwalk |
-
-### Tricks and Actions
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `kbf` | Back Flip | Makes the robot perform a backflip |
-| `kff` | Front Flip | Makes the robot perform a front flip |
-| `kbx` | Boxing | Makes the robot perform boxing movements |
-| `kchr` | Cheer | Makes the robot cheer |
-| `kang` | Angry | Makes the robot display angry stance |
-| `kjmp` | Jump | Makes the robot jump |
-| `krl` | Roll | Makes the robot roll |
-| `krc` | Recover | Makes the robot recover from a fall |
-| `kpd` | Play Dead | Makes the robot play dead |
-| `kpu` | Push Up | Makes the robot do push-ups |
-| `kpu1` | Push Up One Hand | Makes the robot do push-ups with one hand |
-| `ktbl` | Be Table | Makes the robot assume "table" position |
-
-### Interactive Behaviors
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `khi` | Hi | Makes the robot wave hello |
-| `khg` | Hug | Makes the robot give a hug |
-| `khsk` | Hand Shake | Makes the robot shake hands |
-| `kfiv` | High Five | Makes the robot give a high five |
-| `khu` | Hands Up | Makes the robot raise its hands |
-| `khds` | Stand on Hands | Makes the robot stand on its hands |
-| `knd` | Nod | Makes the robot nod |
-| `kwh` | Wave Head | Makes the robot wave its head |
-| `kgdb` | Good Boy | Makes the robot perform good boy behavior |
-
-### Utility Commands
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `kck` | Check Around | Makes the robot check its surroundings |
-| `kdg` | Dig | Makes the robot dig |
-| `ksnf` | Sniff | Makes the robot sniff |
-| `kscrh` | Scratch | Makes the robot scratch |
-| `kpee` | Pee | Makes the robot simulate peeing |
-| `kkc` | Kick | Makes the robot kick |
-| `kts` | Test | Puts the robot in test mode |
-| `kdropped` | Dropped | Makes robot assume dropped position |
-| `klifted` | Lifted | Makes robot assume lifted position |
-| `klnd` | Landing | Makes robot assume landing pose |
-
-### Push Commands
-
-| Command | Action | Description |
-|---------|--------|-------------|
-| `kphF` | Push Forward | Makes the robot push forward |
-| `kphL` | Push Left | Makes the robot push to the left |
-| `kphR` | Push Right | Makes the robot push to the right |
 
 ## Command Patterns and Best Practices
 
@@ -452,4 +474,3 @@ When connecting to AI systems, provide this context:
 - Supports up to 16 degrees of freedom (joints 0-15)
 - Buzzer supports musical notes 0-23
 - Skill data arrays enable custom movement sequences
-- Multiple robots can be controlled simultaneously if multiple serial ports are detected
