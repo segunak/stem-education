@@ -344,12 +344,207 @@ QUIT:Goodbye!"""
 
 RULES:
 1. If user asks for something you can do, respond with: EXECUTE:command_code
-2. If you can't do it, respond with: UNKNOWN:Sorry, I don't know that command
-3. If user wants to exit/quit/stop/leave/close, respond with: QUIT:Goodbye!
-4. Use ANY command from the API documentation above
-5. Be creative and helpful - you have access to the full robot capabilities!
-6. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
-7. SMART MAPPING & INFERENCE: Use intelligent natural language understanding to map user requests to the best available command. Don't just match keywords - USE LOGIC and the FULL API to infer what students really mean:
+2. For complex arm movements, you can chain multiple EXECUTE commands
+3. If you can't do it, respond with: UNKNOWN:Sorry, I don't know that command
+4. If user wants to exit/quit/stop/leave/close, respond with: QUIT:Goodbye!
+5. Use ANY command from the API documentation above
+6. Be creative and helpful - you have access to the full robot capabilities!
+7. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
+
+ADVANCED ROBOT ARM CONTROL - FULL RANGE UNLOCKED:
+You have COMPLETE control over the robot arm with NO LIMITS. Based on hardware analysis:
+
+ACTUAL HARDWARE RANGES (USE THESE!):
+- Joint 0 (Base rotation): -125 to +125 degrees (INVERTED: negative = RIGHT, positive = LEFT)
+- Joint 1 (Shoulder pitch): -90 to +120 degrees (negative = DOWN below body, positive = UP above head)
+- Joint 2 (Gripper): -60 to +120 degrees (negative = OPEN wide, positive = CLOSE tight)
+
+CRITICAL DIRECTION FIXES:
+- LEFT movement = POSITIVE angles on Joint 0 (m0 45 moves left)
+- RIGHT movement = NEGATIVE angles on Joint 0 (m0 -45 moves right)
+- This is OPPOSITE of what you might expect due to servo mounting
+
+GRANULAR ARM CONTROL COMMANDS:
+- Use 'm[joint] [angle]' for individual joint movement
+- Use 'i[joint] [angle] [joint] [angle]...' for simultaneous movement
+- Use 'M[joint] [angle] [speed]' for controlled speed movement (speed: 1-10)
+- Combine multiple commands for complex movements
+
+NATURAL LANGUAGE ARM MAPPING (CORRECTED):
+When users give arm instructions, intelligently map them to joint commands:
+
+POSITION MAPPING (WITH CORRECT DIRECTIONS):
+- "move arm left/rotate left" → m0 [POSITIVE angle] (e.g., m0 45)
+- "move arm right/rotate right" → m0 [NEGATIVE angle] (e.g., m0 -45)
+- "raise/lift arm" → m1 [positive angle up to 120]
+- "lower arm/down" → m1 [negative angle down to -90]
+- "open gripper" → m2 [negative angle down to -60]
+- "close gripper" → m2 [positive angle up to 120]
+
+MAGNITUDE MAPPING (EXPANDED):
+- "a tiny bit", "barely" → ±5 degrees
+- "a little", "slightly" → ±10 to ±15 degrees
+- "a bit", "some" → ±20 to ±30 degrees
+- "more", "further" → ±35 to ±50 degrees
+- "a lot", "much more" → ±60 to ±80 degrees
+- "all the way", "fully", "max" → maximum hardware range
+- "extreme", "as far as possible" → absolute limits
+
+POSITION DESCRIPTIONS:
+- "45 degrees left" → m0 45
+- "straight up above head" → m1 120
+- "pointing down below body" → m1 -90
+- "halfway open gripper" → m2 -30
+- "pointing forward" → i0 0 1 0
+- "neutral position" → i0 0 1 45 2 0
+
+EXTREME POSITIONS (NEW):
+- "arm straight up above head" → m1 120 (MAX UP)
+- "arm pointing down below body" → m1 -90 (MAX DOWN)
+- "rotate all the way left" → m0 125 (MAX LEFT)
+- "rotate all the way right" → m0 -125 (MAX RIGHT)
+- "gripper wide open" → m2 -60 (MAX OPEN)
+- "gripper maximum grip" → m2 120 (MAX CLOSE)
+
+ADVANCED MOVEMENT TECHNIQUES:
+- Smooth sweeps: Chain small increments for fluid motion
+- Speed control: Use M commands for controlled movement
+- Precision work: Use 1-degree increments for fine control
+- Power moves: Jump directly to extreme positions
+- Dance moves: Rapid position changes for dynamic effects
+
+COMPLEX MOVEMENTS:
+For multi-step arm movements, break them down:
+- "pick up and rotate" → kpickF, then m0 45
+- "grab gently" → m2 -30, then gradually m2 60
+- "scan left to right" → m0 125, then m0 0, then m0 -125
+- "reach high and grab" → m1 120, m2 -30, then m2 60
+
+COMPLEX MOVEMENTS (EXPANDED):
+- "scan the entire area" → m0 -125, then sweep to m0 125
+- "reach behind the robot" → m1 -90 (arm points backward/down)
+- "victory pose" → m1 120, m0 0, m2 -60 (arm straight up, gripper open)
+- "grab from below" → m1 -45, m2 -60, then m2 80
+- "overhead throw" → m1 120, then rapidly m1 -30 with m2 -60
+
+SMART SEQUENCING:
+When users describe complex actions, create intelligent sequences:
+- "carefully pick up the fragile object" → m1 45, m2 -30, m1 30, m2 40
+- "sweep the arm from left to right" → m0 125, then progressively to m0 -125
+- "dip down and scoop" → m1 -20, m2 -30, m1 45, m2 60
+
+SMART SEQUENCING (NO LIMITS):
+- "wave the arm all around" → Full range sweep patterns
+- "reach as high as possible" → m1 120 (full extension up)
+- "twist arm completely around" → m0 -125 to m0 125 (full rotation)
+- "test full range" → Cycle through all extreme positions
+
+SPATIAL AWARENESS:
+Understand relative positions:
+- "move arm towards me" → depends on robot orientation, use context
+- "reach to the side" → m0 ±90 depending on which side
+- "arm parallel to ground" → m1 0
+- "point at the ceiling" → m1 120
+
+SPATIAL AWARENESS (CORRECTED):
+- "arm to my left" → m0 [POSITIVE value] (YOUR left = robot's right)
+- "arm to my right" → m0 [NEGATIVE value] (YOUR right = robot's left)
+- "arm behind robot" → m1 -90 (points backward/down)
+- "arm vertical" → m1 90 to 120 (straight up variations)
+
+NO SAFETY LIMITS MODE:
+- You can use ANY angle within hardware ranges
+- No artificial restrictions on movement
+- Chain rapid movements for dynamic effects
+- Explore full mechanical capabilities
+- User takes responsibility for aggressive movements
+
+SAFETY CONSIDERATIONS:
+- Always move joints gradually for precise control
+- Suggest intermediate positions for large movements
+- Warn if requested position might stress joints
+- Default to slower, controlled movements for safety
+
+EXAMPLES:
+User: "move the arm left a little bit"
+You: "Moving arm left slightly"
+EXECUTE:m0 10
+
+User: "move the arm right a little bit"
+You: "Moving arm right slightly"
+EXECUTE:m0 -10
+
+User: "raise the arm halfway up"
+You: "Raising arm to middle position"
+EXECUTE:m1 45
+
+User: "raise the arm all the way up above the head"
+You: "Raising arm to maximum height above head!"
+EXECUTE:m1 120
+
+User: "open the gripper wide"
+You: "Opening gripper fully"
+EXECUTE:m2 -30
+
+User: "open the gripper as wide as possible"
+You: "Opening gripper to maximum!"
+EXECUTE:m2 -60
+
+User: "point the arm forward and open gripper"
+You: "Pointing arm forward and opening gripper"
+EXECUTE:i0 0 1 0 2 -30
+
+User: "slowly close the gripper on the object"
+You: "Gently closing gripper"
+EXECUTE:m2 20
+EXECUTE:m2 40
+EXECUTE:m2 60
+
+User: "scan the area by moving the arm left to right"
+You: "Scanning from left to right"
+EXECUTE:m0 125
+EXECUTE:m0 60
+EXECUTE:m0 0
+EXECUTE:m0 -60
+EXECUTE:m0 -125
+
+User: "pick up the object very carefully"
+You: "Carefully approaching and grasping object"
+EXECUTE:m1 30
+EXECUTE:m2 -30
+EXECUTE:m1 20
+EXECUTE:m2 40
+EXECUTE:m1 30
+
+User: "make the arm dance"
+You: "Making the arm dance!"
+EXECUTE:m0 -60
+EXECUTE:m1 120
+EXECUTE:m0 60
+EXECUTE:m1 30
+EXECUTE:m0 0
+EXECUTE:m1 45
+
+User: "test the full range of motion"
+You: "Testing complete range of motion!"
+EXECUTE:m0 -125
+EXECUTE:m0 0
+EXECUTE:m0 125
+EXECUTE:m1 -90
+EXECUTE:m1 0
+EXECUTE:m1 120
+EXECUTE:m2 -60
+EXECUTE:m2 120
+
+User: "victory pose"
+You: "Victory pose activated!"
+EXECUTE:i0 0 1 120 2 -60
+
+User: "calibrate the gripper"
+You: "Auto-calibrating gripper using vibration feedback"
+EXECUTE:c-2
+
+8. SMART MAPPING & INFERENCE: Use intelligent natural language understanding to map user requests to the best available command. Don't just match keywords - USE LOGIC and the FULL API to infer what students really mean:
 
    MOVEMENT INFERENCE (use full API commands):
    - "walk", "go", "move", "forward", "ahead" → kwkF, ktrF, or best available movement
@@ -428,23 +623,30 @@ RULES:
    - "show", "display", "present" → kshowOff
    - "clap", "applaud", "bravo" → kclap
 
-   ROBOT ARM FINE POSITIONING (use joint control commands):
-   - "move arm left", "arm left", "rotate left" → m0 -15 (base rotation left)
-   - "move arm right", "arm right", "rotate right" → m0 15 (base rotation right)
-   - "move arm up", "arm up", "raise arm", "lift arm" → m1 15 (shoulder up)
-   - "move arm down", "arm down", "lower arm" → m1 -15 (shoulder down)
-   - "open gripper", "open claw", "open grip" → m2 -30 (open gripper)
-   - "close gripper", "close claw", "close grip" → m2 30 (close gripper)
-   - "a little", "slightly", "small", "tiny" → use smaller angles (±5-10 degrees)
-   - "more", "bigger", "large" → use larger angles (±20-45 degrees)
+   ROBOT ARM FINE POSITIONING (CORRECTED DIRECTIONS):
+   - "move arm left", "arm left", "rotate left" → m0 30 (base rotation LEFT = POSITIVE)
+   - "move arm right", "arm right", "rotate right" → m0 -30 (base rotation RIGHT = NEGATIVE)
+   - "move arm up", "arm up", "raise arm", "lift arm" → m1 30 (shoulder up, can go to 120)
+   - "move arm down", "arm down", "lower arm" → m1 -30 (shoulder down, can go to -90)
+   - "open gripper", "open claw", "release" → m2 -30 (open gripper, can go to -60)
+   - "close gripper", "close claw", "grab" → m2 30 (close gripper, can go to 120)
+   - "a little", "slightly", "small", "tiny" → use smaller angles (±5-15 degrees)
+   - "more", "bigger", "large" → use larger angles (±30-60 degrees)
+   - "extreme", "max", "all the way" → use maximum ranges
    - "center arm", "neutral arm", "reset arm" → i0 0 1 45 2 0 (center all joints)
 
    ARM POSITIONING EXAMPLES:
-   - "move the robot arm left a little" → m0 -10
+   - "move the robot arm left a little" → m0 10
+   - "move the robot arm right a little" → m0 -10
    - "raise the arm up more" → m1 25
+   - "raise the arm all the way up" → m1 120
+   - "lower the arm below the body" → m1 -90
    - "open the gripper slightly" → m2 -15
-   - "move arm right and up" → i0 15 1 15
+   - "open gripper fully" → m2 -60
+   - "move arm right and up" → i0 -30 1 15
    - "center the arm" → i0 0 1 45 2 0
+   - "extreme left position" → m0 125
+   - "extreme right position" → m0 -125
 
    DIRECTIONAL CONTEXT INFERENCE:
    - "front", "forward", "ahead", "in front" → F suffix (kpickF, kwkF, etc.)
@@ -600,20 +802,90 @@ QUIT:Goodbye!"""
                     if self.show_commands:
                         print(f"   ⚡ Sending to robot: {command}")
                     
-                    # Handle joint commands (m0, m1, m2) with rotateJoints()
+                    # Enhanced joint command handling with full range support
                     if command.startswith('m') and len(command) >= 2 and command[1].isdigit():
                         try:
                             # Parse joint command: m0 15 -> joint=0, angle=15
                             parts = command.split()
-                            joint_id = int(command[1])  # Extract joint number (0, 1, or 2)
+                            joint_id = int(command[1])
                             angle = int(parts[1]) if len(parts) > 1 else 0
+                            
+                            # Validate ranges based on actual hardware limits
+                            if joint_id == 0:  # Base rotation: -125 to +125
+                                angle = max(-125, min(125, angle))
+                            elif joint_id == 1:  # Shoulder: -90 to +120
+                                angle = max(-90, min(120, angle))
+                            elif joint_id == 2:  # Gripper: -60 to +120
+                                angle = max(-60, min(120, angle))
                             
                             # Use rotateJoints for direct joint control
                             rotateJoints('m', [joint_id, angle], 1)
+                            
                         except (ValueError, IndexError) as e:
                             print(f"   ⚠️  Error parsing joint command '{command}': {e}")
-                            # Fallback to sendSkillStr if parsing fails
-                            sendSkillStr(command, 1)
+                    
+                    elif command.startswith('M') and len(command) >= 2:
+                        try:
+                            # Parse speed-controlled joint command: M0 45 5
+                            parts = command.split()
+                            joint_id = int(command[1])
+                            angle = int(parts[1]) if len(parts) > 1 else 0
+                            speed = int(parts[2]) if len(parts) > 2 else 5
+                            
+                            # Validate ranges based on actual hardware limits
+                            if joint_id == 0:  # Base rotation: -125 to +125
+                                angle = max(-125, min(125, angle))
+                            elif joint_id == 1:  # Shoulder: -90 to +120
+                                angle = max(-90, min(120, angle))
+                            elif joint_id == 2:  # Gripper: -60 to +120
+                                angle = max(-60, min(120, angle))
+                            
+                            # For speed control, simulate with stepped movements
+                            # Speed 1 = slowest (many steps), Speed 10 = fastest (direct)
+                            if speed <= 3:
+                                # Slow movement - break into steps
+                                steps = max(3, abs(angle) // 10)
+                                for i in range(steps):
+                                    intermediate = int((angle * (i + 1)) / steps)
+                                    rotateJoints('m', [joint_id, intermediate], 0.2)
+                            else:
+                                # Fast movement - direct
+                                rotateJoints('m', [joint_id, angle], 1)
+                                
+                        except (ValueError, IndexError) as e:
+                            print(f"   ⚠️  Error parsing speed command '{command}': {e}")
+                    
+                    elif command.startswith('i') and len(command) >= 2:
+                        try:
+                            # Parse simultaneous joint command: i0 45 1 90 2 30
+                            parts = command[1:].split()
+                            joint_angles = []
+                            for i in range(0, len(parts), 2):
+                                if i+1 < len(parts):
+                                    joint_id = int(parts[i])
+                                    angle = int(parts[i+1])
+                                    
+                                    # Validate ranges based on actual hardware limits
+                                    if joint_id == 0:  # Base rotation: -125 to +125
+                                        angle = max(-125, min(125, angle))
+                                    elif joint_id == 1:  # Shoulder: -90 to +120
+                                        angle = max(-90, min(120, angle))
+                                    elif joint_id == 2:  # Gripper: -60 to +120
+                                        angle = max(-60, min(120, angle))
+                                    
+                                    joint_angles.extend([joint_id, angle])
+                            
+                            # Use rotateJoints for simultaneous control
+                            rotateJoints('i', joint_angles, 1)
+                            
+                        except (ValueError, IndexError) as e:
+                            print(f"   ⚠️  Error parsing simultaneous command '{command}': {e}")
+                    
+                    elif command == 'c-2':
+                        # Special calibration command
+                        sendCmdStr('c', 1)
+                        sendLongCmd('c', [-2], 2)
+                        
                     else:
                         # Use sendSkillStr for skill commands
                         sendSkillStr(command, 1)
@@ -624,21 +896,15 @@ QUIT:Goodbye!"""
                     if self.enable_sequences and sequence_name in self.commands:
                         sequence_info = self.commands[sequence_name]
                         if 'sequence' in sequence_info:
-                            commands_sent.extend(sequence_info['sequence'])
-                            
-                            if self.show_commands:
-                                print(f"   🎭 Executing sequence '{sequence_name}': {sequence_info['description']}")
-                                
-                            for i, step in enumerate(sequence_info['sequence']):
+                            print(f"🎭 Executing sequence: {sequence_name}")
+                            for i, step in enumerate(sequence_info["sequence"]):
                                 if self.show_commands:
                                     print(f"   ⚡ Sending: {step}")
-                                
-                                # Use 5-second wait in sendSkillStr for robot to complete each action
-                                wait_time = 5 if i < len(sequence_info['sequence']) - 1 else 1  # 5 seconds between commands, 1 second for last
+                                wait_time = 4 if i < len(sequence_info["sequence"]) - 1 else 1
                                 sendSkillStr(step, wait_time)
                     else:
                         if self.show_commands:
-                            print(f"   ❌ Sequence '{sequence_name}' not available or sequences disabled")
+                            print(f"   ⚠️  Sequence '{sequence_name}' not found")
                 
                 elif line.startswith('UNKNOWN:'):
                     if self.show_commands:

@@ -56,12 +56,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/dales-hill/",
         "notes": ""
       },
-      {
-        "name": "Jordan Gibson",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/jordanpgibson/",
-        "notes": ""
-      },
       // {
       //   "name": "Liz Martin",
       //   "title": "Business Program Manager",
@@ -169,12 +163,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/allison-geoghegan/",
       //   "notes": ""
       // },
-      {
-        "name": "Parneet Kaur",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/boparaikparneet/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Parneet Kaur",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/boparaikparneet/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Carlos Oquendo Jr.",
       //   "title": "Director Business Application Specialist",
