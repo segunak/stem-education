@@ -214,7 +214,7 @@ RULES:
    ROBOT ARM INFERENCE (if arm commands available):
    - "pick up", "grab", "get", "take", "collect" → appropriate pick command based on context/direction
    - "put down", "place", "set down", "deposit" → appropriate put command
-   - "drop", "release", "let go" → appropriate drop command  
+   - "drop", "release", "let go", "drop it", "drop that" → appropriate put command (USE PUT - not drop!)
    - "throw", "toss", "fling", "launch" → appropriate toss command
    - "hunt", "quickly grab", "snatch" → "hunt" if available
    - "show", "display", "present" → "show off" if available
@@ -616,7 +616,7 @@ EXECUTE:c-2
    ROBOT ARM INFERENCE (use full arm API):
    - "pick up", "grab", "get", "take", "collect" → kpickF, kpickL, kpickR, kpickD, kpick
    - "put down", "place", "set down", "deposit" → kputF, kputL, kputR, kputD, kput
-   - "drop", "release", "let go" → kdropF, kdropL, kdropR, kdropD, kdrop
+   - "drop", "release", "let go", "drop it", "drop that" → kputF, kputL, kputR, kputD, kput (USE PUT - not kdrop!)
    - "throw", "toss", "fling" → ktossF, ktossL, ktossR, ktoss
    - "launch", "catapult" → klaunch
    - "hunt", "quickly grab", "snatch" → khunt
@@ -664,6 +664,8 @@ EXECUTE:c-2
    - If user says "entertain me" → combination of tricks and sounds
    - If user seems frustrated → calming commands or kgdb (good boy)
    - If user wants "exercise" → kpu, kpu1, kstr, movement commands
+   - CRITICAL: If user says "drop it" or "drop that" after picking up → USE PUT commands (kputF, kputL, kputR, kputD)
+   - DROP vs PUT: "drop" = place/release object (use PUT), actual "drop" commands just crouch without releasing
 
    INFERENCE LOGIC RULES:
    - Use the FULL API - you have access to ALL commands, be creative!
@@ -722,6 +724,10 @@ EXECUTE:kpu
 User: "pick up that ball in front" (infers robot arm + direction)
 You: "Picking up the object in front!"
 EXECUTE:kpickF
+
+User: "drop it" or "put it down" (infers put down, not drop command)
+You: "Putting the object down!"
+EXECUTE:kputF
 
 User: "I dropped my keys down there" (infers pick down)
 You: "I'll pick up what's down there!"

@@ -1,15 +1,8 @@
-# Robot Dog Commands - Student Guide
+# Robot Dog Commands - Quick Reference
 
-## AI Assistance
+**GitHub Copilot**: Click Copilot button (upper right VS Code) • **ChatGPT**: Copy code and ask for help
 
-**GitHub Copilot** (recommended): Click the Copilot button in VS Code (upper right corner)
-**ChatGPT**: Copy your code and ask for help
-
-**Stuck?** Ask your instructor to help you find GitHub Copilot!
-
----
-
-## Challenge 1: Add Commands (Copy & Paste These!)
+## Challenge 1: Copy & Paste Commands
 
 ### Movement Commands
 
@@ -59,51 +52,19 @@
 "scratch": {"command": "kscrh", "description": "Makes the robot scratch"},
 ```
 
-**Tips**:
+## Challenges 2-4: Settings & Advanced
 
-- Copy exactly (quotes, colons, commas)
-- Add comma after each line except the last one
-- Ask GitHub Copilot: *"Add 10 more robot commands to this dictionary"*
+| Challenge | Task | Ask GitHub Copilot |
+|---|---|---|
+| **2: Transparency** | Find setting to see AI commands | *"How do I enable command visibility?"* |
+| **3: Sequences** | Create multi-step commands | *"How do I make command sequences?"* |
+| **4: Full API** | Connect to live documentation | *"How do I fetch text from URL with Python?"* |
 
----
-
-## Challenge 2: Responsible AI Transparency
-
-Find the setting that controls what you can see when AI sends commands to the robot. Enable it to see everything the AI does for safety and debugging.
-
----
-
-## Challenge 3: Command Sequences
-
-Find the setting that enables sequences. Then create multi-step commands like:
+### Challenge 3: Sequence Example
 
 ```python
 "dance": {"sequence": ["kup", "kvtL", "kjmp", "ksit"], "description": "Do a dance routine"},
 "morning routine": {"sequence": ["kstr", "kup", "kwh"], "description": "Stretch, stand, wave"},
 ```
 
-Ask GitHub Copilot: *"How do I make command sequences work in this robot controller?"*
-
----
-
-## Challenge 4: Connect to Full API (Advanced)
-
-Find the setting that enables full API access. Then implement the function that fetches documentation from the internet.
-
-Ask GitHub Copilot: *"How do I fetch text from a URL using Python's built-in urllib?"*
-
----
-
-## Quick Example
-
-```python
-ROBOT_COMMANDS = {
-    "stand up": {"command": "kup", "description": "Makes the robot stand up"},
-    "sit down": {"command": "ksit", "description": "Makes the robot sit down"},  
-    "rest": {"command": "krest", "description": "Makes the robot rest"},
-    
-    # Add your commands here!
-    "jump": {"command": "kjmp", "description": "Makes the robot jump"},
-    "wave": {"command": "kwh", "description": "Makes the robot wave its head"},
-}
-```
+**Tips**: Copy exactly (quotes, colons, commas) • Add comma after each line except last • Ask Copilot for help!
