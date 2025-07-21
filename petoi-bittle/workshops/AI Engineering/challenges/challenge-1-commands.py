@@ -2,29 +2,21 @@
 CHALLENGE 1: Teaching AI New Commands
 =====================================
 
-🎯 MISSION: The robot knows 50+ commands, but your AI only knows 3!
-Your job is to teach it more by adding commands to the dictionary below.
+🎯 MISSION: The AI only knows 3 commands. Teach it more!
 
-📖 HOW THIS WORKS:
-The AI gets "context" from the ROBOT_COMMANDS dictionary. More commands = smarter AI!
-This is called "context engineering" - a key AI skill.
+STEP BY STEP:
+1. Click ▶️ (play button, upper right corner) to run this file
+2. Try typing: "stand up", "sit down", "rest" (these work!)
+3. Try typing: "jump" (this won't work yet)
+4. Type "quit" to exit the program
+5. Open robot-dog-commands.md for copy-paste examples
+6. Add "jump" command to the dictionary below
+7. Click ▶️ again to test your change
+8. Keep adding more commands from robot-dog-commands.md
 
-🔧 YOUR TASK:
-1. Run this file first - try asking the AI to "jump" (it won't work!)
-2. Look at robot-dog-commands.md for available commands
-3. Add "jump" and other commands to ROBOT_COMMANDS below
-4. Save and run again - now "jump" should work!
+💡 TO EXIT: Type "quit" or "exit" in the chat, then click ▶️ to run again
 
-💡 HINTS:
-- Each command needs: "name": {"command": "code", "description": "what it does"}
-- Copy examples from robot-dog-commands.md
-- Ask GitHub Copilot: "Add robot commands to this dictionary"
-- Add at least 10 commands to see the AI get much smarter!
-
-🚀 WELCOME TO THE AI ROBOT WORKSHOP!
-This is Challenge 1 of 4. Complete them in order for the best experience.
-
-RUN THIS FILE DIRECTLY - Click the ▶️ button!
+RUN THIS FILE DIRECTLY - Click the ▶️ button (upper right corner)!
 """
 
 import sys
@@ -46,6 +38,7 @@ ROBOT_COMMANDS = {
     # Try adding "jump", "wave", "backflip", and others
     # 
     # Format: "command name": {"command": "robot_code", "description": "what it does"},
+    # Just copy and paste from robot-dog-commands.md below this line!
     
 }
 

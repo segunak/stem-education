@@ -2,31 +2,23 @@
 CHALLENGE 4: Full API Connection (ADVANCED)
 ===========================================
 
-🎯 MISSION: Connect your AI to the complete robot API documentation online!
-This is called "Retrieval Augmented Generation" (RAG) - a cutting-edge AI technique.
+🎯 MISSION: Connect AI to live robot documentation from the internet!
+This is called "Retrieval Augmented Generation" (RAG).
 
-📖 WHAT IS RAG?
-Instead of pre-programming all knowledge, RAG lets AI fetch information dynamically.
-Your AI will pull the latest robot documentation from GitHub in real-time!
+🔧 STEP BY STEP:
+1. Click ▶️ (play button, upper right corner) - AI knows limited commands from previous challenges
+2. Look for the setting below that controls API access
+3. Figure out how to enable it (hint: it's currently disabled)
+4. Copy the example code in fetch_api_documentation() and uncomment it
+5. Click ▶️ - now AI knows EVERYTHING about the robot!
+6. Check robot-dog-commands.md for more advanced commands to try
 
-🔧 YOUR TASK:
-1. Enable full API by changing ENABLE_FULL_API to True
-2. Implement the fetch_api_documentation() function below
-3. Test it - your AI should now know ALL robot capabilities!
+💡 RAG: Instead of pre-programming knowledge, AI fetches it live from URLs
+💡 COPY & PASTE: The example code is provided - just copy and uncomment it!
 
-💡 HINTS:
-- The robot_controller already has a working fetch method you can call
-- Or implement your own using urllib.request.urlopen()
-- The API_URL points to the full robot specification on GitHub
-- Ask GitHub Copilot: "How do I fetch text from a URL in Python?"
+💡 TO EXIT: Type "quit" or "exit" in the chat, then click ▶️ to run again
 
-🚀 ADVANCED FEATURES:
-- Parse the markdown to extract specific sections
-- Cache the documentation to avoid repeated downloads
-- Handle network errors gracefully
-- Add your own API endpoints!
-
-RUN THIS FILE DIRECTLY - Click the ▶️ button!
+RUN THIS FILE DIRECTLY - Click the ▶️ button (upper right corner)!
 """
 
 import sys
@@ -34,17 +26,17 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'lib'))
 
 from robot_controller import RobotAI
+from robot_commands import FULL_COMMANDS
 import urllib.request
 
-# Basic commands (these will be replaced if full API works)
-ROBOT_COMMANDS = {
-    "stand up": {"command": "kup", "description": "Makes the robot stand up"},
-    "sit down": {"command": "ksit", "description": "Makes the robot sit down"},
-    "rest": {"command": "krest", "description": "Makes the robot rest"},
-}
+# 🎓 AUTO-LOADED: All commands from previous challenges!
+# 🎯 YOUR FOCUS: Learn Retrieval Augmented Generation (RAG)
 
-# 🎯 YOUR TASK: Change this to True to enable full API!
-ENABLE_FULL_API = False  # TODO: Change this to True
+# Fallback commands if API fails
+ROBOT_COMMANDS = FULL_COMMANDS
+
+# 🎯 YOUR TASK: Find the setting below that enables full API access!
+ENABLE_FULL_API = False  # TODO: You need to change this line
 
 # The URL to the complete robot API documentation
 API_URL = "https://raw.githubusercontent.com/segunak/stem-education/refs/heads/master/petoi-bittle/documentation/petoi-python-api-specification.md"
@@ -54,37 +46,31 @@ def fetch_api_documentation():
     🎯 YOUR IMPLEMENTATION WORKSPACE
     
     This function should fetch the robot API documentation from the internet.
-    The robot_controller.py already has a working version, but try implementing your own!
+    This is called "Retrieval Augmented Generation" (RAG) - getting fresh data for AI!
     
-    💡 APPROACHES:
+    💡 STEP-BY-STEP GUIDE:
     
-    Option 1 (Easy): Return None and let robot_controller handle it
-    Option 2 (Medium): Use urllib.request to fetch the URL
-    Option 3 (Advanced): Parse the markdown and extract specific sections
+    1. Use try/except to handle errors safely
+    2. Inside try: use urllib.request.urlopen(API_URL) to open the URL
+    3. Use .read() to get the data, then .decode('utf-8') to make it text
+    4. Return the text
+    5. In except: print error message and return None
     
-    💡 HINTS:
-    - urllib.request.urlopen(API_URL).read().decode('utf-8')
-    - Handle exceptions with try/except
-    - Return None if something goes wrong
-    - Ask GitHub Copilot for help!
+    💡 EXAMPLE PATTERN:
+    try:
+        with urllib.request.urlopen(API_URL) as response:
+            return response.read().decode('utf-8')
+    except Exception as e:
+        print(f"Error fetching API: {e}")
+        return None
     
     Returns:
         str: The API documentation text, or None if failed
     """
     
-    # TODO: Implement this function!
-    # You can start simple and make it more advanced later
-    
-    # Option 1: Let robot_controller handle it (works but you don't learn as much)
+    # TODO: Copy the example pattern above and uncomment it!
+    # Replace this return None with the try/except code
     return None
-    
-    # Option 2: Implement yourself (more learning!)
-    # try:
-    #     # Your code here!
-    #     pass
-    # except Exception as e:
-    #     print(f"Error fetching API: {e}")
-    #     return None
 
 # 🚀 This runs your AI with full API capabilities
 if __name__ == "__main__":
@@ -96,9 +82,11 @@ if __name__ == "__main__":
         # Test the student's implementation
         result = fetch_api_documentation()
         if result:
-            print(f"🚀 YOUR implementation worked! Fetched {len(result)} characters")
+            print(f"🚀 SUCCESS! Your implementation worked! Fetched {len(result)} characters")
+            print("   The AI now has access to the complete robot documentation!")
         else:
             print("⚠️  Your implementation returned None - using robot_controller fallback")
+            print("   (This still works, but try implementing the function for more learning!)")
     else:
         print("⚠️  Full API DISABLED - change ENABLE_FULL_API to True above")
     

@@ -3,28 +3,21 @@ CHALLENGE 3: Command Sequences
 ==============================
 
 🎯 MISSION: Teach the AI to do multiple actions in a row!
-Instead of single commands, create sequences like "dance" or "morning routine".
 
-📖 HOW SEQUENCES WORK:
-Normal commands send one robot code. Sequences send multiple codes in order.
-This lets you create complex behaviors from simple building blocks!
+🔧 STEP BY STEP:
+1. Click ▶️ (play button, upper right corner) - try asking for "dance" (won't work yet)
+2. Look for the setting that controls sequences  
+3. Figure out how to enable it (hint: it's currently disabled), do so, then stop the program
+4. Click ▶️ again - now try "dance" or "morning routine"!
+5. Add your own sequences by copying the examples in MY_CUSTOM_SEQUENCES
+6. Check robot-dog-commands.md for sequence examples and robot codes
 
-🔧 YOUR TASK:
-1. Enable sequences by changing ENABLE_SEQUENCES to True
-2. Add sequence commands to ROBOT_COMMANDS (see examples below)
-3. Test your sequences - try asking the AI to "dance"!
-4. Create your own creative sequences
+💡 SEQUENCES: Chain multiple robot codes together for complex behaviors
+💡 EASY FORMAT: Just copy the examples in MY_CUSTOM_SEQUENCES and modify!
 
-💡 SEQUENCE FORMAT:
-Instead of {"command": "code"}, use {"sequence": ["code1", "code2", "code3"]}
+💡 TO EXIT: Type "quit" or "exit" in the chat, then click ▶️ to run again
 
-💡 IDEAS FOR SEQUENCES:
-- "dance": combination of jumps, spins, and poses
-- "morning routine": stretch, stand up, wave
-- "show off": backflip, jump, wave, bow
-- "patrol": walk forward, spin, walk back
-
-RUN THIS FILE DIRECTLY - Click the ▶️ button!
+RUN THIS FILE DIRECTLY - Click the ▶️ button (upper right corner)!
 """
 
 import sys
@@ -32,30 +25,40 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'lib'))
 
 from robot_controller import RobotAI
+from robot_commands import FULL_COMMANDS, SEQUENCE_COMMANDS
 
-# Robot commands with some sequence examples
-ROBOT_COMMANDS = {
-    # Regular single commands
-    "stand up": {"command": "kup", "description": "Makes the robot stand up"},
-    "sit down": {"command": "ksit", "description": "Makes the robot sit down"},
-    "rest": {"command": "krest", "description": "Makes the robot rest"},
-    "jump": {"command": "kjmp", "description": "Makes the robot jump"},
-    "wave": {"command": "kwh", "description": "Makes the robot wave"},
-    "backflip": {"command": "kbf", "description": "Makes the robot do a backflip"},
-    "spin left": {"command": "kvtL", "description": "Makes the robot spin left"},
-    "walk forward": {"command": "kwkF", "description": "Makes the robot walk forward"},
-    
-    # TODO: Add sequence commands here!
-    # Example format:
-    # "dance": {"sequence": ["kup", "kvtL", "kjmp", "ksit"], "description": "Does a dance routine"},
-    # "morning routine": {"sequence": ["kstr", "kup", "kwh"], "description": "Stretch, stand, wave"},
-    
-    # Add your own creative sequences!
-    
-}
+# 🎓 AUTO-LOADED: All robot commands from previous challenges!
+# 🎯 YOUR FOCUS: Learn to create command sequences for complex behaviors
 
-# 🎯 YOUR TASK: Change this to True to enable sequences!
-ENABLE_SEQUENCES = False  # TODO: Change this to True
+# Start with all the single commands you've learned
+ROBOT_COMMANDS = FULL_COMMANDS.copy()
+
+# 🚀 Pre-made sequences are already added! Try "dance" or "morning routine"
+ROBOT_COMMANDS.update(SEQUENCE_COMMANDS)
+
+# 🎯 ADD YOUR OWN SEQUENCES HERE! 
+# Just copy and paste new sequences into this list:
+MY_CUSTOM_SEQUENCES = [
+    # Copy these examples and modify them, or add new ones:
+    
+    # {"name": "my_dance", "sequence": ["kup", "kjmp", "kwh", "krest"], "description": "Stand, jump, wave, rest"},
+    # {"name": "robot_workout", "sequence": ["kstr", "kpu", "kpu", "kjmp"], "description": "Stretch, pushup, pushup, jump"},
+    # {"name": "greeting_routine", "sequence": ["kup", "khi", "kwh", "ksit"], "description": "Stand, greet, wave, sit"},
+    
+    # ADD YOUR SEQUENCES BELOW (uncomment by removing # and modify):
+    # {"name": "my_awesome_trick", "sequence": ["kup", "kbf", "kwh"], "description": "Stand, backflip, wave"},
+    
+]
+
+# 🔧 AUTOMATIC: This adds your custom sequences to the robot commands
+for seq in MY_CUSTOM_SEQUENCES:
+    if seq:  # Only add non-empty sequences
+        ROBOT_COMMANDS[seq["name"]] = {
+            "sequence": seq["sequence"], 
+            "description": seq["description"]
+        }
+# 🎯 YOUR TASK: Modify the setting below to enables sequences!
+ENABLE_SEQUENCES = False
 
 # 🚀 This runs your AI with sequence capabilities
 if __name__ == "__main__":

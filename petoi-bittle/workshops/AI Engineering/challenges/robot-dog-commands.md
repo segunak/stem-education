@@ -67,15 +67,15 @@
 
 ---
 
-## Challenge 2: Responsible AI
+## Challenge 2: Responsible AI Transparency
 
-Change `SHOW_ROBOT_COMMANDS = False` to `True` in your code to see what commands the AI sends to the robot.
+Find the setting that controls what you can see when AI sends commands to the robot. Enable it to see everything the AI does for safety and debugging.
 
 ---
 
 ## Challenge 3: Command Sequences
 
-Set `ENABLE_SEQUENCES = True` and add sequences like this:
+Find the setting that enables sequences. Then create multi-step commands like:
 
 ```python
 "dance": {"sequence": ["kup", "kvtL", "kjmp", "ksit"], "description": "Do a dance routine"},
@@ -88,7 +88,7 @@ Ask GitHub Copilot: *"How do I make command sequences work in this robot control
 
 ## Challenge 4: Connect to Full API (Advanced)
 
-Set `ENABLE_FULL_API = True` and implement `fetch_api_documentation()`.
+Find the setting that enables full API access. Then implement the function that fetches documentation from the internet.
 
 Ask GitHub Copilot: *"How do I fetch text from a URL using Python's built-in urllib?"*
 

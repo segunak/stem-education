@@ -10,6 +10,7 @@ The challenge files import this to focus on learning AI concepts.
 
 import os
 import sys
+import time
 import urllib.request
 from PetoiRobot import *
 from openai import OpenAI
@@ -131,7 +132,13 @@ class RobotAI:
         """Create instructions using the command dictionary"""
         command_text = ""
         for name, info in self.commands.items():
-            command_text += f"- '{name}' → send '{info['command']}' → {info['description']}\n"
+            if 'command' in info:
+                # Regular single command
+                command_text += f"- '{name}' → send '{info['command']}' → {info['description']}\n"
+            elif 'sequence' in info:
+                # Sequence command
+                sequence_str = " → ".join(info['sequence'])
+                command_text += f"- '{name}' → sequence: {sequence_str} → {info['description']}\n"
         
         available_commands = list(self.commands.keys())
         commands_list = ", ".join(available_commands[:-1]) + f", and {available_commands[-1]}" if len(available_commands) > 1 else available_commands[0]
@@ -140,18 +147,53 @@ class RobotAI:
 
 {command_text}
 RULES:
-1. If user asks for something you can do, respond with: EXECUTE:command_code
+1. If user asks for something you can do, respond with: EXECUTE:command_code (for single commands) or SEQUENCE:sequence_name (for sequences)
 2. If you can't do it, respond with: UNKNOWN:Sorry, I don't know that command
 3. If user wants to exit/quit/stop/leave/close, respond with: QUIT:Goodbye!
 4. When you don't know a command, tell the user what you CAN do: "{commands_list}"
 5. Be friendly and helpful!
+6. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
+7. SMART MAPPING: Use natural language understanding to map user requests to the best available command:
+   - "walk" or "go" or "move" → "walk forward"
+   - "run" → "run forward" (if available) or "walk forward"
+   - "turn around" → "turn left" or "turn right"
+   - "stop" or "halt" → "rest"
+   - "get up" → "stand up"
+   - "lie down" or "lay down" → "rest"
+   - "flip" → "backflip"
+   - "hello" or "hi" → "greet"
+   - "dance" or "show off" → use available sequence commands or tricks
 
 EXAMPLES:
 User: "stand up"
 You: "Standing up!" 
 EXECUTE:kup
 
-User: "do a backflip"
+User: "dance" (sequence command)
+You: "Let me dance for you!"
+SEQUENCE:dance
+
+User: "walk" (maps to "walk forward")
+You: "Walking forward! Tell me when to stop by saying 'rest' or 'stop'."
+EXECUTE:kwkF
+
+User: "run" (maps to "walk forward" if no run command)
+You: "I'll walk forward for you! Tell me when to stop by saying 'rest' or 'stop'."
+EXECUTE:kwkF
+
+User: "stop" (maps to "rest")
+You: "Stopping and resting!"
+EXECUTE:krest
+
+User: "do a flip" (maps to "backflip")
+You: "Doing a backflip!"
+EXECUTE:kbf
+
+User: "say hi" (maps to "greet")
+You: "Greeting you!"
+EXECUTE:khi
+
+User: "do something impossible"
 You: "I don't know that command yet. I can: {commands_list}"
 UNKNOWN:Sorry, I don't know that command
 
@@ -173,13 +215,36 @@ RULES:
 3. If user wants to exit/quit/stop/leave/close, respond with: QUIT:Goodbye!
 4. Use ANY command from the API documentation above
 5. Be creative and helpful - you have access to the full robot capabilities!
+6. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
+7. SMART MAPPING: Use natural language understanding to map user requests to the best available command:
+   - "walk" or "go" or "move" → "walk forward"
+   - "run" → "run forward" (if available) or "walk forward"
+   - "turn around" → "turn left" or "turn right"
+   - "stop" or "halt" → "rest"
+   - "get up" → "stand up"
+   - "lie down" or "lay down" → "rest"
+   - "flip" → "backflip"
+   - "hello" or "hi" → "greet"
+   - "dance" or "show off" → use available tricks like "wave", "jump", etc.
 
 EXAMPLES:
 User: "stand up"
 You: "Standing up!" 
 EXECUTE:kup
 
-User: "do a backflip"
+User: "walk" (maps to "walk forward")
+You: "Walking forward! Tell me when to stop by saying 'rest' or 'stop'."
+EXECUTE:kwkF
+
+User: "run" (maps to available run command or walk forward)
+You: "Running forward! Tell me when to stop by saying 'rest' or 'stop'."
+EXECUTE:[best available run command]
+
+User: "stop" (maps to "rest")
+You: "Stopping and resting!"
+EXECUTE:krest
+
+User: "do a flip" (maps to "backflip")
 You: "Doing a backflip!"
 EXECUTE:kbf
 
@@ -198,10 +263,13 @@ QUIT:Goodbye!"""
             for cmd_name, cmd_info in self.commands.items():
                 if "sequence" in cmd_info and cmd_name.lower() in user_message.lower():
                     print(f"🎭 Executing sequence: {cmd_name}")
-                    for step in cmd_info["sequence"]:
+                    for i, step in enumerate(cmd_info["sequence"]):
                         if self.show_commands:
                             print(f"   ⚡ Sending: {step}")
-                        sendSkillStr(step, 1)
+                        
+                        # Use 4-second wait in sendSkillStr for robot to complete each action
+                        wait_time = 4 if i < len(cmd_info["sequence"]) - 1 else 1  # 4 seconds between commands, 1 second for last
+                        sendSkillStr(step, wait_time)
                     return False
         
         try:
@@ -216,7 +284,16 @@ QUIT:Goodbye!"""
             )
             
             ai_response = response.choices[0].message.content
-            print(f"🤖 AI: {ai_response}")
+            
+            # Filter out command lines and show only user-friendly response
+            display_lines = []
+            for line in ai_response.split('\n'):
+                if not (line.startswith('EXECUTE:') or line.startswith('SEQUENCE:') or line.startswith('UNKNOWN:') or line.startswith('QUIT:')):
+                    if line.strip():  # Only add non-empty lines
+                        display_lines.append(line.strip())
+            
+            if display_lines:
+                print(f"🤖 AI: {' '.join(display_lines)}")
             
             # Parse AI response and execute commands
             commands_sent = []
@@ -232,6 +309,28 @@ QUIT:Goodbye!"""
                     
                     sendSkillStr(command, 1)
                     
+                elif line.startswith('SEQUENCE:'):
+                    sequence_name = line.replace('SEQUENCE:', '').strip()
+                    
+                    if self.enable_sequences and sequence_name in self.commands:
+                        sequence_info = self.commands[sequence_name]
+                        if 'sequence' in sequence_info:
+                            commands_sent.extend(sequence_info['sequence'])
+                            
+                            if self.show_commands:
+                                print(f"   🎭 Executing sequence '{sequence_name}': {sequence_info['description']}")
+                                
+                            for i, step in enumerate(sequence_info['sequence']):
+                                if self.show_commands:
+                                    print(f"   ⚡ Sending: {step}")
+                                
+                                # Use 5-second wait in sendSkillStr for robot to complete each action
+                                wait_time = 5 if i < len(sequence_info['sequence']) - 1 else 1  # 5 seconds between commands, 1 second for last
+                                sendSkillStr(step, wait_time)
+                    else:
+                        if self.show_commands:
+                            print(f"   ❌ Sequence '{sequence_name}' not available or sequences disabled")
+                
                 elif line.startswith('UNKNOWN:'):
                     if self.show_commands:
                         print(f"   🔊 Playing error sound (AI doesn't know this command)")
