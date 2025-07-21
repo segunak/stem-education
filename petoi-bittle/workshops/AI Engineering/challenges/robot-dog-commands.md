@@ -1,4 +1,4 @@
-# Robot Commands - Workshop Reference
+# Robot Dog Commands - Student Guide
 
 ## AI Assistance
 

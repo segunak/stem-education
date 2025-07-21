@@ -56,6 +56,35 @@ FULL_COMMANDS = {
     "boxing": {"command": "kbx", "description": "Makes the robot box"},
     "test": {"command": "ktest", "description": "Makes the robot run a test"},
     "zero": {"command": "kzero", "description": "Makes the robot go to zero position"},
+    
+    # Robot Arm Commands (for Bittle X+Arm models)
+    "pick up front": {"command": "kpickF", "description": "Pick up object in front of the robotic arm"},
+    "pick up left": {"command": "kpickL", "description": "Pick up object to the left of the robotic arm"},
+    "pick up right": {"command": "kpickR", "description": "Pick up object to the right of the robotic arm"},
+    "pick up down": {"command": "kpickD", "description": "Pick up object under the robotic arm"},
+    "pick up": {"command": "kpick", "description": "Pick up object (random direction)"},
+    
+    "put down front": {"command": "kputF", "description": "Place object in front of the robotic arm"},
+    "put down left": {"command": "kputL", "description": "Place object to the left of the robotic arm"},
+    "put down right": {"command": "kputR", "description": "Place object to the right of the robotic arm"},
+    "put down": {"command": "kputD", "description": "Place object under the robotic arm"},
+    "put": {"command": "kput", "description": "Place object (random direction)"},
+    
+    "drop front": {"command": "kdropF", "description": "Drop object in front"},
+    "drop left": {"command": "kdropL", "description": "Drop object to the left"},
+    "drop right": {"command": "kdropR", "description": "Drop object to the right"},
+    "drop down": {"command": "kdropD", "description": "Drop object down"},
+    "drop": {"command": "kdrop", "description": "Drop object (random direction)"},
+    
+    "toss front": {"command": "ktossF", "description": "Throw object forward"},
+    "toss left": {"command": "ktossL", "description": "Throw object to the left"},
+    "toss right": {"command": "ktossR", "description": "Throw object to the right"},
+    "toss": {"command": "ktoss", "description": "Throw object (random direction)"},
+    "launch": {"command": "klaunch", "description": "Launch object forward"},
+    
+    "hunt": {"command": "khunt", "description": "Quickly grasp object in front"},
+    "show off": {"command": "kshowOff", "description": "Show the grasped object"},
+    "clap": {"command": "kclap", "description": "Make clapping motion with gripper"},
 }
 
 # Sequence commands for Challenge 3 (these get added dynamically)

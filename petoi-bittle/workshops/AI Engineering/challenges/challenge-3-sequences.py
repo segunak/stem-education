@@ -79,7 +79,7 @@ if __name__ == "__main__":
             show_commands=True,  # Keep transparency on to see sequences in action
             enable_sequences=ENABLE_SEQUENCES
         )
-        print("💡 NEXT: When done, open challenge-4-advanced.py\n")
+        print("💡 NEXT: When done, open challenge-4-rag.py\n")
         robot.run()
     except SystemExit:
         # Don't show "next challenge" message if setup failed

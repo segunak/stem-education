@@ -67,9 +67,15 @@ This workshop uses a progressive challenge system where each challenge builds on
 - **Challenge 1**: Teaching AI New Commands (Context Engineering)
 - **Challenge 2**: Responsible AI Transparency
 - **Challenge 3**: Command Sequences
-- **Challenge 4**: Full API Connection ([Simplified Retrieval-augmented Generation](https://www.google.com/search?q=what+is+retrieval+augmented+generation) (RAG) Implementation)
+- **Challenge 4**: RAG Implementation (Simplified [Retrieval-augmented Generation](https://www.google.com/search?q=what+is+retrieval+augmented+generation) (RAG))
+- **Challenge 5**: Robot Arm Control (OPTIONAL - requires Bittle X+Arm model)
 
 Students work through challenges in the `challenges` folder while all system files remain hidden in the `lib` folder.
+
+**Note for Facilitators**: Challenge 5 requires the **Bittle X+Arm** model (robot dog with arm attachment). If your robots don't have arms, skip this challenge. For more information about the robot arm, see:
+
+- [Bittle X+Arm Setup Guide](https://docs.petoi.com/desktop-app/joint-calibrator/bittle-x+arm)
+- [Robot Arm Documentation](https://docs.petoi.com/extensible-modules/robot-arm)
 
 ### Facilitator Instructions
 
@@ -146,9 +152,9 @@ Students work through challenges in the `challenges` folder while all system fil
 - Encourage creativity in sequence design
 - Show how simple commands combine into complex behaviors
 
-#### Challenge 4: Full API Connection (15 minutes)
+#### Challenge 4: RAG Implementation (15 minutes)
 
-**Learning Goal**: Implement Retrieval Augmented Generation (RAG)
+**Learning Goal**: Implement Retrieval Augmented Generation (RAG) - simplified version
 
 **Instructions for Students**:
 
@@ -158,10 +164,36 @@ Students work through challenges in the `challenges` folder while all system fil
 
 **Facilitator Notes**:
 
-- This is the most advanced challenge
-- Help students understand the concept of RAG
+- This is a simplified RAG implementation - real RAG systems are more complex
+- Help students understand the concept of connecting AI to live data sources
 - Some students may need more guidance on network programming
 - Emphasize how this connects AI to live, up-to-date information
+- Note: This is a basic example - production RAG involves vector databases, embeddings, and more sophisticated retrieval
+
+#### Challenge 5: Robot Arm Control (15 minutes) - OPTIONAL
+
+**Prerequisites**: Bittle X+Arm model required (robot dog with arm attachment)
+
+**Learning Goal**: Master complex robot control through expert prompting and documentation reading
+
+**Instructions for Students**:
+
+1. Read `robot-arm-commands.md` to understand arm capabilities
+2. Click ▶️ to run Challenge 5 - AI becomes robot arm expert
+3. Find a small object in the room
+4. Use natural language to control both movement and arm
+5. Complete: Navigate → Pick up → Move → Put down
+6. Try complex multi-step prompts
+
+**Facilitator Notes**:
+
+- **Check robot model first** - only works with Bittle X+Arm
+- This is pure prompt engineering - no code changes needed
+- Emphasize reading documentation before prompting
+- Safety reminder: keep hands away from robot claws
+- Encourage complex, natural language prompts
+- Show how documentation reading enables effective AI interaction
+- Skip this challenge if robots don't have arm attachments
 
 ### Key Teaching Points
 
@@ -249,3 +281,4 @@ Students demonstrate understanding by:
 - Creating working command sequences (Challenge 3)
 - Implementing basic network requests (Challenge 4)
 - Using GitHub Copilot to solve coding problems throughout
+- **Optional**: Controlling robot arm through expert prompting (Challenge 5 - if arm available)

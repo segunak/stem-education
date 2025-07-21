@@ -1,6 +1,6 @@
 """
-CHALLENGE 4: Full API Connection (ADVANCED)
-===========================================
+CHALLENGE 4: RAG (Retrieval Augmented Generation)
+=================================================
 
 🎯 MISSION: Connect AI to live robot documentation from the internet!
 This is called "Retrieval Augmented Generation" (RAG).
@@ -74,7 +74,7 @@ def fetch_api_documentation():
 
 # 🚀 This runs your AI with full API capabilities
 if __name__ == "__main__":
-    print("🎯 CHALLENGE 4: Full API Connection")
+    print("🎯 CHALLENGE 4: RAG (Retrieval Augmented Generation)")
     
     if ENABLE_FULL_API:
         print("✅ Full API ENABLED - testing your implementation...")
@@ -101,7 +101,7 @@ if __name__ == "__main__":
             api_url=API_URL
         )
         print("🎉 CONGRATULATIONS! You've completed all 4 challenges!")
-        print("💡 Try experimenting with advanced features and combinations!\n")
+        print("💡 Try experimenting with RAG and combinations!\n")
         robot.run()
     except SystemExit:
         # Don't show congratulations message if setup failed

@@ -17,7 +17,7 @@ AI Engineering/
 │   ├── challenge-1-commands.py
 │   ├── challenge-2-transparency.py
 │   ├── challenge-3-sequences.py
-│   ├── challenge-4-advanced.py
+│   ├── challenge-4-rag.py
 │   └── robot-dog-commands.md
 └── lib/                 ← SYSTEM FILES (don't edit these)
     ├── robot_controller.py

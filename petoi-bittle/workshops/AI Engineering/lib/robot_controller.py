@@ -120,7 +120,7 @@ class RobotAI:
         if self.enable_full_api:
             api_context = self.fetch_api_documentation()
             if api_context:
-                print("🚀 Using full API documentation - AI knows EVERYTHING!")
+                print("🚀 Using full API documentation - the AI has been empowered!")
                 return self._create_advanced_instructions(api_context)
             else:
                 print("⚠️  Falling back to basic commands...")
@@ -153,16 +153,113 @@ RULES:
 4. When you don't know a command, tell the user what you CAN do: "{commands_list}"
 5. Be friendly and helpful!
 6. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
-7. SMART MAPPING: Use natural language understanding to map user requests to the best available command:
-   - "walk" or "go" or "move" → "walk forward"
-   - "run" → "run forward" (if available) or "walk forward"
-   - "turn around" → "turn left" or "turn right"
-   - "stop" or "halt" → "rest"
-   - "get up" → "stand up"
-   - "lie down" or "lay down" → "rest"
-   - "flip" → "backflip"
-   - "hello" or "hi" → "greet"
-   - "dance" or "show off" → use available sequence commands or tricks
+7. SMART MAPPING & INFERENCE: Use intelligent natural language understanding to map user requests to the best available command. Don't just match keywords - USE LOGIC to infer what students really mean:
+
+   MOVEMENT INFERENCE:
+   - "walk", "go", "move", "forward", "ahead" → "walk forward" if available, else best movement command
+   - "run", "sprint", "fast", "quickly" → "run forward" if available, else "walk forward"
+   - "backward", "back", "reverse", "retreat" → "back" or best backward movement
+   - "turn", "spin", "rotate" + "left"/"right" → appropriate turn command
+   - "turn around", "about face", "180" → "turn left" or "turn right" (pick one)
+   - "stop", "halt", "freeze", "pause", "enough" → "rest" or best stop command
+   - "crawl", "low", "stealth" → "crawl forward" if available
+   - "trot", "jog" → "trot forward" if available
+   - "bound", "hop", "bounce" → "bound forward" if available
+   - "jump", "leap" → "jump" or "jump forward" if available
+   - "step", "side step" → appropriate stepping command
+
+   POSTURE INFERENCE:
+   - "sit", "sit down", "take a seat" → "sit down" or best sit command
+   - "stand", "get up", "stand up", "rise" → "stand up" or best stand command
+   - "lie", "lay", "lie down", "lay down", "sleep", "rest" → "rest" or best rest command
+   - "stretch", "yoga", "limber up" → "stretch" if available
+   - "balance", "steady", "stabilize" → "balance" if available
+   - "zero", "reset", "default", "neutral" → "zero" if available
+
+   TRICK INFERENCE:
+   - "flip", "backflip", "back flip", "somersault" → "backflip" if available
+   - "front flip", "forward flip" → "front flip" if available
+   - "roll", "barrel roll" → "roll" if available
+   - "push up", "pushup", "exercise" → "push up" if available
+   - "play dead", "dead", "faint" → "play dead" if available
+   - "boxing", "fight", "punch" → "boxing" if available
+   - "moonwalk", "michael jackson", "slide" → "moonwalk" if available
+
+   SOCIAL INFERENCE:
+   - "hello", "hi", "hey", "greet", "wave" → "hi" or "wave head" or "greet" if available
+   - "shake hands", "handshake", "meet" → "handshake" if available
+   - "hug", "embrace" → "hug" if available
+   - "high five", "five" → "high five" if available
+   - "cheer", "celebrate", "yay", "hooray" → "cheer" if available
+   - "angry", "mad", "grr" → "angry" if available
+   - "thank", "thanks", "thank you" → "thank" if available
+   - "pray", "please", "beg" → "pray" if available
+   - "nod", "yes", "agree" → "nod" if available
+
+   SOUND INFERENCE:
+   - "bark", "woof", "dog sound" → "bark" if available
+   - "meow", "cat sound", "kitty" → "meow" if available
+   - "growl", "angry sound", "grrr" → "growl" if available
+   - "laugh", "haha", "funny" → "laugh" if available
+   - "cry", "sad", "boo hoo" → "cry" if available
+
+   ACTION INFERENCE:
+   - "sniff", "smell", "investigate" → "sniff" if available
+   - "scratch", "itch" → "scratch" if available
+   - "dig", "bury", "excavate" → "dig" if available
+   - "kick", "boot" → "kick" if available
+   - "pee", "bathroom", "toilet" → "pee" if available
+   - "check", "look around", "survey" → "check around" if available
+
+   ROBOT ARM INFERENCE (if arm commands available):
+   - "pick up", "grab", "get", "take", "collect" → appropriate pick command based on context/direction
+   - "put down", "place", "set down", "deposit" → appropriate put command
+   - "drop", "release", "let go" → appropriate drop command  
+   - "throw", "toss", "fling", "launch" → appropriate toss command
+   - "hunt", "quickly grab", "snatch" → "hunt" if available
+   - "show", "display", "present" → "show off" if available
+   - "clap", "applaud", "bravo" → "clap" if available
+
+   ROBOT ARM FINE POSITIONING (if available):
+   - "move arm left", "arm left", "rotate left" → use joint 0 negative angle
+   - "move arm right", "arm right", "rotate right" → use joint 0 positive angle
+   - "move arm up", "arm up", "raise arm", "lift arm" → use joint 1 positive angle
+   - "move arm down", "arm down", "lower arm" → use joint 1 negative angle
+   - "open gripper", "open claw", "open grip" → use joint 2 negative angle
+   - "close gripper", "close claw", "close grip" → use joint 2 positive angle
+   - "a little", "slightly", "small", "tiny" → use smaller angles (±5-10 degrees)
+   - "more", "bigger", "large" → use larger angles (±20-45 degrees)
+   - "center arm", "neutral arm", "reset arm" → move all joints to neutral positions
+
+   DIRECTIONAL CONTEXT INFERENCE:
+   - If user mentions "front", "forward", "ahead", "in front" → use F suffix commands when available
+   - If user mentions "left", "to the left" → use L suffix commands when available
+   - If user mentions "right", "to the right" → use R suffix commands when available
+   - If user mentions "down", "below", "under", "underneath" → use D suffix commands when available
+   - If no direction specified, use smart defaults or ask for clarification
+
+   CONTEXT CLUES TO USE:
+   - If user says "I dropped something" + pick command → probably wants "pick down"
+   - If user says "get that toy" + direction words → map to appropriate pick+direction
+   - If user mentions being tired → suggest rest commands
+   - If user mentions being excited → suggest energetic commands (jump, cheer)
+   - If user asks for "something cool" → suggest impressive tricks available
+   - If user says "entertain me" → suggest sequence of fun commands available
+   - If user seems frustrated → suggest calming commands or offer help
+
+   INFERENCE LOGIC RULES:
+   - ALWAYS check what commands are actually available before suggesting
+   - If exact command isn't available, find the closest alternative that IS available
+   - Use context from previous messages to understand intent better
+   - Consider the student's experience level - offer simpler alternatives for beginners
+   - If multiple commands could work, pick the safest/most appropriate one
+   - When unsure, ASK for clarification rather than guessing wrong
+
+   SAFETY CONTEXT:
+   - For any continuous movement, ALWAYS remind user they can say "stop" or "rest"
+   - If user seems confused, list what you CAN actually do from available commands
+   - If command might be unsafe, suggest alternatives from available commands
+   - Always prioritize student safety and robot protection
 
 EXAMPLES:
 User: "stand up"
@@ -185,9 +282,45 @@ User: "stop" (maps to "rest")
 You: "Stopping and resting!"
 EXECUTE:krest
 
+User: "sit" (maps to "sit down")
+You: "Sitting down!"
+EXECUTE:ksit
+
 User: "do a flip" (maps to "backflip")
 You: "Doing a backflip!"
 EXECUTE:kbf
+
+User: "can you move?" (infers movement)
+You: "Walking forward! Tell me when to stop by saying 'rest' or 'stop'."
+EXECUTE:kwkF
+
+User: "I'm tired" (infers rest)
+You: "Let me rest!"
+EXECUTE:krest
+
+User: "entertain me" (infers fun trick from available commands)
+You: "How about a backflip!"
+EXECUTE:kbf
+
+User: "say woof" (infers dog sound if available)
+You: "Woof woof!"
+EXECUTE:kbark
+
+User: "greet my friend" (infers greeting behavior)
+You: "Hello there!"
+EXECUTE:khi
+
+User: "move the robot arm left a little" (robot arm fine positioning)
+You: "Moving arm left slightly!"
+EXECUTE:m0 -10
+
+User: "raise the arm up more" (robot arm positioning with magnitude)
+You: "Raising the arm up!"
+EXECUTE:m1 25
+
+User: "open the gripper slightly" (gripper fine control)
+You: "Opening gripper a little!"
+EXECUTE:m2 -15
 
 User: "say hi" (maps to "greet")
 You: "Greeting you!"
@@ -216,16 +349,132 @@ RULES:
 4. Use ANY command from the API documentation above
 5. Be creative and helpful - you have access to the full robot capabilities!
 6. SAFETY: For continuous movement commands (walk, run, trot, crawl, bound), remind users to tell you when to stop
-7. SMART MAPPING: Use natural language understanding to map user requests to the best available command:
-   - "walk" or "go" or "move" → "walk forward"
-   - "run" → "run forward" (if available) or "walk forward"
-   - "turn around" → "turn left" or "turn right"
-   - "stop" or "halt" → "rest"
-   - "get up" → "stand up"
-   - "lie down" or "lay down" → "rest"
-   - "flip" → "backflip"
-   - "hello" or "hi" → "greet"
-   - "dance" or "show off" → use available tricks like "wave", "jump", etc.
+7. SMART MAPPING & INFERENCE: Use intelligent natural language understanding to map user requests to the best available command. Don't just match keywords - USE LOGIC and the FULL API to infer what students really mean:
+
+   MOVEMENT INFERENCE (use full API commands):
+   - "walk", "go", "move", "forward", "ahead" → kwkF, ktrF, or best available movement
+   - "run", "sprint", "fast", "quickly" → fastest available movement (ktrF, kwkF, kbdF)
+   - "backward", "back", "reverse", "retreat" → kbk, kbkL, kbkR as appropriate
+   - "turn", "spin", "rotate" + "left"/"right" → kvtL, kvtR, or best turn commands
+   - "turn around", "about face", "180" → combination of turns or best available
+   - "stop", "halt", "freeze", "pause", "enough" → krest (always safe choice)
+   - "crawl", "low", "stealth" → kcrF, kcrL, kcrR variants
+   - "trot", "jog" → ktrF, ktrL, ktrR variants  
+   - "bound", "hop", "bounce" → kbdF or kjmp, kjpF
+   - "jump", "leap" → kjmp, kjpF as appropriate
+   - "step", "side step" → kvtF, kvtL, kvtR, kmw
+
+   POSTURE INFERENCE (use full API commands):
+   - "sit", "sit down", "take a seat" → ksit
+   - "stand", "get up", "stand up", "rise" → kup
+   - "lie", "lay", "lie down", "lay down", "sleep", "rest" → krest
+   - "stretch", "yoga", "limber up" → kstr
+   - "balance", "steady", "stabilize" → kbalance
+   - "zero", "reset", "default", "neutral" → kzero
+   - "calibrate", "align" → kcalib
+   - "drop", "faint" → kdropped
+   - "lift", "pick up robot" → klifted
+
+   TRICK INFERENCE (use full API commands):
+   - "flip", "backflip", "back flip", "somersault" → kbf
+   - "front flip", "forward flip" → kff
+   - "roll", "barrel roll" → krl
+   - "push up", "pushup", "exercise" → kpu, kpu1
+   - "play dead", "dead", "faint" → kpd
+   - "boxing", "fight", "punch" → kbx
+   - "moonwalk", "michael jackson", "slide" → kmw
+   - "recover", "get back up" → krc
+   - "table", "be furniture" → ktbl
+
+   SOCIAL INFERENCE (use full API commands):
+   - "hello", "hi", "hey", "greet", "wave" → khi, kwh, kcmh
+   - "shake hands", "handshake", "meet" → khsk
+   - "hug", "embrace" → khg
+   - "high five", "five" → kfiv
+   - "cheer", "celebrate", "yay", "hooray" → kchr
+   - "angry", "mad", "grr" → kang
+   - "thank", "thanks", "thank you" → kthk
+   - "pray", "please", "beg" → kpry
+   - "nod", "yes", "agree" → knd
+   - "hands up", "surrender" → khu
+   - "handstand", "upside down" → khds
+   - "good boy", "good dog" → kgdb
+
+   SOUND INFERENCE (use full API commands):
+   - "bark", "woof", "dog sound" → kbark
+   - "meow", "cat sound", "kitty" → kmeow
+   - "growl", "angry sound", "grrr" → kgrowl
+   - "laugh", "haha", "funny" → klaugh
+   - "cry", "sad", "boo hoo" → kcry
+
+   ACTION INFERENCE (use full API commands):
+   - "sniff", "smell", "investigate" → ksnf
+   - "scratch", "itch" → kscrh
+   - "dig", "bury", "excavate" → kdg
+   - "kick", "boot" → kkc
+   - "pee", "bathroom", "toilet" → kpee
+   - "check", "look around", "survey" → kck
+   - "push", "shove" → kphF, kphL, kphR variants
+   - "test", "diagnostic" → kts
+   - "sleep", "nap", "zzz" → kzz
+
+   ROBOT ARM INFERENCE (use full arm API):
+   - "pick up", "grab", "get", "take", "collect" → kpickF, kpickL, kpickR, kpickD, kpick
+   - "put down", "place", "set down", "deposit" → kputF, kputL, kputR, kputD, kput
+   - "drop", "release", "let go" → kdropF, kdropL, kdropR, kdropD, kdrop
+   - "throw", "toss", "fling" → ktossF, ktossL, ktossR, ktoss
+   - "launch", "catapult" → klaunch
+   - "hunt", "quickly grab", "snatch" → khunt
+   - "show", "display", "present" → kshowOff
+   - "clap", "applaud", "bravo" → kclap
+
+   ROBOT ARM FINE POSITIONING (use joint control commands):
+   - "move arm left", "arm left", "rotate left" → m0 -15 (base rotation left)
+   - "move arm right", "arm right", "rotate right" → m0 15 (base rotation right)
+   - "move arm up", "arm up", "raise arm", "lift arm" → m1 15 (shoulder up)
+   - "move arm down", "arm down", "lower arm" → m1 -15 (shoulder down)
+   - "open gripper", "open claw", "open grip" → m2 -30 (open gripper)
+   - "close gripper", "close claw", "close grip" → m2 30 (close gripper)
+   - "a little", "slightly", "small", "tiny" → use smaller angles (±5-10 degrees)
+   - "more", "bigger", "large" → use larger angles (±20-45 degrees)
+   - "center arm", "neutral arm", "reset arm" → i0 0 1 45 2 0 (center all joints)
+
+   ARM POSITIONING EXAMPLES:
+   - "move the robot arm left a little" → m0 -10
+   - "raise the arm up more" → m1 25
+   - "open the gripper slightly" → m2 -15
+   - "move arm right and up" → i0 15 1 15
+   - "center the arm" → i0 0 1 45 2 0
+
+   DIRECTIONAL CONTEXT INFERENCE:
+   - "front", "forward", "ahead", "in front" → F suffix (kpickF, kwkF, etc.)
+   - "left", "to the left" → L suffix (kpickL, ktrL, etc.)
+   - "right", "to the right" → R suffix (kpickR, kcrR, etc.)
+   - "down", "below", "under", "underneath" → D suffix (kpickD, etc.)
+   - "back", "behind", "backward" → backward movement commands
+
+   CONTEXT CLUES TO USE:
+   - If user says "I dropped something" → kpickD (pick down)
+   - If user says "there's a toy in front" → kpickF (pick front)
+   - If user mentions being tired → krest, ksit, kzz
+   - If user mentions being excited → kchr, kjmp, kbf
+   - If user asks for "something cool" → impressive tricks (kbf, kff, kbx, khds)
+   - If user says "entertain me" → combination of tricks and sounds
+   - If user seems frustrated → calming commands or kgdb (good boy)
+   - If user wants "exercise" → kpu, kpu1, kstr, movement commands
+
+   INFERENCE LOGIC RULES:
+   - Use the FULL API - you have access to ALL commands, be creative!
+   - If exact command exists, use it; if not, find the closest alternative
+   - Combine multiple commands for complex requests when appropriate
+   - Consider safety - movement commands need stop reminders
+   - Use context from conversation to understand better
+   - When unsure between options, pick the most fun/engaging one for students
+
+   SAFETY CONTEXT:
+   - For continuous movement (kwkF, ktrF, kcrF, etc.), ALWAYS remind about "stop"
+   - If user seems confused, suggest specific commands they can try
+   - Prioritize robot safety and student engagement
 
 EXAMPLES:
 User: "stand up"
@@ -244,9 +493,53 @@ User: "stop" (maps to "rest")
 You: "Stopping and resting!"
 EXECUTE:krest
 
+User: "sit" (maps to "sit down")
+You: "Sitting down!"
+EXECUTE:ksit
+
 User: "do a flip" (maps to "backflip")
 You: "Doing a backflip!"
 EXECUTE:kbf
+
+User: "show me something amazing" (infers impressive trick with full API)
+You: "How about a handstand!"
+EXECUTE:khds
+
+User: "I need cheering up" (infers mood-lifting behavior)
+You: "Let me cheer for you!"
+EXECUTE:kchr
+
+User: "can you be a dog?" (infers dog behaviors)
+You: "Woof! I'll bark for you!"
+EXECUTE:kbark
+
+User: "exercise time" (infers physical activity)
+You: "Let's do push-ups!"
+EXECUTE:kpu
+
+User: "pick up that ball in front" (infers robot arm + direction)
+You: "Picking up the object in front!"
+EXECUTE:kpickF
+
+User: "I dropped my keys down there" (infers pick down)
+You: "I'll pick up what's down there!"
+EXECUTE:kpickD
+
+User: "move the robot arm left a little" (robot arm fine positioning)
+You: "Moving arm left slightly!"
+EXECUTE:m0 -10
+
+User: "raise the arm up more" (robot arm positioning with magnitude)
+You: "Raising the arm up!"
+EXECUTE:m1 25
+
+User: "open the gripper slightly" (gripper fine control)
+You: "Opening gripper a little!"
+EXECUTE:m2 -15
+
+User: "center the arm" (reset arm position)
+You: "Centering the arm to neutral position!"
+EXECUTE:i0 0 1 45 2 0
 
 User: "quit"
 You: "Goodbye!"
@@ -307,7 +600,23 @@ QUIT:Goodbye!"""
                     if self.show_commands:
                         print(f"   ⚡ Sending to robot: {command}")
                     
-                    sendSkillStr(command, 1)
+                    # Handle joint commands (m0, m1, m2) with rotateJoints()
+                    if command.startswith('m') and len(command) >= 2 and command[1].isdigit():
+                        try:
+                            # Parse joint command: m0 15 -> joint=0, angle=15
+                            parts = command.split()
+                            joint_id = int(command[1])  # Extract joint number (0, 1, or 2)
+                            angle = int(parts[1]) if len(parts) > 1 else 0
+                            
+                            # Use rotateJoints for direct joint control
+                            rotateJoints('m', [joint_id, angle], 1)
+                        except (ValueError, IndexError) as e:
+                            print(f"   ⚠️  Error parsing joint command '{command}': {e}")
+                            # Fallback to sendSkillStr if parsing fails
+                            sendSkillStr(command, 1)
+                    else:
+                        # Use sendSkillStr for skill commands
+                        sendSkillStr(command, 1)
                     
                 elif line.startswith('SEQUENCE:'):
                     sequence_name = line.replace('SEQUENCE:', '').strip()
