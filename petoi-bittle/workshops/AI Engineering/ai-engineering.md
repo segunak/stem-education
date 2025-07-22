@@ -67,12 +67,12 @@ This workshop uses a progressive challenge system where each challenge builds on
 - **Challenge 1**: Teaching AI New Commands (Context Engineering)
 - **Challenge 2**: Responsible AI Transparency
 - **Challenge 3**: Command Sequences
-- **Challenge 4**: RAG Implementation (Simplified [Retrieval-augmented Generation](https://www.google.com/search?q=what+is+retrieval+augmented+generation) (RAG))
-- **Challenge 5**: Robot Arm Control (OPTIONAL - requires Bittle X+Arm model)
+- **Challenge 4**: Simplified [Retrieval-augmented Generation](https://www.google.com/search?q=what+is+retrieval+augmented+generation) (RAG)
+- **Challenge 5**: Robot Arm Control (OPTIONAL - requires [Bittle X+Arm model](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled?variant=49985955791160))
 
 Students work through challenges in the `challenges` folder while all system files remain hidden in the `lib` folder.
 
-**Note for Facilitators**: Challenge 5 requires the **Bittle X+Arm** model (robot dog with arm attachment). If your robots don't have arms, skip this challenge. For more information about the robot arm, see:
+**Note for Facilitators**: Challenge 5 requires the **[Bittle X+Arm](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled?variant=49985955791160)** model (robot dog with arm attachment). If your robots don't have arms, skip this challenge. For more information about the robot arm, see:
 
 - [Bittle X+Arm Setup Guide](https://docs.petoi.com/desktop-app/joint-calibrator/bittle-x+arm)
 - [Robot Arm Documentation](https://docs.petoi.com/extensible-modules/robot-arm)
@@ -98,7 +98,7 @@ Students work through challenges in the `challenges` folder while all system fil
    AI: I don't know that command yet. I can: stand up, sit down, and rest
    ```
 
-4. **Show the command reference**: Open `robot-dog-commands.md` to show the 50+ available commands
+4. **Show the command reference**: Open `robot-dog-commands.md` to show the 50+ available commands. You can also print this out for easy access.
 
 5. **Set the challenge**: "Your job as AI Engineers is to teach the AI these commands by adding them to the code."
 
@@ -125,7 +125,7 @@ Students work through challenges in the `challenges` folder while all system fil
 
 **Instructions for Students**:
 
-1. Change `SHOW_COMMANDS = False` to `True`
+1. Explore the code and see if you can enable the feature that shows the commands the AI sends to the robot. Take a few minutes to look around and try things out. If you get stuck, look for a line that says `SHOW_COMMANDS = False` and change it to `True`. If you are not sure what to do, ask GitHub Copilot for help.
 2. Run the program and notice the transparency features
 3. Try various commands and observe what the AI actually sends to the robot
 
@@ -141,7 +141,7 @@ Students work through challenges in the `challenges` folder while all system fil
 
 **Instructions for Students**:
 
-1. Change `ENABLE_SEQUENCES = True`
+1. Explore the code and see if you can enable command sequences for the robot. Take a few minutes to look around and try things out. If you get stuck, look for a line that says `ENABLE_SEQUENCES = False` and change it to `True`. If you are not sure what to do, ask GitHub Copilot for help.
 2. Add sequence commands using the format shown in comments
 3. Create creative sequences like "dance" or "morning routine"
 4. Test the multi-step behaviors
@@ -155,11 +155,10 @@ Students work through challenges in the `challenges` folder while all system fil
 #### Challenge 4: RAG Implementation (15 minutes)
 
 **Learning Goal**: Implement Retrieval Augmented Generation (RAG) - simplified version
-
 **Instructions for Students**:
 
-1. Change `ENABLE_FULL_API = True`
-2. Implement the `fetch_api_documentation()` function
+1. Explore the code and see if you can turn on full API access for the robot. Take a few minutes to look around and try things out. If you get stuck, look for a line that says `ENABLE_FULL_API = False` and change it to `True`. If you are not sure what to do, ask GitHub Copilot for help.
+2. Implement the `fetch_api_documentation()` function. Use GitHub Copilot to help!
 3. Test the AI with access to full robot capabilities
 
 **Facilitator Notes**:
@@ -172,7 +171,7 @@ Students work through challenges in the `challenges` folder while all system fil
 
 #### Challenge 5: Robot Arm Control (15 minutes) - OPTIONAL
 
-**Prerequisites**: Bittle X+Arm model required (robot dog with arm attachment)
+**Prerequisites**: [Bittle X+Arm model](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled?variant=49985955791160) required (robot dog with arm attachment)
 
 **Learning Goal**: Master complex robot control through expert prompting and documentation reading
 
@@ -253,8 +252,8 @@ Use Challenge 2 to discuss:
 **Import Errors**:
 
 - Verify all files are in the correct folders
-- Check that `lib` folder contains all required files
-- Restart VS Code if needed
+- Check that the `lib` folder contains all required files
+- Make sure all modules listed in `lib/requirements.txt` are installed. You can install them by running this command in your terminal: `pip install -r requirements.txt`.
 
 ### Wrap-up Discussion (10 minutes)
 
@@ -264,13 +263,6 @@ Use Challenge 2 to discuss:
 - Why is transparency important when AI controls physical devices?
 - How could you apply these AI Engineering principles to other projects?
 - What did you learn about using AI tools to solve problems?
-
-**Extension Ideas**:
-
-- Add custom robot behaviors
-- Create voice control using speech recognition
-- Connect multiple robots for coordinated actions
-- Build a web interface for robot control
 
 ### Assessment
 
