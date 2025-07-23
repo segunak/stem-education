@@ -18,7 +18,9 @@ AI Engineering/
 │   ├── challenge-2-transparency.py
 │   ├── challenge-3-sequences.py
 │   ├── challenge-4-rag.py
-│   └── robot-dog-commands.md
+│   ├── challenge-5-robot-arm.py (OPTIONAL - requires arm)
+│   ├── robot-dog-commands.md
+│   └── robot-arm-commands.md
 └── lib/                 ← SYSTEM FILES (don't edit these)
     ├── robot_controller.py
     ├── PetoiRobot.py
@@ -38,6 +40,8 @@ AI Engineering/
 
 **Challenge 4**: Implement RAG (Retrieval Augmented Generation) with live API data
 
+**Challenge 5** (OPTIONAL): Master robot arm control through natural language - requires [Bittle X+Arm model](https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled?variant=49985955791160)
+
 ## 💡 Tips
 
 - **Use GitHub Copilot**: Click the Copilot button in VS Code (upper right)
@@ -54,3 +58,7 @@ AI Engineering/
 **Important**: The `.env` file must be in the `lib` folder, not the `challenges` folder!
 
 Ask your instructor for help with setup!
+
+## 🦾 Optional Robot Arm Challenge
+
+If your robot has an arm attachment, you can try Challenge 5! This challenge teaches you how to control complex hardware through natural language and good documentation reading. No code changes needed, just expert prompting skills!
