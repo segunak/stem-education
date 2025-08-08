@@ -15,6 +15,8 @@ import urllib.request
 from PetoiRobot import *
 from openai import OpenAI
 from dotenv import load_dotenv
+import re
+from difflib import get_close_matches
 
 class RobotAI:
     """
@@ -196,12 +198,21 @@ RULES:
    - "pray", "please", "beg" → "pray" if available
    - "nod", "yes", "agree" → "nod" if available
 
-   SOUND INFERENCE:
-   - "bark", "woof", "dog sound" → "bark" if available
-   - "meow", "cat sound", "kitty" → "meow" if available
-   - "growl", "angry sound", "grrr" → "growl" if available
-   - "laugh", "haha", "funny" → "laugh" if available
-   - "cry", "sad", "boo hoo" → "cry" if available
+   CREATIVE ROUTINE INFERENCE:
+   - "make a routine", "create routine", "invent routine" → suggest available sequence commands
+   - "entertain", "entertainment", "perform" → "entertainment" sequence if available
+   - "workout", "exercise", "fitness" → "workout" or "fitness demo" sequence if available
+   - "party", "celebrate", "celebration" → "party time" or "celebration" sequence if available
+   - "superhero", "hero", "heroic" → "superhero" sequence if available
+   - "puppy", "playful", "cute" → "playful puppy" sequence if available
+   - "guard dog", "protect", "alert" → "guard dog" sequence if available
+   - "meet", "introduction", "greet" → "meet and greet" sequence if available
+   - "goodbye", "farewell", "bye" → "farewell" sequence if available
+   - "ninja", "stealth", "sneak" → "ninja mode" sequence if available
+   - "dramatic", "theater", "stage" → "dramatic" sequence if available
+   - "balance", "steady" → "balance master" sequence if available
+   - "flip", "acrobat" → "flip master" sequence if available
+   - "surprise", "random", "unexpected" → "surprise me" or "wild card" sequence if available
 
    ACTION INFERENCE:
    - "sniff", "smell", "investigate" → "sniff" if available
@@ -302,9 +313,9 @@ User: "entertain me" (infers fun trick from available commands)
 You: "How about a backflip!"
 EXECUTE:kbf
 
-User: "say woof" (infers dog sound if available)
-You: "Woof woof!"
-EXECUTE:kbark
+User: "say woof" (no sound commands available)
+You: "I don't have sound commands, but I can wave at you!"
+EXECUTE:kwh
 
 User: "greet my friend" (infers greeting behavior)
 You: "Hello there!"
@@ -596,7 +607,7 @@ EXECUTE:c-2
    - "good boy", "good dog" → kgdb
 
    SOUND INFERENCE (use full API commands):
-   - "bark", "woof", "dog sound" → kbark
+   - "bark", "woof", "dog sound" → suggest alternative action like wave or greet
    - "meow", "cat sound", "kitty" → kmeow
    - "growl", "angry sound", "grrr" → kgrowl
    - "laugh", "haha", "funny" → klaugh
@@ -713,9 +724,9 @@ User: "I need cheering up" (infers mood-lifting behavior)
 You: "Let me cheer for you!"
 EXECUTE:kchr
 
-User: "can you be a dog?" (infers dog behaviors)
-You: "Woof! I'll bark for you!"
-EXECUTE:kbark
+User: "can you be a dog?" (infers dog behaviors without sound)
+You: "I'll act like a dog with my movements!"
+EXECUTE:kwh
 
 User: "exercise time" (infers physical activity)
 You: "Let's do push-ups!"
@@ -757,6 +768,179 @@ QUIT:Goodbye!"""
     
     def _handle_user_message(self, user_message):
         """Process user message and execute robot commands"""
+        # Preprocess user message for minor spelling mistakes and known aliases
+        original_message = user_message
+        user_message = user_message.strip().lower()
+
+        # Quick early exit for quit intents
+        if user_message in {"quit", "exit", "leave", "close"}:
+            sendSkillStr("krest", 1)
+            return True
+
+    # Alias map (natural phrase -> canonical phrase) for better mapping before AI
+    # Keep this SHORT and focused (avoid huge list) so students still rely on AI mapping
+        alias_map = {
+            "front flip": "front flip",  # keep phrase explicit
+            "frontflip": "front flip",
+            "forward flip": "front flip",
+            "do a front flip": "front flip",
+            "do front flip": "front flip",
+            "do a flip forward": "front flip",
+            "back flip": "backflip",
+            "do a back flip": "backflip",
+            "hand stand": "handstand",
+            "hand stand up": "handstand",
+            "push ups": "pushup",
+            "push-ups": "pushup",
+            "playdead": "play dead",
+            "moon walk": "moonwalk",
+            "greet us": "greet",
+            "wave hello": "wave",
+            "hello": "greet",
+            "hi": "greet",
+            "hey": "greet",
+            "sit": "sit down",
+            "stand": "stand up",
+            "lay down": "rest",
+            "lie down": "rest",
+            "sleep": "rest",
+            "stop": "rest",
+        }
+
+        # Dynamic synonym generation for directional variants (walk, trot, crawl, bound, back)
+        directional_groups = [
+            ("walk forward", ["walk forward", "go forward", "move forward", "walk ahead", "forward walk"]),
+            ("walk left", ["walk left", "move left", "step left", "strafe left"]),
+            ("walk right", ["walk right", "move right", "step right", "strafe right"]),
+            ("walk backward", ["walk backward", "walk back", "move back", "back up", "reverse", "go back"]),
+            ("trot forward", ["trot forward", "trot ahead", "fast walk", "light run forward"]),
+            ("crawl forward", ["crawl forward", "crawl ahead", "low crawl", "stealth crawl"]),
+            ("crawl left", ["crawl left", "low left" ]),
+            ("crawl right", ["crawl right", "low right" ]),
+            ("trot left", ["trot left" ]),
+            ("trot right", ["trot right" ]),
+            ("bound forward", ["bound forward", "hop forward", "bounce forward"]),
+            ("jump forward", ["jump forward", "leap forward"]),
+            ("spin left", ["spin left", "turn left", "rotate left"]),
+            ("spin right", ["spin right", "turn right", "rotate right"]),
+        ]
+        for canonical, syns in directional_groups:
+            for s in syns:
+                alias_map.setdefault(s, canonical)
+
+        # Trick synonyms
+        trick_syns = {
+            "backflip": ["back flip", "do a backflip", "do a back flip", "flip backwards"],
+            "front flip": ["forward flip", "do a front flip", "flip forward"],
+            "roll": ["barrel roll", "do a roll"],
+            "pushup": ["push up", "push ups", "do push ups", "do pushups"],
+            "boxing": ["box", "fight", "punch"],
+            "handstand": ["hand stand", "stand on hands", "hands stand"],
+            "high five": ["highfive", "give me five", "give a high five"],
+            "show off": ["showoff", "show me off"],
+            "moonwalk": ["moon walk"],
+            "play dead": ["playdead", "dead", "be dead"],
+            "recover": ["get back up", "stand back up", "get up again"],
+        }
+        for canon, syns in trick_syns.items():
+            for s in syns:
+                alias_map.setdefault(s, canon)
+
+        # Emotion / social synonyms
+        social_syns = {
+            "greet": ["say hi", "say hello", "greet us", "hi", "hello", "hey"],
+            "hug": ["give a hug"],
+            "angry": ["mad", "grr", "angry face"],
+            "cheer": ["celebrate", "yay", "hooray"],
+            "good boy": ["good dog", "good boy trick"],
+            "thank": ["thanks", "thank you"],
+            "hands up": ["raise hands", "hands in the air"],
+            "high five": ["give five", "give me a five"],
+            "pray": ["beg", "please"],
+        }
+        for canon, syns in social_syns.items():
+            for s in syns:
+                alias_map.setdefault(s, canon)
+
+        # Maintenance / rest synonyms
+        maintain_syns = {
+            "rest": ["relax", "calm down"],
+            "zero": ["reset", "default position", "neutral"],
+            "balance": ["steady", "stabilize"],
+            "sleep": ["go to sleep", "nap"],
+            "calib": ["calibrate"],
+        }
+        for canon, syns in maintain_syns.items():
+            for s in syns:
+                alias_map.setdefault(s, canon)
+
+        # Creative routine synonyms for better recognition
+        routine_syns = {
+            "entertainment": ["entertain", "entertain me", "perform", "show me something", "do something fun"],
+            "workout": ["work out", "exercise", "fitness", "train", "athletic routine", "be athletic"],
+            "party time": ["party", "celebrate", "celebration", "let's party"],
+            "superhero": ["be a superhero", "hero", "heroic", "be a hero", "act like a hero", "strike a heroic pose"],
+            "playful puppy": ["be a puppy", "puppy", "playful", "cute", "adorable", "be cute", "act cute"],
+            "guard dog": ["be a guard dog", "protect", "alert", "be protective", "watch", "guard"],
+            "meet and greet": ["meet", "introduction", "greet everyone", "say hello to everyone"],
+            "surprise me": ["surprise", "surprise me", "random", "unexpected", "amaze me", "do something unexpected"],
+            "dramatic": ["be dramatic", "theater", "theatrical", "act dramatic", "drama"],
+            "ninja mode": ["be a ninja", "ninja", "stealth", "sneak", "be sneaky", "stealth mode"],
+            "balance master": ["show balance", "balance skills", "balancing"],
+            "flip master": ["show flips", "acrobat", "acrobatic", "flip tricks"],
+            "wild card": ["go wild", "crazy", "wild", "be random", "chaos"],
+            "happy dance": ["happy", "joy", "joyful", "be happy"],
+            "comedy show": ["be funny", "funny", "make me laugh", "comedy"],
+            "circus act": ["circus", "performer", "circus performer"],
+            "morning routine": ["morning", "wake up", "good morning"],
+            "celebration": ["celebrate", "victory", "hooray", "yay"],
+            "thank you": ["thank", "thanks", "grateful"],
+            "confused": ["confused", "puzzled", "what"],
+            "zen mode": ["zen", "meditate", "peaceful", "calm"]
+        }
+        for canon, syns in routine_syns.items():
+            for s in syns:
+                alias_map.setdefault(s, canon)
+
+        # Lightweight spelling correction for single-word near matches of available commands
+        available_names = list(self.commands.keys())
+        # If message is short (<=25 chars) try to correct entire message first
+        if user_message not in available_names and len(user_message.split()) <= 3:
+            close = get_close_matches(user_message, available_names, n=1, cutoff=0.86)
+            if close:
+                user_message = close[0]
+
+        # Apply alias replacement if full phrase matches
+        if user_message in alias_map:
+            user_message = alias_map[user_message]
+
+        # Direct command execution bypassing AI if exact name after aliasing
+        if user_message in self.commands and 'command' in self.commands[user_message]:
+            info = self.commands[user_message]
+            command = info['command']
+            print(f"\n🤖 AI: Executing {user_message}!")
+            if self.show_commands:
+                print(f"   ⚡ Sending to robot: {command}")
+            sendSkillStr(command, 1)
+            return False
+
+        # Heuristic front flip/backflip bridging if synonyms present
+        if re.search(r"front\s*flip|forward flip", user_message):
+            # If front flip code exists use it else map to backflip as fallback
+            front_code = None
+            # Search known front flip variants in command dict values
+            for k, v in self.commands.items():
+                if v.get('command') == 'kff':
+                    front_code = v['command']
+                    break
+            chosen = front_code or 'kbf'
+            label = 'front flip' if front_code else 'backflip'
+            print(f"\n🤖 AI: Doing a {label}!")
+            if self.show_commands:
+                print(f"   ⚡ Sending to robot: {chosen}")
+            sendSkillStr(chosen, 1)
+            return False
+
         print(f"\n💭 AI is thinking...")
         
         # Check for command sequences first (Challenge 3)
