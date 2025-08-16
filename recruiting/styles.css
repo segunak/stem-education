@@ -508,6 +508,39 @@ section {
     color: var(--primary-light);
 }
 
+/* Interview Resources Section */
+.interview-resources {
+    margin: var(--space-lg) 0;
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.resource-item {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.resource-item h4 {
+    color: var(--text-color);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+}
+
+.resource-item p {
+    color: var(--text-color);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+}
+
+.resource-item .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
 /* Enhanced Advice Links */
 .advice-links {
     display: grid;
