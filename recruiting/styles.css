@@ -481,7 +481,6 @@ header {
     color: var(--primary-color);
     font-weight: 500;
     font-size: 0.9375rem;
-    word-break: break-all;
     text-decoration: underline;
 }
 
@@ -919,10 +918,6 @@ footer .disclaimer {
     
     .resource-card {
         padding: var(--space-lg);
-    }
-    
-    .internship-list li {
-        padding: var(--space-sm);
     }
 }
 
