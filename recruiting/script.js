@@ -2,69 +2,44 @@
 const stepCards = document.querySelectorAll('.step-card');
 const resourceCards = document.querySelectorAll('.resource-card');
 const internshipCards = document.querySelectorAll('.internship-card');
+const adviceLinks = document.querySelectorAll('.advice-link');
 
-// Add entrance animations when cards come into view
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Initialize animations
-function initAnimations() {
-    // Set initial state for animated elements
-    [...stepCards, ...resourceCards].forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-}
-
-// Track internship clicks
+// Simple tracking for internship clicks
 function trackInternshipClicks() {
-    internshipCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            // Add a visual feedback
-            card.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                card.style.transform = '';
-            }, 150);
-            
-            console.log(`Internship ${index + 1} clicked`);
+    const internshipLinks = document.querySelectorAll('.internship-list a');
+    
+    internshipLinks.forEach((link, index) => {
+        link.addEventListener('click', (e) => {
+            console.log(`Internship link ${index + 1} clicked: ${link.href}`);
         });
     });
 }
 
-// Smooth scroll for internal links
+// Enhanced smooth scroll with offset for fixed header
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerOffset = 80; // Account for sticky header
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
     });
 }
 
-// Add hover effects to buttons
+// Simple button interactions - just basic hover effects
 function initButtonEffects() {
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mouseenter', () => {
-            btn.style.transform = 'translateY(-2px) scale(1.02)';
+            btn.style.transform = 'translateY(-1px)';
         });
         
         btn.addEventListener('mouseleave', () => {
@@ -73,39 +48,69 @@ function initButtonEffects() {
     });
 }
 
-// Progress indicator for steps
-function initProgressIndicator() {
-    const steps = document.querySelectorAll('.step-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const stepNumber = entry.target.querySelector('.step-number');
-                stepNumber.style.background = 'rgba(242, 19, 104, 0.8)';
-                stepNumber.style.transform = 'scale(1.1)';
-                
-                setTimeout(() => {
-                    stepNumber.style.transform = 'scale(1)';
-                }, 300);
-            }
-        });
-    }, { threshold: 0.5 });
+// Remove step progress tracking and parallax - too distracting
+
+// Enhanced accessibility features
+function initAccessibilityFeatures() {
+    // Add skip link
+    const skipLink = document.createElement('a');
+    skipLink.href = '#steps';
+    skipLink.textContent = 'Skip to main content';
+    skipLink.style.cssText = `
+        position: absolute;
+        left: -9999px;
+        z-index: 999;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 0 0 4px 0;
+    `;
     
-    steps.forEach(step => observer.observe(step));
+    skipLink.addEventListener('focus', () => {
+        skipLink.style.left = '0';
+    });
+    
+    skipLink.addEventListener('blur', () => {
+        skipLink.style.left = '-9999px';
+    });
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Enhance focus management
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('user-is-tabbing');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('user-is-tabbing');
+    });
 }
 
-// Initialize all functionality
+// Initialize all functionality - much simpler now
 document.addEventListener('DOMContentLoaded', () => {
-    initAnimations();
     trackInternshipClicks();
     initSmoothScroll();
     initButtonEffects();
-    initProgressIndicator();
+    initAccessibilityFeatures();
     
-    // Add a welcome message
-    console.log('🚀 Microsoft Internship Portal loaded! Ready to launch your career?');
+    // Add minimal CSS for basic interactions
+    const style = document.createElement('style');
+    style.textContent = `
+        .user-is-tabbing *:focus {
+            outline: 3px solid rgba(79, 70, 229, 0.6) !important;
+            outline-offset: 2px !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Simple welcome message
+    console.log('🚀 Microsoft Internship Portal loaded!');
 });
 
-// Easter egg - Konami code for motivation
+// Enhanced Easter egg with better UX
 let konamiCode = [];
 const konamiSequence = [
     'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -134,53 +139,49 @@ function showMotivationalMessage() {
     
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     
-    // Create a temporary modal
+    // Create enhanced modal
     const modal = document.createElement('div');
     modal.style.cssText = `
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(135deg, #0092ca, #f21368);
+        transform: translate(-50%, -50%) scale(0);
+        background: linear-gradient(135deg, #4f46e5, #06b6d4);
         color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         z-index: 1000;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 600;
-        max-width: 400px;
-        animation: bounceIn 0.6s ease;
+        max-width: 450px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
     `;
     
     modal.innerHTML = `
         ${randomMessage}
         <br><br>
-        <small style="opacity: 0.8;">Keep pushing forward! 💙</small>
+        <small style="opacity: 0.9; font-size: 0.9rem;">Keep pushing forward! You're amazing! 💙</small>
     `;
     
     document.body.appendChild(modal);
     
+    // Animate in
     setTimeout(() => {
-        modal.style.animation = 'fadeOut 0.5s ease';
-        setTimeout(() => document.body.removeChild(modal), 500);
-    }, 3000);
-}
-
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes bounceIn {
-        0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-        70% { transform: translate(-50%, -50%) scale(0.9); }
-        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    }
+        modal.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 10);
     
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+        modal.style.transform = 'translate(-50%, -50%) scale(0)';
+        setTimeout(() => modal.remove(), 300);
+    }, 4000);
+    
+    // Click to dismiss
+    modal.addEventListener('click', () => {
+        modal.style.transform = 'translate(-50%, -50%) scale(0)';
+        setTimeout(() => modal.remove(), 300);
+    });
+}
