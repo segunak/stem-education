@@ -381,7 +381,6 @@ section {
 }
 
 .referral-requirements::before {
-    content: '📝';
     position: absolute;
     top: var(--space-md);
     right: var(--space-md);
