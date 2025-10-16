@@ -13,12 +13,13 @@ const body = document.body;
 const professionalsData = {
   "charlotte": {
     "professionals": [
-      // {
-      //   "name": "James Bolling",
-      //   "title": "Charlotte Campus Director",
-      //   "linkedIn": "https://www.linkedin.com/in/jamesbolling/",
-      //   "notes": ""
-      // },
+      {
+        "name": "Moises Castro",
+        "title": "Principal Director of Software Engineering",
+        "linkedIn": "https://www.linkedin.com/in/moises-castro-52637117/",
+        "notes": "Charlotte Campus Director. 2024 Charlotte Business Journal Power 100 Honoree",
+        "isStarred": true
+      },
       {
         "name": "Chemere Davis",
         "title": "Charlotte Business Program Manager",
@@ -26,36 +27,30 @@ const professionalsData = {
         "isStarred": true,
         "notes": "Campus leader for community, culture, and employee experience, definitely connect!"
       },
-      {
-        "name": "Millie Kembe",
-        "title": "Software Engineer Intern",
-        "linkedIn": "https://www.linkedin.com/in/millie-kembe/",
-        "notes": ""
-      },
-      {
-        "name": "Thomas Chattman",
-        "title": "Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/thomas-chattmaniv/",
-        "notes": ""
-      },
-      {
-        "name": "Enya Schumacher",
-        "title": "Director of Customer Experience",
-        "linkedIn": "https://www.linkedin.com/in/enyaschumacher/",
-        "notes": ""
-      },
-      {
-        "name": "Joe Baily",
-        "title": "Security Specialist",
-        "linkedIn": "https://www.linkedin.com/in/joe-baily-662057165/",
-        "notes": ""
-      },
-      {
-        "name": "Da'Les Hill",
-        "title": "Marketing Consultant",
-        "linkedIn": "https://www.linkedin.com/in/dales-hill/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Thomas Chattman",
+      //   "title": "Program Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/thomas-chattmaniv/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Enya Schumacher",
+      //   "title": "Director of Customer Experience",
+      //   "linkedIn": "https://www.linkedin.com/in/enyaschumacher/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Joe Baily",
+      //   "title": "Security Specialist",
+      //   "linkedIn": "https://www.linkedin.com/in/joe-baily-662057165/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Da'Les Hill",
+      //   "title": "Marketing Consultant",
+      //   "linkedIn": "https://www.linkedin.com/in/dales-hill/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Liz Martin",
       //   "title": "Business Program Manager",
@@ -69,6 +64,36 @@ const professionalsData = {
         "notes": ""
       },
       {
+        "name": "Chinette Stevenson",
+        "title": "Principal Project Manager",
+        "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
+        "notes": ""
+      },
+      {
+        "name": "Amélie Kadackal",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/ameliekadackal/",
+        "notes": ""
+      },
+      {
+        "name": "Bidhya Shrestha",
+        "title": "Principal Software Engineer",
+        "linkedIn": "https://www.linkedin.com/in/bidhya/",
+        "notes": ""
+      },
+      {
+        "name": "James Beauchamp",
+        "title": "Onboarding Manager",
+        "linkedIn": "https://www.linkedin.com/in/jabeauchamp/",
+        "notes": ""
+      },
+      {
+        "name": "Ryan Werner",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/ryanwerner129/",
+        "notes": ""
+      },
+      {
         "name": "Will Case",
         "title": "Product Manager",
         "linkedIn": "https://www.linkedin.com/in/willspacecase/",
@@ -79,30 +104,30 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
         "notes": ""
       },
-      {
-        "name": "Jillian Dozier",
-        "title": "Business Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/jill-do/",
-        "notes": ""
-      },
       // {
-      //   "name": "Mohan Ravindran",
-      //   "title": "Cloud Solution Architect",
-      //   "linkedIn": "https://www.linkedin.com/in/mohan-ravindran-736a2516/",
+      //   "name": "Jillian Dozier",
+      //   "title": "Business Program Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/jill-do/",
       //   "notes": ""
       // },
       {
-        "name": "Amy Vargo",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
+        "name": "Mohan Ravindran",
+        "title": "Cloud Solution Architect",
+        "linkedIn": "https://www.linkedin.com/in/mohan-ravindran-736a2516/",
         "notes": ""
       },
-      {
-        "name": "LeShawn Johnson Vega",
-        "title": "Employee Relations Director",
-        "linkedIn": "https://www.linkedin.com/in/leshawnjohnsonvega-mba-mshrm/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Amy Vargo",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "LeShawn Johnson Vega",
+      //   "title": "Employee Relations Director",
+      //   "linkedIn": "https://www.linkedin.com/in/leshawnjohnsonvega-mba-mshrm/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Parth Desai",
       //   "title": "Support Engineer",
@@ -201,23 +226,10 @@ const professionalsData = {
         "notes": "Works on the Minecraft team"
       },
       {
-        "name": "Jerome Collins",
-        "title": "Commercial Executive",
-        "linkedIn": "https://www.linkedin.com/in/jerome-collins-7789862b/",
-        "notes": ""
-      },
-      {
         "name": "Rasuwl Walls",
         "title": "Director of Sales",
         "linkedIn": "https://www.linkedin.com/in/rasuwl/",
         "notes": ""
-      },
-      {
-        "name": "Lex Barbosa",
-        "title": "Design Operations Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/lexbarbosa/",
-        "notes": "2025 Charlotte Business Journal 40 under 40 Honoree",
-        "isStarred": true
       },
       {
         "name": "Trevor Suarez",
@@ -231,12 +243,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/mayhashah/",
       //   "notes": ""
       // },
-      {
-        "name": "Andrew Dawkins",
-        "title": "Senior Consultant", 
-        "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Andrew Dawkins",
+      //   "title": "Senior Consultant", 
+      //   "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
+      //   "notes": ""
+      // },
       {
         "name": "Kyle Watson",
         "title": "Talent Acquisition Manager",
@@ -281,19 +293,6 @@ const professionalsData = {
         "notes": ""
       },
       // {
-      //   "name": "Denisse Alvarado",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/denissealvarado/",
-      //   "notes": ""
-      // },
-      {
-        "name": "Moises Castro",
-        "title": "Principal Director of Software Engineering",
-        "linkedIn": "https://www.linkedin.com/in/moises-castro-52637117/",
-        "notes": "2024 Charlotte Business Journal Power 100 Honoree",
-        "isStarred": true
-      },
-      // {
       //   "name": "Tennill Mitchell",
       //   "title": "Relationship Manager",
       //   "linkedIn": "https://www.linkedin.com/in/tennill-mitchell-mfa-7a44565/",
@@ -317,30 +316,30 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/franzlmaurrasse/",
       //   "notes": ""
       // },
-      {
-        "name": "Cynthia Rice",
-        "title": "Technical Advisor",
-        "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Cynthia Rice",
+      //   "title": "Technical Advisor",
+      //   "linkedIn": "https://www.linkedin.com/in/cynthia-rice-20825a14/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Avlokita Sharma",
       //   "title": "Technical Support Engineer",
       //   "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
       //   "notes": ""
       // },
-      // {
-      //   "name": "Allan Matias",
-      //   "title": "Technical Support Engineer",
-      //   "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
-      //   "notes": ""
-      // },
       {
-        "name": "John Daly",
+        "name": "Allan Matias",
         "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
+        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
         "notes": ""
       },
+      // {
+      //   "name": "John Daly",
+      //   "title": "Technical Support Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/therealjohndaly/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Stacey Whitfield",
       //   "title": "Technical Support Engineer",
