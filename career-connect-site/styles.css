@@ -677,6 +677,10 @@ nav ul li a:hover::after {
     font-weight: 600;
 }
 
+.resource-links-nowrap {
+    white-space: nowrap;
+}
+
 /* Microsoft Connect Section */
 .ms-connect {
     background-color: var(--bg-gray);
