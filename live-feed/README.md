@@ -2,7 +2,7 @@
 
 A simple live posts feed site for STEM workshops. Students prove they can write code to hit a live endpoint by submitting posts programmatically. Posts appear on a shared screen in near real-time.
 
-**Live URL:** `https://stem.segunakinyemi.com/live-feed/`
+**Live URL:** <https://stem.segunakinyemi.com/live-feed/>
 
 ## Why This Exists
 
