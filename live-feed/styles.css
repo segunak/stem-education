@@ -118,12 +118,8 @@ a:hover {
 .header .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
-}
-
-.logo {
-    text-decoration: none;
 }
 
 .logo h1 {
@@ -136,18 +132,6 @@ a:hover {
 .logo span {
     color: var(--primary);
     font-weight: 400;
-}
-
-.back-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    font-weight: 500;
-    color: var(--gray-600);
-}
-
-.back-link:hover {
-    color: var(--primary);
 }
 
 /* ======= Main Content ======= */
