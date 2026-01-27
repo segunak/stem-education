@@ -78,7 +78,7 @@ data = {
     <span class="string">"Name"</span>: <span class="string">"Your Name Here"</span>,
     <span class="string">"Message"</span>: <span class="string">"Hello from Python! 🐍"</span>,
     <span class="string">"Tags"</span>: <span class="string">"python, workshop"</span>,
-    <span class="string">"Password"</span>: <span class="string">"ASK_YOUR_INSTRUCTOR"</span>
+    <span class="string">"WorkshopKey"</span>: <span class="string">"ASK_YOUR_INSTRUCTOR"</span>
 }
 
 <span class="comment"># Send the POST request</span>
@@ -93,7 +93,7 @@ response = requests.post(url, data=data)
                     <!-- JavaScript Panel -->
                     <div class="code-panel" id="javascript">
                         <pre><code><span class="comment">// JavaScript - Using fetch API</span>
-<span class="comment">// Works in browser console or Node.js 18+</span>
+<span class="comment">// Works in Node.js 18+ or local scripts. Browser console may be blocked by CORS.</span>
 
 <span class="keyword">const</span> url = <span class="string">"https://airtable.com/appC0ZE44OOVEtRsQ/pagGrhPFIxTCZQcS5/form"</span>;
 
@@ -102,7 +102,7 @@ response = requests.post(url, data=data)
 formData.<span class="function">append</span>(<span class="string">"Name"</span>, <span class="string">"Your Name Here"</span>);
 formData.<span class="function">append</span>(<span class="string">"Message"</span>, <span class="string">"Hello from JavaScript! 🚀"</span>);
 formData.<span class="function">append</span>(<span class="string">"Tags"</span>, <span class="string">"javascript, workshop"</span>);
-formData.<span class="function">append</span>(<span class="string">"Password"</span>, <span class="string">"ASK_YOUR_INSTRUCTOR"</span>);
+formData.<span class="function">append</span>(<span class="string">"WorkshopKey"</span>, <span class="string">"ASK_YOUR_INSTRUCTOR"</span>);
 
 <span class="comment">// Send the POST request</span>
 <span class="function">fetch</span>(url, {
@@ -128,10 +128,10 @@ formData.<span class="function">append</span>(<span class="string">"Password"</s
 
 <span class="comment"># Your post data</span>
 <span class="variable">$body</span> = @{
-    Name     = <span class="string">"Your Name Here"</span>
-    Message  = <span class="string">"Hello from PowerShell! 💻"</span>
-    Tags     = <span class="string">"powershell, workshop"</span>
-    Password = <span class="string">"ASK_YOUR_INSTRUCTOR"</span>
+    Name        = <span class="string">"Your Name Here"</span>
+    Message     = <span class="string">"Hello from PowerShell! 💻"</span>
+    Tags        = <span class="string">"powershell, workshop"</span>
+    WorkshopKey = <span class="string">"ASK_YOUR_INSTRUCTOR"</span>
 }
 
 <span class="comment"># Send the POST request</span>
@@ -144,6 +144,11 @@ formData.<span class="function">append</span>(<span class="string">"Password"</s
 }</code></pre>
                     </div>
                 </div>
+                
+                <p class="success-hint">
+                    <i class="fas fa-check-circle"></i>
+                    If it worked, you'll see your Name and Message appear in the feed within a few seconds.
+                </p>
             </section>
 
             <!-- Optional Form Preview -->

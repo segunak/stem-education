@@ -260,6 +260,23 @@ a:hover {
 .code-panel .variable { color: var(--code-variable); }
 .code-panel .param { color: var(--code-param); }
 
+.success-hint {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background-color: #ecfdf5;
+    border-left: 4px solid #10b981;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    color: #065f46;
+}
+
+.success-hint i {
+    color: #10b981;
+}
+
 /* ======= Form Preview Accordion ======= */
 .form-preview-section {
     margin-bottom: var(--space-xl);

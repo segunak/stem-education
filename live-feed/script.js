@@ -17,7 +17,7 @@ const formAccordion = document.getElementById('formAccordion');
 // ======= State =======
 let isLiveMode = false;
 let refreshInterval = null;
-const REFRESH_INTERVAL_MS = 10000; // 10 seconds
+const REFRESH_INTERVAL_MS = 5000; // 5 seconds
 
 // ======= Initialize =======
 function init() {
@@ -114,7 +114,7 @@ function updateStatusText() {
     } else if (document.visibilityState === 'hidden') {
         statusText.textContent = 'Paused (tab hidden)';
     } else {
-        statusText.textContent = 'Refreshing every 10s';
+        statusText.textContent = 'Refreshing every 5s';
     }
 }
 
