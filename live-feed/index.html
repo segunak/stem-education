@@ -60,6 +60,12 @@
                     <button class="tab-btn" data-tab="powershell">
                         <i class="fas fa-terminal"></i> PowerShell
                     </button>
+                    <button class="tab-btn" data-tab="bash">
+                        <i class="fas fa-terminal"></i> Bash
+                    </button>
+                    <button class="tab-btn" data-tab="curl">
+                        <i class="fas fa-code"></i> cURL
+                    </button>
                 </div>
 
                 <div class="code-panels">
@@ -142,6 +148,49 @@ formData.<span class="function">append</span>(<span class="string">"WorkshopKey"
 <span class="keyword">catch</span> {
     <span class="function">Write-Host</span> <span class="string">"Error: $($_.Exception.Message)"</span> <span class="param">-ForegroundColor</span> Red
 }</code></pre>
+                    </div>
+
+                    <!-- Bash Panel -->
+                    <div class="code-panel" id="bash">
+                        <pre><code><span class="comment"># Bash - Using curl command</span>
+<span class="comment"># Works on Linux, macOS, and Windows (Git Bash/WSL)</span>
+
+<span class="comment"># Airtable form submission URL</span>
+<span class="variable">URL</span>=<span class="string">"https://airtable.com/appC0ZE44OOVEtRsQ/pagGrhPFIxTCZQcS5/form"</span>
+
+<span class="comment"># Your post data</span>
+<span class="variable">NAME</span>=<span class="string">"Your Name Here"</span>
+<span class="variable">MESSAGE</span>=<span class="string">"Hello from Bash! 🐧"</span>
+<span class="variable">TAGS</span>=<span class="string">"bash, workshop"</span>
+<span class="variable">WORKSHOP_KEY</span>=<span class="string">"ASK_YOUR_INSTRUCTOR"</span>
+
+<span class="comment"># Send the POST request</span>
+curl -X POST <span class="string">"<span class="variable">$URL</span>"</span> \
+  -d <span class="string">"Name=<span class="variable">$NAME</span>"</span> \
+  -d <span class="string">"Message=<span class="variable">$MESSAGE</span>"</span> \
+  -d <span class="string">"Tags=<span class="variable">$TAGS</span>"</span> \
+  -d <span class="string">"WorkshopKey=<span class="variable">$WORKSHOP_KEY</span>"</span>
+
+<span class="keyword">if</span> [ <span class="variable">$?</span> -eq <span class="number">0</span> ]; <span class="keyword">then</span>
+    <span class="function">echo</span> <span class="string">"Post submitted successfully!"</span>
+<span class="keyword">else</span>
+    <span class="function">echo</span> <span class="string">"Error submitting post"</span>
+<span class="keyword">fi</span></code></pre>
+                    </div>
+
+                    <!-- cURL Panel -->
+                    <div class="code-panel" id="curl">
+                        <pre><code><span class="comment"># cURL - Direct command (copy and paste)</span>
+<span class="comment"># Replace the placeholder values before running</span>
+
+curl -X POST <span class="string">"https://airtable.com/appC0ZE44OOVEtRsQ/pagGrhPFIxTCZQcS5/form"</span> \
+  -d <span class="string">"Name=Your Name Here"</span> \
+  -d <span class="string">"Message=Hello from cURL! 📡"</span> \
+  -d <span class="string">"Tags=curl, workshop"</span> \
+  -d <span class="string">"WorkshopKey=ASK_YOUR_INSTRUCTOR"</span>
+
+<span class="comment"># One-liner version:</span>
+curl -X POST <span class="string">"https://airtable.com/appC0ZE44OOVEtRsQ/pagGrhPFIxTCZQcS5/form"</span> -d <span class="string">"Name=Your Name"</span> -d <span class="string">"Message=Hello!"</span> -d <span class="string">"Tags=curl"</span> -d <span class="string">"WorkshopKey=ASK_YOUR_INSTRUCTOR"</span></code></pre>
                     </div>
                 </div>
                 
