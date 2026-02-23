@@ -445,6 +445,18 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/rewkowski/",
         "notes": ""
       },
+      {
+        "name": "Darlisha Campbell",
+        "title": "Tech Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
+        "notes": ""
+      },
+      {
+        "name": "Danny Davenport",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/danny-davenport-524802123/",
+        "notes": ""
+      },
       // {
       //   "name": "Ria Simpson",
       //   "title": "Business Administrator",
