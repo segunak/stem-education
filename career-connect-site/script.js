@@ -27,6 +27,43 @@ const professionalsData = {
         "isStarred": true,
         "notes": "Campus leader for community, culture, and employee experience, definitely connect!"
       },
+      {
+        "name": "Kyle Watson",
+        "title": "Talent Acquisition Manager",
+        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
+        "notes": "Works in recruiting!",
+        "isStarred": true
+      },
+      {
+        "name": "Melanie Haywood",
+        "title": "Supportability Manager",
+        "linkedIn": "https://www.linkedin.com/in/melanie-ortiz-haywood/",
+        "notes": ""
+      },
+      {
+        "name": "Dave Vespa",
+        "title": "Software Engineer",
+        "linkedIn": "https://www.linkedin.com/in/drvespa/",
+        "notes": ""
+      },
+      {
+        "name": "Pauline Robinson",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
+        "notes": ""
+      },
+      {
+        "name": "Amy Vargo",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
+        "notes": ""
+      },
+      {
+        "name": "Rasuwl Walls",
+        "title": "Director of Sales",
+        "linkedIn": "https://www.linkedin.com/in/rasuwl/",
+        "notes": ""
+      },
       // {
       //   "name": "Thomas Chattman",
       //   "title": "Program Manager",
@@ -116,12 +153,6 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/mohan-ravindran-736a2516/",
         "notes": ""
       },
-      // {
-      //   "name": "Amy Vargo",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
-      //   "notes": ""
-      // },
       // {
       //   "name": "LeShawn Johnson Vega",
       //   "title": "Employee Relations Director",
@@ -226,12 +257,6 @@ const professionalsData = {
         "notes": "Works on the Minecraft team"
       },
       {
-        "name": "Rasuwl Walls",
-        "title": "Director of Sales",
-        "linkedIn": "https://www.linkedin.com/in/rasuwl/",
-        "notes": ""
-      },
-      {
         "name": "Trevor Suarez",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
@@ -249,13 +274,6 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
       //   "notes": ""
       // },
-      {
-        "name": "Kyle Watson",
-        "title": "Talent Acquisition Manager",
-        "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
-        "notes": "Works in recruiting!",
-        "isStarred": true
-      },
       {
         "name": "Jimmy Avila",
         "title": "Cloud Solution Architect",
@@ -286,22 +304,10 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/danielsntn/",
       //   "notes": ""
       // },
-      {
-        "name": "Pauline Robinson",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
-        "notes": ""
-      },
       // {
       //   "name": "Tennill Mitchell",
       //   "title": "Relationship Manager",
       //   "linkedIn": "https://www.linkedin.com/in/tennill-mitchell-mfa-7a44565/",
-      //   "notes": ""
-      // },
-      // {
-      //   "name": "Dave Vespa",
-      //   "title": "Software Engineer",
-      //   "linkedIn": "https://www.linkedin.com/in/drvespa/",
       //   "notes": ""
       // },
       // {
