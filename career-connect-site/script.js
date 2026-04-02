@@ -34,28 +34,34 @@ const professionalsData = {
         "notes": "Works in recruiting!",
         "isStarred": true
       },
+      // {
+      //   "name": "Melanie Haywood",
+      //   "title": "Supportability Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/melanie-ortiz-haywood/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Dave Vespa",
+      //   "title": "Software Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/drvespa/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Pauline Robinson",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Amy Vargo",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
+      //   "notes": ""
+      // },
       {
-        "name": "Melanie Haywood",
-        "title": "Supportability Manager",
-        "linkedIn": "https://www.linkedin.com/in/melanie-ortiz-haywood/",
-        "notes": ""
-      },
-      {
-        "name": "Dave Vespa",
-        "title": "Software Engineer",
-        "linkedIn": "https://www.linkedin.com/in/drvespa/",
-        "notes": ""
-      },
-      {
-        "name": "Pauline Robinson",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/pauline-robinson/",
-        "notes": ""
-      },
-      {
-        "name": "Amy Vargo",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/amy-vargo-20022313a/",
+        "name": "Joel Grant",
+        "title": "Cloud Solution Architect",
+        "linkedIn": "https://www.linkedin.com/in/joel-grant-130233121/",
         "notes": ""
       },
       {
@@ -94,65 +100,72 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/liz-martin-rhia-cdip-cpc-cpc-i-crc-52537813a/",
       //   "notes": ""
       // },
-      {
-        "name": "Samuel Blackmon",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/sblackmon/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Samuel Blackmon",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/sblackmon/",
+      //   "notes": ""
+      // },
       {
         "name": "Chinette Stevenson",
         "title": "Principal Project Manager",
         "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
         "notes": ""
       },
-      {
-        "name": "Amélie Kadackal",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/ameliekadackal/",
-        "notes": ""
-      },
-      {
-        "name": "Bidhya Shrestha",
-        "title": "Principal Software Engineer",
-        "linkedIn": "https://www.linkedin.com/in/bidhya/",
-        "notes": ""
-      },
-      {
-        "name": "James Beauchamp",
-        "title": "Onboarding Manager",
-        "linkedIn": "https://www.linkedin.com/in/jabeauchamp/",
-        "notes": ""
-      },
-      {
-        "name": "Ryan Werner",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/ryanwerner129/",
-        "notes": ""
-      },
-      {
-        "name": "Will Case",
-        "title": "Product Manager",
-        "linkedIn": "https://www.linkedin.com/in/willspacecase/",
-        "notes": ""
-      },      {
-        "name": "Kristoff Little",
-        "title": "Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
-        "notes": ""
-      },
       // {
-      //   "name": "Jillian Dozier",
-      //   "title": "Business Program Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/jill-do/",
+      //   "name": "Amélie Kadackal",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/ameliekadackal/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Bidhya Shrestha",
+      //   "title": "Principal Software Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/bidhya/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "James Beauchamp",
+      //   "title": "Onboarding Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/jabeauchamp/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Ryan Werner",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/ryanwerner129/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Will Case",
+      //   "title": "Product Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/willspacecase/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Kristoff Little",
+      //   "title": "Support Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
       //   "notes": ""
       // },
       {
-        "name": "Mohan Ravindran",
-        "title": "Cloud Solution Architect",
-        "linkedIn": "https://www.linkedin.com/in/mohan-ravindran-736a2516/",
+        "name": "Lamont Nell",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/lamontnell/",
         "notes": ""
       },
+      {
+        "name": "Jillian Dozier",
+        "title": "Business Program Manager",
+        "linkedIn": "https://www.linkedin.com/in/jill-do/",
+        "notes": ""
+      },
+      // {
+      //   "name": "Mohan Ravindran",
+      //   "title": "Cloud Solution Architect",
+      //   "linkedIn": "https://www.linkedin.com/in/mohan-ravindran-736a2516/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "LeShawn Johnson Vega",
       //   "title": "Employee Relations Director",
@@ -165,12 +178,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/parth-82996a211/",
       //   "notes": ""
       // },
-      // {
-      //   "name": "Christopher Love",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
-      //   "notes": ""
-      // },
+      {
+        "name": "Christopher Love",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
+        "notes": ""
+      },
       // {
       //   "name": "Holly Todd",
       //   "title": "Customer Success Account Manager",
@@ -244,6 +257,24 @@ const professionalsData = {
         "notes": "2025 Charlotte Business Journal Women in Business Honoree",
         "isStarred": true
       },
+      {
+        "name": "Adrian Stewart",
+        "title": "Azure Cloud Engineer",
+        "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
+        "notes": ""
+      },
+      {
+        "name": "Myriam Johnson",
+        "title": "Customer Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
+        "notes": ""
+      },
+      // { 
+      //   "name": "Cianna Edwards",
+      //   "title": "Digital Specialist",
+      //   "linkedIn": "https://www.linkedin.com/in/cianna-edwards/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Brandon Gary",
       //   "title": "Thermal Architect",
@@ -256,12 +287,12 @@ const professionalsData = {
         "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
         "notes": "Works on the Minecraft team"
       },
-      {
-        "name": "Trevor Suarez",
-        "title": "Cloud Solution Architect",
-        "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Trevor Suarez",
+      //   "title": "Cloud Solution Architect",
+      //   "linkedIn": "https://www.linkedin.com/in/trevorsuarez/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Mayha Shah",
       //   "title": "Cloud Solution Architect",
@@ -274,12 +305,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/andrewdawkinsit/",
       //   "notes": ""
       // },
-      {
-        "name": "Jimmy Avila",
-        "title": "Cloud Solution Architect",
-        "linkedIn": "https://www.linkedin.com/in/jimmyavila/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Jimmy Avila",
+      //   "title": "Cloud Solution Architect",
+      //   "linkedIn": "https://www.linkedin.com/in/jimmyavila/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Henrique Oliveira",
       //   "title": "Cloud Solution Architect",
@@ -334,12 +365,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/avlokita-sharma220201/",
       //   "notes": ""
       // },
-      {
-        "name": "Allan Matias",
-        "title": "Technical Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Allan Matias",
+      //   "title": "Technical Support Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/allanmatias1986/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "John Daly",
       //   "title": "Technical Support Engineer",
@@ -384,24 +415,23 @@ const professionalsData = {
         "isStarred": true
       },
       {
+        "name": "Danny Davenport",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/danny-davenport-524802123/",
+        "notes": ""
+      },
+      {
         "name": "Tenesha Robinson",
         "title": "Senior Consultant",
         "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-62046337/",
         "notes": ""
       },
       {
-        "name": "Chenae Erkerd",
-        "title": "Technical Recruiter",
-        "linkedIn": "https://www.linkedin.com/in/chenae-erkerd-j-d-racr-798b2389/",
-        "notes": "Works in recruiting!",
-        "isStarred": true
+        "name": "Nevonda Davis",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/nevondamba/",
+        "notes": ""
       },
-      // {
-      //   "name": "Nevonda Davis",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/nevondamba/",
-      //   "notes": ""
-      // },
       {
         "name": "Breanne Dixon",
         "title": "Recruiter",
@@ -450,13 +480,7 @@ const professionalsData = {
         "title": "Tech Support Engineer",
         "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
         "notes": ""
-      },
-      {
-        "name": "Danny Davenport",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/danny-davenport-524802123/",
-        "notes": ""
-      },
+      }
       // {
       //   "name": "Ria Simpson",
       //   "title": "Business Administrator",
@@ -484,148 +508,148 @@ currentYearSpan.textContent = new Date().getFullYear();
 
 // Mobile Navigation Toggle
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-    body.classList.toggle('menu-open'); // Lock scrolling when menu is open
+  hamburger.classList.toggle('active');
+  nav.classList.toggle('active');
+  body.classList.toggle('menu-open'); // Lock scrolling when menu is open
 });
 
 // Close mobile nav when clicking a nav link
 document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        body.classList.remove('menu-open'); // Unlock scrolling
-    });
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    nav.classList.remove('active');
+    body.classList.remove('menu-open'); // Unlock scrolling
+  });
 });
 
 // Back to Top functionality
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) { // Show after scrolling down 500px
-        backToTopButton.classList.add('visible');
-    } else {
-        backToTopButton.classList.remove('visible');
-    }
+  if (window.scrollY > 500) { // Show after scrolling down 500px
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
 });
 
 backToTopButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Create and populate profile cards
 function displayProfiles() {
-    // Display Charlotte professionals
-    if (professionalsData.charlotte && professionalsData.charlotte.professionals) {
-        displayProfessionalCards(professionalsData.charlotte.professionals, charlotteProfilesGrid);
-    }
-    
-    // Display Raleigh professionals
-    if (professionalsData.raleigh && professionalsData.raleigh.professionals) {
-        displayProfessionalCards(professionalsData.raleigh.professionals, raleighProfilesGrid);
-    }
+  // Display Charlotte professionals
+  if (professionalsData.charlotte && professionalsData.charlotte.professionals) {
+    displayProfessionalCards(professionalsData.charlotte.professionals, charlotteProfilesGrid);
+  }
+
+  // Display Raleigh professionals
+  if (professionalsData.raleigh && professionalsData.raleigh.professionals) {
+    displayProfessionalCards(professionalsData.raleigh.professionals, raleighProfilesGrid);
+  }
 }
 
 // Display professional cards
 function displayProfessionalCards(professionals, container) {
-    container.innerHTML = '';
-    
-    professionals.forEach(profile => {
-        const profileCard = document.createElement('div');
-        profileCard.className = profile.isStarred ? 'profile-card creator-card' : 'profile-card';
-        
-        // Get initials for the avatar
-        const initials = profile.name.split(' ').map(n => n[0]).join('');
-        
-        let profileContent = `
+  container.innerHTML = '';
+
+  professionals.forEach(profile => {
+    const profileCard = document.createElement('div');
+    profileCard.className = profile.isStarred ? 'profile-card creator-card' : 'profile-card';
+
+    // Get initials for the avatar
+    const initials = profile.name.split(' ').map(n => n[0]).join('');
+
+    let profileContent = `
             <div class="profile-avatar">
                 <div class="initials">${initials}</div>
             </div>
             <div class="profile-info">
                 <h4>${profile.name}</h4>
         `;
-        
-        if (profile.title) {
-            profileContent += `<p><em>${profile.title}</em></p>`;
-        }
-        
-        if (profile.notes) {
-            profileContent += `<p><strong>Notes:</strong> ${profile.notes}</p>`;
-        }
-        
-        profileContent += `
+
+    if (profile.title) {
+      profileContent += `<p><em>${profile.title}</em></p>`;
+    }
+
+    if (profile.notes) {
+      profileContent += `<p><strong>Notes:</strong> ${profile.notes}</p>`;
+    }
+
+    profileContent += `
                 <a href="${profile.linkedIn}" target="_blank" class="profile-link">
                     <i class="fab fa-linkedin"></i> Connect
                 </a>
             </div>
         `;
-        
-        profileCard.innerHTML = profileContent;
-        container.appendChild(profileCard);
-    });
+
+    profileCard.innerHTML = profileContent;
+    container.appendChild(profileCard);
+  });
 }
 
 // Tab functionality for Charlotte and Raleigh profiles
 tabButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const targetTab = button.getAttribute('data-tab');
-        
-        // Update active states
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        button.classList.add('active');
-        document.getElementById(`${targetTab}-tab`).classList.add('active');
-    });
+  button.addEventListener('click', () => {
+    const targetTab = button.getAttribute('data-tab');
+
+    // Update active states
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
+
+    button.classList.add('active');
+    document.getElementById(`${targetTab}-tab`).classList.add('active');
+  });
 });
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            // Add a small additional offset for better spacing
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      // Add a small additional offset for better spacing
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
 });
 
 // Animate elements on scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.resource-card, .ms-resource, .step, .profile-card, .key-profile-card');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('animate');
-        }
-    });
+  const elements = document.querySelectorAll('.resource-card, .ms-resource, .step, .profile-card, .key-profile-card');
+
+  elements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+
+    if (elementTop < window.innerHeight - elementVisible) {
+      element.classList.add('animate');
+    }
+  });
 }
 
 // Initialize the page
 function init() {
-    displayProfiles();
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Initial check for elements in view
-    animateOnScroll();
-    
-    // Initial check for back-to-top button visibility
-    if (window.scrollY > 500) {
-        backToTopButton.classList.add('visible');
-    }
+  displayProfiles();
+
+  // Add scroll event listener
+  window.addEventListener('scroll', animateOnScroll);
+
+  // Initial check for elements in view
+  animateOnScroll();
+
+  // Initial check for back-to-top button visibility
+  if (window.scrollY > 500) {
+    backToTopButton.classList.add('visible');
+  }
 }
 
 // Run initialization when DOM is fully loaded
