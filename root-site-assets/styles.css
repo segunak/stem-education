@@ -798,14 +798,14 @@ section {
 .footer {
   background-color: var(--gray-900);
   color: var(--gray-300);
-  padding: var(--space-xl) 0 var(--space-md);
+  padding: var(--space-md) 0;
 }
 
 .footer-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
 }
 
 .footer-brand h2 {
