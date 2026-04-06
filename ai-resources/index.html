@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Your Tech Career | Segun Akinyemi</title>
+    <meta name="description" content="A practical, continuously updated guide to AI, tech careers, tools, and learning resources. Maintained by Segun Akinyemi, software engineer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#top"><span>AI</span> &amp; Your Tech Career</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#industry">Industry</a></li>
+                    <li><a href="#learn-what">What to Learn</a></li>
+                    <li><a href="#learn-where">Where to Learn</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#follow">Who to Follow</a></li>
+                    <li><a href="#read">What to Read</a></li>
+                    <li><a href="#connect">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="container">
+            <div class="hero-gif">
+                <img src="images/obiwan.gif" alt="Hello there">
+            </div>
+            <h2>AI &amp; Your Tech Career</h2>
+            <p class="hero-subtitle">Created and maintained by <a href="https://segunakinyemi.com">Segun Akinyemi</a></p>
+            <p class="hero-intro">
+                A practical, continuously updated collection of resources on AI and its impact on tech careers. Answers to the questions I keep getting asked, plus the skills, tools, and courses to actually go do something about it. Built by a software engineer who uses AI every day at work and is tired of watching people panic.
+            </p>
+
+            <blockquote class="featured-quote">
+                <p>"Quitting programming as a career right now because of LLMs would be like quitting carpentry as a career thanks to the invention of the table saw."</p>
+                <cite><a href="https://x.com/simonw/status/1940781740978851923">Simon Willison</a>, co-creator of <a href="https://en.wikipedia.org/wiki/Django_(web_framework)">Django</a><br>
+                <a href="https://en.wikipedia.org/wiki/Simon_Willison">One of the most respected voices</a> on AI-assisted software development. Read his <a href="https://simonwillison.net/">blog</a>.</cite>
+            </blockquote>
+
+            <div class="toc-grid">
+                <a href="#faq" class="toc-item"><i class="fas fa-circle-check"></i> Reality Check</a>
+                <a href="#industry" class="toc-item"><i class="fas fa-chart-line"></i> Industry Outlook</a>
+                <a href="#learn-what" class="toc-item"><i class="fas fa-brain"></i> What to Learn</a>
+                <a href="#learn-where" class="toc-item"><i class="fas fa-graduation-cap"></i> Where to Learn</a>
+                <a href="#tools" class="toc-item"><i class="fas fa-wrench"></i> Tools</a>
+                <a href="#follow" class="toc-item"><i class="fas fa-users"></i> Who to Follow</a>
+                <a href="#read" class="toc-item"><i class="fas fa-book-open"></i> What to Read</a>
+                <a href="#connect" class="toc-item"><i class="fas fa-link"></i> Get Connected</a>
+            </div>
+
+            <div class="hero-accordion">
+                <button class="hero-accordion-trigger" id="rant-trigger">
+                    Click to read through a brief, mildly frustrated, rant about why this site exists
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </button>
+                <div class="hero-accordion-body" id="rant-body">
+                    <div class="hero-accordion-inner">
+                        <p>
+                            Hello there! I'm <a href="https://segunakinyemi.com">Segun Akinyemi</a>, a software engineer at
+                            <a href="https://en.wikipedia.org/wiki/Microsoft">a company you've probably heard of</a>.
+                            This site exists because I got tired of watching people get misled into <a href="https://www.linkedin.com/feed/update/urn:li:activity:7305984835708141570/">thinking they should quit computer science, give up on software engineering</a>, and go sit in a hole while waiting for AI to destroy the world.
+                        </p>
+                        <p>
+                            At work. At events. At conferences. On LinkedIn. In emails. Everywhere I go, people ask me the same thing about AI's impact on the software development industry. It never stops.
+                            Most of the time it's some version of "is your entire career field gone now because AI writes code?"
+                            That's like asking if <a href="https://www.google.com/search?q=why+do+we+still+have+mathematicians+if+calculators+exist">mathematics disappeared when calculators were invented</a>, or if <a href="https://www.google.com/search?q=why+do+we+still+have+accountants+if+Excel+exists"> accounting died when Excel came out</a>.
+                            The tool changed. <a href="https://terriblesoftware.org/2025/12/11/ai-can-write-your-code-it-cant-do-your-job">The work didn't go away</a>. It never does.
+                            <a href="https://segunakinyemi.com/blog/coding-is-dead-software-engineering-isnt/">Coding manually is dead</a>, but <a href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html">software engineering isn't</a>.
+                        </p>
+                        <p>
+                            Even before AI, people generally have never understood what software engineers actually do. It's always been <a href="https://www.reddit.com/r/cscareerquestions/comments/zopmwf/comment/j0oelry/">a lot more</a> than just writing code.
+                            The confusion these days is totally understandable if you only listen to hype peddling CEOs, journalists, and influencers who need clicks and investors.
+                            But if you listen to the technical practitioners, the people who actually build the stuff, it's a very different story.
+                        </p>
+                        <p>
+                            I keep seeing students, job seekers, and new grads ask whether they should quit their whole life
+                            and move somewhere rural to become a farmer. Why? Because some
+                            <a href="https://fortune.com/2026/02/13/when-will-ai-kill-white-collar-office-jobs-18-months-microsoft-mustafa-suleyman/">money loving, non-technical, shareholder groveling CEO said AI is going to replace all white collar jobs</a>.
+                            Or some
+                            <a href="https://www.entrepreneur.com/business-news/ai-ceo-says-software-engineers-could-be-replaced-in-months/502087">AI CEO claiming software engineers will be replaced in months</a>,
+                            the same guy who's been saying this for years while his company
+                            <a href="https://www.anthropic.com/careers/jobs">aggressively hires software engineers</a>.
+                        </p>
+                        <p>
+                            Those kinds of statements exist to convince investors that the
+                            <a href="https://www.reuters.com/world/china/big-techs-635-billion-ai-spending-faces-energy-shock-test-sp-global-says-2026-03-31/">billions being spent on data center build out</a> is worth it.
+                            Never mind that many of their AI products <a href="https://en.wikipedia.org/wiki/Microsoft_Copilot">flat out suck</a>.
+                            It's insane. This site exists to combat AI hot take nonsense and thus calm anxieties.
+                            <a href="https://www.youtube.com/watch?v=Q6nem-F8AG8">AI is making CEOs delusional</a>, and they'll say anything to avoid looking like they're falling behind, even when they
+                            <a href="https://www.youtube.com/watch?v=WAUnmQt2Z7Y">clearly don't understand what they're talking about</a>.
+                            They're not leading. They're following each other off a cliff while dragging public perception with them.
+                        </p>
+                        <p>
+                            I keep this site updated.
+                            <a href="https://www.linkedin.com/in/segunakinyemi/">Connect with me on LinkedIn</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Reality Check</h2>
+            <p class="section-intro">Before you doom spiral about AI's impact on software development, read these. Short answers here, links to the longer essays if you want depth.</p>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is software engineering dead because of AI?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No. <a href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html">Coding as manual labor has been automated</a>. Software engineering, the judgment, the systems thinking, the accountability, is becoming more valuable, not less. Companies building AI are still hiring engineers by the thousands. <a href="https://openai.com/careers/search/?q=Engineer">OpenAI</a>, <a href="https://www.anthropic.com/careers/jobs">Anthropic</a>, <a href="https://www.google.com/about/careers/applications/jobs/results/?q=engineer">Google</a>, <a href="https://jobs.apple.com/en-us/search?search=engineer">Apple</a>, <a href="https://www.metacareers.com/jobs?q=software%20engineer">Meta</a>, <a href="https://www.amazon.jobs/en/search?base_query=software+engineer">Amazon</a>, and <a href="https://apply.careers.microsoft.com/careers?query=software+engineer">Microsoft</a> all have open engineering roles right now. If AI could do all the work, they wouldn't be hiring.
+                            <a href="https://segunakinyemi.com/blog/coding-is-dead-software-engineering-isnt/">Read my full take</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are all white collar jobs going away?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No. We don't have <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AGI</a>. We don't have <a href="https://en.wikipedia.org/wiki/J.A.R.V.I.S.">Jarvis</a>. We don't have movie level AI. What we have is a text-generating non-deterministic probability engine that's incredible, but falls apart when you introduce sufficient complexity outside its training data, no matter how much <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">context engineering</a> you apply. These models <a href="https://www.youtube.com/watch?v=LPZh9BOjkQs">predict the next token (word) in a sequence</a>. They do not understand what they're saying. They're tools, not replacements for thinking.
+                            <a href="https://segunakinyemi.com/blog/ai-in-tech-careers/">Read more</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Should I even go to college or study Computer Science?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <a href="https://time.com/7335048/study-tech-ai-replace-jobs/">Yes</a>. Anyone telling you not to is wrong. People far smarter than me <a href="https://www.linkedin.com/feed/update/urn:li:activity:7305984835708141570/">have said as much</a>. <a href="https://simonwillison.net/2025/Oct/7/vibe-engineering/">AI tools amplify existing expertise</a>. They make you faster if you know what you're doing. If you don't know what you're doing, AI just makes you faster at being wrong. A technical foundation is what separates someone who can use AI effectively from someone who copies and pastes and prays.
+                            <a href="https://segunakinyemi.com/blog/coding-is-dead-software-engineering-isnt/#the-illusion-of-vibe-coding">Read more</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Will all software developers be replaced by AI?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <a href="https://shiftmag.dev/the-illusion-of-vibe-coding-5297/">No.</a> People have been predicting developers would be replaced since <a href="https://en.wikipedia.org/wiki/COBOL">COBOL</a> came out in the 1960s. This is a <a href="https://segunakinyemi.com/assets/images/coding-is-dead-graphic.jpg">great graphic depicting that history</a>. Every decade, new tools arrive, <a href="https://www.caimito.net/en/blog/2025/12/07/the-recurring-dream-of-replacing-developers.html">the "no more developers" dream persists</a>, and then reality sets in. The complexity of software is intellectual, not mechanical. No tool has ever eliminated the need for humans who think clearly about hard problems. As <a href="https://en.wikipedia.org/wiki/Simon_Willison">Simon Willison</a>, co-creator of Django, <a href="https://x.com/simonw/status/1940781740978851923">put it</a>: "Quitting programming as a career right now because of LLMs would be like quitting carpentry as a career thanks to the invention of the table saw."
+                            <a href="https://www.caimito.net/en/blog/2025/12/07/the-recurring-dream-of-replacing-developers.html">Read the history</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I still need to learn to code if AI can write code for me?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes. AI can generate code, but <a href="https://simonwillison.net/2025/Dec/18/code-proven-to-work/">your job is to deliver code you have proven to work</a>. That requires understanding what the code does, catching when the AI is confidently wrong, and knowing how to debug it when things break. And things always break. AI <a href="https://simonwillison.net/2025/Oct/7/vibe-engineering/">amplifies existing expertise</a>. The more you know, the more productive it makes you. The less you know, the more dangerous it makes you.
+                            <a href="https://segunakinyemi.com/blog/coding-is-dead-software-engineering-isnt/#why-llms-cant-replace-you-yet">Read more</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        But [important CEO] said AI will replace everyone!
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            CEOs say things that make investors want to give them money. That's literally their job. Follow the actions, not the words. <a href="https://openai.com/careers/search/?q=Engineer">OpenAI</a>, <a href="https://www.anthropic.com/careers/jobs">Anthropic</a>, <a href="https://www.google.com/about/careers/applications/jobs/results/?q=engineer">Google</a>, <a href="https://jobs.apple.com/en-us/search?search=engineer">Apple</a>, <a href="https://www.metacareers.com/jobs?q=software%20engineer">Meta</a>, <a href="https://www.amazon.jobs/en/search?base_query=software+engineer">Amazon</a>, and <a href="https://apply.careers.microsoft.com/careers?query=software+engineer">Microsoft</a> are aggressively hiring engineers right now. If their own AI could do all the work, they'd save the billions they're spending on salaries. They can't, so they're hiring.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Is the Industry Dying -->
+    <section id="industry">
+        <div class="container">
+            <h2 class="section-title">Is the Software Development Industry Dying?</h2>
+            <p class="section-intro">
+                <strong>No.</strong> The industry is not dying. The jobs are not going away. But things are changing. Read these and form your own opinion. For my full takes, read <a href="https://segunakinyemi.com/blog/coding-is-dead-software-engineering-isnt/">Times Are Changing: Coding Is Dead, Software Engineering Isn't</a> and <a href="https://segunakinyemi.com/blog/ai-in-tech-careers/">On the Nature of AI in Tech Careers</a>.
+            </p>
+
+            <div class="accordion-list">
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Reasons to Be Optimistic</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <ul>
+                                <li><a href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html">Coding After Coders: The End of Computer Programming as We Know It</a> <span class="author">Clive Thompson, New York Times</span></li>
+                                <li><a href="https://tidyfirst.substack.com/p/the-bet-on-juniors-just-got-better">The Bet On Juniors Just Got Better</a> <span class="author">Kent Beck</span></li>
+                                <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7305984835708141570/">Why You Should Learn to Code, Not Fear AI</a> <span class="author">Andrew Ng</span></li>
+                                <li><a href="https://github.blog/ai-and-ml/generative-ai/junior-developers-arent-obsolete-heres-how-to-thrive-in-the-age-of-ai/">Junior Developers Aren't Obsolete</a> <span class="author">GitHub Blog</span></li>
+                                <li><a href="https://time.com/7335048/study-tech-ai-replace-jobs">You Should Still Study Tech</a> <span class="author">Marcus Fontoura, TIME</span></li>
+                                <li><a href="https://ashtom.github.io/developers-reinvented">Developers, Reinvented</a> <span class="author">Thomas Dohmke</span></li>
+                                <li><a href="https://humanwhocodes.com/blog/2026/01/coder-orchestrator-future-software-engineering">From Coder to Orchestrator</a> <span class="author">Nicholas C. Zakas</span></li>
+                                <li><a href="https://adventures.nodeland.dev/archive/the-human-in-the-loop/">The Human in the Loop</a> <span class="author">Matteo Collina</span></li>
+                                <li><a href="https://www.latent.space/p/ai-engineer">The Rise of the AI Engineer</a> <span class="author">Latent Space</span></li>
+                                <li><a href="https://terriblesoftware.org/2025/12/11/ai-can-write-your-code-it-cant-do-your-job/">AI Can Write Your Code. It Can't Do Your Job.</a> <span class="author">Matheus Lima</span></li>
+                                <li><a href="https://www.caimito.net/en/blog/2025/12/07/the-recurring-dream-of-replacing-developers.html">Why We've Tried to Replace Developers Every Decade Since 1969</a> <span class="author">Stephan Schwab</span></li>
+                                <li><a href="https://zed.dev/blog/why-llms-cant-build-software">Why LLMs Can't Really Build Software</a> <span class="author">Zed</span></li>
+                                <li><a href="https://simonwillison.net/2025/Dec/18/code-proven-to-work/">Your Job Is To Deliver Code You Have Proven to Work</a> <span class="author">Simon Willison</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Reasons to Be Concerned</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <ul>
+                                <li><a href="https://stackoverflow.blog/2025/12/26/ai-vs-gen-z/">AI vs Gen Z</a> <span class="author">Stack Overflow Blog</span></li>
+                                <li><a href="https://mike.tech/blog/death-of-software-development">The Death of Software Development</a> <span class="author">Michael Arnaldi</span></li>
+                                <li><a href="https://fortune.com/2025/05/28/anthropic-ceo-warning-ai-job-loss">Anthropic CEO Warns AI Could Eliminate Half of Entry-Level Jobs</a> <span class="author">Fortune</span></li>
+                                <li><a href="https://nmn.gl/blog/ai-and-learning">New Junior Developers Can't Actually Code</a> <span class="author">Namanyay Goel</span></li>
+                                <li><a href="https://time.com/7289692/when-ai-replaces-workers">What Happens When AI Replaces Workers?</a> <span class="author">TIME</span></li>
+                                <li><a href="https://addyosmani.com/blog/next-two-years/">The Next Two Years of Software Engineering</a> <span class="author">Addy Osmani</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Learn -->
+    <section id="learn-what">
+        <div class="container">
+            <h2 class="section-title">What to Learn</h2>
+            <p class="section-intro">
+                Not just what matters, but exactly where to go learn it. Every resource below is free. These are listed in a rough progression, start at the top and work your way down.
+            </p>
+
+            <blockquote class="featured-quote">
+                <p>"At some point in school, everyone got to use a calculator. Some kids still failed the test. If you don't understand the material, you won't even know what to type in. That's what AI has done to software development. Learn to drive first, then we put you in the supercar."</p>
+                <cite><a href="https://segunakinyemi.com">Segun Akinyemi</a>, creator of this site. Shameless self-quote.</cite>
+            </blockquote>
+
+            <div class="accordion-list">
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Computer Science Fundamentals</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>The foundation everything else builds on. Programming, algorithms, how computers work. If you skip this, you can vibe code all day, but you won't be able to pass a technical interview to get a real software engineering job. <a href="https://shiftmag.dev/the-illusion-of-vibe-coding-5297/">There are no shortcuts to mastery</a>.</p>
+                            <p><strong>Take these Harvard CS50 courses and you are set.</strong> Seriously. They are free, world class, and they will give you the knowledge you actually need. Everything else on this page becomes 10x more useful once you have these basics down.</p>
+                            <ul>
+                                <li><a href="https://pll.harvard.edu/course/cs50-introduction-computer-science">CS50: Introduction to Computer Science</a> <span class="author">The starting point. The most famous CS course in the world.</span></li>
+                                <li><a href="https://pll.harvard.edu/course/cs50s-introduction-programming-python">CS50: Introduction to Programming with Python</a> <span class="author">Python is the language of AI. Start here if you want to code.</span></li>
+                                <li><a href="https://pll.harvard.edu/course/cs50s-introduction-databases-sql">CS50: Introduction to Databases with SQL</a> <span class="author">Data is everything. This teaches you how it's stored and queried.</span></li>
+                                <li><a href="https://pll.harvard.edu/course/cs50s-web-programming-python-and-javascript">CS50: Web Programming with Python and JavaScript</a> <span class="author">How the internet actually works, and how to build for it.</span></li>
+                                <li><a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python">CS50: Introduction to Artificial Intelligence with Python</a> <span class="author">Optional. Gets into machine learning territory, which is a different discipline from software engineering. Worth exploring if you're curious, but not required to be a productive developer.</span></li>
+                            </ul>
+                            <p>Also check out <a href="https://missing.csail.mit.edu/">The Missing Semester</a> from MIT, which covers the practical tools (shell, Git, debugging, dev environments) that CS programs skip. It was updated in 2026 with AI tools now folded into every lecture.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Git & Version Control</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>How you track changes to code and collaborate with others. With AI writing code for you, version control has never been more important. You need branches, you need backups, you need to stop AI from blowing away your codebase.</p>
+                            <p>The moment you're on a team with other developers, if you don't understand Git, you cannot function. Merge conflicts, rebasing, cherry-picking. You don't have to memorize terminal commands. <a href="https://git-scm.com/tools/guis">GUI tools</a> like the one built into VS Code work great. But you have to understand what's happening under the hood.</p>
+                            <ul>
+                                <li><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Pro Git Book</a> <span class="author">The official Git documentation. Free, thorough, and the definitive resource for understanding version control from the ground up.</span></li>
+                                <li><a href="https://skills.github.com/">GitHub Skills</a> <span class="author">Gold mine. Every tutorial on this page is worth doing. This is what turned things around for me in college.</span></li>
+                                <li><a href="https://learngitbranching.js.org/">Learn Git Branching</a> <span class="author">Interactive, visual, and the best way to actually understand branching, merging, and rebasing.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Databases & SQL</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>How data is stored, organized, and retrieved. AI has not made database knowledge obsolete. It has made it more important. AI retrieval systems (RAG, vector search, agentic queries) all depend on well-designed databases. SQL is everything.</p>
+                            <ul>
+                                <li><a href="https://sqlbolt.com/">SQLBolt</a> <span class="author">Interactive SQL lessons. Start here.</span></li>
+                                <li><a href="https://mystery.knightlab.com/walkthrough.html">SQL Murder Mystery</a> <span class="author">Learn SQL by solving a murder. Seriously. It's fun.</span></li>
+                                <li><a href="https://sqlzoo.net/wiki/SQL_Tutorial">SQL Zoo</a> <span class="author">Practice with real queries across progressively harder exercises.</span></li>
+                                <li><a href="https://www.freecodecamp.org/learn/relational-database/">FreeCodeCamp Relational Database Certification</a> <span class="author">Hands-on with PostgreSQL and Bash. Covers database design, normalization, and administration. Goes beyond just SQL syntax.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>APIs</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>Application Program Interface. How software systems talk to each other. An <a href="https://segunakinyemi.com/blog/mcp-vs-rag/">MCP server</a> is only as good as the API behind it. Without APIs, AI literally cannot do any of the <a href="https://segunakinyemi.com/blog/agentic-ai-from-acronyms-to-applications/">agentic stuff</a> people want. Good API design is critical for efficiency, cost, and preventing AI from touching what it shouldn't.</p>
+                            <ul>
+                                <li><a href="https://www.freecodecamp.org/news/apis-for-beginners/">APIs for Beginners</a> <span class="author">FreeCodeCamp. Clear, practical, beginner-friendly.</span></li>
+                                <li><a href="https://github.com/public-apis/public-apis">Public APIs List</a> <span class="author">Hundreds of free APIs. Pick one, fire up your AI coding tool, and build something with it.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Testing</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>How you know your code actually works. This is exponentially more important now that AI writes code. "I told AI to make the button blue and I see it's blue" is not testing. Real software has thousands of invisible behaviors that break silently. You need automated tests to catch them.</p>
+                            <ul>
+                                <li><a href="https://martinfowler.com/testing/">Software Testing Guide</a> <span class="author">Martin Fowler. A legend in software engineering. Read this to understand why testing matters.</span></li>
+                                <li><a href="https://www.splunk.com/en_us/blog/learn/software-testing.html">Software Testing Fundamentals</a> <span class="author">Practical overview of testing types and strategies.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>CI/CD</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>Continuous Integration, Continuous Deployment. Automating the process of testing and shipping code. The easiest way to get started is <a href="https://github.com/features/actions">GitHub Actions</a>. At work you'll use whatever your company has (<a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines">Azure Pipelines</a>, <a href="https://www.atlassian.com/software/bitbucket/features/pipelines">Bitbucket Pipelines</a>, <a href="https://www.atlassian.com/software/bamboo">Bamboo</a>, <a href="https://developer.hashicorp.com/terraform">Terraform</a>, <a href="https://www.jenkins.io/">Jenkins</a>, whatever), but GitHub Actions lets you practice right now without needing an enterprise job.</p>
+                            <ul>
+                                <li><a href="https://about.gitlab.com/topics/ci-cd/">What is CI/CD?</a> <span class="author">Clear conceptual explanation.</span></li>
+                                <li><a href="https://docs.github.com/en/actions">GitHub Actions</a> <span class="author">The official docs. Start automating your projects today.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>System Design</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>Choosing architecture and components to meet a goal under constraints: reliability, security, cost, performance, maintainability. This includes understanding how computers communicate over the internet. Networking, DNS, HTTP, load balancing. None of that went away because of AI. It still matters, <a href="https://www.google.com/search?q=no+be+small+meaning+nigerian+pidgin&oq=no+be+small+meaning+nigerian+pidgin">no be small</a>.</p>
+                            <ul>
+                                <li><a href="https://www.freecodecamp.org/news/software-system-design-for-beginners/">System Design for Beginners</a> <span class="author">FreeCodeCamp. Start here if the topic is new to you.</span></li>
+                                <li><a href="https://github.com/donnemartin/system-design-primer">The System Design Primer</a> <span class="author">The gold mine. Used by thousands to prepare for interviews and understand real-world architecture.</span></li>
+                                <li><a href="https://www.netacad.com/courses/networking-basics?courseLang=en-US">Networking Basics</a> <span class="author">Cisco Networking Academy. Free course on how computers communicate over the internet.</span></li>
+                                <li><a href="https://learn.microsoft.com/en-us/training/modules/network-fundamentals/">Fundamentals of Computer Networking</a> <span class="author">Microsoft Learn. Free, self-paced, covers the core networking concepts.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>The Cloud</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p><a href="https://www.youtube.com/watch?v=_a6us8kaq0g">"There is no cloud. It's just someone else's computer."</a> AWS (Amazon Web Services), Azure (Microsoft's cloud), and GCP (Google Cloud Platform) are the big three. Each has hundreds of products, each complex enough to build a career around. There is no such thing as "knowing" a cloud platform. It's a continual learning process. Start with the fundamentals certificate for whichever one interests you. If you're unsure, go with AWS. It was the first major cloud provider, it's the biggest, and the skills you learn there transfer to Azure and GCP.</p>
+                            <ul>
+                                <li><a href="https://skillbuilder.aws/category/exam-prep/cloud-practitioner-foundational-CLF-C02">AWS Certified Cloud Practitioner</a> <span class="author">Amazon's entry-level cloud certification path.</span></li>
+                                <li><a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/">Azure Fundamentals</a> <span class="author">Microsoft's entry-level cloud certification path.</span></li>
+                                <li><a href="https://www.skills.google/course_templates/60">Google Cloud Fundamentals</a> <span class="author">Google's entry-level cloud certification path.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>AI Engineering</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p><a href="https://www.latent.space/p/ai-engineer">AI Engineering</a> is the evolution of software engineering. You're not building the models. You're taking them and building with them. RAG, MCP, vector databases, embeddings, context engineering, model evaluation. This is the capstone. Everything above feeds into it.</p>
+                            <ul>
+                                <li><a href="https://priyankavergadia.substack.com/p/ai-engineer-step-by-step-roadmap">AI Engineer Roadmap</a> <span class="author">By Priyanka Vergadia. The best step-by-step breakdown of what to learn and what mistakes to avoid.</span></li>
+                                <li><a href="https://huggingface.co/learn">HuggingFace Courses</a> <span class="author">Free courses on NLP, agents, MCP, and more from the GitHub of AI models.</span></li>
+                                <li><a href="https://github.com/stars/segunak/lists/ai-engineering">My AI Engineering GitHub List</a> <span class="author">A curated list of tutorials, courses, and repos I keep updated for learning AI Engineering.</span></li>
+                                <li><a href="https://github.com/copilot">GitHub Copilot:</a> <a href="https://github.com/features/copilot/tutorials">Video Tutorials</a>, <a href="https://docs.github.com/en/copilot/tutorials">Written Tutorials</a>, <a href="https://awesome-copilot.github.com/learning-hub/">Community Learning Hub</a> <span class="author">Three different ways to learn Copilot. Videos if you prefer watching, docs if you prefer reading, and hands-on recipes if you prefer doing.</span></li>
+                                <li><a href="https://anthropic.skilljar.com/claude-code-in-action">Claude Code in Action</a> <span class="author">Free course from Anthropic. Lessons covering setup, context management, custom commands, MCP servers, and GitHub integration.</span></li>
+                                <li><a href="https://academy.openai.com/public/clubs/builders-etkn1/resources/codex-for-builders">Codex for Builders</a> <span class="author">OpenAI Academy. Covers what Codex is, how to use it across CLI, IDE, and web, plus hands-on workshops from 101 to 103.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tutor-callout">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Use AI as your tutor.</strong>
+                    Open <a href="https://chatgpt.com/">ChatGPT</a>, <a href="https://claude.ai/">Claude</a>, <a href="https://gemini.google.com/">Gemini</a>, <a href="https://copilot.microsoft.com/">Microsoft Copilot</a>, whatever chatbot you have access to. Ask it to explain a topic. When the explanation doesn't make sense, ask it to explain it differently. Keep going until it clicks.
+                    This is the single most underused learning strategy available to you right now, and it's free.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Learn -->
+    <section id="learn-where">
+        <div class="container">
+            <h2 class="section-title">Where to Learn</h2>
+            <p class="section-intro">General purpose learning platforms and free student perks beyond the specific resources listed above.</p>
+
+            <div class="accordion-list">
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Learning Platforms</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/">Microsoft Learn</a> <span class="author">Free training across every Microsoft product and career path.</span></li>
+                                <li><a href="https://www.skills.google/">Google Skills</a> <span class="author">Google's free learning platform. Cloud, AI, data, and more.</span></li>
+                                <li><a href="https://skillbuilder.aws/">AWS Skill Builder</a> <span class="author">Amazon's free training platform for cloud and AI skills.</span></li>
+                                <li><a href="https://anthropic.skilljar.com/">Anthropic Courses</a> <span class="author">Learn about Claude, prompting, and building with their models.</span></li>
+                                <li><a href="https://www.freecodecamp.org/">FreeCodeCamp</a> <span class="author">Free full-stack curriculum. Thousands of hours of content.</span></li>
+                                <li><a href="https://skills.github.com/">GitHub Skills</a> <span class="author">Interactive tutorials on Git, GitHub, Actions, Copilot, and more. Gold mine.</span></li>
+                                <li><a href="https://vercel.com/academy">Vercel Academy</a> <span class="author">Free courses on web development, React, and Next.js from the company deeply integrated with both.</span></li>
+                                <li><a href="https://huggingface.co/learn">HuggingFace Learn</a> <span class="author">Free courses on Natural Language Processing, AI Agents, Model, Context, Protocol, and more straight from the platform known as the GitHub of AI models.</span></li>
+                                <li><a href="https://www.codecademy.com/student-center">Codecademy Student Center</a> <span class="author">Discounted access to Codecademy's coding courses for students. Codeacademy is free but for premium features there's a charge, for students its cheaper.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Free Student Perks</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <p>Most big tech companies offer free credits, tools, and courses to students. Take advantage of all of them.</p>
+                            <ul>
+                                <li><a href="https://education.github.com/pack">GitHub Student Developer Pack</a> <span class="author">Free Copilot Pro, domain names, cloud credits, and more. The single best student perk in tech.</span></li>
+                                <li><a href="https://azure.microsoft.com/en-us/free/students/">Azure for Students</a> <span class="author">$100 in Azure credits, no credit card required.</span></li>
+                                <li><a href="https://learn.microsoft.com/en-us/training/student-hub/certifications">Microsoft Student Certifications</a> <span class="author">Free certification exams while you're a student.</span></li>
+                                <li><a href="https://developers.openai.com/community/students">OpenAI for Students</a> <span class="author">Student community, resources, and access from OpenAI.</span></li>
+                                <li><a href="https://cloud.google.com/edu/students">Google Cloud for Students</a> <span class="author">Free cloud credits and learning resources.</span></li>
+                                <li><a href="https://gemini.google/students/">Gemini for Students</a> <span class="author">Free access to Google's AI tools for students.</span></li>
+                                <li><a href="https://aws.amazon.com/free/">AWS Free Tier</a> <span class="author">Free access to core AWS services. Not student-specific, but free is free.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- What Tools to Use -->
+    <section id="tools">
+        <div class="container">
+            <h2 class="section-title">What Tools to Use</h2>
+            <p class="section-intro">These are the ones that matter. Don't chase every hot new tool from a startup that'll be acquired by big tech in six months.</p>
+
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h4>VS Code</h4>
+                    <p>The IDE. <a href="https://survey.stackoverflow.co/2025/technology/#2-dev-id-es">Everyone uses it</a>. I mean, even <a href="https://cursor.com/">Cursor</a> and <a href="https://antigravity.google/">Antigravity</a> are just forks of VS Code. The industry isn't leaving VS Code. Investing in being a power user is time well spent.</p>
+                    <a href="https://code.visualstudio.com/" target="_blank" class="resource-link">Get VS Code</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h4>GitHub Copilot</h4>
+                    <p>It's built into VS Code and GitHub. <a href="https://www.google.com/search?q=i+am+inevitable+Thanos+quote+explained">Like Thanos, it's inevitable</a>. Copilot works across <a href="https://segunakinyemi.com/blog/github-copilot-surface-areas/">many surface areas</a>: <a href="https://code.visualstudio.com/docs/copilot/overview">VS Code Chat</a>, <a href="https://github.com/copilot">Web Chat</a>, <a href="https://github.com/features/copilot/cli">CLI</a>, <a href="https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/coding-agent/about-coding-agent">Cloud Agents</a>, and <a href="https://docs.github.com/en/copilot/get-started/features">more</a>. Free via the <a href="https://education.github.com/pack">Student Pack</a>.</p>
+                    <a href="https://github.com/features/copilot" target="_blank" class="resource-link">Try Copilot</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                    <h4>Claude Code</h4>
+                    <p>Terminal-based AI coding assistant from Anthropic. Works with any IDE. Nearly every big tech company is funding Anthropic in some way, so this product has staying power.</p>
+                    <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank" class="resource-link">Try Claude Code</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>OpenAI Codex</h4>
+                    <p>OpenAI's coding agent. Cloud-based, reads your full repo, works in a sandbox. From the people who started the whole AI wave with ChatGPT.</p>
+                    <a href="https://openai.com/codex/" target="_blank" class="resource-link">Try Codex</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fab fa-google"></i></div>
+                    <h4>Gemini CLI</h4>
+                    <p>Google's terminal-based AI coding assistant. Works with any IDE. Backed by Google's Gemini models.</p>
+                    <a href="https://geminicli.com/" target="_blank" class="resource-link">Try Gemini CLI</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="card-icon"><i class="fab fa-google"></i></div>
+                    <h4>Antigravity</h4>
+                    <p>Google's AI-native IDE. A full development environment built around Gemini, not just an extension bolted on. Also a <a href="https://code.visualstudio.com/">VS Code</a> fork.</p>
+                    <a href="https://antigravity.google/" target="_blank" class="resource-link">Try Antigravity</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Who to Follow -->
+    <section id="follow">
+        <div class="container">
+            <h2 class="section-title">Who to Follow</h2>
+            <p class="section-intro">The tech community lives on LinkedIn, Twitter, Reddit, and <a href="https://news.ycombinator.com/">Hacker News</a> more than TikTok or Instagram. These are the people and orgs actually worth paying attention to.</p>
+
+            <div class="accordion-list">
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>People</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <div class="people-grid">
+                                <div class="person"><strong>Andrej Karpathy</strong> <span class="socials"><a href="https://x.com/karpathy">Twitter</a> <a href="https://www.linkedin.com/in/andrej-karpathy-9a650716">LinkedIn</a> <a href="https://www.youtube.com/@AndrejKarpathy">YouTube</a></span></div>
+                                <div class="person"><strong>Simon Willison</strong> <span class="socials"><a href="https://x.com/simonw">Twitter</a> <a href="https://www.linkedin.com/in/simonwillison/">LinkedIn</a> <a href="https://simonwillison.net/">Blog</a></span></div>
+                                <div class="person"><strong>Andrew Ng</strong> <span class="socials"><a href="https://x.com/AndrewYNg">Twitter</a> <a href="https://www.linkedin.com/in/andrewyng">LinkedIn</a></span></div>
+                                <div class="person"><strong>Yann LeCun</strong> <span class="socials"><a href="https://x.com/ylecun">Twitter</a> <a href="https://www.linkedin.com/in/yann-lecun">LinkedIn</a></span></div>
+                                <div class="person"><strong>Sam Altman</strong> <span class="socials"><a href="https://x.com/sama">Twitter</a></span></div>
+                                <div class="person"><strong>Priyanka Vergadia</strong> <span class="socials"><a href="https://x.com/pvergadia">Twitter</a> <a href="https://www.linkedin.com/in/pvergadia/">LinkedIn</a> <a href="https://www.thecloudgirl.dev/blog">Blog</a></span></div>
+                                <div class="person"><strong>Pamela Fox</strong> <span class="socials"><a href="https://x.com/pamelafox">Twitter</a> <a href="https://www.linkedin.com/in/pamela-s-fox">LinkedIn</a> <a href="https://github.com/PamelaFox">GitHub</a></span></div>
+                                <div class="person"><strong>Marcus Fontoura</strong> <span class="socials"><a href="https://www.linkedin.com/in/marcusfontoura">LinkedIn</a> <a href="https://fontoura.org/">Website</a></span></div>
+                                <div class="person"><strong>Alberta Tech</strong> <span class="socials"><a href="https://x.com/albertadevs">Twitter</a> <a href="https://www.tiktok.com/@alberta.nyc">TikTok</a> <a href="https://www.youtube.com/@albertatech">YouTube</a></span></div>
+                                <div class="person"><strong>David Fowler</strong> <span class="socials"><a href="https://x.com/davidfowl">Twitter</a> <a href="https://www.linkedin.com/in/davidfowl">LinkedIn</a></span></div>
+                                <div class="person"><strong>Gergely Orosz</strong> <span class="socials"><a href="https://x.com/GergelyOrosz">Twitter</a> <a href="https://www.linkedin.com/in/gergelyorosz/">LinkedIn</a></span></div>
+                                <div class="person"><strong>Hamel Husain</strong> <span class="socials"><a href="https://x.com/HamelHusain">Twitter</a> <a href="https://www.linkedin.com/in/hamelhusain/">LinkedIn</a></span></div>
+                                <div class="person"><strong>Eleanor Berger</strong> <span class="socials"><a href="https://x.com/intellectronica">Twitter</a> <a href="https://www.linkedin.com/in/intellectronica/">LinkedIn</a></span></div>
+                                <div class="person"><strong>Isaac Flath</strong> <span class="socials"><a href="https://x.com/isaac_flath">Twitter</a> <a href="https://www.linkedin.com/in/isaacflath/">LinkedIn</a></span></div>
+                                <div class="person"><strong>Drew Breunig</strong> <span class="socials"><a href="https://x.com/dbreunig">Twitter</a> <a href="https://www.dbreunig.com/">Blog</a></span></div>
+                                <div class="person"><strong>Gary Marcus</strong> <span class="socials"><a href="https://x.com/GaryMarcus">Twitter</a> <a href="https://www.linkedin.com/in/gary-marcus-b6384b4/">LinkedIn</a></span></div>
+                                <div class="person"><strong>Philipp Schmid</strong> <span class="socials"><a href="https://x.com/_philschmid">Twitter</a> <a href="https://www.linkedin.com/in/philipp-schmid-a6a2bb196/">LinkedIn</a> <a href="https://www.philschmid.de/">Blog</a></span></div>
+                                <div class="person"><strong>Burke Holland</strong> <span class="socials"><a href="https://x.com/burkeholland">Twitter</a> <a href="https://www.linkedin.com/in/burkeholland/">LinkedIn</a> <a href="https://burkeholland.github.io/">Blog</a></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Organizations</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <ul class="org-list">
+                                <li><strong>OpenAI</strong> <a href="https://x.com/OpenAI">Twitter</a> / <a href="https://www.linkedin.com/company/openai">LinkedIn</a></li>
+                                <li><strong>Anthropic</strong> <a href="https://x.com/AnthropicAI">Twitter</a> / <a href="https://www.linkedin.com/company/anthropicresearch">LinkedIn</a></li>
+                                <li><strong>Microsoft AI</strong> <a href="https://www.linkedin.com/company/microsoft-ai">LinkedIn</a></li>
+                                <li><strong>Google DeepMind</strong> <a href="https://x.com/GoogleDeepMind">Twitter</a> / <a href="https://uk.linkedin.com/company/googledeepmind">LinkedIn</a></li>
+                                <li><strong>Meta AI</strong> <a href="https://x.com/AIatMeta">Twitter</a> / <a href="https://www.linkedin.com/showcase/aiatmeta/">LinkedIn</a></li>
+                                <li><strong>VS Code</strong> <a href="https://x.com/code">Twitter</a> / <a href="https://www.youtube.com/@code">YouTube</a></li>
+                                <li><strong>GitHub</strong> <a href="https://x.com/github">Twitter</a> / <a href="https://www.youtube.com/@github">YouTube</a></li>
+                                <li><strong>HuggingFace</strong> <a href="https://x.com/huggingface">Twitter</a> / <a href="https://www.linkedin.com/company/huggingface">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        <span>Communities</span>
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-body-inner">
+                            <ul class="community-list">
+                                <li><a href="https://news.ycombinator.com/">Hacker News</a> Like Reddit but for technical discussions only</li>
+                                <li><a href="https://www.reddit.com/r/ExperiencedDevs/">r/ExperiencedDevs</a> Engineers with real experience</li>
+                                <li><a href="https://www.reddit.com/r/LLMDevs/">r/LLMDevs</a> AI Engineers sharing tips</li>
+                                <li><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a> Probably the biggest AI Engineering community online</li>
+                                <li><a href="https://www.reddit.com/r/vibecoding/">r/vibecoding</a> People pushing the limits of what AI can build</li>
+                                <li><a href="https://www.reddit.com/r/GithubCopilot/">r/GithubCopilot</a> GitHub Copilot tips, tricks, and discussions</li>
+                                <li><a href="https://www.reddit.com/r/ClaudeCode/">r/ClaudeCode</a> Claude Code users sharing workflows</li>
+                                <li><a href="https://www.reddit.com/r/codex/">r/codex</a> OpenAI Codex community</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Read -->
+    <section id="read">
+        <div class="container">
+            <h2 class="section-title">What to Read</h2>
+
+            <blockquote class="featured-quote">
+                <p>"The voices worth listening to in software engineering don't post on TikTok, Instagram, Snapchat, Reels, or Shorts. They're nerds. They write. If you want the truth, <strong>you must read</strong>."</p>
+                <cite><a href="https://segunakinyemi.com">Segun Akinyemi</a>, creator of this site. Shameless self-quote.</cite>
+            </blockquote>
+
+            <div class="read-callout">
+                <h4>AI Insights for Students</h4>
+                <p>I keep a curated reading list of the best articles on software engineering, AI engineering, the impact of AI on tech jobs, industry trends, career advice, and more. It gets updated regularly. You read all this, you'll realize everything I know i just learned from others. <a href="https://www.biblegateway.com/passage/?search=Ecclesiastes%201%3A9&version=NIV">There's nothing new under the sun!</a></p>
+                <a href="https://readwise.io/reader/view/2a197170-e112-4033-83b2-288bfbf75194" class="read-btn">Browse the Reading List</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Connected -->
+    <section id="connect">
+        <div class="container">
+            <h2 class="section-title">Get Connected</h2>
+            <p class="section-intro">If any of this was helpful, stay in touch. I write about AI, software engineering, and tech careers regularly.</p>
+
+            <div class="connect-grid">
+                <a href="https://www.linkedin.com/in/segunakinyemi/" class="connect-card">
+                    <i class="fab fa-linkedin"></i>
+                    <strong>LinkedIn</strong>
+                    <span>Where I'm most active. Connect with me here.</span>
+                </a>
+                <a href="https://segunakinyemi.com" class="connect-card">
+                    <i class="fas fa-globe"></i>
+                    <strong>Blog</strong>
+                    <span>Long form writing on AI, tech careers, and more.</span>
+                </a>
+                <a href="https://segunakinyemi.us21.list-manage.com/subscribe?u=47ddb73d0cfc4d7d4a4c6ddc0&id=1dbb81e1ce" class="connect-card">
+                    <i class="fas fa-envelope"></i>
+                    <strong>Subscribe to My Newsletter</strong>
+                    <span>Get my latest blog posts delivered to your inbox.</span>
+                </a>
+                <a href="https://github.com/segunak" class="connect-card">
+                    <i class="fab fa-github"></i>
+                    <strong>GitHub</strong>
+                    <span>My open source projects, workshops, and code.</span>
+                </a>
+                <a href="https://www.charlottethirdplaces.com/" class="connect-card">
+                    <i class="fas fa-mug-hot"></i>
+                    <strong>Charlotte Third Places</strong>
+                    <span>My curated guide to cafes, coffee shops, libraries, and hangout spots in Charlotte, NC.</span>
+                </a>
+                <a href="https://x.com/segunofsolace" class="connect-card">
+                    <i class="fab fa-twitter"></i>
+                    <strong>Twitter</strong>
+                    <span>I barely ever tweet, I use this to follow Tech Twitter, but its there.</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Easter Egg -->
+    <div class="container">
+        <div class="easter-egg">
+            <h4>One Last Thing For Anime Fans</h4>
+            <p>
+                Given
+                <a href="https://en.wikipedia.org/wiki/Naruto">Naruto</a>,
+                <a href="https://en.wikipedia.org/wiki/Bleach_(TV_series)">Bleach</a>,
+                <a href="https://en.wikipedia.org/wiki/One_Piece">One Piece</a>,
+                <a href="https://en.wikipedia.org/wiki/Dragon_Ball_Z">Dragon Ball Z</a>, and
+                <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_(TV_series)">Pokémon</a>,
+                which two are you leaving out of the Big 3 and why?
+            </p>
+            <p>
+                Note that <a href="https://en.wikipedia.org/wiki/My_Hero_Academia">My Hero Academia</a>,
+                <a href="https://en.wikipedia.org/wiki/Jujutsu_Kaisen">Jujutsu Kaisen</a>,
+                <a href="https://en.wikipedia.org/wiki/Attack_on_Titan">Attack on Titan</a>, and
+                <a href="https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba">Demon Slayer</a>
+                are from a different era. We're talking the OG animes that broke through and made it cool to watch anime in America, whereas it used to get you bullied in school, especially as a black kid...speaking from experience 😅.
+                <a href="https://www.linkedin.com/in/segunakinyemi/">Send me your answer on LinkedIn</a>.
+            </p>
+            <p>
+                Also, if you've ever wondered <a href="https://blacknerdproblems.com/why-the-hood-bangs-with-naruto/">why so many Black men love Naruto</a>, that article explains it perfectly. And if you've ever noticed that one could draw some Christian narratives from the series, <a href="https://beneaththetangles.com/2012/03/06/naruto-and-sasuke-hope-loves-longsuffering">you're not alone</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>
+                <a href="https://segunakinyemi.com">Blog</a>
+                <a href="https://www.linkedin.com/in/segunakinyemi/">LinkedIn</a>
+                <a href="https://github.com/segunak">GitHub</a>
+            </p>
+            <p>All opinions are my own. &copy; <span id="current-year"></span> Segun Akinyemi.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="dynamic-link-targeting.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
