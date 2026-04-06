@@ -263,6 +263,26 @@ nav ul li a:hover {
     color: var(--pink)
 }
 
+.hero-shortlink {
+    font-size: .82rem;
+    color: var(--text-faint);
+    margin-top: -24px;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+
+.hero-shortlink a {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.hero-shortlink a:hover {
+    color: var(--blue);
+}
+
 /* Featured quote */
 .featured-quote {
     max-width: 860px;
