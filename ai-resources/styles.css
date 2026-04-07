@@ -603,6 +603,39 @@ section {
     color: var(--text-secondary)
 }
 
+.faq-answer-inner p + p {
+    margin-top: 14px;
+}
+
+.faq-quote {
+    margin: 14px 0;
+    padding: 14px 20px;
+    border-left: 3px solid var(--blue);
+    background: rgba(0, 146, 202, .06);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    font-size: .95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.faq-quote p {
+    margin: 0;
+}
+
+.faq-quote cite {
+    display: block;
+    margin-top: 8px;
+    font-size: .85rem;
+    font-style: normal;
+    color: var(--text-muted);
+}
+
+.faq-quote cite a {
+    color: var(--blue);
+    font-weight: 600;
+}
+
 .faq-answer-inner a {
     font-weight: 600;
     color: var(--blue)
