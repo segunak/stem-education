@@ -165,20 +165,12 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    font-size: 1.2rem;
+    color: var(--text-primary);
 }
 
 .hamburger:active {
     background: var(--bg-overlay)
-}
-
-.hamburger span {
-    display: block;
-    width: 18px;
-    height: 2px;
-    background: var(--text-primary);
-    margin: 3px auto;
-    border-radius: 2px;
-    transition: all .25s var(--ease);
 }
 
 /* ——— Hero ——— */
