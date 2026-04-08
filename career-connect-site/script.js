@@ -77,6 +77,30 @@ const professionalsData = {
         "notes": ""
       },
       {
+        "name": "Chinette Stevenson",
+        "title": "Principal Project Manager",
+        "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
+        "notes": ""
+      },
+      {
+        "name": "Nigel Thomas",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/nithoma/",
+        "notes": ""
+      },
+      {
+        "name": "Adrian Stewart",
+        "title": "Azure Cloud Engineer",
+        "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
+        "notes": ""
+      },
+      {
+        "name": "Myriam Johnson",
+        "title": "Customer Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
+        "notes": ""
+      },
+      {
         "name": "Rasuwl Walls",
         "title": "Director of Sales",
         "linkedIn": "https://www.linkedin.com/in/rasuwl/",
@@ -116,12 +140,6 @@ const professionalsData = {
         "name": "Samuel Blackmon",
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/sblackmon/",
-        "notes": ""
-      },
-      {
-        "name": "Chinette Stevenson",
-        "title": "Principal Project Manager",
-        "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
         "notes": ""
       },
       // {
@@ -257,18 +275,6 @@ const professionalsData = {
         "notes": "2025 Charlotte Business Journal Women in Business Honoree",
         "isStarred": true
       },
-      // {
-      //   "name": "Adrian Stewart",
-      //   "title": "Azure Cloud Engineer",
-      //   "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
-      //   "notes": ""
-      // },
-      // {
-      //   "name": "Myriam Johnson",
-      //   "title": "Customer Engineering Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
-      //   "notes": ""
-      // },
       // { 
       //   "name": "Cianna Edwards",
       //   "title": "Digital Specialist",
