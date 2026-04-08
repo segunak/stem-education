@@ -268,13 +268,13 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
       //   "notes": ""
       // },
-      {
-        "name": "Anusha Meka",
-        "title": "Principal Group Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "notes": "2025 Charlotte Business Journal Women in Business Honoree",
-        "isStarred": true
-      },
+      // {
+      //   "name": "Anusha Meka",
+      //   "title": "Principal Group Engineering Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/anushameka/",
+      //   "notes": "2025 Charlotte Business Journal Women in Business Honoree",
+      //   "isStarred": true
+      // },
       // { 
       //   "name": "Cianna Edwards",
       //   "title": "Digital Specialist",
@@ -287,12 +287,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/begary/",
       //   "notes": ""
       // },
-      {
-        "name": "Imani Ricks",
-        "title": "UX Designer",
-        "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
-        "notes": "Works on the Minecraft team"
-      },
+      // {
+      //   "name": "Imani Ricks",
+      //   "title": "UX Designer",
+      //   "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
+      //   "notes": "Works on the Minecraft team"
+      // },
       // {
       //   "name": "Trevor Suarez",
       //   "title": "Cloud Solution Architect",
@@ -333,6 +333,12 @@ const professionalsData = {
       //   "name": "Uchenna Nwosu",
       //   "title": "Customer Success Account Manager",
       //   "linkedIn": "https://www.linkedin.com/in/unwosu44/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Darlisha Campbell",
+      //   "title": "Tech Support Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
       //   "notes": ""
       // },
       // {
@@ -427,9 +433,9 @@ const professionalsData = {
         "notes": ""
       },
       {
-        "name": "Tenesha Robinson",
-        "title": "Senior Consultant",
-        "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-62046337/",
+        "name": "Dr. Tenesha Robinson",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-phd-62046337/",
         "notes": ""
       },
       {
@@ -479,12 +485,6 @@ const professionalsData = {
         "name": "Kevin Rewkowski",
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/rewkowski/",
-        "notes": ""
-      },
-      {
-        "name": "Darlisha Campbell",
-        "title": "Tech Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
         "notes": ""
       }
       // {
