@@ -28,6 +28,13 @@ const professionalsData = {
         "notes": "Campus leader for community, culture, and employee experience, definitely connect!"
       },
       {
+        "name": "Jarvis-Ricardo Johnson",
+        "title": "University Recruiter",
+        "linkedIn": "https://www.linkedin.com/in/jarvisjohnmpa/",
+        "notes": "",
+        "isStarred": true
+      },
+      {
         "name": "Kyle Watson",
         "title": "Talent Acquisition Manager",
         "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
