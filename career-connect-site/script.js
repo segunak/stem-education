@@ -59,6 +59,18 @@ const professionalsData = {
       //   "notes": ""
       // },
       {
+        "name": "Lamont Nell",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/lamontnell/",
+        "notes": ""
+      },
+      {
+        "name": "Jillian Dozier",
+        "title": "Business Program Manager",
+        "linkedIn": "https://www.linkedin.com/in/jill-do/",
+        "notes": ""
+      },
+      {
         "name": "Joel Grant",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/joel-grant-130233121/",
@@ -100,12 +112,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/liz-martin-rhia-cdip-cpc-cpc-i-crc-52537813a/",
       //   "notes": ""
       // },
-      // {
-      //   "name": "Samuel Blackmon",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/sblackmon/",
-      //   "notes": ""
-      // },
+      {
+        "name": "Samuel Blackmon",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/sblackmon/",
+        "notes": ""
+      },
       {
         "name": "Chinette Stevenson",
         "title": "Principal Project Manager",
@@ -148,18 +160,6 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
       //   "notes": ""
       // },
-      {
-        "name": "Lamont Nell",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/lamontnell/",
-        "notes": ""
-      },
-      {
-        "name": "Jillian Dozier",
-        "title": "Business Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/jill-do/",
-        "notes": ""
-      },
       // {
       //   "name": "Mohan Ravindran",
       //   "title": "Cloud Solution Architect",
@@ -178,12 +178,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/parth-82996a211/",
       //   "notes": ""
       // },
-      {
-        "name": "Christopher Love",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Christopher Love",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Holly Todd",
       //   "title": "Customer Success Account Manager",
@@ -257,18 +257,18 @@ const professionalsData = {
         "notes": "2025 Charlotte Business Journal Women in Business Honoree",
         "isStarred": true
       },
-      {
-        "name": "Adrian Stewart",
-        "title": "Azure Cloud Engineer",
-        "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
-        "notes": ""
-      },
-      {
-        "name": "Myriam Johnson",
-        "title": "Customer Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Adrian Stewart",
+      //   "title": "Azure Cloud Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Myriam Johnson",
+      //   "title": "Customer Engineering Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
+      //   "notes": ""
+      // },
       // { 
       //   "name": "Cianna Edwards",
       //   "title": "Digital Specialist",
