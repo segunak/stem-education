@@ -31,7 +31,7 @@ const professionalsData = {
         "name": "Jarvis-Ricardo Johnson",
         "title": "University Recruiter",
         "linkedIn": "https://www.linkedin.com/in/jarvisjohnmpa/",
-        "notes": "",
+        "notes": "Works in recruiting!",
         "isStarred": true
       },
       {
