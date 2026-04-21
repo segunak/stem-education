@@ -3,3 +3,9 @@
 A repository for workshops, resources, tools, and various other items related to STEM (Science, Technology, Engineering, Mathematics) education.
 
 Home website at <https://segunakinyemi.com/stem-education/>.
+
+## Buy Me a Coffee
+
+This is all [free](https://www.biblegateway.com/passage/?search=Matthew%2010%3A8&version=NIV), but if you're feeling generous, you can buy me a coffee, or tea, which is more my thing.
+
+[![Buy Me a Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://buymeacoffee.com/segunak)
