@@ -28,6 +28,13 @@ const professionalsData = {
         "notes": "Campus leader for community, culture, and employee experience, definitely connect!"
       },
       {
+        "name": "Jarvis-Ricardo Johnson",
+        "title": "University Recruiter",
+        "linkedIn": "https://www.linkedin.com/in/jarvisjohnmpa/",
+        "notes": "Works in recruiting!",
+        "isStarred": true
+      },
+      {
         "name": "Kyle Watson",
         "title": "Talent Acquisition Manager",
         "linkedIn": "https://www.linkedin.com/in/kyle-e-watson/",
@@ -59,9 +66,45 @@ const professionalsData = {
       //   "notes": ""
       // },
       {
+        "name": "Lamont Nell",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/lamontnell/",
+        "notes": ""
+      },
+      {
+        "name": "Jillian Dozier",
+        "title": "Business Program Manager",
+        "linkedIn": "https://www.linkedin.com/in/jill-do/",
+        "notes": ""
+      },
+      {
         "name": "Joel Grant",
         "title": "Cloud Solution Architect",
         "linkedIn": "https://www.linkedin.com/in/joel-grant-130233121/",
+        "notes": ""
+      },
+      {
+        "name": "Chinette Stevenson",
+        "title": "Principal Project Manager",
+        "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
+        "notes": ""
+      },
+      {
+        "name": "Nigel Thomas",
+        "title": "Technical Support Engineer",
+        "linkedIn": "https://www.linkedin.com/in/nithoma/",
+        "notes": ""
+      },
+      {
+        "name": "Adrian Stewart",
+        "title": "Azure Cloud Engineer",
+        "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
+        "notes": ""
+      },
+      {
+        "name": "Myriam Johnson",
+        "title": "Customer Engineering Manager",
+        "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
         "notes": ""
       },
       {
@@ -100,16 +143,10 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/liz-martin-rhia-cdip-cpc-cpc-i-crc-52537813a/",
       //   "notes": ""
       // },
-      // {
-      //   "name": "Samuel Blackmon",
-      //   "title": "Customer Success Account Manager",
-      //   "linkedIn": "https://www.linkedin.com/in/sblackmon/",
-      //   "notes": ""
-      // },
       {
-        "name": "Chinette Stevenson",
-        "title": "Principal Project Manager",
-        "linkedIn": "https://www.linkedin.com/in/chinettestevenson/",
+        "name": "Samuel Blackmon",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/sblackmon/",
         "notes": ""
       },
       // {
@@ -148,18 +185,6 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/kristoff-little-53382a199/",
       //   "notes": ""
       // },
-      {
-        "name": "Lamont Nell",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/lamontnell/",
-        "notes": ""
-      },
-      {
-        "name": "Jillian Dozier",
-        "title": "Business Program Manager",
-        "linkedIn": "https://www.linkedin.com/in/jill-do/",
-        "notes": ""
-      },
       // {
       //   "name": "Mohan Ravindran",
       //   "title": "Cloud Solution Architect",
@@ -178,12 +203,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/parth-82996a211/",
       //   "notes": ""
       // },
-      {
-        "name": "Christopher Love",
-        "title": "Customer Success Account Manager",
-        "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Christopher Love",
+      //   "title": "Customer Success Account Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/lovechristopher/",
+      //   "notes": ""
+      // },
       // {
       //   "name": "Holly Todd",
       //   "title": "Customer Success Account Manager",
@@ -250,25 +275,13 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/luetennerhaleiii",
       //   "notes": ""
       // },
-      {
-        "name": "Anusha Meka",
-        "title": "Principal Group Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/anushameka/",
-        "notes": "2025 Charlotte Business Journal Women in Business Honoree",
-        "isStarred": true
-      },
-      {
-        "name": "Adrian Stewart",
-        "title": "Azure Cloud Engineer",
-        "linkedIn": "https://www.linkedin.com/in/adrian-stewart-63179b1a3/",
-        "notes": ""
-      },
-      {
-        "name": "Myriam Johnson",
-        "title": "Customer Engineering Manager",
-        "linkedIn": "https://www.linkedin.com/in/myriamjohnson/",
-        "notes": ""
-      },
+      // {
+      //   "name": "Anusha Meka",
+      //   "title": "Principal Group Engineering Manager",
+      //   "linkedIn": "https://www.linkedin.com/in/anushameka/",
+      //   "notes": "2025 Charlotte Business Journal Women in Business Honoree",
+      //   "isStarred": true
+      // },
       // { 
       //   "name": "Cianna Edwards",
       //   "title": "Digital Specialist",
@@ -281,12 +294,12 @@ const professionalsData = {
       //   "linkedIn": "https://www.linkedin.com/in/begary/",
       //   "notes": ""
       // },
-      {
-        "name": "Imani Ricks",
-        "title": "UX Designer",
-        "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
-        "notes": "Works on the Minecraft team"
-      },
+      // {
+      //   "name": "Imani Ricks",
+      //   "title": "UX Designer",
+      //   "linkedIn": "https://www.linkedin.com/in/imani-ricks/",
+      //   "notes": "Works on the Minecraft team"
+      // },
       // {
       //   "name": "Trevor Suarez",
       //   "title": "Cloud Solution Architect",
@@ -327,6 +340,12 @@ const professionalsData = {
       //   "name": "Uchenna Nwosu",
       //   "title": "Customer Success Account Manager",
       //   "linkedIn": "https://www.linkedin.com/in/unwosu44/",
+      //   "notes": ""
+      // },
+      // {
+      //   "name": "Darlisha Campbell",
+      //   "title": "Tech Support Engineer",
+      //   "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
       //   "notes": ""
       // },
       // {
@@ -421,9 +440,9 @@ const professionalsData = {
         "notes": ""
       },
       {
-        "name": "Tenesha Robinson",
-        "title": "Senior Consultant",
-        "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-62046337/",
+        "name": "Dr. Tenesha Robinson",
+        "title": "Customer Success Account Manager",
+        "linkedIn": "https://www.linkedin.com/in/tenesha-robinson-phd-62046337/",
         "notes": ""
       },
       {
@@ -473,12 +492,6 @@ const professionalsData = {
         "name": "Kevin Rewkowski",
         "title": "Customer Success Account Manager",
         "linkedIn": "https://www.linkedin.com/in/rewkowski/",
-        "notes": ""
-      },
-      {
-        "name": "Darlisha Campbell",
-        "title": "Tech Support Engineer",
-        "linkedIn": "https://www.linkedin.com/in/darlisha-campbell-029957a4/",
         "notes": ""
       }
       // {

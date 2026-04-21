@@ -80,8 +80,10 @@ a {
     transition: color .15s var(--ease)
 }
 
-a:hover {
-    color: var(--pink)
+@media (hover: hover) {
+    a:hover {
+        color: var(--pink)
+    }
 }
 
 ::selection {
@@ -342,10 +344,12 @@ nav ul li a:hover {
     flex-shrink: 0;
 }
 
-.toc-item:hover {
-    background: rgba(0,146,202,.1);
-    border-color: var(--blue);
-    color: var(--text-primary) !important;
+@media (hover: hover) {
+    .toc-item:hover {
+        background: rgba(0,146,202,.1);
+        border-color: var(--blue);
+        color: var(--text-primary) !important;
+    }
 }
 
 .toc-item:active {
@@ -411,9 +415,11 @@ nav ul li a:hover {
     transition: color .15s, background .12s;
 }
 
-.hero-accordion-trigger:hover {
-    color: var(--pink);
-    background: rgba(255,255,255,.04);
+@media (hover: hover) {
+    .hero-accordion-trigger:hover {
+        color: var(--pink);
+        background: rgba(255,255,255,.04);
+    }
 }
 
 .hero-accordion-trigger .icon {
@@ -540,8 +546,10 @@ section {
     transition: border-color .2s, box-shadow .2s;
 }
 
-.faq-item:hover {
-    border-color: var(--border-hover)
+@media (hover: hover) {
+    .faq-item:hover {
+        border-color: var(--border-hover)
+    }
 }
 
 .faq-item.active {
@@ -709,8 +717,10 @@ section {
     transition: border-color .2s, box-shadow .2s;
 }
 
-.accordion-item:hover {
-    border-color: var(--border-hover)
+@media (hover: hover) {
+    .accordion-item:hover {
+        border-color: var(--border-hover)
+    }
 }
 
 .accordion-item.active {
@@ -828,10 +838,12 @@ section {
     transition: transform .25s var(--ease), box-shadow .25s, border-color .2s;
 }
 
-.tool-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--border-hover);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, .35), 0 0 60px var(--glow-blue);
+@media (hover: hover) {
+    .tool-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-hover);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, .35), 0 0 60px var(--glow-blue);
+    }
 }
 
 .tool-card .card-icon {
@@ -1184,10 +1196,12 @@ section {
     transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
 }
 
-.connect-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border-hover);
-    box-shadow: 0 8px 24px rgba(0,0,0,.3), 0 0 40px var(--glow-blue);
+@media (hover: hover) {
+    .connect-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-hover);
+        box-shadow: 0 8px 24px rgba(0,0,0,.3), 0 0 40px var(--glow-blue);
+    }
 }
 
 .connect-card i {
