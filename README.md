@@ -6,6 +6,6 @@ Home website at <https://segunakinyemi.com/stem-education/>.
 
 ## Buy Me a Coffee
 
-This is all [free](https://www.biblegateway.com/passage/?search=Matthew%2010%3A8&version=NIV), but if you're feeling generous, you can [buy me a coffee](https://buymeacoffee.com/segunak), or herbal tea, which is more my thing!
+This is all [free](https://www.biblegateway.com/passage/?search=Matthew%2010%3A8&version=NIV), but if you're feeling generous, you can [buy me a coffee](https://buymeacoffee.com/segunak), or herbal tea 🍵, which is more my thing!
 
 <a href="https://buymeacoffee.com/segunak" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height: 72px !important; width: 260px !important;"></a>
