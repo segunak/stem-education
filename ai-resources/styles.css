@@ -1106,6 +1106,14 @@ section {
     overflow: hidden;
 }
 
+#read .read-callout {
+    margin-bottom: 32px;
+}
+
+#read .read-callout:last-child {
+    margin-bottom: 0;
+}
+
 .reality-callout {
     width: 100%;
     margin: 8px 0;
@@ -1113,11 +1121,17 @@ section {
 }
 
 .media-callout {
-    text-align: left;
+    text-align: center;
 }
 
 .media-callout h4 {
     text-align: center;
+}
+
+.media-callout p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .media-callout .read-btn,
@@ -1128,8 +1142,9 @@ section {
 .video-embed {
     position: relative;
     width: 100%;
+    max-width: 760px;
     aspect-ratio: 16 / 9;
-    margin: 24px 0 20px;
+    margin: 24px auto 20px;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
