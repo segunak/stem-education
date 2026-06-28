@@ -1,3 +1,4 @@
 # Ignore all .env files
 *.env
 __pycache__
+local
