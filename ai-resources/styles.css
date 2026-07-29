@@ -76,8 +76,23 @@ img {
 
 a {
     color: var(--blue);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
     transition: color .15s var(--ease)
+}
+
+.logo a,
+nav a,
+.toc-item,
+.resource-link,
+.person .socials a,
+.org-list a,
+.community-list a,
+.read-btn,
+.connect-card,
+footer a {
+    text-decoration: none
 }
 
 @media (hover: hover) {
@@ -694,7 +709,7 @@ section {
 .link-list .author,
 .accordion-body-inner .author {
     display: block;
-    font-size: .73rem;
+    font-size: .9rem;
     color: var(--text-faint);
     margin-top: 2px
 }
