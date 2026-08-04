@@ -355,6 +355,48 @@ nav ul li a:hover {
     margin-bottom: 16px;
 }
 
+.internship-directory {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+    padding: 16px;
+    background: rgba(0, 146, 202, .08);
+    border: 1px solid rgba(88, 166, 255, .24);
+    border-radius: 10px;
+}
+
+.internship-directory p {
+    color: var(--text-secondary);
+    font-size: .9rem;
+    line-height: 1.55;
+}
+
+.internship-directory-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 10px 16px;
+    color: var(--text-primary) !important;
+    background: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    font-size: .82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .15s var(--ease), border-color .15s var(--ease), transform .15s var(--ease);
+}
+
+.internship-directory-link:hover {
+    color: var(--text-primary) !important;
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: translateY(-1px);
+}
+
 .internship-link-list {
     display: flex;
     flex-direction: column;
@@ -420,6 +462,16 @@ nav ul li a:hover {
     .internship-alert-inner {
         margin: 0 18px;
         padding: 18px 0 20px;
+    }
+
+    .internship-directory {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .internship-directory-link {
+        width: 100%;
     }
 
     .internship-link-list li {
