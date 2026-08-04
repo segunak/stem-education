@@ -199,7 +199,7 @@ nav ul li a:hover {
     overflow: hidden;
 }
 
-/* Gradient orbs like GitHub's purple/blue glow */
+/* Subtle hero glow */
 .hero::before {
     content: '';
     position: absolute;
@@ -209,19 +209,6 @@ nav ul li a:hover {
     background: radial-gradient(circle, rgba(0, 146, 202, .12) 0%, transparent 60%);
     top: -350px;
     right: -250px;
-    pointer-events: none;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(242, 19, 104, .07) 0%, transparent 60%);
-    bottom: -250px;
-    left: 50%;
-    transform: translateX(-50%);
     pointer-events: none;
 }
 
