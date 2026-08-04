@@ -18,6 +18,16 @@ document.querySelectorAll('nav a').forEach(link => {
     });
 });
 
+// Internship alert accordion
+const internshipTrigger = document.getElementById('internship-trigger');
+const internshipAlert = document.querySelector('.internship-alert');
+if (internshipTrigger && internshipAlert) {
+    internshipTrigger.addEventListener('click', () => {
+        const isOpen = internshipAlert.classList.toggle('active');
+        internshipTrigger.setAttribute('aria-expanded', String(isOpen));
+    });
+}
+
 // Hero rant accordion
 const rantTrigger = document.getElementById('rant-trigger');
 const rantBody = document.getElementById('rant-body');

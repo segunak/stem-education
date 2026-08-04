@@ -230,6 +230,214 @@ nav ul li a:hover {
     z-index: 2
 }
 
+/* Internship alert */
+.internship-alert {
+    max-width: 900px;
+    margin: 0 auto 42px;
+    background: linear-gradient(135deg, rgba(0, 146, 202, .14), rgba(242, 19, 104, .08) 58%, var(--bg-surface));
+    border: 1px solid rgba(88, 166, 255, .8);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 3px rgba(0, 146, 202, .1), 0 0 36px rgba(0, 146, 202, .3), 0 12px 40px rgba(0, 0, 0, .4);
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    animation: internship-alert-glow 2.8s ease-in-out infinite;
+}
+
+.internship-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--pink), var(--blue));
+    pointer-events: none;
+}
+
+@keyframes internship-alert-glow {
+    0%, 100% {
+        border-color: rgba(88, 166, 255, .7);
+        box-shadow: 0 0 0 3px rgba(0, 146, 202, .08), 0 0 28px rgba(0, 146, 202, .24), 0 12px 40px rgba(0, 0, 0, .4);
+    }
+    50% {
+        border-color: rgba(242, 19, 104, .8);
+        box-shadow: 0 0 0 3px rgba(242, 19, 104, .1), 0 0 42px rgba(242, 19, 104, .24), 0 12px 40px rgba(0, 0, 0, .4);
+    }
+}
+
+.internship-alert-trigger {
+    width: 100%;
+    padding: 24px 26px;
+    background: transparent;
+    border: 0;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    font-family: var(--font);
+}
+
+.internship-alert-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.internship-alert-kicker {
+    color: #ffd866;
+    font-size: .82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.internship-alert-kicker i {
+    margin-right: 6px;
+}
+
+.internship-alert-title {
+    color: var(--text-primary);
+    font-size: clamp(1.35rem, 4vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.internship-alert-summary {
+    color: var(--text-secondary);
+    font-size: .95rem;
+    line-height: 1.5;
+}
+
+.internship-alert-trigger > .icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .07);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform .3s var(--ease), background .2s;
+}
+
+.internship-alert.active .internship-alert-trigger > .icon {
+    transform: rotate(180deg);
+    background: rgba(0, 146, 202, .16);
+}
+
+.internship-alert-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .45s var(--ease);
+}
+
+.internship-alert.active .internship-alert-body {
+    max-height: 1200px;
+}
+
+.internship-alert-inner {
+    margin: 0 26px;
+    padding: 20px 0 26px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+.internship-alert-inner > p {
+    color: var(--text-secondary);
+    font-size: .95rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+.internship-link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.internship-link-list li {
+    background: rgba(255, 255, 255, .055);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    transition: background .15s var(--ease), border-color .15s var(--ease);
+}
+
+.internship-link-list li:hover {
+    background: rgba(0, 146, 202, .1);
+    border-color: rgba(88, 166, 255, .45);
+}
+
+.internship-link-list a {
+    display: block;
+    padding: 13px 16px;
+    color: #7dc4ff;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration-thickness: 1px;
+}
+
+.internship-link-list a:hover {
+    color: var(--pink);
+}
+
+.internship-alert-inner > .internship-referral {
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    color: var(--text-primary);
+    background: rgba(0, 146, 202, .1);
+    border: 1px solid rgba(88, 166, 255, .28);
+    border-radius: 10px;
+}
+
+.internship-referral a {
+    color: #7dc4ff;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .internship-alert {
+        margin-bottom: 34px;
+    }
+
+    .internship-alert-trigger {
+        padding: 20px 18px;
+        gap: 12px;
+    }
+
+    .internship-alert-trigger > .icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .internship-alert-inner {
+        margin: 0 18px;
+        padding: 18px 0 20px;
+    }
+
+    .internship-link-list li {
+        padding: 0;
+    }
+
+    .internship-link-list a {
+        padding: 12px 14px;
+        font-size: .9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .internship-alert {
+        animation: none;
+    }
+}
+
 /* Gif */
 .hero-gif {
     margin: 0 auto 32px;
