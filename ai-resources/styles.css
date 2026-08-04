@@ -668,17 +668,18 @@ nav ul li a:hover {
 .hero-accordion {
     max-width: 860px;
     margin: 24px auto 0;
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: rgba(255,255,255,.03);
+    background: var(--bg-surface);
+    transition: border-color .2s;
 }
 
 .hero-accordion-trigger {
     width: 100%;
     background: none;
     border: none;
-    padding: 16px 20px;
+    padding: 18px 56px;
     text-align: center;
     font: 600 .95rem/1.45 var(--font);
     color: #ffd866;
@@ -687,17 +688,23 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     gap: 12px;
+    position: relative;
     transition: color .15s, background .12s;
 }
 
 @media (hover: hover) {
+    .hero-accordion:hover {
+        border-color: var(--border-hover);
+    }
+
     .hero-accordion-trigger:hover {
-        color: var(--pink);
-        background: rgba(255,255,255,.04);
+        background: var(--bg-raised);
     }
 }
 
 .hero-accordion-trigger .icon {
+    position: absolute;
+    right: 20px;
     flex-shrink: 0;
     font-size: 1.2rem;
     font-weight: 300;
