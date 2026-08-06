@@ -431,6 +431,10 @@ nav ul li a:hover {
     font-weight: 700;
 }
 
+.internship-referral strong {
+    color: #ffd866;
+}
+
 @media (max-width: 640px) {
     .internship-alert {
         margin-bottom: 34px;
