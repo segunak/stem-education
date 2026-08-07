@@ -1170,6 +1170,14 @@ footer a:hover {
     text-align: center;
 }
 
+.professionals + .resources {
+    padding-top: 0;
+}
+
+.professionals + .resources .resource-categories {
+    margin-top: 0;
+}
+
 .resource-categories {
     margin-top: 2rem;
 }

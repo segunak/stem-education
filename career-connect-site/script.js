@@ -1,15 +1,17 @@
 // DOM Elements
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
-const charlotteProfilesGrid = document.querySelector('#charlotte-tab .profiles-grid');
-const raleighProfilesGrid = document.querySelector('#raleigh-tab .profiles-grid');
+// Employee profile directory selectors are intentionally disabled.
+// const charlotteProfilesGrid = document.querySelector('#charlotte-tab .profiles-grid');
+// const raleighProfilesGrid = document.querySelector('#raleigh-tab .profiles-grid');
 const currentYearSpan = document.getElementById('current-year');
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
+// const tabButtons = document.querySelectorAll('.tab-button');
+// const tabContents = document.querySelectorAll('.tab-content');
 const backToTopButton = document.getElementById('back-to-top');
 const body = document.body;
 
-// Professionals data
+/*
+ * The volunteer profile directory is intentionally disabled.
 const professionalsData = {
   "charlotte": {
     "professionals": [
@@ -515,6 +517,7 @@ const professionalsData = {
     ]
   }
 };
+*/
 
 // Set current year in footer
 currentYearSpan.textContent = new Date().getFullYear();
@@ -548,7 +551,8 @@ backToTopButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Create and populate profile cards
+/*
+// Employee profile directory rendering is intentionally disabled.
 function displayProfiles() {
   // Display Charlotte professionals
   if (professionalsData.charlotte && professionalsData.charlotte.professionals) {
@@ -613,6 +617,7 @@ tabButtons.forEach((button) => {
     document.getElementById(`${targetTab}-tab`).classList.add('active');
   });
 });
+*/
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -651,7 +656,7 @@ function animateOnScroll() {
 
 // Initialize the page
 function init() {
-  displayProfiles();
+  // Employee profile directory is intentionally disabled.
 
   // Add scroll event listener
   window.addEventListener('scroll', animateOnScroll);
