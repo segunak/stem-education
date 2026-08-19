@@ -43,7 +43,6 @@ Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for s
 
 - `/workshops` - Workshop materials
 - `/petoi-bittle` - Robot documentation and workshops  
-- `/root-site-assets` - Main education website
 
 ## Best Practices
 
