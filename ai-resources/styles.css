@@ -30,7 +30,7 @@
     /* borders, ultra-subtle */
 
     --link: #58a6ff;
-    /* GitHub's link blue */
+    --link-hover: #f778ba;
 
     --green: #3fb950;
     --green-bg: rgba(63, 185, 80, .12);
@@ -75,30 +75,37 @@ img {
 }
 
 a {
-    color: var(--blue);
+    color: var(--link);
     text-decoration: underline;
+    text-decoration-color: currentColor;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
-    transition: color .15s var(--ease)
+    transition: color .15s var(--ease), text-decoration-color .15s var(--ease)
+}
+
+a:visited {
+    color: var(--link);
 }
 
 .logo a,
 nav a,
 .toc-item,
 .resource-link,
-.person .socials a,
-.org-list a,
-.community-list a,
 .read-btn,
-.connect-card,
-footer a {
+.connect-card {
     text-decoration: none
 }
 
 @media (hover: hover) {
     a:hover {
-        color: var(--pink)
+        color: var(--link-hover);
+        text-decoration-color: currentColor;
     }
+}
+
+a:focus-visible {
+    outline: 2px solid var(--link-hover);
+    outline-offset: 3px;
 }
 
 ::selection {
@@ -406,7 +413,6 @@ nav ul li a:hover {
 .internship-link-list a {
     display: block;
     padding: 13px 16px;
-    color: #7dc4ff;
     font-size: .95rem;
     font-weight: 700;
     line-height: 1.4;
@@ -414,7 +420,7 @@ nav ul li a:hover {
 }
 
 .internship-link-list a:hover {
-    color: var(--pink);
+    color: var(--link-hover);
 }
 
 .internship-alert-inner > .internship-referral {
@@ -427,7 +433,6 @@ nav ul li a:hover {
 }
 
 .internship-referral a {
-    color: #7dc4ff;
     font-weight: 700;
 }
 
@@ -515,12 +520,11 @@ nav ul li a:hover {
 }
 
 .hero-subtitle a {
-    color: var(--blue);
     font-weight: 700
 }
 
 .hero-subtitle a:hover {
-    color: var(--pink)
+    color: var(--link-hover)
 }
 
 .hero-shortlink {
@@ -532,7 +536,6 @@ nav ul li a:hover {
 }
 
 .hero-shortlink a {
-    color: var(--text-muted);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -540,7 +543,7 @@ nav ul li a:hover {
 }
 
 .hero-shortlink a:hover {
-    color: var(--blue);
+    color: var(--link-hover);
 }
 
 /* Featured quote */
@@ -570,12 +573,11 @@ nav ul li a:hover {
 }
 
 .featured-quote cite a {
-    color: var(--blue);
     font-weight: 600;
 }
 
 .featured-quote cite a:hover {
-    color: var(--pink);
+    color: var(--link-hover);
 }
 
 /* Table of Contents grid */
@@ -644,7 +646,6 @@ nav ul li a:hover {
 }
 
 .hero-intro a {
-    color: var(--blue);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -652,7 +653,7 @@ nav ul li a:hover {
 }
 
 .hero-intro a:hover {
-    color: var(--pink)
+    color: var(--link-hover)
 }
 
 /* Hero accordion (rant) */
@@ -732,7 +733,6 @@ nav ul li a:hover {
 }
 
 .hero-accordion-inner a {
-    color: var(--blue);
     font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -740,7 +740,7 @@ nav ul li a:hover {
 }
 
 .hero-accordion-inner a:hover {
-    color: var(--pink);
+    color: var(--link-hover);
 }
 
 /* ——— Sections ——— */
@@ -767,8 +767,7 @@ section {
 }
 
 .section-intro a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 /* ——— Tutor Callout ——— */
@@ -905,13 +904,11 @@ section {
 }
 
 .faq-quote cite a {
-    color: var(--blue);
     font-weight: 600;
 }
 
 .faq-answer-inner a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 /* ——— Link Columns ——— */
@@ -956,12 +953,11 @@ section {
 }
 
 .link-list li a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 .link-list li a:hover {
-    color: var(--pink)
+    color: var(--link-hover)
 }
 
 .link-list .author,
@@ -980,6 +976,10 @@ section {
     max-width: 860px;
     margin: 0 auto;
     text-align: left
+}
+
+#follow .accordion-list {
+    max-width: none;
 }
 
 .accordion-item {
@@ -1068,8 +1068,7 @@ section {
 }
 
 .accordion-body-inner li a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 .accordion-body-inner p {
@@ -1085,7 +1084,6 @@ section {
 
 .accordion-body-inner p a {
     font-weight: 600;
-    color: var(--blue);
 }
 
 .accordion-body-inner p strong {
@@ -1168,8 +1166,7 @@ section {
 }
 
 .tool-card p a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 .resource-link {
@@ -1230,8 +1227,7 @@ section {
 }
 
 .learn-group li a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 .learn-group .desc {
@@ -1268,73 +1264,91 @@ section {
 }
 
 .callout a {
-    color: var(--blue);
     font-weight: 700
 }
 
 .callout a:hover {
-    color: var(--pink)
+    color: var(--link-hover)
 }
 
-/* ——— People ——— */
-.people-grid {
+/* ——— Follow Directories ——— */
+.people-grid,
+.org-list,
+.community-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 4px 24px
-}
-
-.person {
-    padding: 8px 0;
-    font-size: .85rem;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    flex-wrap: wrap
-}
-
-.person strong {
-    color: var(--text-primary);
-    white-space: nowrap;
-    font-size: .85rem
-}
-
-.person .socials {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap
-}
-
-.person .socials a {
-    font-size: .72rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--bg-raised);
-    border: 1px solid var(--border);
-    transition: all .12s var(--ease);
-}
-
-.person .socials a:hover {
-    border-color: var(--blue);
-    color: var(--blue);
-    background: rgba(0, 146, 202, .06)
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
 }
 
 .org-list,
 .community-list {
     list-style: none;
-    columns: 2;
-    column-gap: 28px;
-    text-align: left
+    text-align: left;
+}
+
+.person,
+.org-list li,
+.community-list li {
+    display: block;
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border);
+    transition: background .12s var(--ease);
+}
+
+@media (hover: hover) {
+    .person:hover,
+    .org-list li:hover,
+    .community-list li:hover {
+        background: rgba(0, 146, 202, .04);
+    }
+}
+
+.person strong,
+.org-list strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.person .socials,
+.org-list .socials {
+    display: flex;
+    align-items: center;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.person .socials a,
+.org-list .socials a {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--link);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
+    transition: color .12s var(--ease), text-decoration-color .12s var(--ease);
+}
+
+.person .socials a:hover,
+.org-list .socials a:hover,
+.community-list .community-name:hover {
+    color: var(--link-hover);
+    background: transparent;
+    text-decoration-color: currentColor;
 }
 
 .org-list li,
 .community-list li {
-    padding: 6px 0;
-    font-size: .85rem;
-    break-inside: avoid;
-    padding-left: 0;
+    font-size: 1rem;
 }
 
 .org-list li::before,
@@ -1342,28 +1356,25 @@ section {
     display: none;
 }
 
-.org-list strong,
-.community-list strong {
-    color: var(--text-primary)
+.community-list .community-name {
+    display: block;
+    width: fit-content;
+    color: var(--link);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
+    transition: color .12s var(--ease), text-decoration-color .12s var(--ease);
 }
 
-.org-list a,
-.community-list a {
-    font-size: .72rem;
-    font-weight: 600;
+.community-description {
+    display: block;
     color: var(--text-muted);
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--bg-raised);
-    border: 1px solid var(--border);
-    transition: all .12s var(--ease);
-}
-
-.org-list a:hover,
-.community-list a:hover {
-    border-color: var(--blue);
-    color: var(--blue);
-    background: rgba(0, 146, 202, .06)
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 /* ——— Read ——— */
@@ -1498,8 +1509,7 @@ section {
 }
 
 .my-posts li a {
-    font-weight: 600;
-    color: var(--blue)
+    font-weight: 600
 }
 
 /* ——— Get Connected ——— */
@@ -1592,7 +1602,6 @@ section {
 
 .easter-egg a {
     font-weight: 600;
-    color: var(--blue);
 }
 
 /* ——— Footer ——— */
@@ -1606,14 +1615,13 @@ footer {
 }
 
 footer a {
-    color: var(--text-muted);
     font-weight: 600;
     margin: 0 10px;
     transition: color .15s
 }
 
 footer a:hover {
-    color: var(--blue)
+    color: var(--link-hover)
 }
 
 footer p {
@@ -1697,13 +1705,16 @@ footer p {
         grid-template-columns: 1fr
     }
 
-    .people-grid {
-        grid-template-columns: 1fr
-    }
-
+    .people-grid,
     .org-list,
     .community-list {
-        columns: 1
+        grid-template-columns: 1fr;
+    }
+
+    .person,
+    .org-list li,
+    .community-list li {
+        padding: 12px 4px;
     }
 }
 
