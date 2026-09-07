@@ -1,20 +1,8 @@
-# GitHub Copilot Custom Instructions for STEM Education Repository
+# GitHub Copilot Custom Instructions
 
-## Repository Context
+A general purpose repository for STEM Education related materials.
 
-This STEM education repository contains workshops, coding challenges, Petoi Bittle robot specific workshops and documentation, and educational websites. Target audience is high school students (adaptable for middle school through early college).
-
-## Writing Style
-
-- **Never use em dashes, en dashes, colons, or semicolons**. Use commas or separate sentences
-- Write as a real-world software engineer mentor, not a textbook
-- Assume no prior knowledge. Explain concepts in plain language
-- Use active voice and short sentences
-- Include relatable analogies and real-world connections
-
-## Content Guidelines
-
-### Workshop Structure
+## Workshop Structure
 
 Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for style. Include:
 
@@ -25,19 +13,18 @@ Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for s
 5. Hands-on challenges
 6. Troubleshooting tips
 
-### Code Standards
+## Code Standards
 
 - Provide complete, runnable snippets with teaching comments
 - Keep code simple for beginners
 - Include file paths and setup instructions
 - Offer basic and advanced variations when possible
 
-### Interactive Learning
+## Interactive Learning
 
 - Create companion websites using GitHub Pages (static in workshop folders)
-- Suggest Vercel templates for dynamic companion websites when static won't do
+- Sites can be hosted on Vercel when dynamic features are required
 - Design activities for learning by doing
-- Include self-guided challenge stations
 
 ## Key Directories
 
@@ -52,7 +39,3 @@ Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for s
 - Add reflection prompts and badges
 - Encourage peer collaboration
 - Make it fun, visual, and engaging
-
-## Remember
-
-The goal is inspiring students to explore STEM. Every piece of content should help students feel capable and excited about technology.
