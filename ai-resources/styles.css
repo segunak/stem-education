@@ -973,13 +973,10 @@ section {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
     max-width: 860px;
     margin: 0 auto;
     text-align: left
-}
-
-#follow .accordion-list {
-    max-width: none;
 }
 
 .accordion-item {
