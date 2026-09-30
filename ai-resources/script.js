@@ -87,6 +87,14 @@ document.querySelectorAll('.accordion-trigger').forEach(button => {
     });
 });
 
+window.addEventListener('resize', () => {
+    document.querySelectorAll(
+        '.hero-accordion.active .hero-accordion-body, .faq-item.active .faq-answer, .accordion-item.active .accordion-body'
+    ).forEach(body => {
+        body.style.maxHeight = body.scrollHeight + 'px';
+    });
+});
+
 // Scroll: back to top + header shadow
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
