@@ -57,10 +57,23 @@ steps:
         done
 
 safe-outputs:
+  # gh-aw opens GitHub issues for failed runs by default. Turn off every path so failures only show in the Actions tab.
+  report-failure-as-issue: false
+  missing-tool:
+    create-issue: false
+  missing-data:
+    create-issue: false
+  report-incomplete:
+    create-issue: false
+  noop:
+    report-as-issue: false
   create-pull-request:
     title-prefix: "[internships] "
     labels: [automation]
     draft: false
+    reviewers: [copilot]
+    allowed-files: [ai-resources/index.html]
+    fallback-as-issue: false
 ---
 
 # Update Microsoft Internship List
