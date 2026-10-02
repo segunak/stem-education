@@ -1,9 +1,10 @@
 ---
-description: Weekly sync of the Microsoft internship link list on the AI resources page with currently open undergraduate internships.
+description: Monthly sync of the Microsoft internship link list on the AI resources page with currently open undergraduate internships.
 
 on:
   schedule:
-    - cron: "0 19 * * 0" # Sundays 3 PM EDT (2 PM EST in winter, cron is UTC only)
+    - cron: "0 17 1 * *" # 1st of every month at 5 PM ET
+      timezone: America/New_York
   workflow_dispatch:
 
 permissions:
