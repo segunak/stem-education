@@ -987,6 +987,10 @@ section {
     transition: border-color .2s, box-shadow .2s;
 }
 
+.accordion-item[id] {
+    scroll-margin-top: 72px
+}
+
 @media (hover: hover) {
     .accordion-item:hover {
         border-color: var(--border-hover)

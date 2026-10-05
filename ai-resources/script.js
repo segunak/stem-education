@@ -87,6 +87,34 @@ document.querySelectorAll('.accordion-trigger').forEach(button => {
     });
 });
 
+function openAccordionFromHash() {
+    const targetId = location.hash.slice(1);
+    const item = targetId ? document.getElementById(targetId) : null;
+
+    if (!item || !item.classList.contains('accordion-item')) {
+        return;
+    }
+
+    const parent = item.closest('.accordion-list');
+    const body = item.querySelector('.accordion-body');
+
+    if (!parent || !body) {
+        return;
+    }
+
+    parent.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-body').style.maxHeight = null;
+    });
+
+    item.classList.add('active');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.scrollIntoView({ block: 'start' });
+}
+
+window.addEventListener('load', openAccordionFromHash);
+window.addEventListener('hashchange', openAccordionFromHash);
+
 window.addEventListener('resize', () => {
     document.querySelectorAll(
         '.hero-accordion.active .hero-accordion-body, .faq-item.active .faq-answer, .accordion-item.active .accordion-body'
