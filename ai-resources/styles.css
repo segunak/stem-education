@@ -235,7 +235,6 @@ nav ul li a:hover {
     overflow: hidden;
     position: relative;
     text-align: left;
-    animation: internship-alert-glow 2.8s ease-in-out infinite;
 }
 
 .internship-alert::before {
@@ -249,14 +248,9 @@ nav ul li a:hover {
     pointer-events: none;
 }
 
-@keyframes internship-alert-glow {
-    0%, 100% {
-        border-color: rgba(88, 166, 255, .7);
-        box-shadow: 0 0 0 3px rgba(0, 146, 202, .08), 0 0 28px rgba(0, 146, 202, .24), 0 12px 40px rgba(0, 0, 0, .4);
-    }
+@keyframes internship-action-pulse {
     50% {
-        border-color: rgba(242, 19, 104, .8);
-        box-shadow: 0 0 0 3px rgba(242, 19, 104, .1), 0 0 42px rgba(242, 19, 104, .24), 0 12px 40px rgba(0, 0, 0, .4);
+        box-shadow: 0 0 0 3px rgba(255, 216, 102, .55), 0 0 20px rgba(255, 216, 102, .65), 0 0 36px rgba(255, 216, 102, .32);
     }
 }
 
@@ -273,6 +267,11 @@ nav ul li a:hover {
     gap: 20px;
     text-align: left;
     font-family: var(--font);
+}
+
+.internship-alert-trigger:focus-visible {
+    outline: 3px solid #ffd866;
+    outline-offset: -5px;
 }
 
 .internship-alert-heading {
@@ -307,33 +306,41 @@ nav ul li a:hover {
     line-height: 1.5;
 }
 
-.internship-alert-trigger > .icon {
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(255, 255, 255, .16);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, .07);
+.internship-alert-action {
+    padding: 12px 18px;
+    border: 1px solid #ffd866;
+    border-radius: 8px;
+    background: var(--bg-raised);
     color: var(--text-primary);
-    display: flex;
+    box-shadow: 0 0 0 1px rgba(255, 216, 102, .45), 0 0 14px rgba(255, 216, 102, .45), 0 0 28px rgba(255, 216, 102, .22);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     flex-shrink: 0;
-    transition: transform .3s var(--ease), background .2s;
+    font-size: .95rem;
+    font-weight: 800;
+    white-space: nowrap;
+    animation: internship-action-pulse 1.5s ease-in-out 2;
+    transition: background .2s var(--ease);
 }
 
-.internship-alert.active .internship-alert-trigger > .icon {
+.internship-alert-trigger:hover .internship-alert-action,
+.internship-alert-trigger:focus-visible .internship-alert-action {
+    background: var(--bg-overlay);
+}
+
+.internship-alert.has-interacted .internship-alert-action {
+    animation: none;
+}
+
+.internship-alert-action > .icon {
+    display: inline-flex;
+    transition: transform .3s var(--ease);
+}
+
+.internship-alert.active .internship-alert-action > .icon {
     transform: rotate(180deg);
-    background: rgba(0, 146, 202, .16);
-}
-
-.internship-alert-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .45s var(--ease);
-}
-
-.internship-alert.active .internship-alert-body {
-    max-height: 1200px;
 }
 
 .internship-alert-inner {
@@ -447,12 +454,13 @@ nav ul li a:hover {
 
     .internship-alert-trigger {
         padding: 20px 18px;
+        flex-direction: column;
+        align-items: stretch;
         gap: 12px;
     }
 
-    .internship-alert-trigger > .icon {
-        width: 36px;
-        height: 36px;
+    .internship-alert-action {
+        white-space: normal;
     }
 
     .internship-alert-inner {
@@ -481,8 +489,10 @@ nav ul li a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .internship-alert {
+    .internship-alert-action,
+    .internship-alert-action > .icon {
         animation: none;
+        transition: none;
     }
 }
 

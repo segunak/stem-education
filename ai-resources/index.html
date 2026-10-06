@@ -47,17 +47,21 @@
     <!-- Hero -->
     <section class="hero" id="top">
         <div class="container">
-            <div class="internship-alert active">
-                <button class="internship-alert-trigger" id="internship-trigger" type="button" aria-expanded="true" aria-controls="internship-body">
+            <div class="internship-alert">
+                <button class="internship-alert-trigger" id="internship-trigger" type="button" aria-expanded="false" aria-controls="internship-body">
                     <span class="internship-alert-heading">
                         <span class="internship-alert-kicker"><i class="fab fa-microsoft" aria-hidden="true"></i> Applications are open</span>
                         <span class="internship-alert-title">Microsoft Internships</span>
-                        <span class="internship-alert-summary">These internship postings are live, apply now! And remember, Microsoft sponsors room and board for interns, so don't worry about the location.</span>
+                        <span class="internship-alert-summary">Browse the current openings and apply.</span>
                     </span>
-                    <span class="icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                    <span class="internship-alert-action">
+                        <span id="internship-toggle-label">View Internships</span>
+                        <span class="icon" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                    </span>
                 </button>
-                <div class="internship-alert-body" id="internship-body">
+                <div class="internship-alert-body" id="internship-body" hidden>
                     <div class="internship-alert-inner">
+                        <p>Microsoft sponsors room and board for interns, so don't worry about the location.</p>
                         <div class="internship-directory">
                             <p>Postings can close as roles fill. If a link below is no longer available, browse all active Microsoft internships in the United States.</p>
                             <a class="internship-directory-link" href="https://apply.careers.microsoft.com/careers?start=0&amp;location=United+States&amp;sort_by=distance&amp;filter_include_remote=1&amp;filter_include_relocation=0&amp;filter_employment_type=internship">

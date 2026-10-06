@@ -21,10 +21,19 @@ document.querySelectorAll('nav a').forEach(link => {
 // Internship alert accordion
 const internshipTrigger = document.getElementById('internship-trigger');
 const internshipAlert = document.querySelector('.internship-alert');
-if (internshipTrigger && internshipAlert) {
+const internshipBody = document.getElementById('internship-body');
+const internshipToggleLabel = document.getElementById('internship-toggle-label');
+if (internshipTrigger && internshipAlert && internshipBody && internshipToggleLabel) {
+    const internshipCount = internshipAlert.querySelectorAll('.internship-link-list > li').length;
+    const collapsedLabel = `View ${internshipCount} Internship${internshipCount === 1 ? '' : 's'}`;
+    internshipToggleLabel.textContent = collapsedLabel;
+
     internshipTrigger.addEventListener('click', () => {
         const isOpen = internshipAlert.classList.toggle('active');
+        internshipAlert.classList.add('has-interacted');
+        internshipBody.hidden = !isOpen;
         internshipTrigger.setAttribute('aria-expanded', String(isOpen));
+        internshipToggleLabel.textContent = isOpen ? 'Hide Internships' : collapsedLabel;
     });
 }
 

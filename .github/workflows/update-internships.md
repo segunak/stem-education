@@ -72,6 +72,8 @@ safe-outputs:
     title-prefix: "[internships] "
     labels: [automation]
     draft: false
+    # Opt in per PR; the repository's required reviews and checks still gate merging.
+    auto-merge: squash
     reviewers: [copilot]
     allowed-files: [ai-resources/index.html]
     fallback-as-issue: false
