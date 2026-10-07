@@ -143,7 +143,7 @@ jobs:
         with:
           name: internship-review
           path: ${{ runner.temp }}/internship-review
-      - name: Merge reviewed changes, deploy, and notify
+      - name: Merge reviewed changes, clean up branch, deploy, and notify
         uses: actions/github-script@v9
         env:
           PR_NUMBER: ${{ needs.safe_outputs.outputs.created_pr_number }}
@@ -161,9 +161,9 @@ jobs:
 Keep the `<ul class="internship-link-list">` in `ai-resources/index.html` in sync with the internships Microsoft currently has open.
 
 Trusted jobs validate and independently review the patch before creating and merging the PR.
-After merging, they request Pages deployment and mention `@segunak` in a completion comment.
-Email delivery uses GitHub's participating-notification preferences; merged-branch cleanup uses
-the repository's "Automatically delete head branches" setting.
+After merging, they delete the PR branch if it still points to the reviewed commit,
+request Pages deployment, and mention `@segunak` in a completion comment.
+Email delivery uses GitHub's participating-notification preferences.
 
 Inputs, already prepared for you:
 

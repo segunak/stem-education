@@ -110,6 +110,28 @@ async function finalize(github, context, number, review) {
         });
         assert.equal(merge.merged, true, `Merge refused: ${merge.message}`);
     }
+    const ref = { ...repo, ref: `heads/${pr.head.ref}` };
+    const readBranch = async () => {
+        try {
+            return (await github.rest.git.getRef(ref)).data;
+        } catch (error) {
+            if (error.status !== 404) throw error;
+            console.log('PR branch is already deleted.');
+            return null;
+        }
+    };
+    const branch = await readBranch();
+    if (branch && branch.object.sha !== pr.head.sha) {
+        console.warn('Retaining the PR branch because it advanced after review.');
+    } else if (branch) {
+        try {
+            await github.rest.git.deleteRef(ref);
+            console.log(`Deleted merged PR branch ${pr.head.ref}.`);
+        } catch (error) {
+            // Native cleanup can delete the branch between our lookup and deletion.
+            if (![404, 422].includes(error.status) || await readBranch()) throw error;
+        }
+    }
     await github.rest.actions.createWorkflowDispatch({ ...repo, workflow_id: 'pages.yml', ref: 'master' });
     await github.rest.issues.createComment({
         ...repo, issue_number: number,

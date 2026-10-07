@@ -73,22 +73,66 @@ function fixture() {
             get: async () => ({ data: pr }),
             merge: async args => { calls.push(['merge', args]); return { data: { merged: true } }; }
         },
-        git: { getCommit: async () => ({ data: commit }) },
+        git: {
+            getCommit: async () => ({ data: commit }),
+            getRef: async () => ({ data: { object: { sha: pr.head.sha } } }),
+            deleteRef: async args => calls.push(['delete', args])
+        },
         actions: { createWorkflowDispatch: async args => calls.push(['deploy', args]) },
         issues: { createComment: async args => calls.push(['notify', args]) }
     } };
     return { github, context, review, pr, commit, calls };
 }
 
-test('merges only the reviewed head, then requests deployment and notifies', async () => {
+test('merges only the reviewed head, deletes its branch, then deploys and notifies', async () => {
     const f = fixture();
     await finalize(f.github, f.context, 5, f.review);
-    assert.deepEqual(f.calls.map(call => call[0]), ['merge', 'deploy', 'notify']);
+    assert.deepEqual(f.calls.map(call => call[0]), ['merge', 'delete', 'deploy', 'notify']);
     assert.equal(f.calls[0][1].sha, f.pr.head.sha);
     assert.equal(f.calls[0][1].merge_method, 'squash');
-    assert.equal(f.calls[1][1].workflow_id, 'pages.yml');
-    assert.match(f.calls[2][1].body, /@segunak/);
+    assert.deepEqual(f.calls[1][1], { ...f.context.repo, ref: `heads/${f.pr.head.ref}` });
+    assert.equal(f.calls[2][1].workflow_id, 'pages.yml');
+    assert.match(f.calls[3][1].body, /@segunak/);
 });
+
+test('skips cleanup when GitHub already deleted the branch', async () => {
+    const f = fixture();
+    f.github.rest.git.getRef = async () => { throw Object.assign(new Error('Not found'), { status: 404 }); };
+    await finalize(f.github, f.context, 5, f.review);
+    assert.deepEqual(f.calls.map(call => call[0]), ['merge', 'deploy', 'notify']);
+});
+
+test('retains a branch that advanced after the reviewed commit', async () => {
+    const f = fixture();
+    f.github.rest.git.getRef = async () => ({ data: { object: { sha: 'new-work' } } });
+    await finalize(f.github, f.context, 5, f.review);
+    assert.deepEqual(f.calls.map(call => call[0]), ['merge', 'deploy', 'notify']);
+});
+
+for (const status of [404, 422]) {
+    test(`tolerates concurrent native cleanup returning ${status}`, async () => {
+        const f = fixture();
+        let lookups = 0;
+        f.github.rest.git.getRef = async () => {
+            if (++lookups === 1) return { data: { object: { sha: f.pr.head.sha } } };
+            throw Object.assign(new Error('Not found'), { status: 404 });
+        };
+        f.github.rest.git.deleteRef = async () => { throw Object.assign(new Error('Reference does not exist'), { status }); };
+        await finalize(f.github, f.context, 5, f.review);
+        assert.equal(lookups, 2);
+        assert.deepEqual(f.calls.map(call => call[0]), ['merge', 'deploy', 'notify']);
+    });
+}
+
+for (const [method, status] of [['getRef', 403], ['deleteRef', 403], ['deleteRef', 422]]) {
+    test(`surfaces ${method} failures (${status}) instead of claiming cleanup succeeded`, async () => {
+        const f = fixture();
+        const error = Object.assign(new Error('Cleanup refused'), { status });
+        f.github.rest.git[method] = async () => { throw error; };
+        await assert.rejects(finalize(f.github, f.context, 5, f.review), error);
+        assert.deepEqual(f.calls.map(call => call[0]), ['merge']);
+    });
+}
 
 for (const [name, mutate] of [
     ['different PR contents', f => { f.commit.tree.sha = 'unreviewed-tree'; }],
@@ -121,7 +165,7 @@ test('can retry deployment after an already completed merge', async () => {
     f.pr.state = 'closed';
     f.pr.base.sha = 'merge-sha';
     await finalize(f.github, f.context, 5, f.review);
-    assert.deepEqual(f.calls.map(call => call[0]), ['deploy', 'notify']);
+    assert.deepEqual(f.calls.map(call => call[0]), ['delete', 'deploy', 'notify']);
 });
 
 function patchFixture(t) {
