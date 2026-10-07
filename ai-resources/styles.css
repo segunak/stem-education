@@ -153,6 +153,7 @@ header .container {
     align-items: center;
     gap: 6px;
     letter-spacing: -.01em;
+    white-space: nowrap;
 }
 
 .logo a span {
@@ -167,11 +168,12 @@ nav ul {
 
 nav ul li a {
     display: block;
-    padding: 6px 12px;
+    padding: 6px 8px;
     font-size: .82rem;
     font-weight: 500;
     color: var(--text-muted);
     border-radius: 8px;
+    white-space: nowrap;
     transition: all .15s var(--ease);
 }
 
@@ -593,7 +595,7 @@ nav ul li a:hover {
 /* Table of Contents grid */
 .toc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     max-width: 860px;
     margin: 28px auto 0;
@@ -632,6 +634,22 @@ nav ul li a:hover {
 
 .toc-item:active {
     transform: scale(.97);
+}
+
+@media (min-width: 701px) {
+    .toc-item:last-child:nth-child(3n + 1) {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .toc-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    /* A lone last item spans the full row */
+    .toc-item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1388,7 +1406,7 @@ section {
     line-height: 1.5;
 }
 
-/* ——— Read ——— */
+/* ——— Read & Watch ——— */
 .read-callout {
     background: var(--bg-surface);
     border: 1px solid var(--border);
@@ -1401,18 +1419,14 @@ section {
     overflow: hidden;
 }
 
-#read .read-callout {
+#read .read-callout,
+#watch .read-callout {
     margin-bottom: 32px;
 }
 
-#read .read-callout:last-child {
+#read .read-callout:last-child,
+#watch .read-callout:last-child {
     margin-bottom: 0;
-}
-
-.reality-callout {
-    width: 100%;
-    margin: 8px 0;
-    text-align: left;
 }
 
 .media-callout {
@@ -1429,8 +1443,7 @@ section {
     margin-right: auto;
 }
 
-.media-callout .read-btn,
-.reality-callout .read-btn {
+.media-callout .read-btn {
     margin-top: 4px;
 }
 
@@ -1667,7 +1680,7 @@ footer p {
 }
 
 /* ——— Responsive ——— */
-@media(max-width:768px) {
+@media(max-width:1100px) {
     .hamburger {
         display: flex
     }
@@ -1678,6 +1691,8 @@ footer p {
         top: 100%;
         left: 0;
         right: 0;
+        max-height: calc(100dvh - 100%);
+        overflow-y: auto;
         background: var(--bg-surface);
         border-bottom: 1px solid var(--border);
         box-shadow: 0 12px 32px rgba(0, 0, 0, .5);
@@ -1698,7 +1713,9 @@ footer p {
         font-size: .9rem;
         border-radius: 8px
     }
+}
 
+@media(max-width:768px) {
     .hero {
         padding: 108px 0 60px
     }
@@ -1739,7 +1756,8 @@ footer p {
     }
 
     section {
-        padding: 44px 0
+        padding: 44px 0;
+        scroll-margin-top: 56px
     }
 
     .tools-grid {
