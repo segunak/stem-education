@@ -139,9 +139,11 @@ header.scrolled {
 }
 
 header .container {
+    max-width: 1200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 32px;
     height: 56px
 }
 
@@ -1680,7 +1682,7 @@ footer p {
 }
 
 /* ——— Responsive ——— */
-@media(max-width:1100px) {
+@media(max-width:1200px) {
     .hamburger {
         display: flex
     }
