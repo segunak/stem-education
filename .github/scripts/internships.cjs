@@ -9,19 +9,31 @@ const jobUrl = 'https://apply.careers.microsoft.com/careers/job/';
 function parseList(html) {
     const lists = [...html.matchAll(/<ul class="internship-link-list">([\s\S]*?)<\/ul>/g)];
     assert.equal(lists.length, 1, 'Expected exactly one internship list');
+    const alerts = [...html.matchAll(/<div class="internship-alert"( hidden)?>/g)];
+    assert.equal(alerts.length, 1, 'Expected exactly one internship alert');
     const itemPattern = /<li>\s*<a href="([^"<>\s]+)">([^<>]+)<\/a>\s*<\/li>/g;
     const items = [...lists[0][1].matchAll(itemPattern)].map(match => ({
         markup: match[0], href: match[1], title: match[2]
     }));
     assert.equal(lists[0][1].replace(itemPattern, '').trim(), '', 'Unexpected markup in internship list');
-    return { surrounding: html.replace(lists[0][0], ''), items };
+    return {
+        surrounding: html.replace(lists[0][0], '').replace(alerts[0][0], '<div class="internship-alert">'),
+        items, hidden: Boolean(alerts[0][1])
+    };
+}
+
+function syncVisibility(html) {
+    const { items } = parseList(html);
+    return html.replace(/<div class="internship-alert"(?: hidden)?>/,
+        `<div class="internship-alert"${items.length === 0 ? ' hidden' : ''}>`);
 }
 
 function validate(before, after, internships, links) {
     const oldList = parseList(before);
     const newList = parseList(after);
-    assert.equal(newList.surrounding, oldList.surrounding, 'Changes outside the internship list');
-    assert.ok(Array.isArray(internships) && internships.length > 0, 'Missing open internship data');
+    assert.equal(newList.surrounding, oldList.surrounding, 'Changes outside the internship list or alert visibility');
+    assert.equal(newList.hidden, newList.items.length === 0, 'Internship alert visibility must match its item count');
+    assert.ok(Array.isArray(internships), 'Missing or invalid open internship data');
     const open = new Map();
     for (const job of internships) {
         assert.match(job.id, /^\d{12,}$/, 'Invalid job id');
@@ -142,5 +154,17 @@ async function finalize(github, context, number, review) {
     });
 }
 
-module.exports = { validate, finalize };
-if (require.main === module) prepareReview(process.argv[2], process.argv[3]);
+module.exports = { syncVisibility, validate, finalize };
+if (require.main === module) {
+    if (process.argv[2] === 'sync-visibility') {
+        const html = fs.readFileSync(page, 'utf8');
+        const updated = syncVisibility(html);
+        if (updated !== html) fs.writeFileSync(page, updated);
+        console.log('Internship alert visibility matches its item count.');
+    } else if (process.argv[2] === 'list-links') {
+        const { items } = parseList(fs.readFileSync(page, 'utf8'));
+        process.stdout.write(items.map(item => `${item.href}\n`).join(''));
+    } else {
+        prepareReview(process.argv[2], process.argv[3]);
+    }
+}

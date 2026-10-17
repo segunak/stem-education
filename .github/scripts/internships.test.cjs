@@ -4,11 +4,11 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
-const { validate, finalize } = require('./internships.cjs');
+const { syncVisibility, validate, finalize } = require('./internships.cjs');
 
 const url = id => `https://apply.careers.microsoft.com/careers/job/${id}`;
 const item = (href, title = 'Software Engineer Internship') => `<li>\n    <a href="${href}">${title}</a>\n</li>`;
-const page = items => `<header>Unchanged</header><ul class="internship-link-list">\n${items.join('\n')}\n</ul><footer>Unchanged</footer>`;
+const page = (items, hidden = false) => `<header>Unchanged</header><div class="internship-alert"${hidden ? ' hidden' : ''}><ul class="internship-link-list">\n${items.join('\n')}\n</ul><div class="internship-alert-body" hidden>Unchanged</div></div><footer>Unchanged</footer>`;
 const first = '1970393557000001';
 const stale = '1970393557000002';
 const added = '1970393557000003';
@@ -18,6 +18,16 @@ const before = page([keep, item(url(stale)), unknown]);
 const after = page([keep, unknown, item(url(added))]);
 const jobs = [first, added].map(id => ({ id, name: 'Software Engineer Intern', url: url(id) }));
 const links = `https://aka.ms/existing\t${first}\n${url(stale)}\t${stale}\nhttps://aka.ms/unresolved\tunknown\n`;
+
+for (const items of [[], [keep], [keep, unknown]]) {
+    for (const hidden of [false, true]) {
+        test(`synchronizes ${items.length} entries from hidden=${hidden} without changing other markup`, () => {
+            const updated = syncVisibility(page(items, hidden));
+            assert.equal(updated, page(items, items.length === 0));
+            assert.equal(syncVisibility(updated), updated);
+        });
+    }
+}
 
 test('accepts exact additions/removals and preserves open and unknown links', () => {
     const result = validate(before, after, jobs, links);
@@ -34,11 +44,40 @@ for (const [name, href] of [['aliased', url(first)], ['identical', 'https://aka.
 }
 
 test('can populate an initially empty list', () => {
-    assert.equal(validate(page([]), page([item(url(first))]), jobs.slice(0, 1), '').added.length, 1);
+    assert.equal(validate(page([], true), page([item(url(first))]), jobs.slice(0, 1), '').added.length, 1);
+});
+
+test('can remove all known entries and hide the alert', () => {
+    const result = validate(page([item(url(first))]), page([], true), [], `${url(first)}\t${first}\n`);
+    assert.deepEqual(result.added, []);
+    assert.deepEqual(result.removed.map(job => job.id), [first]);
+});
+
+test('accepts an already empty hidden alert without changes', () => {
+    assert.deepEqual(validate(page([], true), page([], true), [], ''), { added: [], removed: [] });
+});
+
+test('keeps unknown entries visible even when no open jobs are returned', () => {
+    const result = validate(before, page([unknown]), [], links);
+    assert.deepEqual(result.removed.map(job => job.id), [first, stale]);
+});
+
+test('rejects a visible empty alert', () => {
+    assert.throws(() => validate(page([item(url(first))]), page([]), [], `${url(first)}\t${first}\n`), /visibility/);
+});
+
+test('rejects an empty list when open jobs must be retained', () => {
+    assert.throws(() => validate(page([item(url(first))]), page([], true), jobs.slice(0, 1),
+        `${url(first)}\t${first}\n`), /Existing open/);
 });
 
 for (const [name, invalid] of [
     ['outside-list changes', after.replace('<header>Unchanged', '<header>Changed')],
+    ['extra alert attributes', after.replace('class="internship-alert"', 'class="internship-alert" style="display:none"')],
+    ['changed alert classes', after.replace('class="internship-alert"', 'class="internship-alert other"')],
+    ['duplicate alerts', after + '<div class="internship-alert"></div>'],
+    ['changed inner visibility', after.replace('class="internship-alert-body" hidden', 'class="internship-alert-body"')],
+    ['hidden populated alerts', page([keep, unknown, item(url(added))], true)],
     ['scripts', after.replace('</ul>', '<script>alert(1)</script></ul>')],
     ['extra attributes', after.replace('<a href=', '<a onclick="alert(1)" href=')],
     ['missing jobs', page([keep, unknown])],
@@ -53,7 +92,9 @@ for (const [name, invalid] of [
 }
 
 test('rejects missing or malformed source data', () => {
-    assert.throws(() => validate(before, after, [], links));
+    for (const missing of [undefined, null, {}]) {
+        assert.throws(() => validate(before, after, missing, links), /open internship data/);
+    }
     assert.throws(() => validate(before, after, jobs, links.replace('\tunknown', '')));
     assert.throws(() => validate(before, after, jobs, links + `https://aka.ms/existing\t${stale}\n`), /Conflicting/);
 });
@@ -168,7 +209,7 @@ test('can retry deployment after an already completed merge', async () => {
     assert.deepEqual(f.calls.map(call => call[0]), ['delete', 'deploy', 'notify']);
 });
 
-function patchFixture(t) {
+function patchFixture(t, { original = before, candidate = after, internships = jobs, resolved = links } = {}) {
     const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'internship-gate-test-'));
     t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
     const repo = path.join(directory, 'repo');
@@ -177,18 +218,18 @@ function patchFixture(t) {
     for (const folder of [path.join(repo, 'ai-resources'), inputs, detection]) fs.mkdirSync(folder, { recursive: true });
     const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
     const target = path.join(repo, 'ai-resources', 'index.html');
-    fs.writeFileSync(target, before);
+    fs.writeFileSync(target, original);
     fs.writeFileSync(path.join(repo, 'unchanged.txt'), 'Unchanged\n');
     git('init');
     git('config', 'core.autocrlf', 'false');
     git('add', '.');
     git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '--no-gpg-sign',
         '-m', 'Test fixture\n\nCo-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>');
-    fs.writeFileSync(target, after);
+    fs.writeFileSync(target, candidate);
     fs.writeFileSync(path.join(detection, 'aw-test.patch'), git('diff'));
-    fs.writeFileSync(target, before);
-    fs.writeFileSync(path.join(inputs, 'open-internships.json'), JSON.stringify(jobs));
-    fs.writeFileSync(path.join(inputs, 'current-links.tsv'), links);
+    fs.writeFileSync(target, original);
+    fs.writeFileSync(path.join(inputs, 'open-internships.json'), JSON.stringify(internships));
+    fs.writeFileSync(path.join(inputs, 'current-links.tsv'), resolved);
     const run = () => execFileSync(process.execPath, [path.join(__dirname, 'internships.cjs'), inputs, detection],
         { cwd: repo, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
     return { repo, inputs, detection, git, target, run };
@@ -201,6 +242,44 @@ test('validates a real patch and records the exact approved Git tree', t => {
     assert.equal(review.tree, f.git('write-tree').trim());
     assert.equal(review.base, f.git('rev-parse', 'HEAD').trim());
     assert.equal(fs.readFileSync(f.target, 'utf8'), after);
+});
+
+for (const [name, original, candidate, internships, resolved] of [
+    ['hiding the last entry', page([item(url(first))]), page([], true), [], `${url(first)}\t${first}\n`],
+    ['showing a new opening', page([], true), page([item(url(first))]), jobs.slice(0, 1), '']
+]) {
+    test(`reviews the exact patch when ${name}`, t => {
+        const f = patchFixture(t, { original, candidate, internships, resolved });
+        f.run();
+        const review = JSON.parse(fs.readFileSync(path.join(f.detection, 'internship-review.json'), 'utf8'));
+        assert.equal(review.tree, f.git('write-tree').trim());
+        assert.equal(fs.readFileSync(f.target, 'utf8'), candidate);
+    });
+}
+
+test('visibility command only changes the outer hidden attribute and can be repeated', t => {
+    const f = patchFixture(t);
+    const run = () => execFileSync(process.execPath, [path.join(__dirname, 'internships.cjs'), 'sync-visibility'],
+        { cwd: f.repo, encoding: 'utf8' });
+    for (const items of [[], [keep]]) {
+        fs.writeFileSync(f.target, page(items, items.length > 0));
+        run();
+        const expected = page(items, items.length === 0);
+        assert.equal(fs.readFileSync(f.target, 'utf8'), expected);
+        run();
+        assert.equal(fs.readFileSync(f.target, 'utf8'), expected);
+        assert.equal(f.git('diff', '--name-only').trim(), 'ai-resources/index.html');
+    }
+});
+
+test('link extraction returns no lines for an empty list and excludes other page links', t => {
+    const f = patchFixture(t);
+    const run = () => execFileSync(process.execPath, [path.join(__dirname, 'internships.cjs'), 'list-links'],
+        { cwd: f.repo, encoding: 'utf8' });
+    assert.equal(run(), `https://aka.ms/existing\n${url(stale)}\nhttps://aka.ms/unresolved\n`);
+    const empty = page([], true).replace(/\n/g, '').replace('<footer>', '<footer><a href="https://example.com">Other</a>');
+    fs.writeFileSync(f.target, empty);
+    assert.equal(run(), '');
 });
 
 test('blocks patches touching another file before publication', t => {

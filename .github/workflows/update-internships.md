@@ -22,8 +22,9 @@ network:
 
 tools:
   edit:
+  bash: ["node .github/scripts/internships.cjs sync-visibility"]
 
-# Deterministic data gathering happens here so the agent only has to edit HTML.
+# Deterministic data gathering happens here so the agent only edits the list and runs the visibility helper.
 steps:
   - name: Fetch open Microsoft internships and resolve current links
     run: |
@@ -36,7 +37,7 @@ steps:
       : > "$out/pages.jsonl"
       for start in $(seq 0 10 190); do
         page=$(curl -fsS --retry 6 --retry-delay 20 -H 'Accept: application/json' "$api&start=$start")
-        n=$(echo "$page" | jq '.data.positions | length')
+        n=$(echo "$page" | jq -e '.data.positions | if type == "array" then length else error("Missing or invalid internship positions array") end')
         [ "$n" -eq 0 ] && break
         echo "$page" | jq -c '.data.positions[] | {id, name, department}' >> "$out/pages.jsonl"
         sleep 2
@@ -48,13 +49,9 @@ steps:
         | {id: (.id | tostring), name, url: ("https://apply.careers.microsoft.com/careers/job/" + (.id | tostring))}
       ] | unique_by(.id)' "$out/pages.jsonl" > "$out/open-internships.json"
 
-      # Refuse to continue on an empty result so a flaky API can never wipe the list.
-      [ "$(jq length "$out/open-internships.json")" -gt 0 ] || { echo "No internships returned"; exit 1; }
-
       # Resolve every link in the current list to a job id (aka.ms links are redirects).
       : > "$out/current-links.tsv"
-      sed -n '/<ul class="internship-link-list">/,/<\/ul>/p' ai-resources/index.html \
-        | grep -oE 'href="[^"]+"' | sed -E 's/^href="|"$//g' | while read -r href; do
+      node .github/scripts/internships.cjs list-links | while read -r href; do
           target=$(curl -sS -o /dev/null -w '%{redirect_url}' "$href" || true)
           id=$(echo "${target:-$href}" | grep -oE '[0-9]{12,}' | head -n1 || true)
           printf '%s\t%s\n' "$href" "${id:-unknown}" >> "$out/current-links.tsv"
@@ -167,7 +164,7 @@ Email delivery uses GitHub's participating-notification preferences.
 
 Inputs, already prepared for you:
 
-- `/tmp/gh-aw/agent/open-internships.json`: currently open undergraduate internships (`id`, `name`, `url`). PhD, MBA, research, and non-intern roles are already filtered out. Treat this as the full truth for "open".
+- `/tmp/gh-aw/agent/open-internships.json`: currently open undergraduate internships (`id`, `name`, `url`). PhD, MBA, research, and non-intern roles are already filtered out. Treat this as the full truth for "open"; an empty array is valid.
 - `/tmp/gh-aw/agent/current-links.tsv`: each link currently in the list (`href`, then the job `id` it resolves to).
 
 Do this:
@@ -176,7 +173,8 @@ Do this:
 2. **Add missing items.** For every open internship whose id is not already in the list, append a new `<li>` that links to its `url`. Skip duplicates: one `<li>` per job id.
 3. **Name new items in the existing style.** Look at the current titles and match them: `Role, Focus Internship`, `&` written as `&amp;`, no location, no "Opportunities for University Students" filler. Example: "Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond" becomes `Software Engineer, Data Platform &amp; Analytics Internship`.
 4. **Keep existing items as they are** (href, text, markup, and order) when their job is still open, including `aka.ms` links. If existing links resolve to the same job id, retain only the first.
+5. **Synchronize visibility.** After updating the list, always run `node .github/scripts/internships.cjs sync-visibility` before submitting a PR or calling `noop`. The helper adds `hidden` to the outer `.internship-alert` when the final list has zero entries and removes it otherwise. Do not toggle visibility manually.
 
-Only edit the `<ul class="internship-link-list">` block. Do not touch anything else in the file, and keep the existing indentation and `<li>` / `<a>` markup.
+Only manually edit the `<ul class="internship-link-list">` block. Keep its opening and closing tags even when empty, and keep the existing indentation and `<li>` / `<a>` markup. The helper's `hidden` attribute change on the outer `.internship-alert` is the only permitted change outside the list.
 
 If nothing needs to change, call `noop` and do not open a pull request. Otherwise open a pull request titled `Update Microsoft internship list` whose body lists what was removed and what was added.
