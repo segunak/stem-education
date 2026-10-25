@@ -22,7 +22,7 @@ network:
 
 tools:
   edit:
-  bash: ["node .github/scripts/internships.cjs sync-visibility:*"]
+  bash: ["cd", "node .github/scripts/internships.cjs sync-visibility:*"]
 
 # Deterministic data gathering happens here so the agent only edits the list and runs the visibility helper.
 steps:
@@ -173,7 +173,7 @@ Do this:
 2. **Add missing items.** For every open internship whose id is not already in the list, append a new `<li>` that links to its `url`. Skip duplicates: one `<li>` per job id.
 3. **Name new items in the existing style.** Look at the current titles and match them: `Role, Focus Internship`, `&` written as `&amp;`, no location, no "Opportunities for University Students" filler. Example: "Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond" becomes `Software Engineer, Data Platform &amp; Analytics Internship`.
 4. **Keep existing items as they are** (href, text, markup, and order) when their job is still open, including `aka.ms` links. If existing links resolve to the same job id, retain only the first.
-5. **Synchronize visibility.** After updating the list, always run `node .github/scripts/internships.cjs sync-visibility` before submitting a PR or calling `noop`. The helper adds `hidden` to the outer `.internship-alert` when the final list has zero entries and removes it otherwise. Do not toggle visibility manually.
+5. **Synchronize visibility.** After updating the list, always run `node .github/scripts/internships.cjs sync-visibility` as its own standalone shell command from the repository root (do not chain it with `;`, `&&` or pipes, which get denied) before submitting a PR or calling `noop`. The helper adds `hidden` to the outer `.internship-alert` when the final list has zero entries and removes it otherwise. Do not toggle visibility manually.
 
 Only manually edit the `<ul class="internship-link-list">` block. Keep its opening and closing tags even when empty, and keep the existing indentation and `<li>` / `<a>` markup. The helper's `hidden` attribute change on the outer `.internship-alert` is the only permitted change outside the list.
 
