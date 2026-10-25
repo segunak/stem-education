@@ -22,7 +22,7 @@ network:
 
 tools:
   edit:
-  bash: ["node .github/scripts/internships.cjs sync-visibility"]
+  bash: ["node .github/scripts/internships.cjs sync-visibility:*"]
 
 # Deterministic data gathering happens here so the agent only edits the list and runs the visibility helper.
 steps:
