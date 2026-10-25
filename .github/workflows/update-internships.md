@@ -69,9 +69,9 @@ steps:
 safe-outputs:
   # gh-aw opens GitHub issues for failed runs by default. Turn off every path so failures only show in the Actions tab.
   report-failure-as-issue: false
-  missing-tool:
+  report-missing-tool:
     create-issue: false
-  missing-data:
+  report-missing-data:
     create-issue: false
   report-incomplete:
     create-issue: false
@@ -92,8 +92,9 @@ safe-outputs:
       with a specific reason; this field is also the workflow's policy-rejection signal.
       Do not edit or repair the candidate. Only an unambiguous pass may proceed.
       If no PR is proposed, review the noop normally.
+    # gh-aw v0.93.5 does not auto-pin actions in these custom steps.
     steps:
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         if: contains(needs.agent.outputs.output_types, 'create_pull_request')
         with:
           name: internship-inputs
@@ -103,7 +104,7 @@ safe-outputs:
         env:
           INPUTS: ${{ runner.temp }}/internship-inputs
         run: node .github/scripts/internships.cjs "$INPUTS" /tmp/gh-aw/threat-detection
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         if: contains(needs.agent.outputs.output_types, 'create_pull_request')
         with:
           name: internship-review
