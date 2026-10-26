@@ -321,7 +321,7 @@ test('accepts the mailbox patch format used by the workflow', t => {
 });
 
 test('compiled workflow gates publication on successful independent review', () => {
-    const lock = fs.readFileSync(path.join(__dirname, '..', 'workflows', 'update-internships.lock.yml'), 'utf8');
+    const lock = fs.readFileSync(path.join(__dirname, '..', 'workflows', 'update-internships.lock.yml'), 'utf8').replace(/\r\n/g, '\n');
     const job = name => lock.match(new RegExp(`^  ${name}:\\n([\\s\\S]*?)(?=^  [a-z_]+:|$(?![\\s\\S]))`, 'm'))[1];
     const configs = [...lock.matchAll(/^\s+GH_AW_SAFE_OUTPUTS_(?:HANDLER_)?CONFIG: (.+)$/gm)];
     assert.equal(configs.length, 2);
@@ -342,4 +342,46 @@ test('compiled workflow gates publication on successful independent review', () 
     const dependencies = [...job('finalize').matchAll(/^      - (agent|safe_outputs|detection)$/gm)].map(match => match[1]);
     assert.deepEqual(dependencies.sort(), ['agent', 'detection', 'safe_outputs']);
     assert.doesNotMatch(job('agent').split('steps:')[0], /- finalize/);
+});
+
+test('compiled workflow cannot create issues for failures or detection findings', () => {
+    const lock = fs.readFileSync(path.join(__dirname, '..', 'workflows', 'update-internships.lock.yml'), 'utf8').replace(/\r\n/g, '\n');
+    assert.doesNotMatch(lock, /^\s+issues:\s*write\s*$/m);
+    assert.doesNotMatch(lock, /handle_detection_runs\.cjs/);
+    assert.doesNotMatch(lock, /^\s+GH_AW_REPORT_FAILED_JOBS: "true"$/m);
+    for (const flag of [
+        'GH_AW_BLOCKED_VERSION_REPORT_AS_ISSUE',
+        'GH_AW_NOOP_REPORT_AS_ISSUE',
+        'GH_AW_MISSING_TOOL_CREATE_ISSUE',
+        'GH_AW_REPORT_INCOMPLETE_CREATE_ISSUE',
+        'GH_AW_FAILURE_REPORT_AS_ISSUE'
+    ]) {
+        assert.match(lock, new RegExp(`^\\s+${flag}: "false"$`, 'm'));
+    }
+    const configs = [...lock.matchAll(/^\s+GH_AW_SAFE_OUTPUTS_(?:HANDLER_)?CONFIG: (.+)$/gm)];
+    assert.equal(configs.length, 2);
+    for (const [, encoded] of configs) {
+        const config = JSON.parse(JSON.parse(encoded));
+        assert.equal(config.create_issue, undefined);
+        assert.equal(config.create_pull_request.fallback_as_issue, false);
+        const noopReport = config.noop['report-as-issue'];
+        assert.ok(noopReport === false || noopReport === 'false', 'No-op issue reporting must be disabled');
+        for (const handler of ['report_incomplete', 'report_missing_data', 'report_missing_tool']) {
+            assert.notEqual(config[handler].create_issue, true);
+        }
+    }
+});
+
+test('detector receives trusted inputs without requiring agent shell visibility commands', () => {
+    const source = fs.readFileSync(path.join(__dirname, '..', 'workflows', 'update-internships.md'), 'utf8');
+    const lock = fs.readFileSync(path.join(__dirname, '..', 'workflows', 'update-internships.lock.yml'), 'utf8').replace(/\r\n/g, '\n');
+    const detection = lock.match(/^  detection:\n([\s\S]*?)(?=^  [a-z_]+:|$(?![\s\S]))/m)[1];
+    const inputs = detection.split(/^      - /m).find(step => /^\s+name: internship-inputs$/m.test(step));
+    assert.ok(inputs, 'Detection must download the immutable pre-agent inputs');
+    assert.match(inputs, /^\s+path: \/tmp\/gh-aw\/agent$/m);
+    assert.doesNotMatch(inputs, /contains\(needs\.agent\.outputs\.output_types, 'create_pull_request'\)/);
+    assert.match(detection, /^\s+INPUTS: \/tmp\/gh-aw\/agent$/m);
+    assert.match(detection, /CUSTOM_PROMPT:.*\/tmp\/gh-aw\/agent\/open-internships\.json/);
+    assert.match(source, /Synchronize visibility with the edit tool/);
+    assert.doesNotMatch(source, /sync-visibility/);
 });

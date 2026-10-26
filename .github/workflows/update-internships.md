@@ -22,7 +22,7 @@ network:
 
 tools:
   edit:
-  bash: ["cd", "node .github/scripts/internships.cjs sync-visibility:*"]
+  bash: ["cd"]
 
 # Deterministic data gathering happens here so the agent only edits the list and runs the visibility helper.
 steps:
@@ -69,6 +69,7 @@ steps:
 safe-outputs:
   # gh-aw opens GitHub issues for failed runs by default. Turn off every path so failures only show in the Actions tab.
   report-failure-as-issue: false
+  report-failed-jobs: false
   report-missing-tool:
     create-issue: false
   report-missing-data:
@@ -79,10 +80,15 @@ safe-outputs:
     report-as-issue: false
   threat-detection:
     continue-on-error: false
+    report-as-issue: false
     prompt: |
       Also enforce the internship update contract, not just generic security checks.
       For a create_pull_request, read /tmp/gh-aw/threat-detection/internship-review.json
-      and the patch. The JSON was produced by trusted validation using pre-agent inputs.
+      and the patch, plus the immutable inputs at /tmp/gh-aw/agent/open-internships.json
+      and /tmp/gh-aw/agent/current-links.tsv.
+      The JSON was produced by trusted validation using those pre-agent inputs.
+      Trusted validation checks list membership, preserved entries, and final alert visibility.
+      Judge visibility by the validated final HTML, not whether the agent ran a shell helper.
       Check that each added title faithfully summarizes its original Microsoft job name,
       follows "Role Internship" or "Role, Focus Internship", escapes ampersands,
       and omits location and filler.
@@ -94,15 +100,15 @@ safe-outputs:
       If no PR is proposed, review the noop normally.
     # gh-aw v0.93.5 does not auto-pin actions in these custom steps.
     steps:
-      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
-        if: contains(needs.agent.outputs.output_types, 'create_pull_request')
+      - name: Restore trusted internship inputs for validation and review
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: internship-inputs
-          path: ${{ runner.temp }}/internship-inputs
+          path: /tmp/gh-aw/agent
       - name: Validate the exact proposed patch
         if: contains(needs.agent.outputs.output_types, 'create_pull_request')
         env:
-          INPUTS: ${{ runner.temp }}/internship-inputs
+          INPUTS: /tmp/gh-aw/agent
         run: node .github/scripts/internships.cjs "$INPUTS" /tmp/gh-aw/threat-detection
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         if: contains(needs.agent.outputs.output_types, 'create_pull_request')
@@ -174,8 +180,8 @@ Do this:
 2. **Add missing items.** For every open internship whose id is not already in the list, append a new `<li>` that links to its `url`. Skip duplicates: one `<li>` per job id.
 3. **Name new items in the existing style.** Look at the current titles and match them: `Role, Focus Internship`, `&` written as `&amp;`, no location, no "Opportunities for University Students" filler. Example: "Software Engineer: Data Platform/Analytics Intern Opportunities for University Students, Redmond" becomes `Software Engineer, Data Platform &amp; Analytics Internship`.
 4. **Keep existing items as they are** (href, text, markup, and order) when their job is still open, including `aka.ms` links. If existing links resolve to the same job id, retain only the first.
-5. **Synchronize visibility.** After updating the list, always run `node .github/scripts/internships.cjs sync-visibility` as its own standalone shell command from the repository root (do not chain it with `;`, `&&` or pipes, which get denied) before submitting a PR or calling `noop`. The helper adds `hidden` to the outer `.internship-alert` when the final list has zero entries and removes it otherwise. Do not toggle visibility manually.
+5. **Synchronize visibility with the edit tool.** Add `hidden` to the outer `.internship-alert` when the final list has zero entries and remove it otherwise. Make this permitted attribute edit together with the list changes; do not run a shell helper. Trusted validation independently verifies the final visibility and rejects mismatches before publication.
 
-Only manually edit the `<ul class="internship-link-list">` block. Keep its opening and closing tags even when empty, and keep the existing indentation and `<li>` / `<a>` markup. The helper's `hidden` attribute change on the outer `.internship-alert` is the only permitted change outside the list.
+Only edit the `<ul class="internship-link-list">` block and the outer `.internship-alert`'s `hidden` attribute. Keep the list's opening and closing tags even when empty, and keep the existing indentation and `<li>` / `<a>` markup. The outer `hidden` attribute is the only permitted change outside the list; do not alter other attributes or surrounding markup.
 
 If nothing needs to change, call `noop` and do not open a pull request. Otherwise open a pull request titled `Update Microsoft internship list` whose body lists what was removed and what was added.
