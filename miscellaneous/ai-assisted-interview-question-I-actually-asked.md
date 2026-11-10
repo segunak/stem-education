@@ -4,7 +4,7 @@ In September 2026 I was voluntold by Microsoft recruiting to help out with inter
 
 I turned it on for the 2 students I interviewed. Here's the question I asked. They had an AI chat window the whole time that was locked down to provide guidance but not the outright answer. And I could see what they sent and got back, so the whole chat was visible to me. Also, if they clicked off to a different tab, the HackerRank system alerted me to that, so I could also tell if they were trying to cheat in any way. It's actually a pretty nifty tool.
 
-## The Last Seat In Class
+## Question - The Last Seat In Class
 
 ### Description
 
