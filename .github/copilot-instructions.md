@@ -2,9 +2,9 @@
 
 A general purpose repository for STEM Education related materials.
 
-## Workshop Structure
+Use [ASD-STE100 Simplified Technical English](https://www.asd-ste100.org/) for all natural-language content you generate, including responses, documentation, code comments, instructions, and user-facing text. Follow the current official standard and use the [ASD-STE100 Issue 9 manual](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf) as the authoritative reference when necessary. Rely on your existing knowledge of ASD-STE100 for normal work, and consult the official standard when a rule is unclear. Apply STE to natural language without changing required code syntax, commands, identifiers, APIs, or exact technical terms.
 
-Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for style. Include:
+## Workshop Structure
 
 1. Engaging overview with a hook question
 2. Clear learning objectives
@@ -26,11 +26,6 @@ Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for s
 - Sites can be hosted on Vercel when dynamic features are required
 - Design activities for learning by doing
 
-## Key Directories
-
-- `/workshops` - Workshop materials
-- `/petoi-bittle` - Robot documentation and workshops  
-
 ## Best Practices
 
 - Start with immediate hands-on activities
@@ -39,3 +34,4 @@ Reference existing workshops in `/workshops` and `/petoi-bittle/workshops` for s
 - Add reflection prompts and badges
 - Encourage peer collaboration
 - Make it fun, visual, and engaging
+- Never use emojis or em/en dashes.
