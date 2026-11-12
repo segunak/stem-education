@@ -138,7 +138,28 @@
                 </div>
                 <div>
                     <p>Want to learn more about Discovery Day and what may be possible for your group? Email the volunteer team. Reaching out starts a conversation, but does not guarantee an event.</p>
-                    <a class="email-link" href="mailto:cltdiscoveryday@microsoft.com">cltdiscoveryday@microsoft.com <span aria-hidden="true">↗</span></a>
+                    <div class="email-control" id="email-control" data-email-revealed="false">
+                        <button class="email-reveal-button" id="reveal-email" type="button" aria-controls="contact-email" aria-pressed="false">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="m3 7 9 6 9-6"></path>
+                            </svg>
+                            <span id="reveal-email-label">Show email</span>
+                        </button>
+                        <span class="email-address" id="contact-email" aria-live="polite" aria-atomic="true">Email address hidden</span>
+                        <button class="copy-email-button" id="copy-email" type="button" aria-label="Copy email address" aria-describedby="contact-email" disabled>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <g class="copy-icon-default">
+                                    <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                                    <path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"></path>
+                                </g>
+                                <path class="copy-icon-success" d="m5 12 4 4 10-10"></path>
+                            </svg>
+                            <span id="copy-email-label">Copy</span>
+                        </button>
+                    </div>
+                    <span class="copy-status" id="copy-email-status" role="status"></span>
+                    <noscript><p>Enable JavaScript to reveal the email address.</p></noscript>
                 </div>
             </div>
         </section>
@@ -149,5 +170,53 @@
             <p>Discovery Day is not an official Microsoft program. It's an independent, volunteer-led effort created by <a href="https://segunakinyemi.com/">Segun Akinyemi</a>.</p>
         </div>
     </footer>
+    <script>
+        const revealEmailButton = document.getElementById("reveal-email");
+        const revealEmailLabel = document.getElementById("reveal-email-label");
+        const emailControl = document.getElementById("email-control");
+        const contactEmailAddress = document.getElementById("contact-email");
+        const copyEmailButton = document.getElementById("copy-email");
+        const copyEmailLabel = document.getElementById("copy-email-label");
+        const copyEmailStatus = document.getElementById("copy-email-status");
+        // Keep the full address out of the HTML and script source.
+        const contactEmail = ["cltdiscoveryday", ["microsoft", "com"].join(".")].join("@");
+        let copyFeedbackTimeout;
+
+        function resetCopyFeedback() {
+            clearTimeout(copyFeedbackTimeout);
+            copyEmailButton.classList.remove("is-copied");
+            copyEmailLabel.textContent = "Copy";
+            copyEmailStatus.textContent = "";
+        }
+
+        revealEmailButton.addEventListener("click", () => {
+            const shouldShow = emailControl.dataset.emailRevealed !== "true";
+            resetCopyFeedback();
+            emailControl.dataset.emailRevealed = String(shouldShow);
+            revealEmailButton.setAttribute("aria-pressed", String(shouldShow));
+            revealEmailLabel.textContent = shouldShow ? "Hide email" : "Show email";
+            contactEmailAddress.textContent = shouldShow ? contactEmail : "Email address hidden";
+            copyEmailButton.disabled = !shouldShow;
+        });
+
+        copyEmailButton.addEventListener("click", async () => {
+            resetCopyFeedback();
+            try {
+                await navigator.clipboard.writeText(contactEmail);
+            } catch {
+                if (emailControl.dataset.emailRevealed === "true") {
+                    copyEmailStatus.textContent = `Unable to copy automatically. Please copy ${contactEmail} manually.`;
+                }
+                return;
+            }
+            if (emailControl.dataset.emailRevealed !== "true") {
+                return;
+            }
+            copyEmailButton.classList.add("is-copied");
+            copyEmailLabel.textContent = "Copied!";
+            copyEmailStatus.textContent = "Email address copied!";
+            copyFeedbackTimeout = setTimeout(resetCopyFeedback, 2500);
+        });
+    </script>
 </body>
 </html>
