@@ -1,4 +1,4 @@
-# STEM Workshops
+# Workshops
 
 My list of STEM workshops that are both free and easy for students/learners to access.
 

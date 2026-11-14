@@ -1,14 +1,14 @@
 ---
-name: find-stem-workshops
-description: Find, verify, and maintain free browser-based STEM workshops for workshops/stem-workshops.md. Use this skill to search the web, Hacker News, and Reddit for zero-login STEM workshops and check activity links.
+name: find-workshops
+description: Find, verify, and maintain free browser-based STEM workshops for workshops/workshops.md. Use this skill to search the web, Hacker News, and Reddit for zero-login STEM workshops and check activity links.
 ---
 
 # Find STEM Workshops
 
 ## Context Setup
 
-1. Read `workshops/stem-workshops.md` to prevent duplicates.
-2. Read `.github/instructions/stem-workshops.instructions.md` and obey all eligibility and format rules.
+1. Read `workshops/workshops.md` to prevent duplicates.
+2. Read `.github/instructions/workshops.instructions.md` and obey all eligibility and format rules.
 
 ## Search Sources
 
@@ -38,4 +38,4 @@ description: Find, verify, and maintain free browser-based STEM workshops for wo
 ## Review Process
 
 - Show verified workshops in chat in the exact list format.
-- Wait for user approval before you change `workshops/stem-workshops.md`.
+- Wait for user approval before you change `workshops/workshops.md`.

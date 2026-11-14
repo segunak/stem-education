@@ -1,5 +1,5 @@
 ---
-applyTo: "workshops/stem-workshops.md"
+applyTo: "workshops/workshops.md"
 ---
 
 # STEM Workshop List
